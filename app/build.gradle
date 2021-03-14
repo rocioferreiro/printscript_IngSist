@@ -4,7 +4,6 @@ plugins {
 }
 
 group = 'edu.austral.ingsist'
-
 version = '1.0.1'
 
 dependencies {
@@ -12,17 +11,15 @@ dependencies {
 }
 
 application {
-    mainClase = 'edu.austral.ingsist.App'
+    mainClass = 'edu.austral.ingsist.App'
 }
 
 jar {
     manifest {
-        attributes {
-            'Class-Path': configurations.compile.collect {
-                it.getName()
-            }.join(' '),
-            'Main-Class': 'edu.austral.ingsist.App'
-        }
+        attributes(
+                'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
+                'Main-Class': 'edu.austral.ingsist.App'
+        )
     }
 }
 
