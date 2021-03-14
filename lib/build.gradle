@@ -1,0 +1,8 @@
+plugins {
+    id 'java-library'
+    id 'my-library.java-common-conventions'
+}
+
+group = 'edu.austral.ingsist'
+
+version = '1.0.1'
