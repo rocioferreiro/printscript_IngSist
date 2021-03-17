@@ -3,7 +3,7 @@ plugins {
     id 'my-library.java-common-conventions'
 }
 
-group = 'edu.austral.ingsist'
+group = 'edu.austral.ingsis'
 version = '1.0.1'
 
 dependencies {
@@ -11,15 +11,14 @@ dependencies {
 }
 
 application {
-    mainClass = 'edu.austral.ingsist.App'
+    mainClass = 'edu.austral.ingsis.App'
 }
 
 jar {
     manifest {
         attributes(
                 'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
-                'Main-Class': 'edu.austral.ingsist.App'
+                'Main-Class': 'edu.austral.ingsis.App'
         )
     }
 }
-
