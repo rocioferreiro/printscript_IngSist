@@ -1,3 +1,3 @@
 # printscript_IngSist
 
-## WE are awsome
+## We are awesome
