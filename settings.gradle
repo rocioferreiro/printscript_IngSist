@@ -8,5 +8,5 @@
  */
 
 rootProject.name = 'my-library'
-include 'lib', 'app'
+include 'main', 'executing', 'lexing', 'interpreting', 'parsing'
 
