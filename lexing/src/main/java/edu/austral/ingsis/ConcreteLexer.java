@@ -6,7 +6,6 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
@@ -30,20 +29,25 @@ public class ConcreteLexer implements Lexer {
 
     private Sentence stringToTokens(String txt, int index){
         List<Token> tokens = new ArrayList<>();
-        String accumulator = "";
-        for (int i = 0; i < txt.length(); i++) {
-            char ch = txt.charAt(i);
-            //TODO como mierda manejar espacios y variables y comillas
-            Optional<Token> token = KeyWord.findToken(accumulator + ch, new Position(index, i+1));
-            if(token.isPresent()){
-                tokens.add(token.get());
-                accumulator = "";
-            } else {
-                accumulator += ch;
+        String[] separatedBySpace = txt.split(" ");
+        int column = 1;
+        for (String s : separatedBySpace) {
+            tokens.addAll(getOperatorTokens(s, index, column));
+            column += s.length();
+        }
+        for (int i = 0; i < tokens.size(); i++) {
+            if(tokens.get(i).getType().equals(TokenType.invalid)){
+                tokens.set(i, KeyWord.findToken(tokens.get(i)));
+                if(tokens.get(i).getType().equals(TokenType.invalid)) throw new RuntimeException("Invalid Expresion: " + tokens.get(i).getValue());
             }
         }
 
         return new Sentence(tokens, index);
     }
+
+    private List<Token> getOperatorTokens(String word, int row, int initialColumn){
+        return Operator.findTokens(word, new Position(row, initialColumn));
+    }
+
 
 }

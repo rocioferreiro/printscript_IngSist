@@ -16,4 +16,12 @@ public class Position {
     public int getColumn() {
         return column;
     }
+
+    public Position incrementRow(int amount){
+        return new Position(row + amount, column);
+    }
+
+    public Position incrementColumn(int amount){
+        return new Position(row, column + amount);
+    }
 }

@@ -19,4 +19,13 @@ public class Sentence {
     public int getFirstLine() {
         return firstLine;
     }
+
+    @Override
+    public String toString(){
+        String tokenString = "";
+        for(Token t: tokens){
+            tokenString += t.toString();
+        }
+        return firstLine + ": " + tokenString;
+    }
 }

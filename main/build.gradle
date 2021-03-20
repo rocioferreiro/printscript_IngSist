@@ -7,7 +7,7 @@ group = 'edu.austral.ingsis'
 version = '1.0.1'
 
 dependencies {
-    implementation project(':interpreting')
+    implementation project(':lexing')
 }
 
 application {
