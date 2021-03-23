@@ -1,5 +1,19 @@
-let prueba:string;
-prueba = "comocomocomo \n aaaa" + \n " holaaaa";
-prueba = "hola";
-let x: number;
-x = 2 + 4;
+let
+prueba
+:
+string
+;
+
+
+prueba = "comocomocomo \n aaaa"            +
+ " holaaaa";
+prueba = "hola"
+;
+
+
+let x: number         ;
+x = 2 + 4 ;
+
+
+
+
