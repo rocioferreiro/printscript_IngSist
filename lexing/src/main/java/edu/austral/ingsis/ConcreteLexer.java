@@ -14,7 +14,7 @@ public class ConcreteLexer implements Lexer {
     @Override
     public List<Sentence> scan(Path path) {
         String text = toString(path);
-        String[] separatedSentences = text.split(";");
+        String[] separatedSentences = Arrays.stream(text.split(";")).map(s -> s.replace("\n", "")).toArray(String[]::new);
         AtomicInteger index = new AtomicInteger();
         return Arrays.stream(separatedSentences).map(s -> stringToTokens(s, index.incrementAndGet())).collect(Collectors.toList());
     }
@@ -29,6 +29,7 @@ public class ConcreteLexer implements Lexer {
 
     private Sentence stringToTokens(String txt, int index){
         List<Token> tokens = new ArrayList<>();
+        //TODO tratar entre comillas antes de espacios
         String[] separatedBySpace = txt.split(" ");
         int column = 1;
         for (String s : separatedBySpace) {

@@ -6,12 +6,6 @@ public class ConcreteToken implements Token{
     private final String value;
     private final Position position;
 
-//    public ConcreteToken(KeyWord type, Position position) {
-//        this.type = type;
-//        this.value = type.getValue();
-//        this.position = position;
-//    }
-
     public ConcreteToken(TokenType type, String value, Position position) {
         this.type = type;
         this.value = value;
