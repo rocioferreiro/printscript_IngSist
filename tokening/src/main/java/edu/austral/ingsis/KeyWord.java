@@ -1,7 +1,5 @@
 package edu.austral.ingsis;
 
-import java.util.Optional;
-
 public enum KeyWord implements TokenType{
     DECLARATION("let", "DECLARATION"),
     STRING("[\"'].*[\"']", "STRING"),

@@ -1,5 +1,5 @@
 let prueba:string;
-prueba = "comocomocomo";
-prueba = 'hola';
+prueba = "comocomocomo \n aaaa" + \n " holaaaa";
+prueba = "hola";
 let x: number;
 x = 2 + 4;
