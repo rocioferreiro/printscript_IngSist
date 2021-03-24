@@ -9,17 +9,11 @@ public interface TokenType {
         }
 
         @Override
-        public String getSub() {
-            return "invalid";
-        }
-
-        @Override
         public String getCategory() {
             return "invalid";
         }
     };
 
     String getRegex();
-    String getSub();
     String getCategory();
 }

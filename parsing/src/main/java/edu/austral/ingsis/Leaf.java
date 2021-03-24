@@ -1,4 +1,6 @@
 package edu.austral.ingsis;
 
-public interface Leaf {
+public interface Leaf extends AST{
+
+    Token getToken();
 }

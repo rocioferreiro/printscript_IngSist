@@ -4,32 +4,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public enum Operator implements TokenType {
-    EQUAL("=", "EQUAL", "EQUAL"),
-    T_ASSIGNATION(":", "TYPE ASSIGNATION", "DECLARE_TYPE"),
-    PLUS("\\+", "OPERATOR", "OPERATION"),
-    SUBTRACTION("-", "OPERATOR", "OPERATION"),
-    MULTIPLICATION("\\*", "OPERATOR", "OPERATION"),
-    DIVISION("\\/", "OPERATOR", "OPERATION"),
-    SEMICOLONS(";", "END_OF_LINE", "SEPARATOR");
+    EQUAL("=", "EQUAL"),
+    T_ASSIGNATION(":", "DECLARE_TYPE"),
+    PLUS("\\+", "OPERATOR"),
+    SUBTRACTION("-", "OPERATOR"),
+    MULTIPLICATION("\\*", "OPERATOR"),
+    DIVISION("\\/", "OPERATOR"),
+    SEMICOLONS(";", "SEPARATOR");
 
     private final String regex;
-    private final String sub;
     private final String category;
 
-    Operator(String regex, String sub, String category) {
+    Operator(String regex, String category) {
         this.regex = regex;
-        this.sub = sub;
         this.category = category;
     }
 
     @Override
     public String getRegex() {
         return regex;
-    }
-
-    @Override
-    public String getSub() {
-        return sub;
     }
 
     @Override

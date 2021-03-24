@@ -1,29 +1,22 @@
 package edu.austral.ingsis;
 
 public enum KeyWord implements TokenType {
-    DECLARATION("let", "DECLARATION", "DECLARATION"),
-    STRING("[\"'].*[\"']", "VALUE", "OPERATION"),
-    S_ASSIGNATION("string", "S_ASSIGNATION", "TYPE"),
-    N_ASSIGNATION("number", "N_ASSIGNATION", "TYPE"),
-    NUMBER("\\d+", "VALUE", "OPERATION"),
-    VARIABLE_REF("[a-zA-Z0-9]+", "REF TO VARIABLE", "VARIABLE");
+    DECLARATION("let", "DECLARATION"),
+    STRING("[\"'].*[\"']", "VALUE"),
+    S_ASSIGNATION("string", "TYPE"),
+    N_ASSIGNATION("number", "TYPE"),
+    NUMBER("\\d+(\\.\\d+)?", "VALUE"),
+    VARIABLE_REF("[a-zA-Z0-9]+", "VARIABLE");
 
     private final String regex;
-    private final String sub;
     private final String category;
 
-    KeyWord(String regex, String sub, String category) {
+    KeyWord(String regex, String category) {
         this.regex = regex;
-        this.sub = sub;
         this.category = category;
     }
     public String getRegex() {
         return regex;
-    }
-
-    @Override
-    public String getSub() {
-        return sub;
     }
 
     @Override

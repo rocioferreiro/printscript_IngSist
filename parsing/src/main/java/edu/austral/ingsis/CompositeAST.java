@@ -1,4 +1,5 @@
 package edu.austral.ingsis;
 
-public interface CompositeAST {
+public interface CompositeAST extends AST{
+
 }

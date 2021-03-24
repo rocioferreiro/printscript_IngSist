@@ -17,18 +17,10 @@ public class ConcreteLexer implements Lexer {
 
     @Override
     public List<Token> scan(Path path) {
-        String text = toString(path);
+        String text = PathReader.read(path);
         List<Line> separatedSentences = checkForEntersInColons(text);
         separatedSentences = separatedSentences.stream().filter(l -> !l.getText().isEmpty()).collect(toList());
         return separatedSentences.stream().map(this::stringToTokens).flatMap(Collection::stream).collect(toList());
-    }
-
-    private String toString(Path path){
-        try {
-            return Files.readString(path);
-        } catch (IOException e) {
-            throw new RuntimeException("Invalid path!");
-        }
     }
 
     private List<Token> stringToTokens(Line line){
