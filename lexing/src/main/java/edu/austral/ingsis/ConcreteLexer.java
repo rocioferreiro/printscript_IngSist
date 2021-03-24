@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -15,12 +16,11 @@ import static java.util.stream.Collectors.toList;
 public class ConcreteLexer implements Lexer {
 
     @Override
-    public List<Sentence> scan(Path path) {
+    public List<Token> scan(Path path) {
         String text = toString(path);
-        String[] separatedSentences = Arrays.stream(text.split(";")).map(this::checkForEntersInColons).toArray(String[]::new);
-        separatedSentences = Arrays.stream(separatedSentences).filter(l -> !l.isEmpty()).toArray(String[]::new);
-        AtomicInteger index = new AtomicInteger();
-        return Arrays.stream(separatedSentences).map(s -> stringToTokens(s, index.incrementAndGet())).collect(toList());
+        List<Line> separatedSentences = checkForEntersInColons(text);
+        separatedSentences = separatedSentences.stream().filter(l -> !l.getText().isEmpty()).collect(toList());
+        return separatedSentences.stream().map(this::stringToTokens).flatMap(Collection::stream).collect(toList());
     }
 
     private String toString(Path path){
@@ -31,25 +31,26 @@ public class ConcreteLexer implements Lexer {
         }
     }
 
-    private Sentence stringToTokens(String txt, int index){
+    private List<Token> stringToTokens(Line line){
 
         //TODO arreglar posiciones (-length)
 
         List<Token> tokens = new ArrayList<>();
-        List<String> separated = checkForSpacesInColons(txt);
+        List<String> separated = checkForSpacesInColons(line.getText()).stream().filter(s -> !s.isEmpty()).collect(toList());
         int column = 1;
         for (String s : separated) {
-            tokens.addAll(getOperatorTokens(s, index, column));
+            tokens.addAll(getOperatorTokens(s, line.getRow(), column));
             column += s.length();
         }
         for (int i = 0; i < tokens.size(); i++) {
             if(tokens.get(i).getType().equals(TokenType.invalid)){
                 tokens.set(i, KeyWord.findToken(tokens.get(i)));
-                if(tokens.get(i).getType().equals(TokenType.invalid)) throw new RuntimeException("Invalid Expresion: " + tokens.get(i).getValue() + " in:" + txt);
+                if(tokens.get(i).getType().equals(TokenType.invalid)) throw new RuntimeException("Invalid Expresion: "
+                        + tokens.get(i).getValue() + " in:" + line.getText());
             }
         }
 
-        return new Sentence(tokens, index);
+        return tokens;
     }
 
     private List<Token> getOperatorTokens(String word, int row, int initialColumn){
@@ -61,34 +62,63 @@ public class ConcreteLexer implements Lexer {
         List<String> split = new ArrayList<>();
         String nonChecked = s;
         while (nonChecked.contains("\"")) {
-            String between = "\"" + StringUtils.substringBetween(nonChecked, "\"") + "\"";
-            if (between == null) {
-                throw new RuntimeException("Missing one \"");
+            String subBetween =  StringUtils.substringBetween(nonChecked, "\"");
+            if (subBetween == null) {
+                throw new RuntimeException("Missing one \" in " + s);
             }
+            String between = "\"" + subBetween + "\"";
             String[] aux = split(nonChecked, between).toArray(String[]::new);
             nonChecked = aux.length > 1 ? aux[1] : "";
             split.addAll(Arrays.asList(aux[0].strip().split(" ")));
             split.add(between);
         }
         if (nonChecked.equals(s)) split.addAll(Arrays.asList(s.split(" ")));
+        else {
+            split.addAll(Arrays.asList(nonChecked.strip().split(" ")));
+        }
         return split;
     }
 
-    private String checkForEntersInColons(String s) {
-        String result = "";
+    private List<Line> checkForEntersInColons(String s) {
+        List<Line> result = new ArrayList<>();
+        AtomicInteger row = new AtomicInteger(1);
         String nonChecked = s;
         while (nonChecked.contains("\"")) {
-            String between = "\"" + StringUtils.substringBetween(nonChecked, "\"") + "\"";
-            if (between == null) {
+            String subBetween =  StringUtils.substringBetween(nonChecked, "\"");
+            if (subBetween == null) {
                 throw new RuntimeException("Missing one \" in " + s);
             }
+            String between = "\"" + subBetween + "\"";
             String[] aux = split(nonChecked, between).toArray(String[]::new);
             nonChecked = aux.length > 1 ? aux[1] : "";
-            result += aux[0].replace("\n", "");
-            result += between;
+            if(!result.isEmpty()){
+                row.decrementAndGet();
+                List<Line> newLines = Arrays.stream(aux[0].split("\n")).map(text -> new Line(text, row.getAndIncrement())).collect(toList());
+
+                result = mergeLists(result, newLines);
+            }
+            else {
+                result = Arrays.stream(aux[0].split("\n")).map(text -> new Line(text, row.getAndIncrement())).collect(toList());
+            }
+            if(aux[0].charAt(aux[0].length()-1) == '\n') {
+                result.add(new Line(between, row.getAndIncrement()));
+            } else {
+                result.set(result.size()-1, result.get(result.size()-1).concatText(between));
+            }
         }
-        if (nonChecked.equals(s)) result = s.replace("\n", "");
-        else result += nonChecked.replace("\n", "");
+        if (nonChecked.equals(s)) result.addAll(Arrays.stream(s.split("\n")).map(text -> new Line(text, row.getAndIncrement())).collect(toList()));
+        else{
+            row.decrementAndGet();
+            List<Line> last = Arrays.stream(nonChecked.split("\n")).map(text -> new Line(text, row.getAndIncrement())).collect(toList());
+            result = mergeLists(result, last);
+        }
+        return result;
+    }
+
+    private List<Line> mergeLists(List<Line> oldLines,List<Line> newLines){
+        List<Line> result = oldLines;
+        result.set(result.size()-1, result.get(result.size()-1).concatText(newLines.get(0).getText()));
+        result.addAll(newLines.subList(1, newLines.size()));
         return result;
     }
 

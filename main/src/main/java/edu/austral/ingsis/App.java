@@ -3,18 +3,14 @@
  */
 package edu.austral.ingsis;
 
-import org.apache.commons.lang3.StringUtils;
-
 import java.nio.file.Paths;
 import java.util.List;
 
 public class App {
     public static void main(String[] args) {
         Lexer lexer = new ConcreteLexer();
-        List<Sentence> sentences = lexer.scan(Paths.get("test.txt"));
+        List<Token> sentences = lexer.scan(Paths.get("test.txt"));
 
-        for(Sentence s : sentences){
-            System.out.println(s.toString());
-        }
+        System.out.println(sentences.toString());
     }
 }

@@ -6,7 +6,7 @@ string
 
 
 prueba = "comocomocomo \n aaaa"            +
- " holaaaa";
+" holaaaa";
 prueba = "hola"
 ;
 

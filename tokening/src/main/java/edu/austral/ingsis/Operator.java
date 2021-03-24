@@ -9,7 +9,8 @@ public enum Operator implements TokenType {
     PLUS("\\+", "OPERATOR", "OPERATION"),
     SUBTRACTION("-", "OPERATOR", "OPERATION"),
     MULTIPLICATION("\\*", "OPERATOR", "OPERATION"),
-    DIVISION("\\/", "OPERATOR", "OPERATION");
+    DIVISION("\\/", "OPERATOR", "OPERATION"),
+    SEMICOLONS(";", "END_OF_LINE", "SEPARATOR");
 
     private final String regex;
     private final String sub;
