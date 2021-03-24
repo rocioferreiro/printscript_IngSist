@@ -32,6 +32,9 @@ public class ConcreteLexer implements Lexer {
     }
 
     private Sentence stringToTokens(String txt, int index){
+
+        //TODO arreglar posiciones (-length)
+
         List<Token> tokens = new ArrayList<>();
         List<String> separated = checkForSpacesInColons(txt);
         int column = 1;

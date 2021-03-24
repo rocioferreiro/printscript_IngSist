@@ -20,6 +20,7 @@
             <option value="$PROJECT_DIR$/parsing" />
             <option value="$PROJECT_DIR$/tokening" />
             <option value="$PROJECT_DIR$/utils" />
+            <option value="$PROJECT_DIR$/validation" />
           </set>
         </option>
       </GradleProjectSettings>

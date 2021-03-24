@@ -3,20 +3,22 @@ package edu.austral.ingsis;
 import java.util.ArrayList;
 import java.util.List;
 
-public enum Operator implements TokenType{
-    EQUAL("=", "EQUAL"),
-    T_ASSIGNATION(":", "TYPE ASSIGNATION"),
-    PLUS("\\+", "PLUS SIGN"),
-    SUBTRACTION("-", "SUBTRACTION SIGN"),
-    MULTIPLICATION("\\*", "MULTIPLICATION SIGN"),
-    DIVISION("\\/", "DIVISION TYPE");
+public enum Operator implements TokenType {
+    EQUAL("=", "EQUAL", "EQUAL"),
+    T_ASSIGNATION(":", "TYPE ASSIGNATION", "DECLARE_TYPE"),
+    PLUS("\\+", "OPERATOR", "OPERATION"),
+    SUBTRACTION("-", "OPERATOR", "OPERATION"),
+    MULTIPLICATION("\\*", "OPERATOR", "OPERATION"),
+    DIVISION("\\/", "OPERATOR", "OPERATION");
 
     private final String regex;
-    private final String id;
+    private final String sub;
+    private final String category;
 
-    Operator(String regex, String id) {
+    Operator(String regex, String sub, String category) {
         this.regex = regex;
-        this.id = id;
+        this.sub = sub;
+        this.category = category;
     }
 
     @Override
@@ -25,8 +27,13 @@ public enum Operator implements TokenType{
     }
 
     @Override
-    public String identifier() {
-        return id;
+    public String getSub() {
+        return sub;
+    }
+
+    @Override
+    public String getCategory() {
+        return category;
     }
 
     public static List<Token> findTokens(String string, Position initialPosition){
@@ -48,6 +55,4 @@ public enum Operator implements TokenType{
         if(!acc.isEmpty() && finalList.size()>0) finalList.add(new ProvisionalToken(acc, finalList.get(finalList.size()-1).getPosition().incrementColumn(acc.length())));
         return finalList.isEmpty() ? List.of(new ProvisionalToken(string, initialPosition)) : finalList;
     }
-
-
 }

@@ -1,6 +1,6 @@
 package edu.austral.ingsis;
 
-public class ConcreteToken implements Token{
+public class ConcreteToken implements Token {
 
     private final TokenType type;
     private final String value;
@@ -29,6 +29,6 @@ public class ConcreteToken implements Token{
 
     @Override
     public String toString(){
-        return "Type: " + type.identifier() + ", Value: " + value + ", Position: (" + position.getRow() + ", " + position.getColumn() + ")";
+        return "Type: " + type.getSub() + ", Value: " + value + ", Position: (" + position.getRow() + ", " + position.getColumn() + ")";
     }
 }
