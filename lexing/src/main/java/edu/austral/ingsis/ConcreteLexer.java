@@ -18,9 +18,6 @@ public class ConcreteLexer implements Lexer {
     }
 
     private List<Token> stringToTokens(Line line){
-
-        //TODO arreglar posiciones (-length)
-
         List<Token> tokens = new ArrayList<>();
         List<String> separated = StringSimplifier.removeSpaces(line.getText()).stream().filter(s -> !s.isEmpty()).collect(toList());
         int column = 1;
@@ -35,7 +32,6 @@ public class ConcreteLexer implements Lexer {
                         + tokens.get(i).getValue() + " in:" + line.getText());
             }
         }
-
         return tokens;
     }
 

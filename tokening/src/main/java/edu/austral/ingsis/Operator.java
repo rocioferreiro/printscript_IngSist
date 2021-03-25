@@ -2,6 +2,7 @@ package edu.austral.ingsis;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public enum Operator implements TokenType {
     EQUAL("=", "EQUAL"),
@@ -33,13 +34,14 @@ public enum Operator implements TokenType {
     public static List<Token> findTokens(String string, Position initialPosition){
         List<Token> finalList = new ArrayList<>();
         String acc = "";
-        for (int i = 0; i < string.length(); i++) {
-            String ch = Character.toString(string.charAt(i));
+        AtomicInteger column = new AtomicInteger();
+        for (Character c : string.toCharArray()) {
+            String ch = Character.toString(c);
             boolean match = false;
             for(Operator key : values()){
                 if(ch.matches(key.getRegex())){
-                    if(!acc.isEmpty()) finalList.add(new ProvisionalToken(acc, initialPosition.incrementColumn((i))));
-                    finalList.add(new ConcreteToken(key, ch, initialPosition.incrementColumn(i+1)));
+                    if(!acc.isEmpty()) finalList.add(new ProvisionalToken(acc, initialPosition.incrementColumn(column.getAndAdd(acc.length()))));
+                    finalList.add(new ConcreteToken(key, ch, initialPosition.incrementColumn(column.getAndIncrement())));
                     acc = "";
                     match = true;
                 }

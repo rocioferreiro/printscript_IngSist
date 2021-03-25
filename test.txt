@@ -1,17 +1,12 @@
-let
-prueba
-:
-string
-;
+let prueba:string;
 
 
-prueba = "comocomocomo \n aaaa"            +
+prueba = "comocomocomo \n aaaa" +
 " holaaaa";
-prueba = 'ho la'
-;
+    prueba = 'ho la';
 
 
-let x: number         ;
+let x: number;
 x = 2 + 4 ;
 
 
