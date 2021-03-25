@@ -1,18 +1,16 @@
 package edu.austral.ingsis;
 
-public class ConcreteVariable<T> implements Variable<T> {
+public class ConcreteVariable implements Variable {
 
     private String name;
     private String type;
-    private T value;
 
     public ConcreteVariable() {
     }
 
-    public ConcreteVariable(String name, String type, T value) {
+    public ConcreteVariable(String name, String type) {
         this.name = name;
         this.type = type;
-        this.value = value;
     }
 
     @Override
@@ -26,19 +24,13 @@ public class ConcreteVariable<T> implements Variable<T> {
     }
 
     @Override
-    public T getValue() {
-        return null;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
 
+    @Override
     public void setType(String type) {
         this.type = type;
     }
 
-    public void setValue(T value) {
-        this.value = value;
-    }
 }

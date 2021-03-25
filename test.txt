@@ -1,7 +1,7 @@
 let prueba:string;
 
 
-prue_ba_ = "comocomocomo \n aaaa" +
+prueba = "comocomocomo \n aaaa" +
 " holaaaa";
     prueba = 'ho la';
 
@@ -9,6 +9,9 @@ println(prueba);
 
 let x: number;
 x = 2 + 4 ;
+
+
+
 
 
 
