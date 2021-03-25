@@ -25,7 +25,7 @@ public class StringSimplifier {
             if(!result.isEmpty()) addNewAndMerge(result, aux[0], row);
             else result = Arrays.stream(aux[0].split("\n")).map(text -> new Line(text, row.getAndIncrement())).collect(toList());
 
-            if(aux[0].charAt(aux[0].length()-1) == '\n') result.add(new Line(between, row.getAndIncrement()));
+            if(aux[0].length() > 0 && aux[0].charAt(aux[0].length()-1) == '\n') result.add(new Line(between, row.getAndIncrement()));
             else result.set(result.size()-1, result.get(result.size()-1).concatText(between));
         }
         if (nonChecked.equals(s)) result.addAll(Arrays.stream(s.split("\n")).map(text -> new Line(text, row.getAndIncrement())).collect(toList()));
@@ -61,8 +61,10 @@ public class StringSimplifier {
     }
 
     private static void mergeLists(List<Line> oldLines,List<Line> newLines){
-        oldLines.set(oldLines.size()-1, oldLines.get(oldLines.size()-1).concatText(newLines.get(0).getText()));
-        oldLines.addAll(newLines.subList(1, newLines.size()));
+        if(oldLines.size()>0 && newLines.size()>0) {
+            oldLines.set(oldLines.size() - 1, oldLines.get(oldLines.size() - 1).concatText(newLines.get(0).getText()));
+            oldLines.addAll(newLines.subList(1, newLines.size()));
+        }
     }
 
     private static List<String> split(String txt, String value) {
