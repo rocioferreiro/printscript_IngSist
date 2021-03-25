@@ -6,7 +6,8 @@ public enum KeyWord implements TokenType {
     S_ASSIGNATION("string", "TYPE"),
     N_ASSIGNATION("number", "TYPE"),
     NUMBER("\\d+(\\.\\d+)?", "VALUE"),
-    VARIABLE_REF("[a-zA-Z0-9]+", "VARIABLE");
+    PRINTLN("println", "PRINTLN"),
+    VARIABLE_REF("[a-zA-Z0-9]+([_a-zA-Z0-9]*)", "VARIABLE");
 
     private final String regex;
     private final String category;

@@ -12,5 +12,8 @@ public class App {
         List<Token> sentences = lexer.scan(Paths.get("test.txt"));
 
         System.out.println(sentences.toString());
+
+//        SyntacticAnalyzer s = new ConcreteSyntacticAnalyzer(Paths.get("rules.txt"));
+//        s.checkRules(sentences.subList(25, 30));
     }
 }

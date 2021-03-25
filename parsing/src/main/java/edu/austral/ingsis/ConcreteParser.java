@@ -1,25 +1,31 @@
 package edu.austral.ingsis;
 
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ConcreteParser implements Parser {
 
-    private SyntacticAnalyzer syntacticAnalyzer;
-    private SemanticAnalyzer semanticAnalyzer;
+    private final SyntacticAnalyzer syntacticAnalyzer;
+    private final SemanticAnalyzer semanticAnalyzer;
+
+    public ConcreteParser() {
+        this.syntacticAnalyzer = new ConcreteSyntacticAnalyzer(Paths.get("rules.txt"));
+        this.semanticAnalyzer = new ConcreteSemanticAnalyzer();
+    }
 
     @Override
-    public List<AST> parse(List<Token> tokens) {
+    public Context parse(List<Token> tokens) {
         checkLastToken(tokens);
         List<Token> sublist = tokens;
         List<AST> result = new ArrayList<>();
         while (!sublist.isEmpty()){
             int nextIndex = getIndexOfNextSemicolon(sublist);
-            AST tree = syntacticAnalyzer.analyze(sublist.subList(0, nextIndex));
+            Sentence sentence = syntacticAnalyzer.analyze(sublist.subList(0, nextIndex));
             sublist = sublist.subList(nextIndex+1, sublist.size());
-            result.add(semanticAnalyzer.analyze(tree));
+            semanticAnalyzer.analyze(sentence);
         }
-        return result;
+        return semanticAnalyzer.getContext();
     }
 
     private void checkLastToken(List<Token> tokens){

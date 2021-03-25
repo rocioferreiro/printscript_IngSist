@@ -11,7 +11,9 @@ public enum Operator implements TokenType {
     SUBTRACTION("-", "OPERATOR"),
     MULTIPLICATION("\\*", "OPERATOR"),
     DIVISION("\\/", "OPERATOR"),
-    SEMICOLONS(";", "SEPARATOR");
+    SEMICOLONS(";", "SEPARATOR"),
+    L_PARENTHESIS("\\(", "L_PARENTHESIS"),
+    R_PARENTHESIS("\\)", "R_PARENTHESIS");
 
     private final String regex;
     private final String category;

@@ -1,13 +1,19 @@
 package edu.austral.ingsis;
 
-import java.util.List;
-
 public class ConcreteSemanticAnalyzer implements SemanticAnalyzer {
 
-    private List<String> variables;
+    private Context context;
 
     @Override
-    public AST analyze(AST ast) {
-        return null;
+    public void analyze(Sentence sentence) {
+        updateContext(sentence);
+    }
+
+    public Context getContext() {
+        return context;
+    }
+
+    private void updateContext(Sentence sentence) {
+
     }
 }

@@ -18,6 +18,7 @@
             <option value="$PROJECT_DIR$/lexing" />
             <option value="$PROJECT_DIR$/main" />
             <option value="$PROJECT_DIR$/parsing" />
+            <option value="$PROJECT_DIR$/resources" />
             <option value="$PROJECT_DIR$/tokening" />
             <option value="$PROJECT_DIR$/utils" />
             <option value="$PROJECT_DIR$/validation" />

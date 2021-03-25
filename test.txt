@@ -1,10 +1,11 @@
 let prueba:string;
 
 
-prueba = "comocomocomo \n aaaa" +
+prue_ba_ = "comocomocomo \n aaaa" +
 " holaaaa";
     prueba = 'ho la';
 
+println(prueba);
 
 let x: number;
 x = 2 + 4 ;

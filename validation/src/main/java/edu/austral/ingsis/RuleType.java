@@ -3,7 +3,7 @@ package edu.austral.ingsis;
 public enum RuleType {
     DECLARATION(1),
     ASSIGNATION(2),
-    OPERATION(3),
+    PRINT(3),
     INVALID(0);
 
     private final int id;

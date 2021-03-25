@@ -2,5 +2,6 @@ package edu.austral.ingsis;
 
 public interface SemanticAnalyzer {
 
-    AST analyze(AST ast);
+    void analyze(Sentence sentence);
+    Context getContext();
 }

@@ -9,4 +9,5 @@
 
 rootProject.name = 'my-library'
 include 'main', 'executing', 'lexing', 'interpreting', 'parsing', 'tokening', 'utils', 'validation'
+include 'resources'
 

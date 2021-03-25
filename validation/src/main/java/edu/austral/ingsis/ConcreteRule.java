@@ -29,4 +29,9 @@ public class ConcreteRule implements Rule{
         return concat.matches(acceptingRegex);
     }
 
+    @Override
+    public RuleType getRuleType() {
+        return null;
+    }
+
 }

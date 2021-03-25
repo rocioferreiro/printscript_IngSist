@@ -13,25 +13,21 @@ public class ConcreteSyntacticAnalyzer implements SyntacticAnalyzer {
         String[] ruleTexts = PathReader.read(rulePath).split("\n").clone();
         for (String rule : ruleTexts){
             String[] array = rule.split(":");
-            RuleType type = RuleType.ruleOfId(Integer.getInteger(array[0]));
+            RuleType type = RuleType.ruleOfId(array[0].charAt(0));
             rulesToAdd.add(new ConcreteRule(type, array[1]));
         }
         rules = rulesToAdd;
     }
 
     @Override
-    public AST analyze(List<Token> tokens) {
-        checkRules(tokens);
-        return createTree(tokens);
+    public Sentence analyze(List<Token> tokens) {
+        RuleType type = checkRules(tokens);
+        return new Sentence(tokens, type);
     }
 
-    private AST createTree(List<Token> tokens) {
-        return null;
-    }
-
-    private void checkRules(List<Token> tokens) {
+    private RuleType checkRules(List<Token> tokens) {
         for(Rule rule: rules){
-            if(rule.validateTokens(tokens)) return;
+            if(rule.validateTokens(tokens)) return rule.getRuleType();
         }
         throw new RuntimeException("Invalid Expresion: " + tokens.toString());
     }
