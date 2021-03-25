@@ -29,6 +29,6 @@ public class ConcreteToken implements Token {
 
     @Override
     public String toString(){
-        return "Type: " + type.getSub() + ", Value: " + value + ", Position: (" + position.getRow() + ", " + position.getColumn() + ")";
+        return "Type: " + type.getCategory() + ", Value: " + value + ", Position: (" + position.getRow() + ", " + position.getColumn() + ")";
     }
 }
