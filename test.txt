@@ -1,14 +1,29 @@
 let prueba:string;
 
+let hola:string = "hola";
+
+
 
 prueba = "comocomocomo \n aaaa" +
 " holaaaa";
     prueba = 'ho la';
 
 println(prueba);
+println("prueba");
 
 let x: number;
 x = 2 + 4 ;
+
+let y: number;
+
+y = x + 2;
+
+prueba = prueba + 3;
+
+let z:number = 14;
+
+
+
 
 
 

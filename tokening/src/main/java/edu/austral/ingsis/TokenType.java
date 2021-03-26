@@ -12,8 +12,20 @@ public interface TokenType {
         public String getCategory() {
             return "invalid";
         }
+
+        @Override
+        public String getName(){
+            return "invalid";
+        }
+
+        @Override
+        public int getOrdinal() {
+            return -1;
+        }
     };
 
     String getRegex();
     String getCategory();
+    String getName();
+    int getOrdinal();
 }

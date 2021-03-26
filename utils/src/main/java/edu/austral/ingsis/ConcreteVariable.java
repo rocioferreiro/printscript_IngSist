@@ -3,24 +3,25 @@ package edu.austral.ingsis;
 public class ConcreteVariable implements Variable {
 
     private String name;
-    private String type;
+    private VariableType type;
 
     public ConcreteVariable() {
+        name = "";
     }
 
-    public ConcreteVariable(String name, String type) {
+    public ConcreteVariable(String name, VariableType type) {
         this.name = name;
         this.type = type;
     }
 
     @Override
     public String getName() {
-        return null;
+        return name;
     }
 
     @Override
-    public String getType() {
-        return null;
+    public VariableType getType() {
+        return type;
     }
 
     @Override
@@ -29,8 +30,12 @@ public class ConcreteVariable implements Variable {
     }
 
     @Override
-    public void setType(String type) {
+    public void setType(VariableType type) {
         this.type = type;
     }
 
+    @Override
+    public String toString() {
+        return "(" + name + ", " + type.getName() + ")";
+    }
 }

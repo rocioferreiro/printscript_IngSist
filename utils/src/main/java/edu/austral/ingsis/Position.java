@@ -24,4 +24,9 @@ public class Position {
     public Position incrementColumn(int amount){
         return new Position(row, column + amount);
     }
+
+    @Override
+    public String toString(){
+        return "(row: " + row + ", column: " + column + ")";
+    }
 }

@@ -17,7 +17,12 @@ public class VariableBuilder {
         return this;
     }
 
-    public VariableBuilder setType(String type) {
+    public VariableBuilder setType(String type, int ordinal) {
+        variable.setType(new VariableType(type, ordinal));
+        return this;
+    }
+
+    public VariableBuilder setType(VariableType type){
         variable.setType(type);
         return this;
     }

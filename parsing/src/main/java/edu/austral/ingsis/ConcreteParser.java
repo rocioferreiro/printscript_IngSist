@@ -1,5 +1,6 @@
 package edu.austral.ingsis;
 
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,8 +10,8 @@ public class ConcreteParser implements Parser {
     private final SyntacticAnalyzer syntacticAnalyzer;
     private final SemanticAnalyzer semanticAnalyzer;
 
-    public ConcreteParser() {
-        this.syntacticAnalyzer = new ConcreteSyntacticAnalyzer(Paths.get("rules.txt"));
+    public ConcreteParser(Path path) {
+        this.syntacticAnalyzer = new ConcreteSyntacticAnalyzer(path);
         this.semanticAnalyzer = new ConcreteSemanticAnalyzer();
     }
 
@@ -18,11 +19,10 @@ public class ConcreteParser implements Parser {
     public Context parse(List<Token> tokens) {
         checkLastToken(tokens);
         List<Token> sublist = tokens;
-        List<AST> result = new ArrayList<>();
         while (!sublist.isEmpty()){
             int nextIndex = getIndexOfNextSemicolon(sublist);
-            Sentence sentence = syntacticAnalyzer.analyze(sublist.subList(0, nextIndex));
-            sublist = sublist.subList(nextIndex+1, sublist.size());
+            Sentence sentence = syntacticAnalyzer.analyze(new ArrayList<>(sublist.subList(0, nextIndex)));
+            sublist = new ArrayList<>(sublist.subList(nextIndex+1, sublist.size()));
             semanticAnalyzer.analyze(sentence);
         }
         return semanticAnalyzer.getContext();

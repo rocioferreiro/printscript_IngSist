@@ -2,6 +2,7 @@ package edu.austral.ingsis;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public enum Operator implements TokenType {
@@ -31,6 +32,16 @@ public enum Operator implements TokenType {
     @Override
     public String getCategory() {
         return category;
+    }
+
+    @Override
+    public String getName() {
+        return name().toLowerCase(Locale.ROOT);
+    }
+
+    @Override
+    public int getOrdinal() {
+        return ordinal();
     }
 
     public static List<Token> findTokens(String string, Position initialPosition){

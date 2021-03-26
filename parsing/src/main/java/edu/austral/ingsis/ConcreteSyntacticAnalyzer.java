@@ -13,7 +13,7 @@ public class ConcreteSyntacticAnalyzer implements SyntacticAnalyzer {
         String[] ruleTexts = PathReader.read(rulePath).split("\n").clone();
         for (String rule : ruleTexts){
             String[] array = rule.split(":");
-            RuleType type = RuleType.ruleOfId(array[0].charAt(0));
+            RuleType type = RuleType.ruleOfId(Integer.parseInt(array[0]));
             rulesToAdd.add(new ConcreteRule(type, array[1]));
         }
         rules = rulesToAdd;

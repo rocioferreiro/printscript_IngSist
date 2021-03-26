@@ -1,11 +1,12 @@
 package edu.austral.ingsis;
 
-import java.util.List;
-
 public class ConcreteSemanticAnalyzer implements SemanticAnalyzer {
 
-    private Context context;
-    private List<RuleTypeListener> listeners;
+    private final Context context;
+
+    public ConcreteSemanticAnalyzer() {
+        context = new Context();
+    }
 
     @Override
     public void analyze(Sentence sentence) {
@@ -17,6 +18,13 @@ public class ConcreteSemanticAnalyzer implements SemanticAnalyzer {
     }
 
     private void updateContext(Sentence sentence) {
-
+        Variable variable = sentence.getType().getCommand().execute(sentence.getTokens(), context);
+        if(!variable.getName().isEmpty()){
+            if(context.checkVariable(variable)){
+                if(!context.checkType(variable)) throw new RuntimeException("Type mismatch! in: " + sentence.getTokens().get(0).getPosition().toString());
+            } else {
+                context.addVariable(variable);
+            }
+        }
     }
 }

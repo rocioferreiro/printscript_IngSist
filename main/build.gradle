@@ -10,6 +10,7 @@ dependencies {
     implementation project(':lexing')
     implementation project(':tokening')
     implementation project(':parsing')
+    implementation project(':utils')
     implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.4'
 }
 

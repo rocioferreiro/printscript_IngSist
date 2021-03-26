@@ -13,7 +13,13 @@ public class App {
 
         System.out.println(sentences.toString());
 
-//        SyntacticAnalyzer s = new ConcreteSyntacticAnalyzer(Paths.get("rules.txt"));
-//        s.checkRules(sentences.subList(25, 30));
+        Parser parser = new ConcreteParser(Paths.get("rules.txt"));
+
+        Context context = parser.parse(sentences);
+
+        for(Variable v : context.getVariables()){
+            System.out.println(v.toString());
+        }
+
     }
 }

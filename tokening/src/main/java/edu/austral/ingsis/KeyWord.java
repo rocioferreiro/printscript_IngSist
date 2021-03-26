@@ -1,9 +1,11 @@
 package edu.austral.ingsis;
 
+import java.util.Locale;
+
 public enum KeyWord implements TokenType {
     DECLARATION("let", "DECLARATION"),
-    STRING("[\"'].*[\"']", "VALUE"),
     S_ASSIGNATION("string", "TYPE"),
+    STRING("[\"'].*[\"']", "VALUE"),
     N_ASSIGNATION("number", "TYPE"),
     NUMBER("\\d+(\\.\\d+)?", "VALUE"),
     PRINTLN("println", "PRINTLN"),
@@ -23,6 +25,16 @@ public enum KeyWord implements TokenType {
     @Override
     public String getCategory() {
         return category;
+    }
+
+    @Override
+    public String getName() {
+        return name().toLowerCase(Locale.ROOT);
+    }
+
+    @Override
+    public int getOrdinal() {
+        return ordinal();
     }
 
     public static Token findToken(Token token){
