@@ -75,7 +75,7 @@ public class StringSimplifierTest {
 
     @Test
     public void testRemoveEntersLongText() {
-        Assertions.assertTimeout(Duration.ofMillis(100), () -> {
+        Assertions.assertTimeout(Duration.ofMillis(500), () -> {
             StringSimplifier.removeEnters(LONG_STRING);
         });
     }
@@ -91,13 +91,13 @@ public class StringSimplifierTest {
 
     @Test
     public void testRemoveSpacesHappyPath(){
-        String text = "Hola como va \"este es mi string\" sigo como si nada";
+        String text = "Hola como va \"entrecomillas\" sigo como si nada";
 
         List<String> expectedResult = new ArrayList<>();
         expectedResult.add("Hola");
         expectedResult.add("como");
         expectedResult.add("va");
-        expectedResult.add("\"este es mi string\"");
+        expectedResult.add("\"entrecomillas\"");
         expectedResult.add("sigo");
         expectedResult.add("como");
         expectedResult.add("si");
@@ -106,16 +106,92 @@ public class StringSimplifierTest {
         Assertions.assertArrayEquals(expectedResult.toArray(), StringSimplifier.removeSpaces(text).toArray());
     }
 
+    @Test
+    public void testRemoveSpacesWithStaceInString(){
+        String text = "Hola como va \"hago una aclaracion\" sigo como si nada";
+
+        List<String> expectedResult = new ArrayList<>();
+        expectedResult.add("Hola");
+        expectedResult.add("como");
+        expectedResult.add("va");
+        expectedResult.add("\"hago una aclaracion\"");
+        expectedResult.add("sigo");
+        expectedResult.add("como");
+        expectedResult.add("si");
+        expectedResult.add("nada");
+
+        Assertions.assertArrayEquals(expectedResult.toArray(), StringSimplifier.removeSpaces(text).toArray());
+    }
+
+    @Test
+    public void testRemoveSpacesWithSpacesInBeginning(){
+        String text = "   Hola como va \"hago una aclaracion\" sigo como si nada";
+
+        List<String> expectedResult = new ArrayList<>();
+        expectedResult.add("Hola");
+        expectedResult.add("como");
+        expectedResult.add("va");
+        expectedResult.add("\"hago una aclaracion\"");
+        expectedResult.add("sigo");
+        expectedResult.add("como");
+        expectedResult.add("si");
+        expectedResult.add("nada");
+
+        Assertions.assertArrayEquals(expectedResult.toArray(), StringSimplifier.removeSpaces(text).toArray());
+    }
+
+    @Test
+    public void testRemoveSpacesWithSpacesInEnd(){
+        String text = "Hola como va \"hago una aclaracion\" sigo como si nada      ";
+
+        List<String> expectedResult = new ArrayList<>();
+        expectedResult.add("Hola");
+        expectedResult.add("como");
+        expectedResult.add("va");
+        expectedResult.add("\"hago una aclaracion\"");
+        expectedResult.add("sigo");
+        expectedResult.add("como");
+        expectedResult.add("si");
+        expectedResult.add("nada");
+
+        Assertions.assertArrayEquals(expectedResult.toArray(), StringSimplifier.removeSpaces(text).toArray());
+    }
+
+    @Test
+    public void testRemoveSpacesWithMultipleMiddleSpaces(){
+        String text = "Hola como    va \"hago una aclaracion\" sigo          como si nada";
+
+        List<String> expectedResult = new ArrayList<>();
+        expectedResult.add("Hola");
+        expectedResult.add("como");
+        expectedResult.add("va");
+        expectedResult.add("\"hago una aclaracion\"");
+        expectedResult.add("sigo");
+        expectedResult.add("como");
+        expectedResult.add("si");
+        expectedResult.add("nada");
+
+        Assertions.assertArrayEquals(expectedResult.toArray(), StringSimplifier.removeSpaces(text).toArray());
+    }
+
+    @Test
+    public void testRemoveSpacesLongText() {
+        Assertions.assertTimeout(Duration.ofMillis(500), () -> {
+            StringSimplifier.removeSpaces(LONG_STRING);
+        });
+    }
+
+
 
     // ----------------------------------------------- LONG TEXT -----------------------------------------------
     private final String LONG_STRING = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque lectus eros, " +
             "lobortis et cursus dapibus, placerat vel 'libero'. Nulla facilisi. Duis suscipit ex eget leo vestibulum rhoncus." +
             " Sed tincidunt urna vel hendrerit faucibus. In porttitor tempor ligula, eget facilisis erat tempus eu. Quisque" +
-            " egestas tortor sed eros placerat, eu facilisis dui \n pulvinar. Sed at hendrerit turpis, eget sodales diam. Nunc" +
-            " egestas tellus sapien, et 'vestibulum enim sollicitudin at. V'es'tibulum vel' blandit est, et feugiat metus." +
-            " Curabitur eu viverra nibh, et maximus tellus. Praesent placerat turpis id turpis tempor rhoncus. Integer " +
+            " egestas tortor sed eros placerat, eu facilisis dui \n pulvinar. 'Sed' at hendrerit turpis, eget sodales diam. Nunc" +
+            " egestas tellus sapien, et 'vestibulum enim sollicitudin at. Ves'tibulum vel' blandit est, et feugiat metus." +
+            " Curabitur eu viverra nibh, et maximus tellus. Praesent placerat \"turpis id turpis\" tempor rhoncus. Integer " +
             "sit amet sollicitudin nisi, eu blandit arcu. Nam viverra, justo nec facilisis vulputate, eros erat interdum" +
-            " felis, at gravida arcu est ut turpis. Sed vel metus eu arcu faucibus euismod. Nulla efficitur elementum" +
+            " felis, at gravida arcu est ut turpis. Sed vel \"metus eu arcu faucibus\" euismod. Nulla efficitur elementum" +
             " lectus non fermentum.\n" +
             "\n" +
             "Fusce sed venenatis felis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus consequat " +

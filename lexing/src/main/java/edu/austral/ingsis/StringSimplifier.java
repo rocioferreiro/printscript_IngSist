@@ -46,7 +46,7 @@ public class StringSimplifier {
         }
         if (nonChecked.equals(s)) split.addAll(Arrays.asList(s.split(" ")));
         else split.addAll(Arrays.asList(nonChecked.strip().split(" ")));
-        return split;
+        return split.stream().filter(text -> !text.isEmpty()).collect(toList());
     }
 
     private static List<String> getStringDelimiters(){
