@@ -30,7 +30,7 @@ public class ConcreteParser implements Parser {
     private void checkLastToken(List<Token> tokens){
         Token lastToken = tokens.get(tokens.size()-1);
         if(!lastToken.getType().equals(Operator.SEMICOLONS)){
-            throw new InvalidCodeException("Missing last semicolon. In line: " + lastToken.getPosition().getRow());
+            throw new InvalidCodeException("Missing last semicolon.", lastToken.getPosition());
         }
     }
 

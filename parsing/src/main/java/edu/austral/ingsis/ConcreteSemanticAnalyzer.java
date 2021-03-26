@@ -21,7 +21,7 @@ public class ConcreteSemanticAnalyzer implements SemanticAnalyzer {
         Variable variable = sentence.getType().getCommand().execute(sentence.getTokens(), context);
         if(!variable.getName().isEmpty()){
             if(context.checkVariable(variable)){
-                if(!context.checkType(variable)) throw new InvalidCodeException("Type mismatch! in: " + sentence.getTokens().get(0).getPosition().toString());
+                if(!context.checkType(variable)) throw new InvalidCodeException("Type mismatch!" ,sentence.getTokens().get(0).getPosition());
             } else {
                 context.addVariable(variable);
             }

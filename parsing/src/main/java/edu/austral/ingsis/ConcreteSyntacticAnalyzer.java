@@ -3,6 +3,7 @@ package edu.austral.ingsis;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ConcreteSyntacticAnalyzer implements SyntacticAnalyzer {
 
@@ -29,6 +30,11 @@ public class ConcreteSyntacticAnalyzer implements SyntacticAnalyzer {
         for(Rule rule: rules){
             if(rule.validateTokens(tokens)) return rule.getRuleType();
         }
-        throw new InvalidCodeException("Invalid Expresion: " + tokens.toString());
+        String expresion = tokens.stream().map(Token::getValue).collect(Collectors.joining(" "));
+        String types= tokens.stream().map(t -> t.getType().getCategory()).collect(Collectors.joining(" "));
+        String ruleString = rules.stream().map(Rule::getAcceptingRegex).collect(Collectors.joining(",\n\t"));
+        throw new InvalidCodeException("Invalid Expresion: " + expresion +
+                "\nThis sequence of types is not allowed: " + types +
+                "\nTry one of the following: \n\t" + ruleString, tokens.get(0).getPosition());
     }
 }

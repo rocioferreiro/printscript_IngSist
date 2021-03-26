@@ -24,4 +24,9 @@ public class ConcreteRule implements Rule{
         return type;
     }
 
+    @Override
+    public String getAcceptingRegex() {
+        return acceptingRegex;
+    }
+
 }

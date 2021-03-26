@@ -29,7 +29,7 @@ public class ConcreteLexer implements Lexer {
             if(tokens.get(i).getType().equals(TokenType.invalid)){
                 tokens.set(i, KeyWord.findToken(tokens.get(i)));
                 if(tokens.get(i).getType().equals(TokenType.invalid)) throw new InvalidCodeException("Invalid Expresion: "
-                        + tokens.get(i).getValue() + " in:" + line.getText());
+                        + tokens.get(i).getValue() + " in:" + line.getText(), new Position(line.getRow(), 1));
             }
         }
         return tokens;
