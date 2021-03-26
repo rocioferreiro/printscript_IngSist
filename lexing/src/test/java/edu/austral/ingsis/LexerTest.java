@@ -58,4 +58,6 @@ public class LexerTest {
             Assertions.assertEquals(actual.get(i).getPosition().getRow(), expected.get(i).getPosition().getRow());
         }
     }
+
+
 }

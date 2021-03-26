@@ -1,5 +1,6 @@
 package edu.austral.ingsis;
 
+import java.util.Arrays;
 import java.util.List;
 
 public enum RuleType {
@@ -26,4 +27,18 @@ public enum RuleType {
     public Command getCommand() {
         return command;
     }
+
+    public void setControllerConstants(String regex){
+        List<String> ruleParts = Arrays.asList(regex.split(",").clone());
+        if(id == 1){
+            RuleController.declarationIndex = ruleParts.indexOf("DECLARATION");
+            RuleController.declarationVariableIndex = ruleParts.indexOf("VARIABLE");
+            RuleController.declarationTypeIndex = ruleParts.indexOf("DECLARE_TYPE") + 1;
+        } if(id == 2){
+            RuleController.assignationVariableIndex = ruleParts.indexOf("VARIABLE");
+        } else {
+            RuleController.methodVariableIndex = ruleParts.indexOf("L_PARENTHESIS") + 1;
+        }
+    }
+
 }

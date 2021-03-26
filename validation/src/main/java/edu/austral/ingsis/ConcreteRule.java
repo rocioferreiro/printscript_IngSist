@@ -11,6 +11,7 @@ public class ConcreteRule implements Rule{
     public ConcreteRule(RuleType type, String acceptingRegex) {
         this.type = type;
         this.acceptingRegex = acceptingRegex;
+        type.setControllerConstants(acceptingRegex);
     }
 
     @Override
