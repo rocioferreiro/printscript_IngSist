@@ -1,7 +1,6 @@
 package edu.austral.ingsis;
 
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,7 +30,7 @@ public class ConcreteParser implements Parser {
     private void checkLastToken(List<Token> tokens){
         Token lastToken = tokens.get(tokens.size()-1);
         if(!lastToken.getType().equals(Operator.SEMICOLONS)){
-            throw new RuntimeException("Missing last semicolon. In line: " + lastToken.getPosition().getRow());
+            throw new InvalidCodeException("Missing last semicolon. In line: " + lastToken.getPosition().getRow());
         }
     }
 

@@ -1,17 +1,23 @@
 package edu.austral.ingsis;
 
+import org.junit.Rule;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.rules.ExpectedException;
 
 import java.io.File;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class LexerTest {
 
     private final Lexer lexer;
+
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
 
     public LexerTest() {
         this.lexer = new ConcreteLexer();
@@ -19,7 +25,6 @@ public class LexerTest {
 
     @Test
     public void testScan() {
-
         ClassLoader classLoader = getClass().getClassLoader();
         File file = new File(classLoader.getResource("testScan.txt").getFile());
         Path path = file.toPath();
@@ -35,6 +40,14 @@ public class LexerTest {
         expectedResult.add(new ConcreteToken(Operator.SEMICOLONS, ";", new Position(1, 19)));
 
         compareTokens(actualResult, expectedResult);
+    }
+
+    @Test
+    public void testScanAndFail() {
+        ClassLoader classLoader = getClass().getClassLoader();
+        File file = new File(classLoader.getResource("testScanAndFail.txt").getFile());
+        Path path = file.toPath();
+        assertThrows(InvalidCodeException.class, () -> {lexer.scan(path);});
     }
 
     private void compareTokens(List<Token> actual, List<Token> expected) {

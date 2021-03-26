@@ -4,22 +4,10 @@
 package edu.austral.ingsis;
 
 import java.nio.file.Paths;
-import java.util.List;
 
 public class App {
     public static void main(String[] args) {
-        Lexer lexer = new ConcreteLexer();
-        List<Token> sentences = lexer.scan(Paths.get("test.txt"));
-
-        System.out.println(sentences.toString());
-
-        Parser parser = new ConcreteParser(Paths.get("rules.txt"));
-
-        Context context = parser.parse(sentences);
-
-        for(Variable v : context.getVariables()){
-            System.out.println(v.toString());
-        }
-
+        Interpreter interpreter = new ConcreteInterpreter(Paths.get("test.txt"), Paths.get("rules.txt"));
+        interpreter.interpret();
     }
 }

@@ -7,10 +7,7 @@ group = 'edu.austral.ingsis'
 version = '1.0.1'
 
 dependencies {
-    implementation project(':lexing')
-    implementation project(':tokening')
-    implementation project(':parsing')
-    implementation project(':utils')
+    implementation project(':interpreting')
     implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.4'
 }
 

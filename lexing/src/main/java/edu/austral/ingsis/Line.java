@@ -1,7 +1,5 @@
 package edu.austral.ingsis;
 
-import java.util.List;
-
 public class Line {
 
     private final String text;
@@ -22,10 +20,5 @@ public class Line {
 
     public Line concatText(String toAdd){
         return new Line(text+toAdd, row);
-    }
-
-    @Override
-    public String toString(){
-        return row + ": " + text;
     }
 }

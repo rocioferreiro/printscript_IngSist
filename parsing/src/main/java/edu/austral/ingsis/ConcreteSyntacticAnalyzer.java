@@ -29,6 +29,6 @@ public class ConcreteSyntacticAnalyzer implements SyntacticAnalyzer {
         for(Rule rule: rules){
             if(rule.validateTokens(tokens)) return rule.getRuleType();
         }
-        throw new RuntimeException("Invalid Expresion: " + tokens.toString());
+        throw new InvalidCodeException("Invalid Expresion: " + tokens.toString());
     }
 }

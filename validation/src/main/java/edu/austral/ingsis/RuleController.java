@@ -63,6 +63,4 @@ public class RuleController {
             return new VariableBuilder().setName(aux.getName()).setType(context.getVariableType(aux.getName())).build();
         }
     }
-
-
 }

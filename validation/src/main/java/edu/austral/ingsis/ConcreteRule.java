@@ -13,10 +13,6 @@ public class ConcreteRule implements Rule{
         this.acceptingRegex = acceptingRegex;
     }
 
-    public String getAcceptingRegex() {
-        return acceptingRegex;
-    }
-
     @Override
     public boolean validateTokens(List<Token> list) {
         String concat = list.stream().map(t -> t.getType().getCategory()).collect(Collectors.joining(","));

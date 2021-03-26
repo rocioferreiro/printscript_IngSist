@@ -28,10 +28,7 @@ public class ConcreteLexer implements Lexer {
         for (int i = 0; i < tokens.size(); i++) {
             if(tokens.get(i).getType().equals(TokenType.invalid)){
                 tokens.set(i, KeyWord.findToken(tokens.get(i)));
-
-                //TODO hacer nuestra exception
-
-                if(tokens.get(i).getType().equals(TokenType.invalid)) throw new RuntimeException("Invalid Expresion: "
+                if(tokens.get(i).getType().equals(TokenType.invalid)) throw new InvalidCodeException("Invalid Expresion: "
                         + tokens.get(i).getValue() + " in:" + line.getText());
             }
         }
