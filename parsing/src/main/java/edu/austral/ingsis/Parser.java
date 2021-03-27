@@ -4,5 +4,5 @@ import java.util.List;
 
 public interface Parser {
 
-    Context parse(List<Token> tokens);
+  Context parse(List<Token> tokens);
 }

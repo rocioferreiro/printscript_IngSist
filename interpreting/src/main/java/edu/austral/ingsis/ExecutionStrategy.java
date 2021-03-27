@@ -1,4 +1,3 @@
 package edu.austral.ingsis;
 
-public interface ExecutionStrategy {
-}
+public interface ExecutionStrategy {}

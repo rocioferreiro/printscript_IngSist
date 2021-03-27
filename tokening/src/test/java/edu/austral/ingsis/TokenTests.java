@@ -1,4 +1,3 @@
 package edu.austral.ingsis;
 
-public class TokenTests {
-}
+public class TokenTests {}
