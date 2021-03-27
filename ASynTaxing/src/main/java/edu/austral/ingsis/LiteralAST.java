@@ -1,18 +1,18 @@
 package edu.austral.ingsis;
 
-public class LiteralAST implements ASTLeaf{
+public class LiteralAST implements ASTLeaf {
 
-    private Token token;
+  private Token token;
 
-    //TODO
+  // TODO
 
-    @Override
-    public Token getToken() {
-        return token;
-    }
+  @Override
+  public Token getToken() {
+    return token;
+  }
 
-    @Override
-    public AST addAST(AST ast) {
-        return null;
-    }
+  @Override
+  public AST addAST(AST ast) {
+    return null;
+  }
 }

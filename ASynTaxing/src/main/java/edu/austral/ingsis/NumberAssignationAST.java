@@ -1,16 +1,16 @@
 package edu.austral.ingsis;
 
-public class NumberAssignationAST implements ASTLeaf{
+public class NumberAssignationAST implements ASTLeaf {
 
-    private Token token;
+  private Token token;
 
-    @Override
-    public Token getToken() {
-        return token;
-    }
+  @Override
+  public Token getToken() {
+    return token;
+  }
 
-    @Override
-    public AST addAST(AST ast) {
-        return null;
-    }
+  @Override
+  public AST addAST(AST ast) {
+    return null;
+  }
 }
