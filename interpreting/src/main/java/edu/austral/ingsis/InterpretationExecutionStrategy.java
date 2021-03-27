@@ -1,4 +1,3 @@
 package edu.austral.ingsis;
 
-public class InterpretationExecutionStrategy implements ExecutionStrategy {
-}
+public class InterpretationExecutionStrategy implements ExecutionStrategy {}

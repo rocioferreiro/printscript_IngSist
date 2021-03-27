@@ -6,8 +6,9 @@ package edu.austral.ingsis;
 import java.nio.file.Paths;
 
 public class App {
-    public static void main(String[] args) {
-        Interpreter interpreter = new ConcreteInterpreter(Paths.get("test.txt"), Paths.get("rules.txt"));
-        interpreter.interpret();
-    }
+  public static void main(String[] args) {
+    Interpreter interpreter =
+        new ConcreteInterpreter(Paths.get("test.txt"), Paths.get("rules.txt"));
+    interpreter.interpret();
+  }
 }

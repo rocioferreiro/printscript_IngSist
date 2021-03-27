@@ -12,14 +12,14 @@ on:
 jobs:
   build:
 
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
-    - name: Set up JDK 1.8
+    - name: Set up JDK 11
       uses: actions/setup-java@v1
       with:
-        java-version: 1.8
+        java-version: 11
 
     - name: Google Java Format
       # You may pin to the exact commit or the version.
@@ -32,7 +32,7 @@ jobs:
         # Set to true to not commit the changes
         skipCommit: false
         # Version of Google Java Format to use
-        version: latest
+        version: 1.7
         # Recommended on MacOS machines
         githubToken: ${{ secrets.GITHUB_TOKEN }}
         # Commit message
@@ -56,7 +56,7 @@ jobs:
         # Exit code for reviewdog when errors are found [true, false]
         fail_on_error: false
         # Checkstyle configuration specifies which ruleset to apply during scan.
-        There are two built-in configurations in checkstyle: [google_checks.xml, sun_checks.xml].
+        #There are two built-in configurations in checkstyle: [google_checks.xml, sun_checks.xml] 
         #google_checks.xml configures Checkstyle for the Google coding conventions (https://google.github.io/styleguide/javaguide.html)
         #sun_checks.xml configures Checkstyle for the Sun coding conventions (https://www.oracle.com/java/technologies/javase/codeconventions-contents.html)
         checkstyle_config: google_checks.xml
@@ -67,4 +67,3 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew build
-  

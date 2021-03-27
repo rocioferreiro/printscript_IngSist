@@ -6,11 +6,11 @@ import java.nio.file.Path;
 
 public class PathReader {
 
-    public static String read(Path path){
-        try {
-            return Files.readString(path);
-        } catch (IOException e) {
-            throw new RuntimeException("Invalid path!");
-        }
+  public static String read(Path path) {
+    try {
+      return Files.readString(path);
+    } catch (IOException e) {
+      throw new RuntimeException("Invalid path!");
     }
+  }
 }

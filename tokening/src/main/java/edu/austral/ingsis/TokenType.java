@@ -2,30 +2,34 @@ package edu.austral.ingsis;
 
 public interface TokenType {
 
-    TokenType invalid = new TokenType() {
+  TokenType invalid =
+      new TokenType() {
         @Override
         public String getRegex() {
-            return "";
+          return "";
         }
 
         @Override
         public String getCategory() {
-            return "invalid";
+          return "invalid";
         }
 
         @Override
-        public String getName(){
-            return "invalid";
+        public String getName() {
+          return "invalid";
         }
 
         @Override
         public int getOrdinal() {
-            return -1;
+          return -1;
         }
-    };
+      };
 
-    String getRegex();
-    String getCategory();
-    String getName();
-    int getOrdinal();
+  String getRegex();
+
+  String getCategory();
+
+  String getName();
+
+  int getOrdinal();
 }
