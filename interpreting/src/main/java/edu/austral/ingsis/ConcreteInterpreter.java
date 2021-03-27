@@ -8,6 +8,8 @@ public class ConcreteInterpreter implements Interpreter {
     private final Path code;
     private final Path rules;
 
+    //TODO encargarse de Strings tambien
+
     public ConcreteInterpreter(Path code, Path rules) {
         this.code = code;
         this.rules = rules;

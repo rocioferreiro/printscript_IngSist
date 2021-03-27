@@ -9,9 +9,9 @@ public enum Operator implements TokenType {
     EQUAL("=", "EQUAL"),
     T_ASSIGNATION(":", "DECLARE_TYPE"),
     PLUS("\\+", "OPERATOR"),
-    SUBTRACTION("-", "OPERATOR"),
-    MULTIPLICATION("\\*", "OPERATOR"),
-    DIVISION("\\/", "OPERATOR"),
+    HYPHEN("-", "OPERATOR"),
+    ASTERISK("\\*", "OPERATOR"),
+    DASH("\\/", "OPERATOR"),
     SEMICOLONS(";", "SEPARATOR"),
     L_PARENTHESIS("\\(", "L_PARENTHESIS"),
     R_PARENTHESIS("\\)", "R_PARENTHESIS");

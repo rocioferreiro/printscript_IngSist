@@ -43,34 +43,25 @@ jobs:
        # uses: dbelyaev/action-checkstyle@d5f61e190e8ad0a776985dcd51f7825da3d4f906
       uses: dbelyaev/action-checkstyle@v0.3.3
       with:
-      # GITHUB_TOKEN
-      github_token: ${{ secrets.GITHUB_TOKEN }}
-    # Working directory relative to the root directory.
-    workdir: # optional, default is .
-    # Report level for reviewdog [info, warning, error]
-    level: # optional, default is info
-    # Reporter of reviewdog command [github-pr-check, github-pr-review].
-    reporter: # optional, default is github-pr-check
-    # Filtering mode for the reviewdog command [added, diff_context, file, nofilter].
-Default is added.
-
-    filter_mode: # optional, default is added
-    # Exit code for reviewdog when errors are found [true, false]
-Default is `false`.
-
-    fail_on_error: # optional, default is false
-    # Additional reviewdog flags
-    reviewdog_flags: # optional, default is 
-    # Checkstyle configuration specifies which ruleset to apply during scan.
-There are two built-in configurations in checkstyle: [google_checks.xml, sun_checks.xml].
-google_checks.xml configures Checkstyle for the Google coding conventions (https://google.github.io/styleguide/javaguide.html)
-sun_checks.xml configures Checkstyle for the Sun coding conventions (https://www.oracle.com/java/technologies/javase/codeconventions-contents.html)
-
-    checkstyle_config: # default is google_checks.xml
-    # Checkstyle version to be used during analysis.
-For a list of available version numbers go to [Checkstyle release page](https://github.com/checkstyle/checkstyle/releases/).
-
-    checkstyle_version: # optional, default is 8.41
+        # GITHUB_TOKEN
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        # Working directory relative to the root directory.
+        workdir: .
+        # Report level for reviewdog [info, warning, error]
+        level: info
+        # Reporter of reviewdog command [github-pr-check, github-pr-review].
+        reporter: github-pr-check
+        # Filtering mode for the reviewdog command [added, diff_context, file, nofilter].
+        filter_mode: added
+        # Exit code for reviewdog when errors are found [true, false]
+        fail_on_error: false
+        # Checkstyle configuration specifies which ruleset to apply during scan.
+        There are two built-in configurations in checkstyle: [google_checks.xml, sun_checks.xml].
+        #google_checks.xml configures Checkstyle for the Google coding conventions (https://google.github.io/styleguide/javaguide.html)
+        #sun_checks.xml configures Checkstyle for the Sun coding conventions (https://www.oracle.com/java/technologies/javase/codeconventions-contents.html)
+        checkstyle_config: google_checks.xml
+        # Checkstyle version to be used during analysis. For a list of available version numbers go to [Checkstyle release page](https://github.com/checkstyle/checkstyle/releases/).
+        checkstyle_version: 8.41
         
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
