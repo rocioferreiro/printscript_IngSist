@@ -21,6 +21,11 @@ public class ConcreteLexer implements Lexer {
         .collect(toList());
   }
 
+  @Override
+  public List<Token> scan(String line){
+    return stringToTokens(new Line(line, 1));
+  }
+
   private List<Token> stringToTokens(Line line) {
     List<Token> tokens = new ArrayList<>();
     List<String> separated =
