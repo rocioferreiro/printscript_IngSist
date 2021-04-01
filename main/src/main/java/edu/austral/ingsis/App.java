@@ -9,14 +9,13 @@ import java.util.Scanner;
 
 public class App {
   public static void main(String[] args) {
-    Interpreter interpreter =
-        new ConcreteInterpreter(Paths.get("rules.txt"));
-    //interpreter.interpret(Paths.get("test.txt"));
+    Interpreter interpreter = new ConcreteInterpreter(Paths.get("rules.txt"));
+    // interpreter.interpret(Paths.get("test.txt"));
     String line = "";
     Scanner scanner = new Scanner(System.in);
-    while (!line.equals("exit")){
+    while (!line.equals("exit")) {
       line = scanner.nextLine();
-      if(!line.isEmpty()) interpreter.interpret(line);
+      if (!line.isEmpty()) interpreter.interpret(line);
     }
   }
 }

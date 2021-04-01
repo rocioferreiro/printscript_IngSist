@@ -27,7 +27,7 @@ public class ConcreteInterpreter implements Interpreter {
   }
 
   @Override
-  public void interpret(String line){
+  public void interpret(String line) {
     List<Token> tokens = lexer.scan(line);
     Context context = parser.parse(tokens);
     showContext(context);
