@@ -8,13 +8,15 @@ public class ConcreteInterpreter implements Interpreter {
   private final Path rules;
   private Lexer lexer;
   private Parser parser;
+  private Context context;
+  private final ExecutionStrategy strategy;
 
-  // TODO encargarse de Strings tambien
-
-  public ConcreteInterpreter(Path rules) {
+  public ConcreteInterpreter(Path rules, ExecutionStrategy strategy) {
     this.rules = rules;
+    this.strategy = strategy;
     lexer = new ConcreteLexer();
     parser = new ConcreteParser(rules);
+    context = new Context();
   }
 
   @Override
@@ -22,18 +24,23 @@ public class ConcreteInterpreter implements Interpreter {
     lexer = new ConcreteLexer();
     List<Token> tokens = lexer.scan(code);
     parser = new ConcreteParser(rules);
-    Context context = parser.parse(tokens);
-    showContext(context);
+    context = parser.parse(tokens);
+    showContext();
   }
 
   @Override
   public void interpret(String line) {
     List<Token> tokens = lexer.scan(line);
-    Context context = parser.parse(tokens);
-    showContext(context);
+    context = parser.parse(tokens);
+    showContext();
   }
 
-  private void showContext(Context context) {
+  @Override
+  public void emptyContext() {
+    context.empty();
+  }
+
+  private void showContext() {
     for (Variable v : context.getVariables()) {
       System.out.println(v.toString());
     }

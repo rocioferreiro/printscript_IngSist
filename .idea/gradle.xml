@@ -13,6 +13,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/ASynTaxing" />
+            <option value="$PROJECT_DIR$/CLI" />
             <option value="$PROJECT_DIR$/buildSrc" />
             <option value="$PROJECT_DIR$/executing" />
             <option value="$PROJECT_DIR$/interpreting" />

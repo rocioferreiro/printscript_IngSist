@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Context {
 
-  private List<Variable> variables;
+  private final List<Variable> variables;
 
   public Context() {
     this.variables = new ArrayList<>();
@@ -38,7 +38,7 @@ public class Context {
     return false;
   }
 
-  public boolean compareTypes(Variable var1, Variable var2) {
-    return var1.getType().equals(var2.getType());
+  public void empty() {
+    variables.clear();
   }
 }

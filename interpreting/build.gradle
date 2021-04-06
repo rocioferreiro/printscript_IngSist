@@ -10,5 +10,6 @@ dependencies {
     implementation project(':lexing')
     implementation project(':parsing')
     implementation project(':tokening')
+    implementation project(':executing')
     implementation project(':utils')
 }
