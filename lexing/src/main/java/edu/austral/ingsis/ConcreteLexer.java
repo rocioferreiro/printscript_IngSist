@@ -22,7 +22,7 @@ public class ConcreteLexer implements Lexer {
   }
 
   @Override
-  public List<Token> scan(String line){
+  public List<Token> scan(String line) {
     return stringToTokens(new Line(line, 1));
   }
 
