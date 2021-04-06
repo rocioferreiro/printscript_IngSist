@@ -2,7 +2,7 @@ package edu.austral.ingsis;
 
 public interface SemanticAnalyzer {
 
-  void analyze(Sentence sentence);
+  void analyze(ASTWrapper ast);
 
   Context getContext();
 }

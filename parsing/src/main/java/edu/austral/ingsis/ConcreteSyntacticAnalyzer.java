@@ -3,6 +3,7 @@ package edu.austral.ingsis;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class ConcreteSyntacticAnalyzer implements SyntacticAnalyzer {
@@ -21,27 +22,25 @@ public class ConcreteSyntacticAnalyzer implements SyntacticAnalyzer {
   }
 
   @Override
-  public Sentence analyze(List<Token> tokens) {
-    RuleType type = checkRules(tokens);
-    return new Sentence(tokens, type);
-  }
-
-  private RuleType checkRules(List<Token> tokens) {
+  public ASTWrapper analyze(List<Token> tokens) {
+    Optional<ASTWrapper> result;
     for (Rule rule : rules) {
-      if (rule.validateTokens(tokens)) return rule.getRuleType();
+      result = rule.validateTokens(tokens);
+      if (result.isPresent()) return result.get();
     }
     String expresion = tokens.stream().map(Token::getValue).collect(Collectors.joining(" "));
     String types =
-        tokens.stream().map(t -> t.getType().getCategory()).collect(Collectors.joining(" "));
+            tokens.stream().map(t -> t.getType().getCategory()).collect(Collectors.joining(" "));
     String ruleString =
-        rules.stream().map(Rule::getAcceptingRegex).collect(Collectors.joining(",\n\t"));
+            rules.stream().map(Rule::getAcceptingRegex).collect(Collectors.joining(",\n\t"));
     throw new InvalidCodeException(
-        "Invalid Expresion: "
-            + expresion
-            + "\nThis sequence of types is not allowed: "
-            + types
-            + "\nTry one of the following: \n\t"
-            + ruleString,
-        tokens.get(0).getPosition());
+            "Invalid Expresion: "
+                    + expresion
+                    + "\nThis sequence of types is not allowed: "
+                    + types
+                    + "\nTry one of the following: \n\t"
+                    + ruleString,
+            tokens.get(0).getPosition());
   }
+
 }

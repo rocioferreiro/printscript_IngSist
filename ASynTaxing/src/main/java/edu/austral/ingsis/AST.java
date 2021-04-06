@@ -1,14 +1,22 @@
 package edu.austral.ingsis;
 
-import java.util.Optional;
-
 public interface AST {
 
   Token getToken();
 
-  Optional<AST> getLeftChild();
+  AST getLeftChild();
 
-  Optional<AST> getRightChild();
+  AST getRightChild();
+
+  boolean isLeaf();
 
   AST addAST(AST ast);
+
+  void setToken(Token token);
+
+  void setLeftChild(AST ast);
+
+  void setRightChild(AST ast);
+
+  boolean isEmpty();
 }

@@ -13,6 +13,13 @@ public class LiteralAST implements ASTLeaf {
 
   @Override
   public AST addAST(AST ast) {
+
     return null;
   }
+
+  @Override
+  public void setToken(Token token) {
+    this.token = token;
+  }
+
 }

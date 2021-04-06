@@ -9,4 +9,5 @@ version = '1.0.1'
 dependencies {
     implementation project(':tokening')
     implementation project(':utils')
+    implementation project(':ASynTaxing')
 }
