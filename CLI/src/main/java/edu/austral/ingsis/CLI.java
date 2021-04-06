@@ -1,6 +1,5 @@
 package edu.austral.ingsis;
 
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Scanner;
 
@@ -10,7 +9,7 @@ public class CLI {
     printExecuteOptions();
     Scanner scanner = new Scanner(System.in);
     Interpreter interpreter = new ConcreteInterpreter(Paths.get("rules.txt"), getStrategy(scanner));
-    int readOption  = 0;
+    int readOption = 0;
     while (readOption != -1) {
       printReadOptions();
       readOption = scanner.nextInt();
