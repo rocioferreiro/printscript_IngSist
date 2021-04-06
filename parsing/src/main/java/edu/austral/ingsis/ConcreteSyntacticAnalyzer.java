@@ -3,7 +3,6 @@ package edu.austral.ingsis;
 import edu.austral.ingsis.rules.ConcreteRule;
 import edu.austral.ingsis.rules.Rule;
 import edu.austral.ingsis.rules.RuleType;
-
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;

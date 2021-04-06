@@ -1,6 +1,5 @@
 package edu.austral.ingsis;
 
-
 public class EmptyAST implements AST {
 
   @Override
@@ -29,9 +28,7 @@ public class EmptyAST implements AST {
   }
 
   @Override
-  public void setToken(Token token) {
-
-  }
+  public void setToken(Token token) {}
 
   @Override
   public void setLeftChild(AST ast) {}

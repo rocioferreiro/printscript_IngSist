@@ -1,7 +1,6 @@
 package edu.austral.ingsis.leaves;
 
 import edu.austral.ingsis.Token;
-import edu.austral.ingsis.leaves.ASTLeaf;
 
 public class StringAssignationAST implements ASTLeaf {
 
