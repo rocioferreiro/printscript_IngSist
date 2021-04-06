@@ -30,17 +30,16 @@ public class ConcreteSyntacticAnalyzer implements SyntacticAnalyzer {
     }
     String expresion = tokens.stream().map(Token::getValue).collect(Collectors.joining(" "));
     String types =
-            tokens.stream().map(t -> t.getType().getCategory()).collect(Collectors.joining(" "));
+        tokens.stream().map(t -> t.getType().getCategory()).collect(Collectors.joining(" "));
     String ruleString =
-            rules.stream().map(Rule::getAcceptingRegex).collect(Collectors.joining(",\n\t"));
+        rules.stream().map(Rule::getAcceptingRegex).collect(Collectors.joining(",\n\t"));
     throw new InvalidCodeException(
-            "Invalid Expresion: "
-                    + expresion
-                    + "\nThis sequence of types is not allowed: "
-                    + types
-                    + "\nTry one of the following: \n\t"
-                    + ruleString,
-            tokens.get(0).getPosition());
+        "Invalid Expresion: "
+            + expresion
+            + "\nThis sequence of types is not allowed: "
+            + types
+            + "\nTry one of the following: \n\t"
+            + ruleString,
+        tokens.get(0).getPosition());
   }
-
 }

@@ -21,5 +21,4 @@ public class LiteralAST implements ASTLeaf {
   public void setToken(Token token) {
     this.token = token;
   }
-
 }

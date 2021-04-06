@@ -18,7 +18,7 @@ public class VariableType {
     return ordinal;
   }
 
-  public boolean equals(VariableType type){
+  public boolean equals(VariableType type) {
     return ordinal == type.ordinal;
   }
 }

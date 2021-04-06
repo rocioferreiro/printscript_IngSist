@@ -21,7 +21,6 @@ public class AssignationAST implements ASTBranch {
     return rightChild;
   }
 
-
   @Override
   public AST addAST(AST ast) {
     return null;

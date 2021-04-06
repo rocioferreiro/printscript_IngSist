@@ -20,7 +20,7 @@ public class ConcreteRule implements Rule {
   public Optional<ASTWrapper> validateTokens(List<Token> list) {
     String concat =
         list.stream().map(t -> t.getType().getCategory()).collect(Collectors.joining(","));
-    if(concat.matches(acceptingRegex)){
+    if (concat.matches(acceptingRegex)) {
       Collections.reverse(list);
       AST aux = TokenToASTConverter.convert(list.get(0));
       for (int i = 1; i < list.size(); i++) {

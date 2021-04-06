@@ -13,25 +13,26 @@ public interface ASTLeaf extends AST {
   }
 
   @Override
-  default boolean isLeaf(){
+  default boolean isLeaf() {
     return true;
   }
 
   @Override
-  default boolean isEmpty(){
+  default boolean isEmpty() {
     return false;
   }
 
   @Override
-  default void setLeftChild(AST ast){}
+  default void setLeftChild(AST ast) {}
 
   @Override
-  default void setRightChild(AST ast){}
+  default void setRightChild(AST ast) {}
 
   @Override
-  default AST addAST(AST ast){
-    if(ast.isLeaf()) throw new InvalidCodeException("invalid phrase", this.getToken().getPosition());
-    if(ast.getLeftChild().isEmpty()){
+  default AST addAST(AST ast) {
+    if (ast.isLeaf())
+      throw new InvalidCodeException("invalid phrase", this.getToken().getPosition());
+    if (ast.getLeftChild().isEmpty()) {
       ast.setLeftChild(this);
       return ast;
     }
