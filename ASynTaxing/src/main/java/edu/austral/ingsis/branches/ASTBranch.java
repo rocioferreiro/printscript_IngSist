@@ -1,4 +1,6 @@
-package edu.austral.ingsis;
+package edu.austral.ingsis.branches;
+
+import edu.austral.ingsis.AST;
 
 public interface ASTBranch extends AST {
 

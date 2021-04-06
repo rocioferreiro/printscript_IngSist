@@ -21,8 +21,8 @@ public class ConcreteParser implements Parser {
     while (!sublist.isEmpty()) {
       int nextIndex = getIndexOfNextSemicolon(sublist);
       ASTWrapper ast = syntacticAnalyzer.analyze(new ArrayList<>(sublist.subList(0, nextIndex)));
-      sublist = new ArrayList<>(sublist.subList(nextIndex + 1, sublist.size()));
       semanticAnalyzer.analyze(ast);
+      sublist = new ArrayList<>(sublist.subList(nextIndex + 1, sublist.size()));
     }
     return semanticAnalyzer.getContext();
   }

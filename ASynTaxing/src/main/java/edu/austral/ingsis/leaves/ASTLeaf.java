@@ -1,4 +1,8 @@
-package edu.austral.ingsis;
+package edu.austral.ingsis.leaves;
+
+import edu.austral.ingsis.AST;
+import edu.austral.ingsis.EmptyAST;
+import edu.austral.ingsis.InvalidCodeException;
 
 public interface ASTLeaf extends AST {
 
@@ -30,6 +34,7 @@ public interface ASTLeaf extends AST {
 
   @Override
   default AST addAST(AST ast) {
+    if (ast.isEmpty()) return this;
     if (ast.isLeaf())
       throw new InvalidCodeException("invalid phrase", this.getToken().getPosition());
     if (ast.getLeftChild().isEmpty()) {

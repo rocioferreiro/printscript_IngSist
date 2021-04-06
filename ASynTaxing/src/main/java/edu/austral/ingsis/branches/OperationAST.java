@@ -1,10 +1,14 @@
-package edu.austral.ingsis;
+package edu.austral.ingsis.branches;
 
-public class AssignationAST implements ASTBranch {
+import edu.austral.ingsis.AST;
+import edu.austral.ingsis.EmptyAST;
+import edu.austral.ingsis.Token;
+
+public class OperationAST implements ASTBranch {
 
   private Token token;
-  private AST leftChild;
-  private AST rightChild;
+  private AST leftChild = new EmptyAST();
+  private AST rightChild = new EmptyAST();
 
   @Override
   public Token getToken() {
@@ -22,22 +26,17 @@ public class AssignationAST implements ASTBranch {
   }
 
   @Override
-  public AST addAST(AST ast) {
-    return null;
-  }
-
-  @Override
   public void setToken(Token token) {
     this.token = token;
   }
 
   @Override
   public void setLeftChild(AST ast) {
-    this.leftChild = ast;
+    leftChild = ast;
   }
 
   @Override
   public void setRightChild(AST ast) {
-    this.rightChild = ast;
+    rightChild = ast;
   }
 }

@@ -1,4 +1,6 @@
-package edu.austral.ingsis;
+package edu.austral.ingsis.rules;
+
+import edu.austral.ingsis.*;
 
 import java.util.Collections;
 import java.util.List;
@@ -13,7 +15,6 @@ public class ConcreteRule implements Rule {
   public ConcreteRule(RuleType type, String acceptingRegex) {
     this.type = type;
     this.acceptingRegex = acceptingRegex;
-    type.setControllerConstants(acceptingRegex);
   }
 
   @Override

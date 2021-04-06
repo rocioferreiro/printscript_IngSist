@@ -3,8 +3,6 @@ package edu.austral.ingsis;
 
 public class EmptyAST implements AST {
 
-  private Token token;
-
   @Override
   public Token getToken() {
     return null;
@@ -32,7 +30,7 @@ public class EmptyAST implements AST {
 
   @Override
   public void setToken(Token token) {
-    this.token = token;
+
   }
 
   @Override

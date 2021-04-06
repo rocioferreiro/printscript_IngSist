@@ -1,5 +1,7 @@
 package edu.austral.ingsis;
 
+import edu.austral.ingsis.rules.RuleType;
+
 public class ASTWrapper {
 
   private final AST tree;

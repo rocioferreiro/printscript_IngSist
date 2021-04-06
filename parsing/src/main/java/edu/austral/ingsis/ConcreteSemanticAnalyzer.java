@@ -18,16 +18,15 @@ public class ConcreteSemanticAnalyzer implements SemanticAnalyzer {
   }
 
   private void updateContext(ASTWrapper sentence) {
-    //    Variable variable = sentence.getType().getCommand().execute(sentence.getTokens(),
-    // context);
-    //    if (!variable.getName().isEmpty()) {
-    //      if (context.checkVariable(variable)) {
-    //        if (!context.checkType(variable))
-    //          throw new InvalidCodeException(
-    //              "Type mismatch!", sentence.getTokens().get(0).getPosition());
-    //      } else {
-    //        context.addVariable(variable);
-    //      }
-    //    }
+    Variable variable = sentence.getType().getCommand().execute(sentence.getTree(), context);
+    if (!variable.getName().isEmpty()) {
+      if (context.checkVariable(variable)) {
+        if (!context.checkType(variable))
+          throw new InvalidCodeException(
+              "Type mismatch!", sentence.getTree().getToken().getPosition());
+      } else {
+        context.addVariable(variable);
+      }
+    }
   }
 }

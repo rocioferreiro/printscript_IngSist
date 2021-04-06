@@ -1,18 +1,15 @@
-package edu.austral.ingsis;
+package edu.austral.ingsis.leaves;
 
-public class VariableAST implements ASTLeaf {
+import edu.austral.ingsis.Token;
+import edu.austral.ingsis.leaves.ASTLeaf;
+
+public class NumberAssignationAST implements ASTLeaf {
 
   private Token token;
 
   @Override
   public Token getToken() {
     return token;
-  }
-
-  @Override
-  public AST addAST(AST ast) {
-
-    return null;
   }
 
   @Override
