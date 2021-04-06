@@ -1,7 +1,6 @@
 package edu.austral.ingsis.rules;
 
 import edu.austral.ingsis.*;
-
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;

@@ -5,7 +5,6 @@ import edu.austral.ingsis.branches.DeclarationAST;
 import edu.austral.ingsis.branches.MethodAST;
 import edu.austral.ingsis.branches.OperationAST;
 import edu.austral.ingsis.leaves.*;
-
 import java.util.HashMap;
 import java.util.Map;
 
