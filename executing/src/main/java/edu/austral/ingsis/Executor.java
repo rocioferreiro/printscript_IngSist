@@ -1,6 +1,3 @@
 package edu.austral.ingsis;
 
-public interface Executor {
-
-
-}
+public interface Executor {}
