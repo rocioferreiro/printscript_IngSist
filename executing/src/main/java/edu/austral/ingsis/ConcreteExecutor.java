@@ -2,8 +2,7 @@ package edu.austral.ingsis;
 
 public class ConcreteExecutor implements Executor {
 
-  public ConcreteExecutor() {
-  }
+  public ConcreteExecutor() {}
 
   @Override
   public void execute(AST ast, Context context) {

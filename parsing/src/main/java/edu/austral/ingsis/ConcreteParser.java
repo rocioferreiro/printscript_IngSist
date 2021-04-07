@@ -1,7 +1,6 @@
 package edu.austral.ingsis;
 
 import java.nio.file.Path;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ConcreteParser implements Parser {
@@ -20,7 +19,4 @@ public class ConcreteParser implements Parser {
     semanticAnalyzer.analyze(ast);
     return new ASTInContext(ast.getTree(), semanticAnalyzer.getContext());
   }
-
-
-
 }

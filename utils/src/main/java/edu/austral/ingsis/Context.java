@@ -20,7 +20,7 @@ public class Context {
     variables.add(variable);
   }
 
-  public void updateVariable(Variable variable){
+  public void updateVariable(Variable variable) {
     for (Variable v : variables) {
       if (v.getName().equals(variable.getName())) v.setValue(variable.getValue());
     }
@@ -34,7 +34,11 @@ public class Context {
   }
 
   public VariableType getVariableType(String name) {
-    return variables.stream().filter(v -> v.getName().equals(name)).findFirst().orElse(Variable.EMPTY).getType();
+    return variables.stream()
+        .filter(v -> v.getName().equals(name))
+        .findFirst()
+        .orElse(Variable.EMPTY)
+        .getType();
   }
 
   public boolean checkType(Variable variable) {

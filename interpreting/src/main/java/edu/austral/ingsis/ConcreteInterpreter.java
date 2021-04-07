@@ -51,11 +51,11 @@ public class ConcreteInterpreter implements Interpreter {
     context.empty();
   }
 
-//  private void showContext() {
-//    for (Variable v : context.getVariables()) {
-//      System.out.println(v.toString());
-//    }
-//  }
+  //  private void showContext() {
+  //    for (Variable v : context.getVariables()) {
+  //      System.out.println(v.toString());
+  //    }
+  //  }
 
   private void checkLastToken(List<Token> tokens) {
     Token lastToken = tokens.get(tokens.size() - 1);

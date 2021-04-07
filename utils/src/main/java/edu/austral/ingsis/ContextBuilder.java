@@ -15,7 +15,7 @@ public class ContextBuilder {
 
   public Context build() {
     Variable newVariable = toAdd.build();
-    if(context.checkVariable(newVariable)) context.updateVariable(newVariable);
+    if (context.checkVariable(newVariable)) context.updateVariable(newVariable);
     else context.addVariable(newVariable);
     return context;
   }
@@ -26,7 +26,10 @@ public class ContextBuilder {
 
   public boolean toAddExists() {
     Variable add = toAdd.build();
-    return add != null && !add.getValue().isEmpty() && !add.getType().isEmpty() && !add.getName().isEmpty();
+    return add != null
+        && !add.getValue().isEmpty()
+        && !add.getType().isEmpty()
+        && !add.getName().isEmpty();
   }
 
   public ContextBuilder addVariable(VariableBuilder toAdd) {
@@ -54,7 +57,7 @@ public class ContextBuilder {
     return this;
   }
 
-  public VariableType getVariableType(String name){
+  public VariableType getVariableType(String name) {
     return context.getVariableType(name);
   }
 }

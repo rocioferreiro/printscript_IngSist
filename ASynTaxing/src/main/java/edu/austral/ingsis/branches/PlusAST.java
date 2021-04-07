@@ -42,11 +42,11 @@ public class PlusAST implements ASTBranch {
   public ContextBuilder executeTree(ContextBuilder context) {
     String left = leftChild.executeTree(context).getToAddValue();
     String right = rightChild.executeTree(context).getToAddValue();
-    if(TypeAnalyzer.getTreeType(this, context) > KeyWord.NUMBER.getOrdinal()) return context.setToAddValue(left + right);
+    if (TypeAnalyzer.getTreeType(this, context) > KeyWord.NUMBER.getOrdinal())
+      return context.setToAddValue(left + right);
     double leftInt = Double.parseDouble(left);
     double rightInt = Double.parseDouble(right);
-    //TODO puede causar problemas
+    // TODO puede causar problemas
     return context.setToAddValue(String.valueOf(leftInt + rightInt));
   }
-
 }

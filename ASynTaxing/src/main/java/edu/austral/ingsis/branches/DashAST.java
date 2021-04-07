@@ -44,26 +44,28 @@ public class DashAST implements ASTBranch {
     int rightType = TypeAnalyzer.getTreeType(leftChild, context);
     String left = leftChild.executeTree(context).getToAddValue();
     String right = rightChild.executeTree(context).getToAddValue();
-    if(leftType <= KeyWord.NUMBER.getOrdinal() && rightType <= KeyWord.NUMBER.getOrdinal()) {
+    if (leftType <= KeyWord.NUMBER.getOrdinal() && rightType <= KeyWord.NUMBER.getOrdinal()) {
       double rightInt = Double.parseDouble(right);
-      if(rightInt == 0) throw new InvalidCodeException("Division by zero /0", leftChild.getToken().getPosition());
-      return context.setToAddValue(String.valueOf(Integer.parseInt(left) / Integer.parseInt(right)));
+      if (rightInt == 0)
+        throw new InvalidCodeException("Division by zero /0", leftChild.getToken().getPosition());
+      return context.setToAddValue(
+          String.valueOf(Integer.parseInt(left) / Integer.parseInt(right)));
     }
-    if(leftType <= KeyWord.NUMBER.getOrdinal()) {
+    if (leftType <= KeyWord.NUMBER.getOrdinal()) {
       int leftInt = (int) Double.parseDouble(left);
       return context.setToAddValue(divideStringByNumber(right, leftInt));
     }
-    if(rightType <= KeyWord.NUMBER.getOrdinal()){
+    if (rightType <= KeyWord.NUMBER.getOrdinal()) {
       int rightInt = (int) Double.parseDouble(right);
       return context.setToAddValue(divideStringByNumber(left, rightInt));
     }
     return context.setToAddValue(left.replaceAll(right, " "));
   }
 
-  private String divideStringByNumber(String string, int number){
+  private String divideStringByNumber(String string, int number) {
     String result = "";
-    for (int i = 0; i < string.length()-number; i+= number) {
-      result += string.substring(i, i+number) + " ";
+    for (int i = 0; i < string.length() - number; i += number) {
+      result += string.substring(i, i + number) + " ";
     }
     return result;
   }
