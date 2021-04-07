@@ -49,9 +49,7 @@ public class ParserTest {
     tokens.add(new ConcreteToken(Operator.EQUAL, "=", new Position(1, 12)));
     tokens.add(new ConcreteToken(KeyWord.STRING, "\"hola\"", new Position(1, 13)));
 
-    assertThrows(
-        InvalidCodeException.class,
-        () -> parser.parse(tokens));
+    assertThrows(InvalidCodeException.class, () -> parser.parse(tokens));
   }
 
   @Test
@@ -67,9 +65,7 @@ public class ParserTest {
     tokens.add(new ConcreteToken(KeyWord.STRING, "\"hola\"", new Position(1, 13)));
     tokens.add(new ConcreteToken(Operator.SEMICOLONS, ";", new Position(1, 19)));
 
-    assertThrows(
-        InvalidCodeException.class,
-        () -> parser.parse(tokens));
+    assertThrows(InvalidCodeException.class, () -> parser.parse(tokens));
   }
 
   @Test
@@ -89,9 +85,7 @@ public class ParserTest {
     tokens.add(new ConcreteToken(KeyWord.NUMBER, "12", new Position(1, 6)));
     tokens.add(new ConcreteToken(Operator.SEMICOLONS, ";", new Position(1, 19)));
 
-    assertThrows(
-        InvalidCodeException.class,
-        () -> parser.parse(tokens));
+    assertThrows(InvalidCodeException.class, () -> parser.parse(tokens));
   }
 
   @Test
@@ -109,9 +103,7 @@ public class ParserTest {
     tokens.add(new ConcreteToken(KeyWord.NUMBER, "12", new Position(2, 3)));
     tokens.add(new ConcreteToken(Operator.SEMICOLONS, ";", new Position(2, 5)));
 
-    assertThrows(
-            InvalidCodeException.class,
-            () -> parser.parse(tokens));
+    assertThrows(InvalidCodeException.class, () -> parser.parse(tokens));
   }
 
   @Test
@@ -152,7 +144,6 @@ public class ParserTest {
 
     Context actual = parser.parse(tokens);
     compareContexts(actual, expected);
-
   }
 
   private Path getPath() {

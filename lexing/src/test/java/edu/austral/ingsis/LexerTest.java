@@ -7,7 +7,6 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
 import org.junit.Rule;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -45,7 +44,9 @@ public class LexerTest {
   @Test
   public void testScanWithPathWithoutEnters() {
     ClassLoader classLoader = getClass().getClassLoader();
-    File file = new File(Objects.requireNonNull(classLoader.getResource("testScanWithEnters.txt")).getFile());
+    File file =
+        new File(
+            Objects.requireNonNull(classLoader.getResource("testScanWithEnters.txt")).getFile());
     Path path = file.toPath();
     List<Token> actualResult = lexer.scan(path);
 
@@ -83,7 +84,9 @@ public class LexerTest {
   @Test
   public void testScanWithLineWithoutColons() {
     ClassLoader classLoader = getClass().getClassLoader();
-    File file = new File(Objects.requireNonNull(classLoader.getResource("testScanWithoutColons.txt")).getFile());
+    File file =
+        new File(
+            Objects.requireNonNull(classLoader.getResource("testScanWithoutColons.txt")).getFile());
     Path path = file.toPath();
     List<Token> actualResult = lexer.scan(path);
 
@@ -104,9 +107,7 @@ public class LexerTest {
     ClassLoader classLoader = getClass().getClassLoader();
     File file = new File(classLoader.getResource("testScanAndFail.txt").getFile());
     Path path = file.toPath();
-    assertThrows(
-        InvalidCodeException.class,
-        () -> lexer.scan(path));
+    assertThrows(InvalidCodeException.class, () -> lexer.scan(path));
   }
 
   private void compareTokens(List<Token> actual, List<Token> expected) {

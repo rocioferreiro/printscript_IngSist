@@ -1,16 +1,17 @@
 package edu.austral.ingsis;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
 public class StringSimplifierTest {
 
-  // ----------------------------------------- REMOVE ENTERS TESTS -----------------------------------------
+  // ----------------------------------------- REMOVE ENTERS TESTS
+  // -----------------------------------------
   @Test
   public void testRemoveEntersHappyPath() {
     String text =
@@ -120,7 +121,8 @@ public class StringSimplifierTest {
     }
   }
 
-  // ----------------------------------------- REMOVE SPACES TESTS -----------------------------------------
+  // ----------------------------------------- REMOVE SPACES TESTS
+  // -----------------------------------------
 
   @Test
   public void testRemoveSpacesHappyPath() {
@@ -223,7 +225,7 @@ public class StringSimplifierTest {
     expectedResult.add("\"hago una aclaracion\"");
 
     Assertions.assertArrayEquals(
-            expectedResult.toArray(), StringSimplifier.removeSpaces(text).toArray());
+        expectedResult.toArray(), StringSimplifier.removeSpaces(text).toArray());
   }
 
   @Test
@@ -239,19 +241,11 @@ public class StringSimplifierTest {
   public void testHaveStringWithoutOneColon() {
     String text = "Hola como va \"hago una aclaracion sigo como si nada";
 
-    assertThrows(
-            RuntimeException.class,
-            () -> StringSimplifier.removeSpaces(text));
+    assertThrows(RuntimeException.class, () -> StringSimplifier.removeSpaces(text));
   }
 
-
-
-
-
-
-
-
-  // ----------------------------------------------- LONG TEXT -----------------------------------------------
+  // ----------------------------------------------- LONG TEXT
+  // -----------------------------------------------
   private final String LONG_STRING =
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque lectus eros, "
           + "lobortis et cursus dapibus, placerat vel 'libero'. Nulla facilisi. Duis suscipit ex eget leo vestibulum rhoncus."
