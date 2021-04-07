@@ -28,10 +28,7 @@ public class ConcreteLexer implements Lexer {
 
   private List<Token> stringToTokens(Line line) {
     List<Token> tokens = new ArrayList<>();
-    List<String> separated =
-        StringSimplifier.removeSpaces(line.getText()).stream()
-            .filter(s -> !s.isEmpty())
-            .collect(toList());
+    List<String> separated = new ArrayList<>(StringSimplifier.removeSpaces(line.getText()));
     int column = 1;
     for (String s : separated) {
       tokens.addAll(getOperatorTokens(s, line.getRow(), column));

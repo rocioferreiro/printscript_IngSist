@@ -14,10 +14,7 @@ public class RuleController {
           .build();
     }
     if (ast.getToken().getType().equals(Operator.EQUAL)) {
-      Variable declared = declarationCommand(ast.getLeftChild(), context);
-      Variable assigned = operationCommand(ast.getRightChild(), context);
-      if (declared.getType().equals(assigned.getType())) return declared;
-      throw new InvalidCodeException("Type mismatch!", ast.getToken().getPosition());
+      return declarationCommand(ast.getLeftChild(), context);
     }
     return new VariableBuilder().build();
   }
@@ -29,9 +26,7 @@ public class RuleController {
       throw new InvalidCodeException(
           "Non declared variable!", ast.getLeftChild().getToken().getPosition());
     else {
-      if (right.getType().equals(context.getVariableType(left.getName())))
-        return new VariableBuilder().setName(left.getName()).setType(right.getType()).build();
-      else throw new InvalidCodeException("Type mismatch", ast.getToken().getPosition());
+      return new VariableBuilder().setName(left.getName()).setType(right.getType()).build();
     }
   }
 

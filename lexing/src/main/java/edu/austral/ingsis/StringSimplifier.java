@@ -75,7 +75,7 @@ public class StringSimplifier {
   }
 
   private static void mergeLists(List<Line> oldLines, List<Line> newLines) {
-    if (oldLines.size() > 0 && newLines.size() > 0) {
+    if (newLines.size() > 0) {
       oldLines.set(
           oldLines.size() - 1,
           oldLines.get(oldLines.size() - 1).concatText(newLines.get(0).getText()));
@@ -86,12 +86,10 @@ public class StringSimplifier {
   private static List<String> split(String txt, String value) {
     char reference = value.charAt(0);
     List<String> array = new ArrayList<>();
-    if (txt.contains(value)) {
-      array.add(txt.substring(0, txt.indexOf(reference)));
-      String s = txt.substring(txt.indexOf(reference) + 1);
-      String next = s.substring(s.indexOf(reference) + 1);
-      if (!next.isEmpty()) array.add(next);
-    } else array.add(value);
+    array.add(txt.substring(0, txt.indexOf(reference)));
+    String s = txt.substring(txt.indexOf(reference) + 1);
+    String next = s.substring(s.indexOf(reference) + 1);
+    if (!next.isEmpty()) array.add(next);
     return array;
   }
 

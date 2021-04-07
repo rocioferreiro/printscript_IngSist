@@ -6,10 +6,11 @@ import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 public class StringSimplifierTest {
 
-  // ----------------------------------------- REMOVE ENTERS TESTS
-  // -----------------------------------------
+  // ----------------------------------------- REMOVE ENTERS TESTS -----------------------------------------
   @Test
   public void testRemoveEntersHappyPath() {
     String text =
@@ -68,6 +69,27 @@ public class StringSimplifierTest {
   }
 
   @Test
+  public void testRemoveEntersWithEntersInEndOfLine() {
+    String text = "Hola como \n\"estas\" bien";
+
+    List<Line> expectedResult = new ArrayList<>();
+    expectedResult.add(new Line("Hola como ", 1));
+    expectedResult.add(new Line("\"estas\" bien", 2));
+
+    testArrayOfLineAreEqual(expectedResult, StringSimplifier.removeEnters(text));
+  }
+
+  @Test
+  public void testRemoveEntersWithStringInTheBeginning() {
+    String text = "\"estas\" hola";
+
+    List<Line> expectedResult = new ArrayList<>();
+    expectedResult.add(new Line("\"estas\" hola", 1));
+
+    testArrayOfLineAreEqual(expectedResult, StringSimplifier.removeEnters(text));
+  }
+
+  @Test
   public void testRemoveEntersWithEmptyMiddleLines() {
     String text =
         "Fue asi: 'Hola, como estas?' le pregunte yo,\n el reacciono \n\n\n como si hubiese dicho \"Decime como estas o te mato.\"";
@@ -98,8 +120,7 @@ public class StringSimplifierTest {
     }
   }
 
-  // ----------------------------------------- REMOVE SPACES TESTS
-  // -----------------------------------------
+  // ----------------------------------------- REMOVE SPACES TESTS -----------------------------------------
 
   @Test
   public void testRemoveSpacesHappyPath() {
@@ -192,6 +213,20 @@ public class StringSimplifierTest {
   }
 
   @Test
+  public void testSentenceEndsWithString() {
+    String text = "Hola como va \"hago una aclaracion\"";
+
+    List<String> expectedResult = new ArrayList<>();
+    expectedResult.add("Hola");
+    expectedResult.add("como");
+    expectedResult.add("va");
+    expectedResult.add("\"hago una aclaracion\"");
+
+    Assertions.assertArrayEquals(
+            expectedResult.toArray(), StringSimplifier.removeSpaces(text).toArray());
+  }
+
+  @Test
   public void testRemoveSpacesLongText() {
     Assertions.assertTimeout(
         Duration.ofMillis(500),
@@ -200,8 +235,23 @@ public class StringSimplifierTest {
         });
   }
 
-  // ----------------------------------------------- LONG TEXT
-  // -----------------------------------------------
+  @Test
+  public void testHaveStringWithoutOneColon() {
+    String text = "Hola como va \"hago una aclaracion sigo como si nada";
+
+    assertThrows(
+            RuntimeException.class,
+            () -> StringSimplifier.removeSpaces(text));
+  }
+
+
+
+
+
+
+
+
+  // ----------------------------------------------- LONG TEXT -----------------------------------------------
   private final String LONG_STRING =
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque lectus eros, "
           + "lobortis et cursus dapibus, placerat vel 'libero'. Nulla facilisi. Duis suscipit ex eget leo vestibulum rhoncus."
