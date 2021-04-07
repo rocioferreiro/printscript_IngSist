@@ -40,4 +40,10 @@ public class EmptyAST implements AST {
   public boolean isEmpty() {
     return true;
   }
+
+  @Override
+  public ContextBuilder executeTree(ContextBuilder context) {
+    //TODO
+    return context;
+  }
 }

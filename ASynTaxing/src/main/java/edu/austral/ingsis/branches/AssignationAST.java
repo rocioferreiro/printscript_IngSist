@@ -1,8 +1,6 @@
 package edu.austral.ingsis.branches;
 
-import edu.austral.ingsis.AST;
-import edu.austral.ingsis.EmptyAST;
-import edu.austral.ingsis.Token;
+import edu.austral.ingsis.*;
 
 public class AssignationAST implements ASTBranch {
 
@@ -44,5 +42,11 @@ public class AssignationAST implements ASTBranch {
   @Override
   public void setRightChild(AST ast) {
     this.rightChild = ast;
+  }
+
+  @Override
+  public ContextBuilder executeTree(ContextBuilder context) {
+    context = leftChild.executeTree(context);
+    return rightChild.executeTree(context);
   }
 }

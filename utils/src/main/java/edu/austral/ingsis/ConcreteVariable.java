@@ -4,6 +4,7 @@ public class ConcreteVariable implements Variable {
 
   private String name;
   private VariableType type;
+  private String value;
 
   public ConcreteVariable() {
     name = "";
@@ -32,6 +33,16 @@ public class ConcreteVariable implements Variable {
   @Override
   public void setType(VariableType type) {
     this.type = type;
+  }
+
+  @Override
+  public String getValue() {
+    return value;
+  }
+
+  @Override
+  public void setValue(String value) {
+    this.value = value;
   }
 
   @Override

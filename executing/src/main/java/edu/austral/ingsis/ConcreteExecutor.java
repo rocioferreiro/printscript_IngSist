@@ -3,5 +3,14 @@ package edu.austral.ingsis;
 public class ConcreteExecutor implements Executor {
 
   private Context context;
-  private AST ast;
+
+  public ConcreteExecutor(Context context) {
+    this.context = context;
+  }
+
+
+  @Override
+  public void execute(AST ast) {
+
+  }
 }

@@ -1,10 +1,8 @@
 package edu.austral.ingsis.branches;
 
-import edu.austral.ingsis.AST;
-import edu.austral.ingsis.EmptyAST;
-import edu.austral.ingsis.Token;
+import edu.austral.ingsis.*;
 
-public class MethodAST implements ASTBranch {
+public class PrintAST implements ASTBranch {
 
   private Token token;
   private AST leftChild = new EmptyAST();
@@ -39,4 +37,14 @@ public class MethodAST implements ASTBranch {
   public void setRightChild(AST ast) {
     rightChild = ast;
   }
+
+  @Override
+  public ContextBuilder executeTree(ContextBuilder context) {
+    context = rightChild.executeTree(context);
+    String toPrint = context.getToAddValue();
+    return context.setNextExecute(() -> {
+      System.out.println(toPrint);
+    });
+  }
+
 }

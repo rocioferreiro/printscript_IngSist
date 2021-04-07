@@ -1,9 +1,6 @@
 package edu.austral.ingsis;
 
-import edu.austral.ingsis.branches.AssignationAST;
-import edu.austral.ingsis.branches.DeclarationAST;
-import edu.austral.ingsis.branches.MethodAST;
-import edu.austral.ingsis.branches.OperationAST;
+import edu.austral.ingsis.branches.*;
 import edu.austral.ingsis.leaves.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -13,11 +10,11 @@ public class TokenToASTConverter {
   private static Map<TokenType, ASTGeneratorCommand> table =
       new HashMap<>() {
         {
-          put(Operator.PLUS, OperationAST::new);
+          put(Operator.PLUS, PlusAST::new);
           put(Operator.EQUAL, AssignationAST::new);
-          put(Operator.ASTERISK, OperationAST::new);
-          put(Operator.DASH, OperationAST::new);
-          put(Operator.HYPHEN, OperationAST::new);
+          put(Operator.ASTERISK, AsteriskAST::new);
+          put(Operator.DASH, DashAST::new);
+          put(Operator.HYPHEN, HiphenAST::new);
           put(Operator.L_PARENTHESIS, EmptyAST::new);
           put(Operator.R_PARENTHESIS, EmptyAST::new);
           put(Operator.T_ASSIGNATION, DeclarationAST::new);
@@ -28,7 +25,7 @@ public class TokenToASTConverter {
           put(KeyWord.N_ASSIGNATION, NumberAssignationAST::new);
           put(KeyWord.S_ASSIGNATION, StringAssignationAST::new);
           put(KeyWord.VARIABLE_REF, VariableAST::new);
-          put(KeyWord.PRINTLN, MethodAST::new);
+          put(KeyWord.PRINTLN, PrintAST::new);
         }
       };
 

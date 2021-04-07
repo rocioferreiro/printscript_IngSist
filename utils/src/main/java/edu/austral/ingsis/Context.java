@@ -6,6 +6,7 @@ import java.util.List;
 public class Context {
 
   private final List<Variable> variables;
+  private ExecutingCommand nextExecute = ExecutingCommand.EMPTY;
 
   public Context() {
     this.variables = new ArrayList<>();
@@ -40,5 +41,13 @@ public class Context {
 
   public void empty() {
     variables.clear();
+  }
+
+  public void setNextExecute(ExecutingCommand nextExecute) {
+    this.nextExecute = nextExecute;
+  }
+
+  public void execute(){
+    nextExecute.run();
   }
 }

@@ -17,6 +17,11 @@ public class VariableBuilder {
     return this;
   }
 
+  public VariableBuilder setValue(String value){
+    variable.setValue(value);
+    return this;
+  }
+
   public VariableBuilder setType(String type, int ordinal) {
     variable.setType(new VariableType(type, ordinal));
     return this;

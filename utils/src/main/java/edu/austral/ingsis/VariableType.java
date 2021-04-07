@@ -21,4 +21,8 @@ public class VariableType {
   public boolean equals(VariableType type) {
     return name.equals(type.name);
   }
+
+  public boolean isEmpty() {
+    return name.isEmpty();
+  }
 }

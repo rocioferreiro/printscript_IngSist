@@ -19,4 +19,8 @@ public interface AST {
   void setRightChild(AST ast);
 
   boolean isEmpty();
+
+  ContextBuilder executeTree(ContextBuilder context);
+
+
 }

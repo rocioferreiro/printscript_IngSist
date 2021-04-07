@@ -6,7 +6,11 @@ public interface Variable {
 
   VariableType getType();
 
+  String getValue();
+
   void setName(String name);
 
   void setType(VariableType type);
+
+  void setValue(String value);
 }
