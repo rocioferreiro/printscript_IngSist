@@ -40,8 +40,11 @@ public class DeclarationAST implements ASTBranch {
 
   @Override
   public ContextBuilder executeTree(ContextBuilder context) {
-    return context.addVariable(new VariableBuilder())
-            .setToAddName(leftChild.getToken().getValue())
-            .setToAddType(new VariableType(rightChild.getToken().getValue(), rightChild.getToken().getType().getOrdinal()));
+    return context
+        .addVariable(new VariableBuilder())
+        .setToAddName(leftChild.getToken().getValue())
+        .setToAddType(
+            new VariableType(
+                rightChild.getToken().getValue(), rightChild.getToken().getType().getOrdinal()));
   }
 }

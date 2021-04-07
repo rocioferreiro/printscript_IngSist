@@ -21,6 +21,4 @@ public interface AST {
   boolean isEmpty();
 
   ContextBuilder executeTree(ContextBuilder context);
-
-
 }
