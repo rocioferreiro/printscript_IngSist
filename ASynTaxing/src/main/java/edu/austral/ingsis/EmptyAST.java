@@ -43,7 +43,7 @@ public class EmptyAST implements AST {
 
   @Override
   public ContextBuilder executeTree(ContextBuilder context) {
-    //TODO
+    // TODO
     return context;
   }
 }

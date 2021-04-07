@@ -17,7 +17,7 @@ public class VariableBuilder {
     return this;
   }
 
-  public VariableBuilder setValue(String value){
+  public VariableBuilder setValue(String value) {
     variable.setValue(value);
     return this;
   }

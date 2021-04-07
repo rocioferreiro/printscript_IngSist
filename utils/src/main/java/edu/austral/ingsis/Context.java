@@ -47,7 +47,7 @@ public class Context {
     this.nextExecute = nextExecute;
   }
 
-  public void execute(){
+  public void execute() {
     nextExecute.run();
   }
 }

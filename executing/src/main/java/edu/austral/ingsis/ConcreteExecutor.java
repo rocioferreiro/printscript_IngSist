@@ -8,9 +8,6 @@ public class ConcreteExecutor implements Executor {
     this.context = context;
   }
 
-
   @Override
-  public void execute(AST ast) {
-
-  }
+  public void execute(AST ast) {}
 }

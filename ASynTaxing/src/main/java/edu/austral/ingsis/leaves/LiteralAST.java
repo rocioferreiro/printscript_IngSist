@@ -20,7 +20,7 @@ public class LiteralAST implements ASTLeaf {
 
   @Override
   public ContextBuilder executeTree(ContextBuilder context) {
-    if(context.toAddExists()) return context.setToAddValue(token.getValue());
+    if (context.toAddExists()) return context.setToAddValue(token.getValue());
     return context.addVariable(new VariableBuilder().setValue(token.getValue()));
   }
 }
