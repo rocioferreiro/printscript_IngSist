@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class TokenToASTConverter {
 
-  private final static Map<TokenType, ASTGeneratorCommand> table =
+  private static final Map<TokenType, ASTGeneratorCommand> table =
       new HashMap<>() {
         {
           put(Operator.PLUS, PlusAST::new);
