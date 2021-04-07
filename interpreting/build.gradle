@@ -11,5 +11,6 @@ dependencies {
     implementation project(':parsing')
     implementation project(':tokening')
     implementation project(':executing')
+    implementation project(':ASynTaxing')
     implementation project(':utils')
 }

@@ -1,9 +1,6 @@
 package edu.austral.ingsis.branches;
 
-import edu.austral.ingsis.AST;
-import edu.austral.ingsis.ContextBuilder;
-import edu.austral.ingsis.EmptyAST;
-import edu.austral.ingsis.Token;
+import edu.austral.ingsis.*;
 
 public class PlusAST implements ASTBranch {
 
@@ -43,6 +40,13 @@ public class PlusAST implements ASTBranch {
 
   @Override
   public ContextBuilder executeTree(ContextBuilder context) {
-    return null;
+    String left = leftChild.executeTree(context).getToAddValue();
+    String right = rightChild.executeTree(context).getToAddValue();
+    if(TypeAnalyzer.getTreeType(this, context) > KeyWord.NUMBER.getOrdinal()) return context.setToAddValue(left + right);
+    double leftInt = Double.parseDouble(left);
+    double rightInt = Double.parseDouble(right);
+    //TODO puede causar problemas
+    return context.setToAddValue(String.valueOf(leftInt + rightInt));
   }
+
 }

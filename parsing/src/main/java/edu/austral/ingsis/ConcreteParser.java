@@ -15,31 +15,12 @@ public class ConcreteParser implements Parser {
   }
 
   @Override
-  public Context parse(List<Token> tokens) {
-    checkLastToken(tokens);
-    List<Token> sublist = tokens;
-    while (!sublist.isEmpty()) {
-      int nextIndex = getIndexOfNextSemicolon(sublist);
-      ASTWrapper ast = syntacticAnalyzer.analyze(new ArrayList<>(sublist.subList(0, nextIndex)));
-      semanticAnalyzer.analyze(ast);
-      sublist = new ArrayList<>(sublist.subList(nextIndex + 1, sublist.size()));
-    }
-    return semanticAnalyzer.getContext();
+  public ASTInContext parse(List<Token> tokens) {
+    ASTWrapper ast = syntacticAnalyzer.analyze(tokens);
+    semanticAnalyzer.analyze(ast);
+    return new ASTInContext(ast.getTree(), semanticAnalyzer.getContext());
   }
 
-  private void checkLastToken(List<Token> tokens) {
-    Token lastToken = tokens.get(tokens.size() - 1);
-    if (!lastToken.getType().equals(Operator.SEMICOLONS)) {
-      throw new InvalidCodeException("Missing last semicolon.", lastToken.getPosition());
-    }
-  }
 
-  private int getIndexOfNextSemicolon(List<Token> tokens) {
-    for (int i = 0; i < tokens.size(); i++) {
-      if (tokens.get(i).getType().equals(Operator.SEMICOLONS)) {
-        return i;
-      }
-    }
-    return -1;
-  }
+
 }

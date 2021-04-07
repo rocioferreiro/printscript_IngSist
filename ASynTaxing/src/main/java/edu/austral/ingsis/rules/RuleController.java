@@ -36,7 +36,7 @@ public class RuleController {
       Variable before = operationCommand(ast.getLeftChild(), context);
       Variable after = operationCommand(ast.getRightChild(), context);
       VariableType type =
-          before.getType().getOrdinal() < after.getType().getOrdinal()
+          before.getType().getOrdinal() > after.getType().getOrdinal()
               ? before.getType()
               : after.getType();
       return new VariableBuilder().setType(type).build();

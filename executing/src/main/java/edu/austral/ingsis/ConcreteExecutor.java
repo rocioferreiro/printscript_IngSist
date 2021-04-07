@@ -2,12 +2,12 @@ package edu.austral.ingsis;
 
 public class ConcreteExecutor implements Executor {
 
-  private Context context;
-
-  public ConcreteExecutor(Context context) {
-    this.context = context;
+  public ConcreteExecutor() {
   }
 
   @Override
-  public void execute(AST ast) {}
+  public void execute(AST ast, Context context) {
+    context = ast.executeTree(new ContextBuilder(context)).build();
+    context.execute();
+  }
 }

@@ -8,6 +8,8 @@ public class ConcreteVariable implements Variable {
 
   public ConcreteVariable() {
     name = "";
+    type = new VariableType();
+    value = "";
   }
 
   public ConcreteVariable(String name, VariableType type) {

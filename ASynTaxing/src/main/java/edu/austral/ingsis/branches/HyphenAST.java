@@ -2,7 +2,7 @@ package edu.austral.ingsis.branches;
 
 import edu.austral.ingsis.*;
 
-public class AsteriskAST implements ASTBranch {
+public class HyphenAST implements ASTBranch {
 
   private Token token;
   private AST leftChild = new EmptyAST();
@@ -45,31 +45,17 @@ public class AsteriskAST implements ASTBranch {
     String left = leftChild.executeTree(context).getToAddValue();
     String right = rightChild.executeTree(context).getToAddValue();
     if(leftType <= KeyWord.NUMBER.getOrdinal() && rightType <= KeyWord.NUMBER.getOrdinal())
-      return context.setToAddValue(String.valueOf(Double.parseDouble(left) * Double.parseDouble(right)));
+      return context.setToAddValue(String.valueOf(Double.parseDouble(left) - Double.parseDouble(right)));
     if(leftType <= KeyWord.NUMBER.getOrdinal()) {
       int leftInt = (int) Double.parseDouble(left);
       if(leftInt > right.length()) return context.setToAddValue("");
-      return context.setToAddValue(right.repeat(leftInt));
+      return context.setToAddValue(right.substring(0, right.length()-leftInt));
     }
     if(rightType <= KeyWord.NUMBER.getOrdinal()){
       int rightInt = (int) Double.parseDouble(right);
       if(rightInt > left.length()) return context.setToAddValue("");
-      return context.setToAddValue(right.repeat(rightInt));
+      return context.setToAddValue(right.substring(0, left.length()-rightInt));
     }
-    return context.setToAddValue(mergeStrings(left, right));
-  }
-
-  private String mergeStrings(String s1, String s2){
-    StringBuilder result = new StringBuilder();
-
-    for (int i = 0; i < s1.length() || i < s2.length(); i++) {
-      if (i < s1.length())
-        result.append(s1.charAt(i));
-
-      if (i < s2.length())
-        result.append(s2.charAt(i));
-    }
-
-    return result.toString();
+    return context.setToAddValue(left.replaceAll(right, ""));
   }
 }

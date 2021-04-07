@@ -10,6 +10,11 @@ public class VariableType {
     this.ordinal = ordinal;
   }
 
+  public VariableType() {
+    name = "";
+    ordinal = -1;
+  }
+
   public String getName() {
     return name;
   }

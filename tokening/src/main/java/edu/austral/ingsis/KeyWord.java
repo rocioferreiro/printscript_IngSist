@@ -4,10 +4,10 @@ import java.util.Locale;
 
 public enum KeyWord implements TokenType {
   DECLARATION("let", "DECLARATION"),
-  S_ASSIGNATION("string", "TYPE"),
-  STRING("[\"'].*[\"']", "VALUE"),
   N_ASSIGNATION("number", "TYPE"),
   NUMBER("\\d+(\\.\\d+)?", "VALUE"),
+  S_ASSIGNATION("string", "TYPE"),
+  STRING("[\"'].*[\"']", "VALUE"),
   PRINTLN("println", "PRINTLN"),
   VARIABLE_REF("[a-zA-Z0-9]+([_a-zA-Z0-9]*)", "VARIABLE");
 

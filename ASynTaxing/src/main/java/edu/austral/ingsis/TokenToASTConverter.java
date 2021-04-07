@@ -14,7 +14,7 @@ public class TokenToASTConverter {
           put(Operator.EQUAL, AssignationAST::new);
           put(Operator.ASTERISK, AsteriskAST::new);
           put(Operator.DASH, DashAST::new);
-          put(Operator.HYPHEN, HiphenAST::new);
+          put(Operator.HYPHEN, HyphenAST::new);
           put(Operator.L_PARENTHESIS, EmptyAST::new);
           put(Operator.R_PARENTHESIS, EmptyAST::new);
           put(Operator.T_ASSIGNATION, DeclarationAST::new);
