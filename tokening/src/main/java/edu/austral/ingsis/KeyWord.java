@@ -42,7 +42,8 @@ public enum KeyWord implements TokenType {
     for (KeyWord key : values()) {
       if (token.getValue().matches(key.getRegex())) {
         String value = token.getValue();
-        if (value.contains("'") || value.contains("\"")) value = value.substring(1, value.length()-1);
+        if (value.contains("'") || value.contains("\""))
+          value = value.substring(1, value.length() - 1);
         return new ConcreteToken(key, value, token.getPosition());
       }
     }

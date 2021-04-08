@@ -13,7 +13,7 @@ public class TokenCleanUp {
 
   public static List<Token> checkLastTokenAndRemove(List<Token> tokens) {
     checkLastToken(tokens);
-    return tokens.subList(0, tokens.size()-1);
+    return tokens.subList(0, tokens.size() - 1);
   }
 
   public static int getIndexOfNextSemicolon(List<Token> tokens) {

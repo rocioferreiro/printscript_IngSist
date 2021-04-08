@@ -9,10 +9,12 @@ public class TypeAnalyzer {
     if (ast.getLeftChild().isLeaf() && ast.getRightChild().isLeaf()) {
       ordinal = Integer.max(leftToken.getType().getOrdinal(), rightToken.getType().getOrdinal());
       if (ordinal > KeyWord.STRING.getOrdinal()) {
-        int ordinal1 = leftToken.getType().getOrdinal() > KeyWord.STRING.getOrdinal()
+        int ordinal1 =
+            leftToken.getType().getOrdinal() > KeyWord.STRING.getOrdinal()
                 ? contextBuilder.getVariableType(leftToken.getValue()).getOrdinal()
                 : leftToken.getType().getOrdinal();
-        int ordinal2 = rightToken.getType().getOrdinal() > KeyWord.STRING.getOrdinal()
+        int ordinal2 =
+            rightToken.getType().getOrdinal() > KeyWord.STRING.getOrdinal()
                 ? contextBuilder.getVariableType(rightToken.getValue()).getOrdinal()
                 : rightToken.getType().getOrdinal();
         return Integer.max(ordinal1, ordinal2);

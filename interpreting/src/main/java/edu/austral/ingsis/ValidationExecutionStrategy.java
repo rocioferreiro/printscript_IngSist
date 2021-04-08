@@ -7,9 +7,9 @@ public class ValidationExecutionStrategy implements ExecutionStrategy {
     showContext(astInContext.getContext());
   }
 
-    private void showContext(Context context) {
-      for (Variable v : context.getVariables()) {
-        System.out.println(v.toString());
-      }
+  private void showContext(Context context) {
+    for (Variable v : context.getVariables()) {
+      System.out.println(v.toString());
     }
+  }
 }
