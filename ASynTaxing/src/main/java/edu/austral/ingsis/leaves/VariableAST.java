@@ -20,7 +20,8 @@ public class VariableAST implements ASTLeaf {
 
   @Override
   public ContextBuilder executeTree(ContextBuilder context) {
-    if (context.toAddExists()) return context.setToAddName(token.getValue());
-    return context.addVariable(new VariableBuilder().setName(token.getValue()));
+    String value = context.getVariableValue(token.getValue());
+    if (context.toAddExists()) return context.setToAddValue(value);
+    return context.addVariable(new VariableBuilder().setName(token.getValue()).setValue(value));
   }
 }
