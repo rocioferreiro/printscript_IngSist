@@ -32,7 +32,8 @@ public class ConcreteLexer implements Lexer {
     int column = 1;
     List<String> stringDelimiters = StringSimplifier.getStringDelimiters();
     for (String s : separated) {
-      if(stringDelimiters.stream().anyMatch(s::contains)) tokens.add(new ProvisionalToken(s, new Position(line.getRow(), column)));
+      if (stringDelimiters.stream().anyMatch(s::contains))
+        tokens.add(new ProvisionalToken(s, new Position(line.getRow(), column)));
       else tokens.addAll(getOperatorTokens(s, line.getRow(), column));
       column += s.length();
     }
