@@ -57,7 +57,7 @@ public class StringSimplifier {
     return split.stream().filter(text -> !text.isEmpty()).collect(toList());
   }
 
-  private static List<String> getStringDelimiters() {
+  public static List<String> getStringDelimiters() {
     return StringUtils.substringBetween(KeyWord.STRING.getRegex(), "[", "]")
         .chars()
         .boxed()
