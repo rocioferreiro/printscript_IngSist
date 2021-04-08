@@ -1,11 +1,15 @@
 package edu.austral.ingsis;
 
-import java.nio.file.Path;
-
 public class ValidationExecutionStrategy implements ExecutionStrategy {
-  @Override
-  public void execute(Lexer lexer, Parser parser, Executor executor, Path path) {}
 
   @Override
-  public void execute(Lexer lexer, Parser parser, Executor executor, String line) {}
+  public void execute(Executor executor, ASTInContext astInContext) {
+    showContext(astInContext.getContext());
+  }
+
+    private void showContext(Context context) {
+      for (Variable v : context.getVariables()) {
+        System.out.println(v.toString());
+      }
+    }
 }

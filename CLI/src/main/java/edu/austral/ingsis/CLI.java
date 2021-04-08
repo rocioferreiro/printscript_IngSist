@@ -29,13 +29,13 @@ public class CLI {
   private static void printExecuteOptions() {
     System.out.println("Choose one of this options:");
     System.out.println("1 -> To validate");
-    System.out.println("2 -> To execute");
+    System.out.println("2 -> To execute\n");
   }
 
   private static void printReadOptions() {
     System.out.println("Choose one of this options:");
     System.out.println("1 -> To interpret a file");
-    System.out.println("2 -> To open terminal");
+    System.out.println("2 -> To open terminal\n");
   }
 
   private static void readPath(Interpreter interpreter) {

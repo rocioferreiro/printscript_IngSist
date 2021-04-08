@@ -35,7 +35,7 @@ public class LexerTest {
     expectedResult.add(new ConcreteToken(Operator.T_ASSIGNATION, ":", new Position(1, 5)));
     expectedResult.add(new ConcreteToken(KeyWord.S_ASSIGNATION, "string", new Position(1, 6)));
     expectedResult.add(new ConcreteToken(Operator.EQUAL, "=", new Position(1, 12)));
-    expectedResult.add(new ConcreteToken(KeyWord.STRING, "\"hola\"", new Position(1, 13)));
+    expectedResult.add(new ConcreteToken(KeyWord.STRING, "hola", new Position(1, 13)));
     expectedResult.add(new ConcreteToken(Operator.SEMICOLONS, ";", new Position(1, 19)));
 
     compareTokens(actualResult, expectedResult);
@@ -75,7 +75,7 @@ public class LexerTest {
     expectedResult.add(new ConcreteToken(Operator.T_ASSIGNATION, ":", new Position(1, 5)));
     expectedResult.add(new ConcreteToken(KeyWord.S_ASSIGNATION, "string", new Position(1, 6)));
     expectedResult.add(new ConcreteToken(Operator.EQUAL, "=", new Position(1, 12)));
-    expectedResult.add(new ConcreteToken(KeyWord.STRING, "\"hola\"", new Position(1, 13)));
+    expectedResult.add(new ConcreteToken(KeyWord.STRING, "hola", new Position(1, 13)));
     expectedResult.add(new ConcreteToken(Operator.SEMICOLONS, ";", new Position(1, 19)));
 
     compareTokens(actualResult, expectedResult);

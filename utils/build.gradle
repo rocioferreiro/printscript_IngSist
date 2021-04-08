@@ -1,7 +1,40 @@
 plugins {
     id 'java-library'
     id 'my-library.java-common-conventions'
+    id 'jacoco'
 }
 
 group = 'edu.austral.ingsis'
 version = '1.0.1'
+
+test {
+    useJUnitPlatform()
+    finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+    dependsOn test // tests are required to run before generating the report
+    reports {
+        xml.enabled false
+        csv.enabled false
+        html.destination file("${buildDir}/jacocoHtml")
+    }
+}
+jacoco {
+    toolVersion = "0.8.6"
+}
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            limit {
+                counter = 'BRANCH'
+                minimum = 0.6
+            }
+        }
+    }
+}
+
+check.dependsOn jacocoTestCoverageVerification
+
+tasks.build.dependsOn(check)
