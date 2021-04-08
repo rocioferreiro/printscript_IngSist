@@ -27,9 +27,7 @@ public class ContextBuilder {
   public boolean toAddExists() {
     Variable add = toAdd.build();
     return add != null
-        && (!add.getValue().isEmpty()
-        || !add.getType().isEmpty()
-        || !add.getName().isEmpty());
+        && (!add.getValue().isEmpty() || !add.getType().isEmpty() || !add.getName().isEmpty());
   }
 
   public ContextBuilder addVariable(VariableBuilder toAdd) {

@@ -22,7 +22,8 @@ public class Context {
 
   public void updateVariable(Variable variable) {
     for (Variable v : variables) {
-      if (v.getName().equals(variable.getName()) && !variable.getValue().isEmpty()) v.setValue(variable.getValue());
+      if (v.getName().equals(variable.getName()) && !variable.getValue().isEmpty())
+        v.setValue(variable.getValue());
     }
   }
 
@@ -64,9 +65,9 @@ public class Context {
 
   public String getVariableValue(String name) {
     return variables.stream()
-            .filter(v -> v.getName().equals(name))
-            .findFirst()
-            .orElse(Variable.EMPTY)
-            .getValue();
+        .filter(v -> v.getName().equals(name))
+        .findFirst()
+        .orElse(Variable.EMPTY)
+        .getValue();
   }
 }
