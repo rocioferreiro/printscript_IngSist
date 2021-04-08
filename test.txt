@@ -25,7 +25,7 @@ let z:number = 14;
 println(z);
 println('hola como estas');
 
-let var: string = "z vale >> " + z;
+let var: string = "z vale: " + z;
 println(var);
 
 

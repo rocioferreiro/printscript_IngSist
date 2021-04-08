@@ -31,7 +31,8 @@ public class ConcreteLexer implements Lexer {
     List<String> separated = new ArrayList<>(StringSimplifier.removeSpaces(line.getText()));
     int column = 1;
     for (String s : separated) {
-      tokens.addAll(getOperatorTokens(s, line.getRow(), column));
+      if(s.contains("\"") || s.contains("'")) tokens.add(new ProvisionalToken(s, new Position(line.getRow(), column)));
+      else tokens.addAll(getOperatorTokens(s, line.getRow(), column));
       column += s.length();
     }
     for (int i = 0; i < tokens.size(); i++) {

@@ -5,7 +5,7 @@ public class ExecutingCommand {
   public static final ExecutingCommand EMPTY = new ExecutingCommand();
 
   private Runnable runnable;
-  private boolean isActive;
+  private final boolean isActive;
 
   public ExecutingCommand(Runnable runnable) {
     this.runnable = runnable;
@@ -14,10 +14,6 @@ public class ExecutingCommand {
 
   public ExecutingCommand() {
     isActive = false;
-  }
-
-  public boolean isActive() {
-    return isActive;
   }
 
   public void run() {
