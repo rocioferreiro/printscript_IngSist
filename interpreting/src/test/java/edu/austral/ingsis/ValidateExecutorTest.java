@@ -49,7 +49,8 @@ public class ValidateExecutorTest {
 
   @Test
   public void testShowContextErrorPrint() {
-    Assertions.assertThrows(InvalidCodeException.class, () -> interpreter.interpret("let x: number"));
+    Assertions.assertThrows(
+        InvalidCodeException.class, () -> interpreter.interpret("let x: number"));
   }
 
   @Test
