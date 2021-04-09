@@ -13,7 +13,8 @@ public class InterpreterExecutorTest {
   private static final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
   private static final PrintStream originalOut = System.out;
   private static final PrintStream originalErr = System.err;
-  private static final Interpreter interpreter = new ConcreteInterpreter(getPath("rules.txt"), new InterpretationExecutionStrategy());
+  private static final Interpreter interpreter =
+      new ConcreteInterpreter(getPath("rules.txt"), new InterpretationExecutionStrategy());
 
   @BeforeEach
   public void setUpStreams() {
@@ -21,11 +22,6 @@ public class InterpreterExecutorTest {
     System.setErr(new PrintStream(errContent));
     interpreter.emptyContext();
     outContent.reset();
-  }
-
-  @AfterEach
-  public void doSomething() {
-
   }
 
   @AfterAll
