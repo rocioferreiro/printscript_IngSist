@@ -16,11 +16,14 @@ public class InterpreterExecutorTest {
   private static final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
   private static final PrintStream originalOut = System.out;
   private static final PrintStream originalErr = System.err;
+  private static final Interpreter interpreter = new ConcreteInterpreter(getPath("rules.txt"), new InterpretationExecutionStrategy());
 
   @BeforeAll
   public static void setUpStreams() {
     System.setOut(new PrintStream(outContent));
     System.setErr(new PrintStream(errContent));
+    interpreter.emptyContext();
+    outContent.reset();
   }
 
   @AfterAll
@@ -43,12 +46,6 @@ public class InterpreterExecutorTest {
         new ConcreteInterpreter(getPath("rules.txt"), new InterpretationExecutionStrategy());
     interpreter.interpret("let x:string = 'hola';");
     assertEquals("", outContent.toString());
-  }
-
-  private Path getPath(String s) {
-    ClassLoader classLoader = getClass().getClassLoader();
-    File file = new File(classLoader.getResource(s).getFile());
-    return file.toPath();
   }
 
   private void print(int amountOfLines, int actualLine) {
