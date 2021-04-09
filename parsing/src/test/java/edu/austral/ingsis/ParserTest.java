@@ -33,7 +33,7 @@ public class ParserTest {
     expected.addVariable(new ConcreteVariable("x", new VariableType("string", 0)));
     expected.addVariable(new ConcreteVariable("y", new VariableType("number", 1)));
 
-    Context actual = parser.parse(tokens);
+    Context actual = parser.parse(tokens).getContext();
     compareContexts(actual, expected);
   }
 
@@ -124,7 +124,7 @@ public class ParserTest {
     Context expected = new Context();
     expected.addVariable(new ConcreteVariable("x", new VariableType("number", 0)));
 
-    Context actual = parser.parse(tokens);
+    Context actual = parser.parse(tokens).getContext();
     compareContexts(actual, expected);
   }
 
@@ -142,7 +142,7 @@ public class ParserTest {
     Context expected = new Context();
     expected.addVariable(new ConcreteVariable("", new VariableType("string", 0)));
 
-    Context actual = parser.parse(tokens);
+    Context actual = parser.parse(tokens).getContext();
     compareContexts(actual, expected);
   }
 

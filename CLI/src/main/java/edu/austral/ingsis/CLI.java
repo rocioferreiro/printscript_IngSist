@@ -5,6 +5,10 @@ import java.util.Scanner;
 
 public class CLI {
 
+  private static final String ANSI_RESET = "\u001B[0m";
+  private static final String ANSI_YELLOW = "\033[0;33m";
+  private static final String ANSI_RED_BOLD = "\033[1;31m";
+
   public static void run() {
     printExecuteOptions();
     Scanner scanner = new Scanner(System.in);
@@ -27,20 +31,22 @@ public class CLI {
   }
 
   private static void printExecuteOptions() {
-    System.out.println("Choose one of this options:");
-    System.out.println("1 -> To validate");
-    System.out.println("2 -> To execute\n");
+    System.out.println(ANSI_YELLOW + "Choose one of this options:" + ANSI_RESET);
+    System.out.println(ANSI_YELLOW + "1 -> To validate" + ANSI_RESET);
+    System.out.println(ANSI_YELLOW + "2 -> To execute\n" + ANSI_RESET);
   }
 
   private static void printReadOptions() {
-    System.out.println("Choose one of this options:");
-    System.out.println("1 -> To interpret a file");
-    System.out.println("2 -> To open terminal\n");
+    String ANSI_RESET = "\u001B[0m";
+    String ANSI_YELLOW = "\033[0;33m";
+    System.out.println(ANSI_YELLOW + "Choose one of this options:" + ANSI_RESET);
+    System.out.println(ANSI_YELLOW + "1 -> To interpret a file" + ANSI_RESET);
+    System.out.println(ANSI_YELLOW + "2 -> To open terminal\n" + ANSI_RESET);
   }
 
   private static void readPath(Interpreter interpreter) {
     interpreter.emptyContext();
-    System.out.println("Enter valid path:");
+    System.out.println(ANSI_YELLOW + "Enter valid path:" + ANSI_RESET);
     String line = "";
     Scanner scanner = new Scanner(System.in);
     while (!line.matches(".\\.txt")) {
@@ -54,7 +60,7 @@ public class CLI {
 
   private static void readByLine(Interpreter interpreter) {
     interpreter.emptyContext();
-    System.out.println("Start typing:");
+    System.out.println(ANSI_YELLOW + "Start typing:" + ANSI_RESET);
     String line = "";
     Scanner scanner = new Scanner(System.in);
 
@@ -64,7 +70,7 @@ public class CLI {
         try {
           interpreter.interpret(line);
         } catch (InvalidCodeException e) {
-          System.out.println(e.getMessage());
+          System.out.println(ANSI_RED_BOLD + e.getMessage() + ANSI_RESET);
         }
       }
     }

@@ -41,7 +41,7 @@ public class DashAST implements ASTBranch {
   @Override
   public ContextBuilder executeTree(ContextBuilder context) {
     int leftType = TypeAnalyzer.getTreeType(leftChild, context);
-    int rightType = TypeAnalyzer.getTreeType(leftChild, context);
+    int rightType = TypeAnalyzer.getTreeType(rightChild, context);
     String left = leftChild.executeTree(context).getToAddValue();
     String right = rightChild.executeTree(context).getToAddValue();
     if (leftType <= KeyWord.NUMBER.getOrdinal() && rightType <= KeyWord.NUMBER.getOrdinal()) {
@@ -49,7 +49,7 @@ public class DashAST implements ASTBranch {
       if (rightInt == 0)
         throw new InvalidCodeException("Division by zero /0", leftChild.getToken().getPosition());
       return context.setToAddValue(
-          String.valueOf(Integer.parseInt(left) / Integer.parseInt(right)));
+          String.valueOf(Double.parseDouble(left) / rightInt));
     }
     if (leftType <= KeyWord.NUMBER.getOrdinal()) {
       int leftInt = (int) Double.parseDouble(left);
@@ -64,9 +64,11 @@ public class DashAST implements ASTBranch {
 
   private String divideStringByNumber(String string, int number) {
     String result = "";
+    String aux = string;
     for (int i = 0; i < string.length() - number; i += number) {
       result += string.substring(i, i + number) + " ";
+      aux = aux.substring(i+number);
     }
-    return result;
+    return result + aux;
   }
 }

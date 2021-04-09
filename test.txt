@@ -1,39 +1,32 @@
-let prueba:string;
+let n:number = 16;
+println(n);
+n = n+1;
+println(n);
+n = n-4.5;
+println(n);
+n = n*5.2;
+println(n);
+n = n/3;
+println(n);
 
-let hola:string = "hola";
+let s:string = 'hola';
+println(s);
+s = s + ' como';
+println(s);
+s = s - 'o';
+println(s);
+s = s * 'ooo oo';
+println(s);
+s = s / 'loa';
+println(s);
 
-
-
-prueba = "comocomocomo \n aaaa" +
-" holaaaa";
-    prueba = 'ho la';
-
-println(prueba);
-println("prueba");
-
-let x: number;
-x = 2 + 4 ;
-
-let y: number;
-
-y = x + 2;
-
-prueba = prueba + 3;
-
-let z:number = 14;
-
-println(z);
-println('hola como estas');
-
-let var: string = "z vale: " + z;
-println(var);
-
-
-
-
-
-
-
-
-
-
+let sn: string = 'hola';
+println(sn);
+sn = sn + 12;
+println(sn);
+sn = sn - 4;
+println(sn);
+sn = sn * 3;
+println(sn);
+sn = sn / 5;
+println(sn);

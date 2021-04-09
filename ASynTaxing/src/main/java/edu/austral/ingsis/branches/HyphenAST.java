@@ -41,7 +41,7 @@ public class HyphenAST implements ASTBranch {
   @Override
   public ContextBuilder executeTree(ContextBuilder context) {
     int leftType = TypeAnalyzer.getTreeType(leftChild, context);
-    int rightType = TypeAnalyzer.getTreeType(leftChild, context);
+    int rightType = TypeAnalyzer.getTreeType(rightChild, context);
     String left = leftChild.executeTree(context).getToAddValue();
     String right = rightChild.executeTree(context).getToAddValue();
     if (leftType <= KeyWord.NUMBER.getOrdinal() && rightType <= KeyWord.NUMBER.getOrdinal())
@@ -55,7 +55,7 @@ public class HyphenAST implements ASTBranch {
     if (rightType <= KeyWord.NUMBER.getOrdinal()) {
       int rightInt = (int) Double.parseDouble(right);
       if (rightInt > left.length()) return context.setToAddValue("");
-      return context.setToAddValue(right.substring(0, left.length() - rightInt));
+      return context.setToAddValue(left.substring(0, left.length() - rightInt));
     }
     return context.setToAddValue(left.replaceAll(right, ""));
   }

@@ -4,6 +4,11 @@ public class TypeAnalyzer {
 
   public static int getTreeType(AST ast, ContextBuilder contextBuilder) {
     int ordinal;
+    if (ast.isLeaf()) {
+      return ast.getToken().getType().getOrdinal() > KeyWord.STRING.getOrdinal()
+                      ? contextBuilder.getVariableType(ast.getToken().getValue()).getOrdinal()
+                      : ast.getToken().getType().getOrdinal();
+    }
     Token leftToken = ast.getLeftChild().getToken();
     Token rightToken = ast.getRightChild().getToken();
     if (ast.getLeftChild().isLeaf() && ast.getRightChild().isLeaf()) {

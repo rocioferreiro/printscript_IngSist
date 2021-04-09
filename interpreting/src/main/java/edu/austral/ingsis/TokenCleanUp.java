@@ -24,4 +24,12 @@ public class TokenCleanUp {
     }
     return -1;
   }
+
+  public static int getAmountOfSentences(List<Token> tokens) {
+    int counter = 0;
+    for (Token token : tokens) {
+      if (token.getType().equals(Operator.SEMICOLONS)) counter++;
+    }
+    return counter;
+  }
 }

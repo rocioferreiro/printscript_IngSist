@@ -41,7 +41,7 @@ public class AsteriskAST implements ASTBranch {
   @Override
   public ContextBuilder executeTree(ContextBuilder context) {
     int leftType = TypeAnalyzer.getTreeType(leftChild, context);
-    int rightType = TypeAnalyzer.getTreeType(leftChild, context);
+    int rightType = TypeAnalyzer.getTreeType(rightChild, context);
     String left = leftChild.executeTree(context).getToAddValue();
     String right = rightChild.executeTree(context).getToAddValue();
     if (leftType <= KeyWord.NUMBER.getOrdinal() && rightType <= KeyWord.NUMBER.getOrdinal())
@@ -49,13 +49,11 @@ public class AsteriskAST implements ASTBranch {
           String.valueOf(Double.parseDouble(left) * Double.parseDouble(right)));
     if (leftType <= KeyWord.NUMBER.getOrdinal()) {
       int leftInt = (int) Double.parseDouble(left);
-      if (leftInt > right.length()) return context.setToAddValue("");
       return context.setToAddValue(right.repeat(leftInt));
     }
     if (rightType <= KeyWord.NUMBER.getOrdinal()) {
       int rightInt = (int) Double.parseDouble(right);
-      if (rightInt > left.length()) return context.setToAddValue("");
-      return context.setToAddValue(right.repeat(rightInt));
+      return context.setToAddValue(left.repeat(rightInt));
     }
     return context.setToAddValue(mergeStrings(left, right));
   }
