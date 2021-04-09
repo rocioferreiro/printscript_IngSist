@@ -67,10 +67,7 @@ public enum Operator implements TokenType {
       if (!match) acc += ch;
     }
     if (!acc.isEmpty() && finalList.size() > 0)
-      finalList.add(
-          new ProvisionalToken(
-              acc,
-              finalList.get(finalList.size() - 1).getPosition().incrementColumn(acc.length())));
+      finalList.add(new ProvisionalToken(acc, finalList.get(finalList.size() - 1).getPosition().incrementColumn(finalList.get(finalList.size() - 1).getValue().length())));
     return finalList.isEmpty() ? List.of(new ProvisionalToken(string, initialPosition)) : finalList;
   }
 }

@@ -46,7 +46,6 @@ public class PlusAST implements ASTBranch {
       return context.setToAddValue(left + right);
     double leftInt = Double.parseDouble(left);
     double rightInt = Double.parseDouble(right);
-    // TODO puede causar problemas
     return context.setToAddValue(String.valueOf(leftInt + rightInt));
   }
 }

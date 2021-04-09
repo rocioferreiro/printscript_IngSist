@@ -1,19 +1,25 @@
-//plugins {
-//    id 'jacoco'
-//    id 'java'
-//}
-//
-//test {
-//    finalizedBy jacocoTestReport // report is always generated after tests run
-//}
-//jacocoTestReport {
-//    dependsOn test // tests are required to run before generating the report
-//    reports {
-//        xml.enabled false
-//        csv.enabled false
-//        html.destination file("${buildDir}/jacocoHtml")
-//    }
-//}
-//jacoco {
-//    toolVersion = "0.8.6"
-//}
+plugins {
+    id 'jacoco'
+    id 'java'
+}
+
+dependencies {
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.4'
+    implementation 'org.junit.jupiter:junit-jupiter:5.4.2'
+}
+
+test {
+    useJUnitPlatform()
+    finalizedBy jacocoTestReport // report is always generated after tests run
+}
+jacocoTestReport {
+    dependsOn test // tests are required to run before generating the report
+    reports {
+        xml.enabled false
+        csv.enabled false
+        html.destination file("${buildDir}/jacocoHtml")
+    }
+}
+jacoco {
+    toolVersion = "0.8.6"
+}
