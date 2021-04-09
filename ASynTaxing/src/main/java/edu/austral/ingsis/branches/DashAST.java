@@ -48,8 +48,7 @@ public class DashAST implements ASTBranch {
       double rightInt = Double.parseDouble(right);
       if (rightInt == 0)
         throw new InvalidCodeException("Division by zero /0", leftChild.getToken().getPosition());
-      return context.setToAddValue(
-          String.valueOf(Double.parseDouble(left) / rightInt));
+      return context.setToAddValue(String.valueOf(Double.parseDouble(left) / rightInt));
     }
     if (leftType <= KeyWord.NUMBER.getOrdinal()) {
       int leftInt = (int) Double.parseDouble(left);
@@ -67,7 +66,7 @@ public class DashAST implements ASTBranch {
     String aux = string;
     for (int i = 0; i < string.length() - number; i += number) {
       result += string.substring(i, i + number) + " ";
-      aux = aux.substring(i+number);
+      aux = aux.substring(i + number);
     }
     return result + aux;
   }

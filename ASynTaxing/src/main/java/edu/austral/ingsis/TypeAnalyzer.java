@@ -6,8 +6,8 @@ public class TypeAnalyzer {
     int ordinal;
     if (ast.isLeaf()) {
       return ast.getToken().getType().getOrdinal() > KeyWord.STRING.getOrdinal()
-                      ? contextBuilder.getVariableType(ast.getToken().getValue()).getOrdinal()
-                      : ast.getToken().getType().getOrdinal();
+          ? contextBuilder.getVariableType(ast.getToken().getValue()).getOrdinal()
+          : ast.getToken().getType().getOrdinal();
     }
     Token leftToken = ast.getLeftChild().getToken();
     Token rightToken = ast.getRightChild().getToken();
