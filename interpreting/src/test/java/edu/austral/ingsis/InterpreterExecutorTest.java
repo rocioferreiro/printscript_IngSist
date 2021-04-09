@@ -3,9 +3,7 @@ package edu.austral.ingsis;
 import static org.junit.Assert.assertEquals;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.PrintStream;
-import java.nio.file.Path;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -16,7 +14,8 @@ public class InterpreterExecutorTest {
   private static final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
   private static final PrintStream originalOut = System.out;
   private static final PrintStream originalErr = System.err;
-  private static final Interpreter interpreter = new ConcreteInterpreter(getPath("rules.txt"), new InterpretationExecutionStrategy());
+  private static final Interpreter interpreter =
+      new ConcreteInterpreter(getPath("rules.txt"), new InterpretationExecutionStrategy());
 
   @BeforeAll
   public static void setUpStreams() {
