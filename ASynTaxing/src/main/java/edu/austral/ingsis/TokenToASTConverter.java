@@ -24,6 +24,9 @@ public class TokenToASTConverter {
           put(KeyWord.NUMBER, LiteralAST::new);
           put(KeyWord.N_ASSIGNATION, NumberAssignationAST::new);
           put(KeyWord.S_ASSIGNATION, StringAssignationAST::new);
+          put(KeyWord.B_ASSIGNATION, BooleanAssignationAST::new);
+          put(KeyWord.BOOLEAN, LiteralAST::new);
+          put(KeyWord.C_DECLARATION, EmptyAST::new);
           put(KeyWord.VARIABLE_REF, VariableAST::new);
           put(KeyWord.PRINTLN, PrintAST::new);
         }

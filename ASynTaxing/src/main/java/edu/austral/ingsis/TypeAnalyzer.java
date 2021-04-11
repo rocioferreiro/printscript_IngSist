@@ -2,6 +2,7 @@ package edu.austral.ingsis;
 
 public class TypeAnalyzer {
 
+  //TODO arreglar boolean ops
   public static int getTreeType(AST ast, ContextBuilder contextBuilder) {
     int ordinal;
     if (ast.isLeaf()) {

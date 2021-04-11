@@ -47,6 +47,9 @@ public class AssignationAST implements ASTBranch {
   @Override
   public ContextBuilder executeTree(ContextBuilder context) {
     context = leftChild.executeTree(context);
+    if (leftChild.isLeaf() && context.toAddIsConst()) {
+      throw new InvalidCodeException("You can't re-assign a constant", leftChild.getToken().getPosition());
+    }
     return rightChild.executeTree(context);
   }
 }

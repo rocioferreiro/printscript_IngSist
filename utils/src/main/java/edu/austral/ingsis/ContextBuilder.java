@@ -30,23 +30,32 @@ public class ContextBuilder {
         && (!add.getValue().isEmpty() || !add.getType().isEmpty() || !add.getName().isEmpty());
   }
 
+  public boolean toAddIsConst() {
+    return toAdd.build().isConst();
+  }
+
   public ContextBuilder addVariable(VariableBuilder toAdd) {
     this.toAdd = toAdd;
     return this;
   }
 
   public ContextBuilder setToAddName(String name) {
-    toAdd.setName(name);
+    toAdd.withName(name);
     return this;
   }
 
   public ContextBuilder setToAddType(VariableType type) {
-    toAdd.setType(type);
+    toAdd.withType(type);
     return this;
   }
 
   public ContextBuilder setToAddValue(String value) {
-    toAdd.setValue(value);
+    toAdd.withValue(value);
+    return this;
+  }
+
+  public ContextBuilder setToAddIsConst(boolean value) {
+    toAdd.asConst(value);
     return this;
   }
 
@@ -61,5 +70,9 @@ public class ContextBuilder {
 
   public String getVariableValue(String name) {
     return context.getVariableValue(name);
+  }
+
+  public Variable getVariable(String name) {
+    return context.getVariable(name);
   }
 }

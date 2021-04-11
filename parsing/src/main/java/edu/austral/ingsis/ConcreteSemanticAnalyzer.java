@@ -1,5 +1,7 @@
 package edu.austral.ingsis;
 
+import edu.austral.ingsis.rules.RuleType;
+
 public class ConcreteSemanticAnalyzer implements SemanticAnalyzer {
 
   private final Context context;
@@ -19,6 +21,7 @@ public class ConcreteSemanticAnalyzer implements SemanticAnalyzer {
 
   private void updateContext(ASTWrapper sentence) {
     Variable variable = sentence.getType().getCommand().execute(sentence.getTree(), context);
+    variable.setIsConst(sentence.getType().equals(RuleType.CONST));
     if (!variable.getName().isEmpty()) {
       if (context.checkVariable(variable)) {
         if (!context.checkType(variable))

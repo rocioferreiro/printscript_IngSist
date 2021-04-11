@@ -2,9 +2,9 @@ package edu.austral.ingsis.leaves;
 
 import edu.austral.ingsis.ContextBuilder;
 import edu.austral.ingsis.Token;
-import edu.austral.ingsis.VariableBuilder;
+import edu.austral.ingsis.VariableType;
 
-public class LiteralAST implements ASTLeaf {
+public class BooleanAssignationAST implements ASTLeaf {
 
   private Token token;
 
@@ -20,7 +20,6 @@ public class LiteralAST implements ASTLeaf {
 
   @Override
   public ContextBuilder executeTree(ContextBuilder context) {
-    if (context.toAddExists()) return context.setToAddValue(token.getValue());
-    return context.addVariable(new VariableBuilder().withValue(token.getValue()));
+    return context.setToAddType(new VariableType(token.getValue(), token.getType().getOrdinal()));
   }
 }

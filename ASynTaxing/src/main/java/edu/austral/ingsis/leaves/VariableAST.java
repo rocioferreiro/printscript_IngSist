@@ -2,6 +2,7 @@ package edu.austral.ingsis.leaves;
 
 import edu.austral.ingsis.ContextBuilder;
 import edu.austral.ingsis.Token;
+import edu.austral.ingsis.Variable;
 import edu.austral.ingsis.VariableBuilder;
 
 public class VariableAST implements ASTLeaf {
@@ -20,8 +21,8 @@ public class VariableAST implements ASTLeaf {
 
   @Override
   public ContextBuilder executeTree(ContextBuilder context) {
-    String value = context.getVariableValue(token.getValue());
-    if (context.toAddExists()) return context.setToAddValue(value);
-    return context.addVariable(new VariableBuilder().setName(token.getValue()).setValue(value));
+    Variable var = context.getVariable(token.getValue());
+    if (context.toAddExists()) return context.setToAddValue(var.getValue()).setToAddIsConst(var.isConst());
+    return context.addVariable(new VariableBuilder().withName(token.getValue()).withValue(var.getValue())).setToAddIsConst(var.isConst());
   }
 }

@@ -20,6 +20,11 @@ public interface Variable {
         }
 
         @Override
+        public boolean isConst() {
+          return false;
+        }
+
+        @Override
         public void setName(String name) {}
 
         @Override
@@ -27,6 +32,9 @@ public interface Variable {
 
         @Override
         public void setValue(String value) {}
+
+        @Override
+        public void setIsConst(boolean isConst) {}
       };
 
   String getName();
@@ -35,9 +43,13 @@ public interface Variable {
 
   String getValue();
 
+  boolean isConst();
+
   void setName(String name);
 
   void setType(VariableType type);
 
   void setValue(String value);
+
+  void setIsConst(boolean isConst);
 }

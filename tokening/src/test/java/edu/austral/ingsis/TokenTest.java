@@ -105,6 +105,21 @@ public class TokenTest {
   }
 
   @Test
+  public void findTokenOfOperatorWithoutOperators() {
+    String s = "let x number";
+    Position position1 = new Position(1, 1);
+    List<Token> expected = new ArrayList<>();
+    expected.add(new ProvisionalToken("let x number", position1));
+    List<Token> actual = Operator.findTokens(s, position1);
+    for (int i = 0; i < actual.size(); i++) {
+      Assertions.assertEquals(expected.get(i).getValue(), actual.get(i).getValue());
+      Assertions.assertEquals(expected.get(i).getType(), actual.get(i).getType());
+      Assertions.assertEquals(expected.get(i).getPosition().getRow(), actual.get(i).getPosition().getRow());
+      Assertions.assertEquals(expected.get(i).getPosition().getColumn(), actual.get(i).getPosition().getColumn());
+    }
+  }
+
+  @Test
   public void findTokenOfOperatorEndingWithKeyToken() {
     String s = "let x = number";
     Position position1 = new Position(1, 1);
@@ -114,6 +129,21 @@ public class TokenTest {
     expected.add(new ProvisionalToken("let x ", position1));
     expected.add(new ConcreteToken(Operator.EQUAL, "=", position2));
     expected.add(new ProvisionalToken(" number", position3));
+    List<Token> actual = Operator.findTokens(s, position1);
+    for (int i = 0; i < actual.size(); i++) {
+      Assertions.assertEquals(expected.get(i).getValue(), actual.get(i).getValue());
+      Assertions.assertEquals(expected.get(i).getType(), actual.get(i).getType());
+      Assertions.assertEquals(expected.get(i).getPosition().getRow(), actual.get(i).getPosition().getRow());
+      Assertions.assertEquals(expected.get(i).getPosition().getColumn(), actual.get(i).getPosition().getColumn());
+    }
+  }
+
+  @Test
+  public void findTokenOfOperatorOfEmptyString() {
+    String s = "";
+    Position position1 = new Position(1, 1);
+    List<Token> expected = new ArrayList<>();
+    expected.add(new ProvisionalToken("", position1));
     List<Token> actual = Operator.findTokens(s, position1);
     for (int i = 0; i < actual.size(); i++) {
       Assertions.assertEquals(expected.get(i).getValue(), actual.get(i).getValue());

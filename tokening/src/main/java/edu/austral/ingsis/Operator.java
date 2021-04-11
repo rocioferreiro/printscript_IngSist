@@ -8,13 +8,18 @@ import java.util.concurrent.atomic.AtomicInteger;
 public enum Operator implements TokenType {
   EQUAL("=", "EQUAL"),
   T_ASSIGNATION(":", "DECLARE_TYPE"),
+  EQUAL_EQUAL("\\==", "COMPARATOR"),
+  GREATER_EQUAL("\\>=", "COMPARATOR"),
+  MINOR_EQUAL("\\<=", "COMPARATOR"),
+  GREATER("\\>", "COMPARATOR"),
+  MINOR("\\<", "COMPARATOR"),
   PLUS("\\+", "OPERATOR"),
   HYPHEN("-", "OPERATOR"),
-  ASTERISK("\\*", "OPERATOR"),
   DASH("\\/", "OPERATOR"),
-  SEMICOLONS(";", "SEPARATOR"),
+  ASTERISK("\\*", "OPERATOR"),
   L_PARENTHESIS("\\(", "L_PARENTHESIS"),
-  R_PARENTHESIS("\\)", "R_PARENTHESIS");
+  R_PARENTHESIS("\\)", "R_PARENTHESIS"),
+  SEMICOLONS(";", "SEPARATOR");
 
   private final String regex;
   private final String category;
@@ -46,28 +51,32 @@ public enum Operator implements TokenType {
 
   public static List<Token> findTokens(String string, Position initialPosition) {
     List<Token> finalList = new ArrayList<>();
-    String acc = "";
-    AtomicInteger column = new AtomicInteger();
-    for (Character c : string.toCharArray()) {
-      String ch = Character.toString(c);
-      boolean match = false;
-      for (Operator key : values()) {
-        if (ch.matches(key.getRegex())) {
-          if (!acc.isEmpty())
-            finalList.add(
-                new ProvisionalToken(
-                    acc, initialPosition.incrementColumn(column.getAndAdd(acc.length()))));
-          finalList.add(
-              new ConcreteToken(
-                  key, ch, initialPosition.incrementColumn(column.getAndIncrement())));
-          acc = "";
-          match = true;
-        }
+    if (string.isEmpty()) return finalList;
+    int i = 0;
+    boolean match = false;
+    for (Operator key : values()) {
+      if(string.matches(".*" + key.getRegex() + ".*")) {
+        match = true;
+        String[] split = split(string, key.getRegex());
+        finalList.addAll(findTokens(split[0], initialPosition.incrementColumn(i)));
+        i += split[0].length();
+        finalList.add(new ConcreteToken(key, key.getRegex().replace("\\", ""), initialPosition.incrementColumn(i)));
+        i += key.getRegex().length();
+        finalList.addAll(findTokens(split[1], initialPosition.incrementColumn(i)));
+        break;
       }
-      if (!match) acc += ch;
     }
-    if (!acc.isEmpty() && finalList.size() > 0)
-      finalList.add(new ProvisionalToken(acc, finalList.get(finalList.size() - 1).getPosition().incrementColumn(finalList.get(finalList.size() - 1).getValue().length())));
-    return finalList.isEmpty() ? List.of(new ProvisionalToken(string, initialPosition)) : finalList;
+    if (!match) {
+      finalList.add(new ProvisionalToken(string, initialPosition));
+    }
+    return finalList;
+  }
+
+  private static String[] split(String string, String regex) {
+    regex = regex.replace("\\", "");
+    int index = string.indexOf(regex);
+    String s1 = string.substring(0, index);
+    String s2 = index == string.length()-1 ? "" : string.substring(index+regex.length());
+    return new String[]{s1, s2};
   }
 }
