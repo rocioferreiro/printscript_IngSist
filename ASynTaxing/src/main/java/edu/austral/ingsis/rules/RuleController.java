@@ -9,10 +9,9 @@ public class RuleController {
       Token left = ast.getLeftChild().getToken();
       Token right = ast.getRightChild().getToken();
       return new VariableBuilder()
-              .withName(left.getValue())
-              .withType(right.getValue(), right.getType().getOrdinal())
-              .build();
-
+          .withName(left.getValue())
+          .withType(right.getValue(), right.getType().getOrdinal())
+          .build();
     }
     if (ast.getToken().getType().equals(Operator.EQUAL)) {
       return declarationCommand(ast.getLeftChild(), context);
@@ -21,7 +20,8 @@ public class RuleController {
   }
 
   public static Variable assignationCommand(AST ast, Context context) {
-    Variable left = new VariableBuilder().withName(ast.getLeftChild().getToken().getValue()).build();
+    Variable left =
+        new VariableBuilder().withName(ast.getLeftChild().getToken().getValue()).build();
     Variable right = operationCommand(ast.getRightChild(), context);
     if (!context.checkVariable(left))
       throw new InvalidCodeException(
@@ -39,7 +39,8 @@ public class RuleController {
       Variable after = operationCommand(ast.getRightChild(), context);
       if (before.getType().getName().equals("string") || after.getType().getName().equals("string"))
         throw new InvalidCodeException("Can't compare strings", token.getPosition());
-      VariableType type = new VariableType(KeyWord.B_ASSIGNATION.getRegex(), KeyWord.B_ASSIGNATION.getOrdinal());
+      VariableType type =
+          new VariableType(KeyWord.B_ASSIGNATION.getRegex(), KeyWord.B_ASSIGNATION.getOrdinal());
       return new VariableBuilder().withType(type).build();
     }
     // CONTAINS OPERATOR
@@ -55,17 +56,17 @@ public class RuleController {
     // VALUE
     if (token.getType().getCategory().equals(KeyWord.STRING.getCategory())) {
       return new VariableBuilder()
-              .withType(token.getType().getName(), token.getType().getOrdinal())
-              .build();
+          .withType(token.getType().getName(), token.getType().getOrdinal())
+          .build();
     }
     // VARIABLE
     Variable aux = new VariableBuilder().withName(token.getValue()).build();
     if (!context.checkVariable(aux))
       throw new InvalidCodeException("Non declared variable!", token.getPosition());
     return new VariableBuilder()
-            .withName(aux.getName())
-            .withType(context.getVariableType(aux.getName()))
-            .build();
+        .withName(aux.getName())
+        .withType(context.getVariableType(aux.getName()))
+        .build();
   }
 
   public static Variable printCommand(AST ast, Context context) {

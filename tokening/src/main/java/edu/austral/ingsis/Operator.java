@@ -56,12 +56,14 @@ public enum Operator implements TokenType {
     int i = 0;
     boolean match = false;
     for (Operator key : values()) {
-      if(string.matches(".*" + key.getRegex() + ".*")) {
+      if (string.matches(".*" + key.getRegex() + ".*")) {
         match = true;
         String[] split = split(string, key.getRegex());
         finalList.addAll(findTokens(split[0], initialPosition.incrementColumn(i)));
         i += split[0].length();
-        finalList.add(new ConcreteToken(key, key.getRegex().replace("\\", ""), initialPosition.incrementColumn(i)));
+        finalList.add(
+            new ConcreteToken(
+                key, key.getRegex().replace("\\", ""), initialPosition.incrementColumn(i)));
         i += key.getRegex().length();
         finalList.addAll(findTokens(split[1], initialPosition.incrementColumn(i)));
         break;
@@ -77,7 +79,7 @@ public enum Operator implements TokenType {
     regex = regex.replace("\\", "");
     int index = string.indexOf(regex);
     String s1 = string.substring(0, index);
-    String s2 = index == string.length()-1 ? "" : string.substring(index+regex.length());
-    return new String[]{s1, s2};
+    String s2 = index == string.length() - 1 ? "" : string.substring(index + regex.length());
+    return new String[] {s1, s2};
   }
 }

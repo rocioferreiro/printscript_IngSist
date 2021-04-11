@@ -45,6 +45,7 @@ public class GreaterAST implements ASTBranch {
   public ContextBuilder executeTree(ContextBuilder context) {
     String left = leftChild.executeTree(context).getToAddValue();
     String right = rightChild.executeTree(context).getToAddValue();
-    return context.setToAddValue(String.valueOf(Integer.valueOf(left).compareTo(Integer.valueOf(right)) > 0));
+    return context.setToAddValue(
+        String.valueOf(Integer.valueOf(left).compareTo(Integer.valueOf(right)) > 0));
   }
 }
