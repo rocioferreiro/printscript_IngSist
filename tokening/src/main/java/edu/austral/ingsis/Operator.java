@@ -3,22 +3,23 @@ package edu.austral.ingsis;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public enum Operator implements TokenType {
-  EQUAL("=", "EQUAL"),
   T_ASSIGNATION(":", "DECLARE_TYPE"),
-  EQUAL_EQUAL("\\==", "COMPARATOR"),
-  GREATER_EQUAL("\\>=", "COMPARATOR"),
-  MINOR_EQUAL("\\<=", "COMPARATOR"),
-  GREATER("\\>", "COMPARATOR"),
-  MINOR("\\<", "COMPARATOR"),
+  EQUAL_EQUAL("==", "COMPARATOR"),
+  GREATER_EQUAL(">=", "COMPARATOR"),
+  MINOR_EQUAL("<=", "COMPARATOR"),
+  EQUAL("=", "EQUAL"),
+  GREATER(">", "COMPARATOR"),
+  MINOR("<", "COMPARATOR"),
   PLUS("\\+", "OPERATOR"),
   HYPHEN("-", "OPERATOR"),
   DASH("\\/", "OPERATOR"),
   ASTERISK("\\*", "OPERATOR"),
   L_PARENTHESIS("\\(", "L_PARENTHESIS"),
   R_PARENTHESIS("\\)", "R_PARENTHESIS"),
+  L_BRACKET("\\{", "L_BRACKET"),
+  R_BRACKET("\\}", "R_BRACKET"),
   SEMICOLONS(";", "SEPARATOR");
 
   private final String regex;
