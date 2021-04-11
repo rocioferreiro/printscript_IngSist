@@ -117,8 +117,10 @@ public class TokenTest {
     for (int i = 0; i < actual.size(); i++) {
       Assertions.assertEquals(expected.get(i).getValue(), actual.get(i).getValue());
       Assertions.assertEquals(expected.get(i).getType(), actual.get(i).getType());
-      Assertions.assertEquals(expected.get(i).getPosition().getRow(), actual.get(i).getPosition().getRow());
-      Assertions.assertEquals(expected.get(i).getPosition().getColumn(), actual.get(i).getPosition().getColumn());
+      Assertions.assertEquals(
+          expected.get(i).getPosition().getRow(), actual.get(i).getPosition().getRow());
+      Assertions.assertEquals(
+          expected.get(i).getPosition().getColumn(), actual.get(i).getPosition().getColumn());
     }
   }
 
@@ -153,8 +155,10 @@ public class TokenTest {
     for (int i = 0; i < actual.size(); i++) {
       Assertions.assertEquals(expected.get(i).getValue(), actual.get(i).getValue());
       Assertions.assertEquals(expected.get(i).getType(), actual.get(i).getType());
-      Assertions.assertEquals(expected.get(i).getPosition().getRow(), actual.get(i).getPosition().getRow());
-      Assertions.assertEquals(expected.get(i).getPosition().getColumn(), actual.get(i).getPosition().getColumn());
+      Assertions.assertEquals(
+          expected.get(i).getPosition().getRow(), actual.get(i).getPosition().getRow());
+      Assertions.assertEquals(
+          expected.get(i).getPosition().getColumn(), actual.get(i).getPosition().getColumn());
     }
   }
 }

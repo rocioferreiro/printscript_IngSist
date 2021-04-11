@@ -13,11 +13,11 @@ public class TypeAnalyzer {
     Token rightToken = ast.getRightChild().getToken();
     if (ast.getLeftChild().isLeaf() && ast.getRightChild().isLeaf()) {
       ordinal = Integer.max(leftToken.getType().getOrdinal(), rightToken.getType().getOrdinal());
-      //TODO creo que no necesito esto, siempre es boolean
+      // TODO creo que no necesito esto, siempre es boolean
       if (ordinal > KeyWord.STRING.getOrdinal() && ordinal < KeyWord.PRINTLN.getOrdinal()) {
         return KeyWord.BOOLEAN.getOrdinal();
       }
-      if (ordinal > KeyWord.BOOLEAN.getOrdinal()) { //si hay una variable
+      if (ordinal > KeyWord.BOOLEAN.getOrdinal()) { // si hay una variable
         int ordinal1 =
             leftToken.getType().getOrdinal() > KeyWord.BOOLEAN.getOrdinal()
                 ? contextBuilder.getVariableType(leftToken.getValue()).getOrdinal()

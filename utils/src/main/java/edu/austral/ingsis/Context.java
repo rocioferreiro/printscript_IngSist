@@ -73,8 +73,7 @@ public class Context {
 
   public Variable getVariable(String name) {
     for (Variable v : variables) {
-      if (v.getName().equals(name))
-        return v;
+      if (v.getName().equals(name)) return v;
     }
     return new ConcreteVariable();
   }
