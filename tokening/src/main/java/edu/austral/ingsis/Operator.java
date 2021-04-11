@@ -18,8 +18,8 @@ public enum Operator implements TokenType {
   ASTERISK("\\*", "OPERATOR"),
   L_PARENTHESIS("\\(", "L_PARENTHESIS"),
   R_PARENTHESIS("\\)", "R_PARENTHESIS"),
-  L_BRACKET("\\{", "L_BRACKET"),
-  R_BRACKET("\\}", "R_BRACKET"),
+  L_KEY("\\{", "L_KEY"),
+  R_KEY("\\}", "R_KEY"),
   SEMICOLONS(";", "SEPARATOR");
 
   private final String regex;
