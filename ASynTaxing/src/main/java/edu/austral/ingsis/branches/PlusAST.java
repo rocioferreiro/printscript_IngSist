@@ -12,8 +12,7 @@ public class PlusAST implements ASTBranch {
     this.token = token;
   }
 
-  public PlusAST() {
-  }
+  public PlusAST() {}
 
   @Override
   public Token getToken() {

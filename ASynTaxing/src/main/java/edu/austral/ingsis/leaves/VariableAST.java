@@ -13,8 +13,7 @@ public class VariableAST implements ASTLeaf {
     this.token = token;
   }
 
-  public VariableAST() {
-  }
+  public VariableAST() {}
 
   @Override
   public Token getToken() {

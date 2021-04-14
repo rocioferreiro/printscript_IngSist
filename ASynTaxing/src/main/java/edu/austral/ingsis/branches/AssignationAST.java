@@ -12,8 +12,7 @@ public class AssignationAST implements ASTBranch {
     this.token = token;
   }
 
-  public AssignationAST() {
-  }
+  public AssignationAST() {}
 
   @Override
   public Token getToken() {

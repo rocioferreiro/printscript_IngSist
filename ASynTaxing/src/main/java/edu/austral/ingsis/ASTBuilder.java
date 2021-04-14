@@ -2,8 +2,7 @@ package edu.austral.ingsis;
 
 public class ASTBuilder {
 
-    private AST ast;
+  private AST ast;
 
-    public ASTBuilder() {
-    }
+  public ASTBuilder() {}
 }
