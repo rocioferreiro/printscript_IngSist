@@ -13,6 +13,7 @@ public enum KeyWord implements TokenType {
   BOOLEAN("true|false", "VALUE"),
   PRINTLN("println", "PRINTLN"),
   IF_STATEMENT("if", "IF"),
+  ELSE_STATEMENT("else", "ELSE"),
   VARIABLE_REF("[a-zA-Z0-9]+([_a-zA-Z0-9]*)", "VARIABLE");
 
   private final String regex;
