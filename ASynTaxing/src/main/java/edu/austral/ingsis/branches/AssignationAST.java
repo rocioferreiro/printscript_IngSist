@@ -8,6 +8,13 @@ public class AssignationAST implements ASTBranch {
   private AST leftChild = new EmptyAST();
   private AST rightChild = new EmptyAST();
 
+  public AssignationAST(Token token) {
+    this.token = token;
+  }
+
+  public AssignationAST() {
+  }
+
   @Override
   public Token getToken() {
     return token;

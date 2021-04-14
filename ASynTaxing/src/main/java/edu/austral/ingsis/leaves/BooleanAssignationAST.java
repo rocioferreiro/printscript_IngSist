@@ -8,6 +8,10 @@ public class BooleanAssignationAST implements ASTLeaf {
 
   private Token token;
 
+  public BooleanAssignationAST(Token token) {
+    this.token = token;
+  }
+
   @Override
   public Token getToken() {
     return token;

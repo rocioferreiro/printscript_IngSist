@@ -39,8 +39,6 @@ public class TokenToASTConverter {
       };
 
   public static AST convert(Token token) {
-    AST tree = table.get(token.getType()).create();
-    tree.setToken(token);
-    return tree;
+    return table.get(token.getType()).create(token);
   }
 }

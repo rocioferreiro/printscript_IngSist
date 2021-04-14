@@ -11,6 +11,10 @@ public class GreaterAST implements ASTBranch {
   private AST leftChild = new EmptyAST();
   private AST rightChild = new EmptyAST();
 
+  public GreaterAST(Token token) {
+    this.token = token;
+  }
+
   @Override
   public Token getToken() {
     return token;

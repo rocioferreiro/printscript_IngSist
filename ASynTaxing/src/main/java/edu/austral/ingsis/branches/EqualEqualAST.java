@@ -11,6 +11,10 @@ public class EqualEqualAST implements ASTBranch {
   private AST leftChild = new EmptyAST();
   private AST rightChild = new EmptyAST();
 
+  public EqualEqualAST(Token token) {
+    this.token = token;
+  }
+
   @Override
   public Token getToken() {
     return token;

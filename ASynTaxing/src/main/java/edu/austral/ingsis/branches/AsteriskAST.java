@@ -8,6 +8,10 @@ public class AsteriskAST implements ASTBranch {
   private AST leftChild = new EmptyAST();
   private AST rightChild = new EmptyAST();
 
+  public AsteriskAST(Token token) {
+    this.token = token;
+  }
+
   @Override
   public Token getToken() {
     return token;

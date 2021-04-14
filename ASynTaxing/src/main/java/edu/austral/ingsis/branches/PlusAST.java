@@ -8,6 +8,13 @@ public class PlusAST implements ASTBranch {
   private AST leftChild = new EmptyAST();
   private AST rightChild = new EmptyAST();
 
+  public PlusAST(Token token) {
+    this.token = token;
+  }
+
+  public PlusAST() {
+  }
+
   @Override
   public Token getToken() {
     return token;

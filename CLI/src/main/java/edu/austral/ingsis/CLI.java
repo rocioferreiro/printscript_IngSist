@@ -65,6 +65,7 @@ public class CLI {
     Scanner scanner = new Scanner(System.in);
 
     while (!line.equals("exit")) {
+      System.out.print("~ ");
       line = scanner.nextLine();
       if (!line.isEmpty() && !line.equals("exit")) {
         try {

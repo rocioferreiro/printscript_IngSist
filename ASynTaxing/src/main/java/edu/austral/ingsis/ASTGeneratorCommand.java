@@ -2,5 +2,5 @@ package edu.austral.ingsis;
 
 public interface ASTGeneratorCommand {
 
-  AST create();
+  AST create(Token token);
 }

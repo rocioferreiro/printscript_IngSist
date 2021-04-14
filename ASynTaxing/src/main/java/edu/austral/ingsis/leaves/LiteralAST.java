@@ -8,6 +8,13 @@ public class LiteralAST implements ASTLeaf {
 
   private Token token;
 
+  public LiteralAST(Token token) {
+    this.token = token;
+  }
+
+  public LiteralAST() {
+  }
+
   @Override
   public Token getToken() {
     return token;

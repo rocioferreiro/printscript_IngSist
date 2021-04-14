@@ -8,6 +8,10 @@ public class DeclarationAST implements ASTBranch {
   private AST leftChild = new EmptyAST();
   private AST rightChild = new EmptyAST();
 
+  public DeclarationAST(Token token) {
+    this.token = token;
+  }
+
   @Override
   public Token getToken() {
     return token;

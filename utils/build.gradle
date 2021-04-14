@@ -7,6 +7,11 @@ plugins {
 group = 'edu.austral.ingsis'
 version = '1.0.1'
 
+dependencies {
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.4'
+    implementation 'org.junit.jupiter:junit-jupiter:5.4.2'
+}
+
 test {
     useJUnitPlatform()
     finalizedBy jacocoTestReport

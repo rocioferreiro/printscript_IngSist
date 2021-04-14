@@ -11,6 +11,10 @@ public class MinorEqualAST implements ASTBranch {
   private AST leftChild = new EmptyAST();
   private AST rightChild = new EmptyAST();
 
+  public MinorEqualAST(Token token) {
+    this.token = token;
+  }
+
   @Override
   public Token getToken() {
     return token;
@@ -46,7 +50,7 @@ public class MinorEqualAST implements ASTBranch {
     String left = leftChild.executeTree(context).getToAddValue();
     String right = rightChild.executeTree(context).getToAddValue();
     int compare = Integer.valueOf(left).compareTo(Integer.valueOf(right));
-    if (compare < 0 || compare == 0) return context.setToAddValue("true");
+    if (compare <= 0) return context.setToAddValue("true");
     else return context.setToAddValue("false");
   }
 }

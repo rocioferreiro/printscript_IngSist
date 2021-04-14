@@ -2,6 +2,12 @@ package edu.austral.ingsis;
 
 public class EmptyAST implements AST {
 
+  public EmptyAST(Token token) {
+  }
+
+  public EmptyAST() {
+  }
+
   @Override
   public Token getToken() {
     return null;

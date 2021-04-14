@@ -8,6 +8,10 @@ public class NumberAssignationAST implements ASTLeaf {
 
   private Token token;
 
+  public NumberAssignationAST(Token token) {
+    this.token = token;
+  }
+
   @Override
   public Token getToken() {
     return token;

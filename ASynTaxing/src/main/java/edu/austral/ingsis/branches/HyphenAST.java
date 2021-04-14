@@ -8,6 +8,10 @@ public class HyphenAST implements ASTBranch {
   private AST leftChild = new EmptyAST();
   private AST rightChild = new EmptyAST();
 
+  public HyphenAST(Token token) {
+    this.token = token;
+  }
+
   @Override
   public Token getToken() {
     return token;
