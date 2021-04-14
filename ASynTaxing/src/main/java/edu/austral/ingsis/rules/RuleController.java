@@ -83,9 +83,6 @@ public class RuleController {
   }
 
   public static Variable ifCommand(AST ast, Context context) {
-    Token right = ast.getRightChild().getToken();
-    if (right.getType().getCategory().equals(KeyWord.STRING.getCategory())) { // VALUE
-      return new VariableBuilder().withType(right.getValue(), right.getType().getOrdinal()).build();
-    } else return containsVariable(context, right);
+    return null;
   }
 }
