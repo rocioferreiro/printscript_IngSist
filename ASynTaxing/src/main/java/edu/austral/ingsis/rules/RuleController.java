@@ -33,9 +33,12 @@ public class RuleController {
 
   public static Variable operationCommand(AST ast, Context context) {
     Token token = ast.getToken();
-    if (token.getType().getCategory().equals(Operator.EQUAL_EQUAL.getCategory())) return containsComparator(ast, context, token);
-    if (token.getType().getCategory().equals(Operator.PLUS.getCategory())) return containsOperator(ast, context);
-    if (token.getType().getCategory().equals(KeyWord.STRING.getCategory())) return containsValue(token);
+    if (token.getType().getCategory().equals(Operator.EQUAL_EQUAL.getCategory()))
+      return containsComparator(ast, context, token);
+    if (token.getType().getCategory().equals(Operator.PLUS.getCategory()))
+      return containsOperator(ast, context);
+    if (token.getType().getCategory().equals(KeyWord.STRING.getCategory()))
+      return containsValue(token);
     return containsVariable(context, token);
   }
 
@@ -45,7 +48,7 @@ public class RuleController {
     if (before.getType().getName().equals("string") || after.getType().getName().equals("string"))
       throw new InvalidCodeException("Can't compare strings", token.getPosition());
     VariableType type =
-            new VariableType(KeyWord.B_ASSIGNATION.getRegex(), KeyWord.B_ASSIGNATION.getOrdinal());
+        new VariableType(KeyWord.B_ASSIGNATION.getRegex(), KeyWord.B_ASSIGNATION.getOrdinal());
     return new VariableBuilder().withType(type).build();
   }
 
@@ -53,16 +56,16 @@ public class RuleController {
     Variable before = operationCommand(ast.getLeftChild(), context);
     Variable after = operationCommand(ast.getRightChild(), context);
     VariableType type =
-            before.getType().getOrdinal() > after.getType().getOrdinal()
-                    ? before.getType()
-                    : after.getType();
+        before.getType().getOrdinal() > after.getType().getOrdinal()
+            ? before.getType()
+            : after.getType();
     return new VariableBuilder().withType(type).build();
   }
 
   private static Variable containsValue(Token token) {
     return new VariableBuilder()
-            .withType(token.getType().getName(), token.getType().getOrdinal())
-            .build();
+        .withType(token.getType().getName(), token.getType().getOrdinal())
+        .build();
   }
 
   private static Variable containsVariable(Context context, Token token) {
@@ -70,9 +73,9 @@ public class RuleController {
     if (!context.checkVariable(aux))
       throw new InvalidCodeException("Non declared variable!", token.getPosition());
     return new VariableBuilder()
-            .withName(aux.getName())
-            .withType(context.getVariableType(aux.getName()))
-            .build();
+        .withName(aux.getName())
+        .withType(context.getVariableType(aux.getName()))
+        .build();
   }
 
   public static Variable printCommand(AST ast, Context context) {
