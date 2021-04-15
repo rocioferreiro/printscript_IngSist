@@ -44,7 +44,7 @@ public class ConcreteInterpreter implements Interpreter {
   public void interpret(String line) {
     List<Token> tokens = lexer.scan(line);
     tokens = TokenCleanUp.checkLastTokenAndRemove(tokens);
-    if(tokens.get(tokens.size()-1).getType().equals(Operator.R_KEY)){
+    if (tokens.get(tokens.size() - 1).getType().equals(Operator.R_KEY)) {
       interpretCondicional(tokens);
     } else {
       ASTInContext ast = parser.parse(tokens);
@@ -58,9 +58,7 @@ public class ConcreteInterpreter implements Interpreter {
     context.empty();
   }
 
-  private void interpretCondicional(List<Token> tokens){
-
-  }
+  private void interpretCondicional(List<Token> tokens) {}
 
   private void print(int amountOfLines, int actualLine) {
     String ANSI_RESET = "\u001B[0m";

@@ -24,15 +24,13 @@ public interface TokenType {
           return -1;
         }
 
-          @Override
-          public boolean isAble() {
-              return true;
-          }
+        @Override
+        public boolean isAble() {
+          return true;
+        }
 
-          @Override
-          public void setAble(boolean isAble) {
-
-          }
+        @Override
+        public void setAble(boolean isAble) {}
       };
 
   String getRegex();

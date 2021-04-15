@@ -41,7 +41,7 @@ public class Context {
   }
 
   public boolean checkVariable(Variable variable) {
-    if(variables.isEmpty()) return false;
+    if (variables.isEmpty()) return false;
     for (Variable v : variables) {
       if (v.getName().equals(variable.getName())) return true;
     }
@@ -49,9 +49,9 @@ public class Context {
   }
 
   public VariableType getVariableType(String name) {
-    if(variables.isEmpty()) return new VariableType();
+    if (variables.isEmpty()) return new VariableType();
     Variable find = getVariable(name);
-    if(find.getName().equals(name)){
+    if (find.getName().equals(name)) {
       return find.getType();
     } else {
       return subContext.getVariableType(name);
@@ -59,7 +59,7 @@ public class Context {
   }
 
   public boolean checkType(Variable variable) {
-    if(variables.isEmpty()) return false;
+    if (variables.isEmpty()) return false;
     for (Variable v : variables) {
       if (v.getName().equals(variable.getName()))
         return v.getType().getName().equals(variable.getType().getName());
@@ -82,9 +82,9 @@ public class Context {
   }
 
   public String getVariableValue(String name) {
-    if(variables.isEmpty()) return "";
+    if (variables.isEmpty()) return "";
     Variable find = getVariable(name);
-    if(find.getName().equals(name)){
+    if (find.getName().equals(name)) {
       return find.getValue();
     } else {
       return subContext.getVariableValue(name);
@@ -98,7 +98,7 @@ public class Context {
     return new ConcreteVariable();
   }
 
-  public Context getSubContext(){
+  public Context getSubContext() {
     return subContext;
   }
 }

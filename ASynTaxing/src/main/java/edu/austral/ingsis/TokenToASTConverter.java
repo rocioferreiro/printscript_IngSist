@@ -3,7 +3,6 @@ package edu.austral.ingsis;
 import edu.austral.ingsis.branches.*;
 import edu.austral.ingsis.leaves.*;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class TokenToASTConverter {
