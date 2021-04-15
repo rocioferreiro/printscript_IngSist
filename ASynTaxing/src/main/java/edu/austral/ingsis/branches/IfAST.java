@@ -64,7 +64,7 @@ public class IfAST implements AST {
   }
 
   private ContextBuilder executeIf(List<AST> list, ContextBuilder context) {
-    for (AST ast : list){
+    for (AST ast : list) {
       context = ast.executeTree(context);
       context.build();
     }

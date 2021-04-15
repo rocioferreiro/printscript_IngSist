@@ -2,8 +2,6 @@ package edu.austral.ingsis;
 
 import edu.austral.ingsis.rules.RuleType;
 
-import java.util.Optional;
-
 public class ConcreteSemanticAnalyzer implements SemanticAnalyzer {
 
   private Context context;
@@ -24,7 +22,8 @@ public class ConcreteSemanticAnalyzer implements SemanticAnalyzer {
   }
 
   private void updateIfContext(ASTWrapper wrapper) {
-    Context actual = getContext(); // TODO por alguna razón se updatea cuando updateo el context (fucking java)
+    Context actual =
+        getContext(); // TODO por alguna razón se updatea cuando updateo el context (fucking java)
     for (ASTWrapper ast : wrapper.getLeft()) {
       updateContext(ast, true);
     }
@@ -46,8 +45,7 @@ public class ConcreteSemanticAnalyzer implements SemanticAnalyzer {
           throw new InvalidCodeException(
               "Type mismatch!", sentence.getTree().getToken().getPosition());
       } else {
-        if(embedded)
-        context.addVariable(variable);
+        if (embedded) context.addVariable(variable);
       }
     }
   }
