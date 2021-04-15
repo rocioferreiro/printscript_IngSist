@@ -6,12 +6,12 @@ import edu.austral.ingsis.InvalidCodeException;
 
 public interface ASTLeaf extends AST {
 
-  @Override
+
   default AST getLeftChild() {
     return new EmptyAST();
   }
 
-  @Override
+
   default AST getRightChild() {
     return new EmptyAST();
   }
@@ -26,10 +26,10 @@ public interface ASTLeaf extends AST {
     return false;
   }
 
-  @Override
+
   default void setLeftChild(AST ast) {}
 
-  @Override
+
   default void setRightChild(AST ast) {}
 
   @Override

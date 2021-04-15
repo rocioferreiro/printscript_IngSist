@@ -1,12 +1,27 @@
 package edu.austral.ingsis;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public interface AST {
 
   Token getToken();
 
-  AST getLeftChild();
+  default AST getLeftChild(){
+    return new EmptyAST();
+  }
 
-  AST getRightChild();
+  default AST getRightChild(){
+    return new EmptyAST();
+  }
+
+  default List<AST> getLeftIf() {
+    return new ArrayList<>();
+  }
+
+  default List<AST> getRightIf() {
+    return new ArrayList<>();
+  }
 
   boolean isLeaf();
 
@@ -14,9 +29,13 @@ public interface AST {
 
   void setToken(Token token);
 
-  void setLeftChild(AST ast);
+  default void setLeftChild(AST ast){}
 
-  void setRightChild(AST ast);
+  default void setRightChild(AST ast){}
+
+  default void setLeftIf(List<AST> list){}
+
+  default void setRightIf(List<AST> list){}
 
   boolean isEmpty();
 

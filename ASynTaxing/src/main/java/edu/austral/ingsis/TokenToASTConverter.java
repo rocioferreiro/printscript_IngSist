@@ -35,6 +35,7 @@ public class TokenToASTConverter {
           put(KeyWord.C_DECLARATION, EmptyAST::new);
           put(KeyWord.VARIABLE_REF, VariableAST::new);
           put(KeyWord.PRINTLN, PrintAST::new);
+          put(KeyWord.IF_STATEMENT, IfAST::new);
         }
       };
 
