@@ -56,9 +56,7 @@ public enum Operator implements TokenType {
   }
 
   @Override
-  public void setAble(boolean isAble) {
-
-  }
+  public void setAble(boolean isAble) {}
 
   public static List<Token> findTokens(String string, Position initialPosition) {
     List<Token> finalList = new ArrayList<>();

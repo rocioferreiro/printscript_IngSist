@@ -33,8 +33,9 @@ public class ConcreteInterpreter implements Interpreter {
     List<Token> sublist = tokens;
     for (int i = 1; i < amount + 1; i++) {
       int nextIndex = getIndexOfNextSeparator(sublist);
-      List<Token> list = new ArrayList<>(sublist.subList(0, nextIndex+1));
-      if (!contains(list, KeyWord.IF_STATEMENT)) list = new ArrayList<>(list.subList(0, list.size()-1));
+      List<Token> list = new ArrayList<>(sublist.subList(0, nextIndex + 1));
+      if (!contains(list, KeyWord.IF_STATEMENT))
+        list = new ArrayList<>(list.subList(0, list.size() - 1));
       ASTInContext ast = parser.parse(list);
       context = ast.getContext();
       strategy.execute(executor, ast);
@@ -50,7 +51,7 @@ public class ConcreteInterpreter implements Interpreter {
 
   public static int getIndexOfNextSeparator(List<Token> tokens) {
     for (int i = 0; i < tokens.size(); i++) {
-      if(tokens.get(i).getType().equals(KeyWord.IF_STATEMENT)){
+      if (tokens.get(i).getType().equals(KeyWord.IF_STATEMENT)) {
         return getIndexOfNextSeparatorConditional(tokens, i);
       }
       if (tokens.get(i).getType().equals(Operator.SEMICOLONS)) {
@@ -60,10 +61,11 @@ public class ConcreteInterpreter implements Interpreter {
     return -1;
   }
 
-  private static int getIndexOfNextSeparatorConditional(List<Token> tokens, int indexOfConditional){
+  private static int getIndexOfNextSeparatorConditional(
+      List<Token> tokens, int indexOfConditional) {
     for (int i = indexOfConditional; i < tokens.size(); i++) {
-      if(tokens.get(i).getType().equals(KeyWord.ELSE_STATEMENT)){
-        for (int j = i+1; j < tokens.size(); j++) {
+      if (tokens.get(i).getType().equals(KeyWord.ELSE_STATEMENT)) {
+        for (int j = i + 1; j < tokens.size(); j++) {
           if (tokens.get(j).getType().equals(Operator.R_KEY)) {
             return j;
           }
@@ -71,8 +73,8 @@ public class ConcreteInterpreter implements Interpreter {
       }
     }
     for (int i = indexOfConditional; i < tokens.size(); i++) {
-      if(tokens.get(i).getType().equals(Operator.L_KEY)){
-        for (int j = i+1; j < tokens.size(); j++) {
+      if (tokens.get(i).getType().equals(Operator.L_KEY)) {
+        for (int j = i + 1; j < tokens.size(); j++) {
           if (tokens.get(j).getType().equals(Operator.R_KEY)) {
             return j;
           }

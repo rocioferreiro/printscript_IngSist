@@ -27,7 +27,9 @@ public class ConcreteSyntacticAnalyzer implements SyntacticAnalyzer {
       }
     }
     rules = rulesToAdd;
-    rulesToAdd.stream().filter(r -> r.getRuleType().equals(RuleType.IF)).forEach(r -> r.setContextApprovedRules(rules));
+    rulesToAdd.stream()
+        .filter(r -> r.getRuleType().equals(RuleType.IF))
+        .forEach(r -> r.setContextApprovedRules(rules));
   }
 
   @Override

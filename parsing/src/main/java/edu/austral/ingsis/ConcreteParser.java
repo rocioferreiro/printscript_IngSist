@@ -1,8 +1,6 @@
 package edu.austral.ingsis;
 
-import edu.austral.ingsis.branches.IfAST;
 import edu.austral.ingsis.rules.RuleType;
-
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +33,7 @@ public class ConcreteParser implements Parser {
 
   private List<AST> convertWrapperToAST(List<ASTWrapper> wrappers) {
     List<AST> asts = new ArrayList<>();
-    for (ASTWrapper wrap: wrappers) asts.add(wrap.getTree());
+    for (ASTWrapper wrap : wrappers) asts.add(wrap.getTree());
     return asts;
   }
 }
