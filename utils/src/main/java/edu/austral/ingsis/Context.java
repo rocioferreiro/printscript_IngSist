@@ -6,28 +6,54 @@ import java.util.List;
 public class Context {
 
   private final List<Variable> variables;
-  private Context subContext;
+  private Context subContextIf;
+  private Context subContextElse;
   private ExecutingCommand nextExecute = ExecutingCommand.EMPTY;
 
   public Context() {
     this.variables = new ArrayList<>();
-    subContext = new Context();
+  }
+
+  public Context(List<Variable> variables, Context subContextIf, Context subContextElse) {
+    this.variables = variables;
+    this.subContextIf = subContextIf;
+    this.subContextElse = subContextElse;
+  }
+
+  public Context(Context subContextIf, Context subContextElse) {
+    this.variables = new ArrayList<>();
+    this.subContextIf = subContextIf;
+    this.subContextElse = subContextElse;
+  }
+
+  public Context setContexts() {
+    subContextIf = new Context();
+    subContextElse = new Context();
+    return this;
   }
 
   public List<Variable> getVariables() {
     return variables;
   }
 
-  public List<Variable> getSubVariables() {
-    return subContext.getVariables();
+  public List<Variable> getSubVariablesIf() {
+    return subContextIf.getVariables();
+  }
+
+  public List<Variable> getSubVariablesElse() {
+    return subContextElse.getVariables();
   }
 
   public void addVariable(Variable variable) {
     variables.add(variable);
   }
 
-  public void addVariableToSubContext(Variable variable) {
-    getSubVariables().add(variable);
+  public void addVariableToSubContextIf(Variable variable) {
+    getSubVariablesIf().add(variable);
+  }
+
+  public void addVariableToSubContextElse(Variable variable) {
+    getSubVariablesElse().add(variable);
   }
 
   public void updateVariable(Variable variable) {
@@ -37,7 +63,8 @@ public class Context {
         return;
       }
     }
-    subContext.updateVariable(variable);
+    subContextIf.updateVariable(variable);
+    subContextElse.updateVariable(variable);
   }
 
   public boolean checkVariable(Variable variable) {
@@ -45,7 +72,7 @@ public class Context {
     for (Variable v : variables) {
       if (v.getName().equals(variable.getName())) return true;
     }
-    return subContext.checkVariable(variable);
+    return subContextIf.checkVariable(variable) || subContextElse.checkVariable(variable);
   }
 
   public VariableType getVariableType(String name) {
@@ -54,7 +81,7 @@ public class Context {
     if(find.getName().equals(name)){
       return find.getType();
     } else {
-      return subContext.getVariableType(name);
+      return subContextIf.getVariableType(name);
     }
   }
 
@@ -64,12 +91,13 @@ public class Context {
       if (v.getName().equals(variable.getName()))
         return v.getType().getName().equals(variable.getType().getName());
     }
-    return subContext.checkType(variable);
+    return subContextIf.checkType(variable) || subContextElse.checkType(variable);
   }
 
   public void empty() {
     variables.clear();
-    subContext.empty();
+    if (subContextIf != null) subContextIf.empty();
+    if (subContextElse != null) subContextElse.empty();
   }
 
   public void setNextExecute(ExecutingCommand nextExecute) {
@@ -86,9 +114,8 @@ public class Context {
     Variable find = getVariable(name);
     if(find.getName().equals(name)){
       return find.getValue();
-    } else {
-      return subContext.getVariableValue(name);
-    }
+    } else if(subContextIf.getVariable(name).getName().equals(name)) return subContextIf.getVariableValue(name);
+    return subContextElse.getVariableValue(name);
   }
 
   public Variable getVariable(String name) {
@@ -98,7 +125,11 @@ public class Context {
     return new ConcreteVariable();
   }
 
-  public Context getSubContext(){
-    return subContext;
+  public Context getSubContextIf(){
+    return subContextIf;
+  }
+
+  public Context getSubContextElse(){
+    return subContextElse;
   }
 }

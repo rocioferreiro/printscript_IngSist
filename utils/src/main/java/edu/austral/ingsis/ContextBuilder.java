@@ -6,11 +6,13 @@ public class ContextBuilder {
   private VariableBuilder toAdd = new VariableBuilder();
 
   public ContextBuilder(Context context) {
+    context = context.setContexts();
     this.context = context;
   }
 
   public ContextBuilder() {
     context = new Context();
+    context = context.setContexts();
   }
 
   public Context build() {

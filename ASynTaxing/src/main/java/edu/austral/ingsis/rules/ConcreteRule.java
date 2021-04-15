@@ -26,7 +26,7 @@ public class ConcreteRule implements Rule {
       for (int i = 1; i < list.size(); i++) {
         aux = TokenToASTConverter.convert(list.get(i)).addAST(aux);
       }
-      return Optional.of(new ASTWrapper(aux, type));
+      return Optional.of(new ConcreteASTWrapper(aux, type));
     }
     return Optional.empty();
   }

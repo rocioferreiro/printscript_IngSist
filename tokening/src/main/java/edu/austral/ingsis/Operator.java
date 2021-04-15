@@ -50,6 +50,16 @@ public enum Operator implements TokenType {
     return ordinal();
   }
 
+  @Override
+  public boolean isAble() {
+    return false;
+  }
+
+  @Override
+  public void setAble(boolean isAble) {
+
+  }
+
   public static List<Token> findTokens(String string, Position initialPosition) {
     List<Token> finalList = new ArrayList<>();
     if (string.isEmpty()) return finalList;

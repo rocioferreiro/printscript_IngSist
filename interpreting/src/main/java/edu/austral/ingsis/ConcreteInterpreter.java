@@ -24,6 +24,7 @@ public class ConcreteInterpreter implements Interpreter {
 
   @Override
   public void interpret(Path path) {
+    context = context.setContexts();
     lexer = new ConcreteLexer();
     List<Token> tokens = lexer.scan(path);
     int amount = TokenCleanUp.getAmountOfSentences(tokens);
@@ -31,8 +32,10 @@ public class ConcreteInterpreter implements Interpreter {
     parser = new ConcreteParser(rules);
     List<Token> sublist = tokens;
     for (int i = 1; i < amount + 1; i++) {
-      int nextIndex = TokenCleanUp.getIndexOfNextSeparator(sublist);
-      ASTInContext ast = parser.parse(new ArrayList<>(sublist.subList(0, nextIndex)));
+      int nextIndex = getIndexOfNextSeparator(sublist);
+      List<Token> list = new ArrayList<>(sublist.subList(0, nextIndex+1));
+      if (!contains(list, KeyWord.IF_STATEMENT)) list = new ArrayList<>(list.subList(0, list.size()-1));
+      ASTInContext ast = parser.parse(list);
       context = ast.getContext();
       strategy.execute(executor, ast);
       print(amount, i);
@@ -40,26 +43,58 @@ public class ConcreteInterpreter implements Interpreter {
     }
   }
 
+  private boolean contains(List<Token> tokens, TokenType type) {
+    for (Token token : tokens) if (token.getType().equals(type)) return true;
+    return false;
+  }
+
+  public static int getIndexOfNextSeparator(List<Token> tokens) {
+    for (int i = 0; i < tokens.size(); i++) {
+      if(tokens.get(i).getType().equals(KeyWord.IF_STATEMENT)){
+        return getIndexOfNextSeparatorConditional(tokens, i);
+      }
+      if (tokens.get(i).getType().equals(Operator.SEMICOLONS)) {
+        return i;
+      }
+    }
+    return -1;
+  }
+
+  private static int getIndexOfNextSeparatorConditional(List<Token> tokens, int indexOfConditional){
+    for (int i = indexOfConditional; i < tokens.size(); i++) {
+      if(tokens.get(i).getType().equals(KeyWord.ELSE_STATEMENT)){
+        for (int j = i+1; j < tokens.size(); j++) {
+          if (tokens.get(j).getType().equals(Operator.R_KEY)) {
+            return j;
+          }
+        }
+      }
+    }
+    for (int i = indexOfConditional; i < tokens.size(); i++) {
+      if(tokens.get(i).getType().equals(Operator.L_KEY)){
+        for (int j = i+1; j < tokens.size(); j++) {
+          if (tokens.get(j).getType().equals(Operator.R_KEY)) {
+            return j;
+          }
+        }
+      }
+    }
+    return -1;
+  }
+
   @Override
   public void interpret(String line) {
+    context.setContexts();
     List<Token> tokens = lexer.scan(line);
     tokens = TokenCleanUp.checkLastTokenAndRemove(tokens);
-    if(tokens.get(tokens.size()-1).getType().equals(Operator.R_KEY)){
-      interpretCondicional(tokens);
-    } else {
-      ASTInContext ast = parser.parse(tokens);
-      context = ast.getContext();
-      strategy.execute(executor, ast);
-    }
+    ASTInContext ast = parser.parse(tokens);
+    context = ast.getContext();
+    strategy.execute(executor, ast);
   }
 
   @Override
   public void emptyContext() {
     context.empty();
-  }
-
-  private void interpretCondicional(List<Token> tokens){
-
   }
 
   private void print(int amountOfLines, int actualLine) {

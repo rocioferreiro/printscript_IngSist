@@ -1,6 +1,10 @@
 package edu.austral.ingsis;
 
+import edu.austral.ingsis.branches.IfAST;
+import edu.austral.ingsis.rules.RuleType;
+
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ConcreteParser implements Parser {
@@ -17,6 +21,21 @@ public class ConcreteParser implements Parser {
   public ASTInContext parse(List<Token> tokens) {
     ASTWrapper ast = syntacticAnalyzer.analyze(tokens);
     semanticAnalyzer.analyze(ast);
-    return new ASTInContext(ast.getTree(), semanticAnalyzer.getContext());
+    AST tree;
+    if (ast.getType().equals(RuleType.IF)) tree = setIfChildren(ast);
+    else tree = ast.getTree();
+    return new ASTInContext(tree, semanticAnalyzer.getContext());
+  }
+
+  private AST setIfChildren(ASTWrapper wrapper) {
+    wrapper.getTree().setLeftIf(convertWrapperToAST(wrapper.getLeft()));
+    wrapper.getTree().setRightIf(convertWrapperToAST(wrapper.getRight()));
+    return wrapper.getTree();
+  }
+
+  private List<AST> convertWrapperToAST(List<ASTWrapper> wrappers) {
+    List<AST> asts = new ArrayList<>();
+    for (ASTWrapper wrap: wrappers) asts.add(wrap.getTree());
+    return asts;
   }
 }

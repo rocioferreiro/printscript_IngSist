@@ -13,11 +13,15 @@ public class ConditionalRule implements Rule{
     private final String acceptingRegex;
     private final RuleType type;
     private static final int conditionPosition = 2;
-    private final List<Rule> contextApprovedRules;
+    private List<Rule> contextApprovedRules;
 
-    public ConditionalRule(String acceptingRegex, RuleType type, List<Rule> contextApprovedRules) {
+    public ConditionalRule(RuleType type, String acceptingRegex) {
         this.acceptingRegex = acceptingRegex;
         this.type = type;
+        contextApprovedRules = new ArrayList<>();
+    }
+
+    public void setContextApprovedRules(List<Rule> contextApprovedRules) {
         this.contextApprovedRules = contextApprovedRules;
     }
 
@@ -27,45 +31,76 @@ public class ConditionalRule implements Rule{
                 list.stream().map(t -> t.getType().getCategory()).collect(Collectors.joining(","));
         if (concat.matches(acceptingRegex)) {
             AST ifAst = new IfAST(list.get(conditionPosition));
-            List<AST> ifAsts = getAsts(getBetweenKeysOfIf(list));
-            List<AST> elseAsts = getAsts(getBetweenKeysOfElse(list));
-
-//            Collections.reverse(list);
-//            AST aux = TokenToASTConverter.convert(list.get(0));
-//            for (int i = 1; i < list.size(); i++) {
-//                aux = TokenToASTConverter.convert(list.get(i)).addAST(aux);
-//            }
-//            return Optional.of(new ASTWrapper(aux, type));
+            List<ASTWrapper> ifAsts = getAsts(getBetweenKeysOfIf(list));
+            List<ASTWrapper> elseAsts = getAsts(getBetweenKeysOfElse(list));
+            return Optional.of(new ConditionalASTWrapper(ifAst, ifAsts, elseAsts, type));
         }
         return Optional.empty();
     }
 
-    private List<AST> getAsts(List<Token> tokens){
-        List<AST> resultList = new ArrayList<>();
+    private List<ASTWrapper> getAsts(List<Token> tokens){
+        List<ASTWrapper> resultList = new ArrayList<>();
         int amount = TokenCleanUp.getAmountOfSentences(tokens);
         List<Token> sublist = tokens;
-        for (int i = 1; i <= amount; i++) {
-            int nextIndex = TokenCleanUp.getIndexOfNextSeparator(sublist);
+        for (int i = 0; i < amount; i++) {
+            int nextIndex = getIndexOfNextSeparator(sublist);
+            final Position pos = sublist.get(0).getPosition();
             for (Rule rule : contextApprovedRules) {
-                Optional<ASTWrapper> result = rule.validateTokens(sublist);
-                result.ifPresent(astWrapper -> resultList.add(astWrapper.getTree()));
+                Optional<ASTWrapper> result = rule.validateTokens(new ArrayList<>(sublist.subList(0, nextIndex)));
+                result.ifPresent(resultList::add);
             }
+            if (resultList.isEmpty()) throw new InvalidCodeException("Invalid syntax", pos);
             sublist = new ArrayList<>(sublist.subList(nextIndex + 1, sublist.size()));
         }
         return resultList;
     }
 
+    public static int getIndexOfNextSeparator(List<Token> tokens) {
+        for (int i = 0; i < tokens.size(); i++) {
+            if(tokens.get(i).getType().equals(KeyWord.IF_STATEMENT)){
+                return getIndexOfNextSeparatorConditional(tokens, i);
+            }
+            if (tokens.get(i).getType().equals(Operator.SEMICOLONS)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    private static int getIndexOfNextSeparatorConditional(List<Token> tokens, int indexOfConditional){
+        for (int i = indexOfConditional; i < tokens.size(); i++) {
+            if(tokens.get(i).getType().equals(KeyWord.ELSE_STATEMENT)){
+                for (int j = i+1; j < tokens.size(); j++) {
+                    if (tokens.get(j).getType().equals(Operator.R_KEY)) {
+                        return j;
+                    }
+                }
+            }
+        }
+        for (int i = indexOfConditional; i < tokens.size(); i++) {
+            if(tokens.get(i).getType().equals(Operator.L_KEY)){
+                for (int j = i+1; j < tokens.size(); j++) {
+                    if (tokens.get(j).getType().equals(Operator.R_KEY)) {
+                        return j;
+                    }
+                }
+            }
+        }
+        return -1;
+    }
+
+
     private List<Token> getBetweenKeysOfIf(List<Token> tokens){
-        int inicialIndex = 0;
+        int initialIndex = 0;
         int endIndex = 0;
         for (int i = 0; i < tokens.size(); i++) {
             if(tokens.get(i).getType().equals(Operator.L_KEY)){
-                inicialIndex = i+1;
-                endIndex = getEndIndex(tokens, inicialIndex);
+                initialIndex = i+1;
+                endIndex = getEndIndex(tokens, initialIndex);
                 break;
             }
         }
-        return tokens.subList(inicialIndex, endIndex);
+        return tokens.subList(initialIndex, endIndex);
     }
 
     private List<Token> getBetweenKeysOfElse(List<Token> tokens){
@@ -94,11 +129,11 @@ public class ConditionalRule implements Rule{
 
     @Override
     public RuleType getRuleType() {
-        return null;
+        return type;
     }
 
     @Override
     public String getAcceptingRegex() {
-        return null;
+        return acceptingRegex;
     }
 }

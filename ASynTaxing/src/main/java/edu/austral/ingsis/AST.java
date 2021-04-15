@@ -25,7 +25,7 @@ public interface AST {
 
   boolean isLeaf();
 
-  AST addAST(AST ast);
+  default AST addAST(AST ast) {return null;};
 
   void setToken(Token token);
 

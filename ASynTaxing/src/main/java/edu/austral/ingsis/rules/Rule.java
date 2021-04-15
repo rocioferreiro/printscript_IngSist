@@ -11,4 +11,6 @@ public interface Rule {
   RuleType getRuleType();
 
   String getAcceptingRegex();
+
+  default void setContextApprovedRules(List<Rule> contextApprovedRules) {}
 }

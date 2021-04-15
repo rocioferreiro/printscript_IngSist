@@ -9,6 +9,7 @@ public enum RuleType {
   ASSIGNATION(2, RuleController::assignationCommand),
   PRINT(3, RuleController::printCommand),
   CONST(4, RuleController::declarationCommand),
+  IF(5, (AST ast, Context context) -> null),
   INVALID(0, (AST ast, Context context) -> null);
 
   private final int id;

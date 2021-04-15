@@ -1,6 +1,7 @@
 package edu.austral.ingsis;
 
 import edu.austral.ingsis.rules.ConcreteRule;
+import edu.austral.ingsis.rules.ConditionalRule;
 import edu.austral.ingsis.rules.Rule;
 import edu.austral.ingsis.rules.RuleType;
 import java.nio.file.Path;
@@ -19,9 +20,14 @@ public class ConcreteSyntacticAnalyzer implements SyntacticAnalyzer {
     for (String rule : ruleTexts) {
       String[] array = rule.split(":");
       RuleType type = RuleType.ruleOfId(Integer.parseInt(array[0]));
-      rulesToAdd.add(new ConcreteRule(type, array[1]));
+      if (type.equals(RuleType.IF)) {
+        rulesToAdd.add(new ConditionalRule(type, array[1]));
+      } else {
+        rulesToAdd.add(new ConcreteRule(type, array[1]));
+      }
     }
     rules = rulesToAdd;
+    rulesToAdd.stream().filter(r -> r.getRuleType().equals(RuleType.IF)).forEach(r -> r.setContextApprovedRules(rules));
   }
 
   @Override

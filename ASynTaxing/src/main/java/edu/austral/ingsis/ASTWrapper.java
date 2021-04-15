@@ -2,21 +2,12 @@ package edu.austral.ingsis;
 
 import edu.austral.ingsis.rules.RuleType;
 
-public class ASTWrapper {
+import java.util.List;
 
-  private final AST tree;
-  private final RuleType type;
+public interface ASTWrapper {
 
-  public ASTWrapper(AST tree, RuleType type) {
-    this.tree = tree;
-    this.type = type;
-  }
-
-  public AST getTree() {
-    return tree;
-  }
-
-  public RuleType getType() {
-    return type;
-  }
+  AST getTree();
+  RuleType getType();
+  default List<ASTWrapper> getLeft() {return null;}
+  default List<ASTWrapper> getRight() {return null;}
 }

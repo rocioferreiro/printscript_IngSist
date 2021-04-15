@@ -1,12 +1,12 @@
 let n:number = 16;
-println(n);
-n = n+1;
-println(n);
-n = n-4.5;
-println(n);
-n = n*5.2;
-println(n);
-n = n/3;
+
+
+let b:boolean = true;
+if(b) {
+ n = 1000;
+ let die: number = 1;
+}
+
 println(n);
 
 let s:string = 'hola';

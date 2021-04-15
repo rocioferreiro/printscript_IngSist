@@ -38,13 +38,6 @@ public class IfAST implements AST {
   }
 
   @Override
-  public AST addAST(AST ast) {
-    if (ast.getLeftIf().isEmpty()) {}
-
-    return null;
-  }
-
-  @Override
   public void setToken(Token token) {
     this.token = token;
   }

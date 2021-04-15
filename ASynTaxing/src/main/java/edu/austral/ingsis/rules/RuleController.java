@@ -84,8 +84,4 @@ public class RuleController {
       return new VariableBuilder().withType(right.getValue(), right.getType().getOrdinal()).build();
     } else return containsVariable(context, right);
   }
-
-  public static Variable ifCommand(AST ast, Context context) {
-    return null;
-  }
 }
