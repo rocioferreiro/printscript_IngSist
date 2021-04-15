@@ -7,11 +7,11 @@ public interface AST {
 
   Token getToken();
 
-  default AST getLeftChild(){
+  default AST getLeftChild() {
     return new EmptyAST();
   }
 
-  default AST getRightChild(){
+  default AST getRightChild() {
     return new EmptyAST();
   }
 
@@ -29,13 +29,13 @@ public interface AST {
 
   void setToken(Token token);
 
-  default void setLeftChild(AST ast){}
+  default void setLeftChild(AST ast) {}
 
-  default void setRightChild(AST ast){}
+  default void setRightChild(AST ast) {}
 
-  default void setLeftIf(List<AST> list){}
+  default void setLeftIf(List<AST> list) {}
 
-  default void setRightIf(List<AST> list){}
+  default void setRightIf(List<AST> list) {}
 
   boolean isEmpty();
 

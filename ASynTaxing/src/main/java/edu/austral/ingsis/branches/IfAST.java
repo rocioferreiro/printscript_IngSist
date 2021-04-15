@@ -3,7 +3,6 @@ package edu.austral.ingsis.branches;
 import edu.austral.ingsis.AST;
 import edu.austral.ingsis.ContextBuilder;
 import edu.austral.ingsis.Token;
-
 import java.util.List;
 
 public class IfAST implements AST {
@@ -12,8 +11,7 @@ public class IfAST implements AST {
   private List<AST> leftChild;
   private List<AST> rightChild;
 
-  public IfAST() {
-  }
+  public IfAST() {}
 
   public IfAST(Token token) {
     this.token = token;
@@ -41,9 +39,8 @@ public class IfAST implements AST {
 
   @Override
   public AST addAST(AST ast) {
-    if (ast.getLeftIf().isEmpty()) {
+    if (ast.getLeftIf().isEmpty()) {}
 
-    }
     return null;
   }
 
@@ -68,12 +65,13 @@ public class IfAST implements AST {
   }
 
   public ContextBuilder executeTree(ContextBuilder context) {
-    if (context.getVariableValue(token.getValue()).equals("true")) return executeIf(leftChild, context);
+    if (context.getVariableValue(token.getValue()).equals("true"))
+      return executeIf(leftChild, context);
     else return executeIf(rightChild, context);
   }
 
   private ContextBuilder executeIf(List<AST> list, ContextBuilder context) {
-    for (AST ast: list) context = ast.executeTree(context);
+    for (AST ast : list) context = ast.executeTree(context);
     return context;
   }
 }
