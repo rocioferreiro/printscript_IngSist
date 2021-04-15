@@ -57,6 +57,7 @@ public class Context {
   }
 
   public void updateVariable(Variable variable) {
+    if(variables.isEmpty()) return;
     for (Variable v : variables) {
       if (v.getName().equals(variable.getName()) && !variable.getValue().isEmpty()) {
         v.setValue(variable.getValue());
@@ -113,10 +114,11 @@ public class Context {
     if (variables.isEmpty()) return "";
     Variable find = getVariable(name);
     if (find.getName().equals(name)) {
-      return find.getValue();
-    } else if (subContextIf.getVariable(name).getName().equals(name))
-      return subContextIf.getVariableValue(name);
-    return subContextElse.getVariableValue(name);
+      return find.getValue();}
+    throw new InvalidCodeException("Variable out of Contaxt: " + name, new Position(0,0));
+//    } else if (subContextIf.getVariable(name).getName().equals(name))
+//      return subContextIf.getVariableValue(name);
+//    return subContextElse.getVariableValue(name);
   }
 
   public Variable getVariable(String name) {
