@@ -9,6 +9,6 @@ public class TokenCleanUpTest {
   @Test
   public void testCheckIndexOfNextSemiColumnFailure() {
     List<Token> tokens = new ArrayList<>();
-    Assertions.assertEquals(-1, TokenCleanUp.getIndexOfNextSemicolon(tokens));
+    Assertions.assertEquals(-1, TokenCleanUp.getIndexOfNextSeparator(tokens));
   }
 }

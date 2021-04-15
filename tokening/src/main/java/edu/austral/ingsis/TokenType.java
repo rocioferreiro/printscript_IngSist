@@ -23,6 +23,16 @@ public interface TokenType {
         public int getOrdinal() {
           return -1;
         }
+
+          @Override
+          public boolean isAble() {
+              return true;
+          }
+
+          @Override
+          public void setAble(boolean isAble) {
+
+          }
       };
 
   String getRegex();
@@ -32,4 +42,8 @@ public interface TokenType {
   String getName();
 
   int getOrdinal();
+
+  boolean isAble();
+
+  void setAble(boolean isAble);
 }

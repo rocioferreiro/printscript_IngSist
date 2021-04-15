@@ -18,10 +18,12 @@ public enum KeyWord implements TokenType {
 
   private final String regex;
   private final String category;
+  private boolean isAble;
 
   KeyWord(String regex, String category) {
     this.regex = regex;
     this.category = category;
+    this.isAble = true;
   }
 
   public String getRegex() {
@@ -41,6 +43,16 @@ public enum KeyWord implements TokenType {
   @Override
   public int getOrdinal() {
     return ordinal();
+  }
+
+  @Override
+  public boolean isAble() {
+    return isAble;
+  }
+
+  @Override
+  public void setAble(boolean isAble) {
+    this.isAble = isAble;
   }
 
   public static Token findToken(Token token) {

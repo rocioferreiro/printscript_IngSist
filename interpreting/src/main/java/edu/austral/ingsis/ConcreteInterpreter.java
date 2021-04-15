@@ -31,7 +31,7 @@ public class ConcreteInterpreter implements Interpreter {
     parser = new ConcreteParser(rules);
     List<Token> sublist = tokens;
     for (int i = 1; i < amount + 1; i++) {
-      int nextIndex = TokenCleanUp.getIndexOfNextSemicolon(sublist);
+      int nextIndex = TokenCleanUp.getIndexOfNextSeparator(sublist);
       ASTInContext ast = parser.parse(new ArrayList<>(sublist.subList(0, nextIndex)));
       context = ast.getContext();
       strategy.execute(executor, ast);
@@ -43,14 +43,23 @@ public class ConcreteInterpreter implements Interpreter {
   @Override
   public void interpret(String line) {
     List<Token> tokens = lexer.scan(line);
-    ASTInContext ast = parser.parse(TokenCleanUp.checkLastTokenAndRemove(tokens));
-    context = ast.getContext();
-    strategy.execute(executor, ast);
+    tokens = TokenCleanUp.checkLastTokenAndRemove(tokens);
+    if(tokens.get(tokens.size()-1).getType().equals(Operator.R_KEY)){
+      interpretCondicional(tokens);
+    } else {
+      ASTInContext ast = parser.parse(tokens);
+      context = ast.getContext();
+      strategy.execute(executor, ast);
+    }
   }
 
   @Override
   public void emptyContext() {
     context.empty();
+  }
+
+  private void interpretCondicional(List<Token> tokens){
+
   }
 
   private void print(int amountOfLines, int actualLine) {
