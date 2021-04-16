@@ -17,6 +17,7 @@ public class ContextBuilder {
   public Context build() {
     Variable newVariable = toAdd.build();
     if (context.checkVariable(newVariable)) context.updateVariable(newVariable);
+    toAdd = new VariableBuilder();
     return context;
   }
 

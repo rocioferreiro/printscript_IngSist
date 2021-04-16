@@ -36,9 +36,9 @@ public class ConcreteInterpreter implements Interpreter {
     List<Token> sublist = tokens;
     int index = 0;
     while (sublist.size() > 0) {
-      int nextIndex = getIndexOfNextSeparator(sublist);
+      int nextIndex = TokenCleanUp.getIndexOfNextSeparator(sublist);
       List<Token> list = new ArrayList<>(sublist.subList(0, nextIndex + 1));
-      if (!contains(list, KeyWord.IF_STATEMENT) && list.size() > 0)
+      if (!TokenCleanUp.contains(list, KeyWord.IF_STATEMENT) && list.size() > 0)
         list = new ArrayList<>(list.subList(0, list.size() - 1));
       ASTInContext ast = parser.parse(list);
       context = ast.getContext();
@@ -50,50 +50,6 @@ public class ConcreteInterpreter implements Interpreter {
 
   private void setTokenTypes() {
     for (TokenType type : version.getToAccept()) type.setAble(true);
-  }
-
-  private boolean contains(List<Token> tokens, TokenType type) {
-    for (Token token : tokens) if (token.getType().equals(type)) return true;
-    return false;
-  }
-
-  public static int getIndexOfNextSeparator(List<Token> tokens) {
-    for (int i = 0; i < tokens.size(); i++) {
-      if (tokens.get(i).getType().equals(KeyWord.IF_STATEMENT)) {
-        return getIndexOfNextSeparatorConditional(tokens, i);
-      }
-      if (tokens.get(i).getType().equals(Operator.SEMICOLONS)) {
-        return i;
-      }
-    }
-    return -1;
-  }
-
-  private static int getIndexOfNextSeparatorConditional(
-      List<Token> tokens, int indexOfConditional) {
-    for (int i = indexOfConditional; i < tokens.size(); i++) {
-      if (tokens.get(i).getType().equals(KeyWord.ELSE_STATEMENT)) {
-        return getEndIndex(tokens, i + 1);
-      }
-    }
-    for (int i = indexOfConditional; i < tokens.size(); i++) {
-      if (tokens.get(i).getType().equals(Operator.L_KEY)) {
-        return getEndIndex(tokens, i + 1);
-      }
-    }
-    return -1;
-  }
-
-  private static int getEndIndex(List<Token> tokens, int initialIndex) {
-    int leftKeyCounter = 0;
-    for (int j = initialIndex; j < tokens.size(); j++) {
-      if (tokens.get(j).getType().equals(Operator.L_KEY)) leftKeyCounter++;
-      if (tokens.get(j).getType().equals(Operator.R_KEY)) {
-        if (leftKeyCounter > 0) leftKeyCounter--;
-        else return j;
-      }
-    }
-    return 0;
   }
 
   @Override

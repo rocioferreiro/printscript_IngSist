@@ -30,27 +30,44 @@ public class TokenCleanUp {
     return -1;
   }
 
+  public static boolean contains(List<Token> tokens, TokenType type) {
+    for (Token token : tokens) if (token.getType().equals(type)) return true;
+    return false;
+  }
+
   private static int getIndexOfNextSeparatorConditional(
       List<Token> tokens, int indexOfConditional) {
-    for (int i = indexOfConditional; i < tokens.size(); i++) {
-      if (tokens.get(i).getType().equals(KeyWord.ELSE_STATEMENT)) {
-        return getEndIndex(tokens, i + 1);
-      }
-    }
+    int provisionalEndIndex = -1;
+    //if(contains(tokens, KeyWord.ELSE_STATEMENT)) return getIndexOfNextSeparatorConditionalElse(tokens, indexOfConditional);
     for (int i = indexOfConditional; i < tokens.size(); i++) {
       if (tokens.get(i).getType().equals(Operator.L_KEY)) {
-        return getEndIndex(tokens, i + 1);
+        provisionalEndIndex = getEndIndex(tokens, i + 1);
+        break;
       }
     }
-    return -1;
+    if(provisionalEndIndex < tokens.size()-1 && tokens.get(provisionalEndIndex+1).getType().equals(KeyWord.ELSE_STATEMENT))
+      return getIndexOfNextSeparatorConditional(tokens, provisionalEndIndex);
+    return provisionalEndIndex;
   }
+
+//  private static int getIndexOfNextSeparatorConditionalElse(List<Token> tokens, int initialIndex){
+//    for (int i = initialIndex; i < tokens.size(); i++) {
+//      if(tokens.get(i).getType().equals(KeyWord.IF_STATEMENT)){
+//        return getIndexOfNextSeparatorConditionalElse(tokens, i+1);
+//      }
+//      if (tokens.get(i).getType().equals(KeyWord.ELSE_STATEMENT)) {
+//        return getEndIndex(tokens, i + 2);
+//      }
+//    }
+//    return -1;
+//  }
 
   public static int getAmountOfSentences(List<Token> tokens) {
     int counter = 0;
 
     for (int i = 0; i < tokens.size(); i++) {
 
-      if (tokens.get(i).getType().equals(Operator.L_KEY)) {
+      if (tokens.get(i).getType().equals(KeyWord.IF_STATEMENT)) {
         i = getIndexOfNextSeparatorConditional(tokens, i + 1);
         counter++;
       }

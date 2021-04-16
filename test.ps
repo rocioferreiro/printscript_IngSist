@@ -1,10 +1,16 @@
 let b:boolean = true;
+let bool:boolean = false;
 let cero:number = 0;
 let uno :number = 1;
 if(b){
   cero=1;
   if(b){
-      uno=2;
+    uno=2;
+    if(bool){
+      uno = 5;
+    } else {
+      uno = 7;
+    }
   }
 }
 println(cero);
