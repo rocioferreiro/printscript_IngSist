@@ -6,7 +6,6 @@ public class ContextBuilder {
   private VariableBuilder toAdd = new VariableBuilder();
 
   public ContextBuilder(Context context) {
-    context = context.setContexts();
     this.context = context;
   }
 
@@ -18,7 +17,6 @@ public class ContextBuilder {
   public Context build() {
     Variable newVariable = toAdd.build();
     if (context.checkVariable(newVariable)) context.updateVariable(newVariable);
-    else context.addVariable(newVariable);
     return context;
   }
 
@@ -76,5 +74,13 @@ public class ContextBuilder {
 
   public Variable getVariable(String name) {
     return context.getVariable(name);
+  }
+
+  public void emptySubContextIf() {
+    context.getSubContextIf().empty();
+  }
+
+  public void emptySubContextElse() {
+    context.getSubContextElse().empty();
   }
 }

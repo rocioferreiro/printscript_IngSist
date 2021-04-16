@@ -1,6 +1,9 @@
 package edu.austral.ingsis;
 
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class CLI {
@@ -8,11 +11,16 @@ public class CLI {
   private static final String ANSI_RESET = "\u001B[0m";
   private static final String ANSI_YELLOW = "\033[0;33m";
   private static final String ANSI_RED_BOLD = "\033[1;31m";
+  private static final List<Version> versions = new ArrayList<>();
 
   public static void run() {
+    setVersions();
     printExecuteOptions();
     Scanner scanner = new Scanner(System.in);
-    Interpreter interpreter = new ConcreteInterpreter(Paths.get("rules.txt"), getStrategy(scanner));
+    ExecutionStrategy strategy = getStrategy(scanner);
+    printVersionOptions();
+    Version version = getVersion(scanner);
+    Interpreter interpreter = new ConcreteInterpreter(Paths.get("rules.txt"), strategy, version);
     int readOption = 0;
     while (readOption != -1) {
       printReadOptions();
@@ -22,12 +30,34 @@ public class CLI {
     }
   }
 
+  private static void setVersions() {
+    versions.add(new Version("PrintScript 1.0", new ArrayList<>()));
+    TokenType[] typesPrint1 = {KeyWord.B_ASSIGNATION, KeyWord.C_DECLARATION, KeyWord.BOOLEAN, KeyWord.IF_STATEMENT,
+            KeyWord.ELSE_STATEMENT, Operator.EQUAL_EQUAL, Operator.GREATER_EQUAL, Operator.MINOR_EQUAL,
+            Operator.GREATER, Operator.MINOR, Operator.L_KEY, Operator.R_KEY};
+    versions.add(new Version("PrintScript 1.1", Arrays.asList(typesPrint1)));
+  }
+
+  private static Version getVersion(Scanner scanner) {
+    Version version = new Version();
+    int versionOption = scanner.nextInt();
+    if (versionOption == 1) version = versions.get(0);
+    if (versionOption == 2) version = versions.get(1);
+    return version;
+  }
+
   private static ExecutionStrategy getStrategy(Scanner scanner) {
     ExecutionStrategy strategy = new InterpretationExecutionStrategy();
     int strategyOption = scanner.nextInt();
     if (strategyOption == 1) strategy = new ValidationExecutionStrategy();
     if (strategyOption == 2) strategy = new InterpretationExecutionStrategy();
     return strategy;
+  }
+
+  private static void printVersionOptions() {
+    System.out.println(ANSI_YELLOW + "Choose one of this options:" + ANSI_RESET);
+    System.out.println(ANSI_YELLOW + "1 -> PrintScript 1.0" + ANSI_RESET);
+    System.out.println(ANSI_YELLOW + "2 -> PrintScript 1.1\n" + ANSI_RESET);
   }
 
   private static void printExecuteOptions() {
@@ -52,8 +82,12 @@ public class CLI {
     while (!line.matches(".\\.txt")) {
       line = scanner.nextLine();
       if (!line.matches(".\\.txt")) {
-        interpreter.interpret(Paths.get(line));
-        break;
+        try {
+          interpreter.interpret(Paths.get(line));
+          break;
+        } catch (InvalidCodeException e) {
+          System.out.println(ANSI_RED_BOLD + e.getMessage() + ANSI_RESET);
+        }
       }
     }
   }
@@ -68,12 +102,11 @@ public class CLI {
       System.out.print("~ ");
       line = scanner.nextLine();
       if (!line.isEmpty() && !line.equals("exit")) {
-        interpreter.interpret(line);
-//        try {
-//
-//        } catch (InvalidCodeException e) {
-//          System.out.println(ANSI_RED_BOLD + e.getMessage() + ANSI_RESET);
-//        }
+        try {
+          interpreter.interpret(line);
+        } catch (InvalidCodeException e) {
+          System.out.println(ANSI_RED_BOLD + e.getMessage() + ANSI_RESET);
+        }
       }
     }
   }

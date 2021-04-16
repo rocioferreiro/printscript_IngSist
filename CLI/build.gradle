@@ -8,6 +8,7 @@ version 'unspecified'
 dependencies {
     implementation project(':interpreting')
     implementation project(':utils')
+    implementation project(':tokening')
     implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.4'
 }
 

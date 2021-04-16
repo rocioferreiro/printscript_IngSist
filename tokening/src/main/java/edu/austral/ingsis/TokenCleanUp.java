@@ -30,23 +30,15 @@ public class TokenCleanUp {
   }
 
   private static int getIndexOfNextSeparatorConditional(
-      List<Token> tokens, int indexOfConditional) {
+          List<Token> tokens, int indexOfConditional) {
     for (int i = indexOfConditional; i < tokens.size(); i++) {
       if (tokens.get(i).getType().equals(KeyWord.ELSE_STATEMENT)) {
-        for (int j = i + 1; j < tokens.size(); j++) {
-          if (tokens.get(j).getType().equals(Operator.R_KEY)) {
-            return j;
-          }
-        }
+        return getEndIndex(tokens, i+1);
       }
     }
     for (int i = indexOfConditional; i < tokens.size(); i++) {
       if (tokens.get(i).getType().equals(Operator.L_KEY)) {
-        for (int j = i + 1; j < tokens.size(); j++) {
-          if (tokens.get(j).getType().equals(Operator.R_KEY)) {
-            return j;
-          }
-        }
+        return getEndIndex(tokens, i+1);
       }
     }
     return -1;
@@ -54,9 +46,26 @@ public class TokenCleanUp {
 
   public static int getAmountOfSentences(List<Token> tokens) {
     int counter = 0;
-    for (Token token : tokens) {
-      if (token.getType().equals(Operator.SEMICOLONS)) counter++;
+
+    for (int i = 0; i < tokens.size(); i++) {
+      if (tokens.get(i).getType().equals(KeyWord.IF_STATEMENT)) {
+        i = getIndexOfNextSeparatorConditional(tokens, i+2);
+        counter++;
+      }
+      if (tokens.get(i).getType().equals(Operator.SEMICOLONS)) counter++;
     }
     return counter;
+  }
+
+  private static int getEndIndex(List<Token> tokens, int initialIndex) {
+    int leftKeyCounter = 0;
+    for (int j = initialIndex; j < tokens.size(); j++) {
+      if (tokens.get(j).getType().equals(Operator.L_KEY)) leftKeyCounter++;
+      if (tokens.get(j).getType().equals(Operator.R_KEY)) {
+        if (leftKeyCounter > 0) leftKeyCounter--;
+        else return j;
+      }
+    }
+    return 0;
   }
 }

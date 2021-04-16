@@ -12,10 +12,12 @@ public class ConcreteInterpreter implements Interpreter {
   private final Executor executor;
   private Context context;
   private final ExecutionStrategy strategy;
+  private final Version version;
 
-  public ConcreteInterpreter(Path rules, ExecutionStrategy strategy) {
+  public ConcreteInterpreter(Path rules, ExecutionStrategy strategy, Version version) {
     this.rules = rules;
     this.strategy = strategy;
+    this.version = version;
     lexer = new ConcreteLexer();
     parser = new ConcreteParser(rules);
     executor = new ConcreteExecutor();
@@ -24,6 +26,7 @@ public class ConcreteInterpreter implements Interpreter {
 
   @Override
   public void interpret(Path path) {
+    setTokenTypes();
     context = context.setContexts();
     lexer = new ConcreteLexer();
     List<Token> tokens = lexer.scan(path);
@@ -42,6 +45,10 @@ public class ConcreteInterpreter implements Interpreter {
       print(amount, i);
       sublist = new ArrayList<>(sublist.subList(nextIndex + 1, sublist.size()));
     }
+  }
+
+  private void setTokenTypes() {
+    for (TokenType type : version.getToAccept()) type.setAble(true);
   }
 
   private boolean contains(List<Token> tokens, TokenType type) {
@@ -65,27 +72,32 @@ public class ConcreteInterpreter implements Interpreter {
       List<Token> tokens, int indexOfConditional) {
     for (int i = indexOfConditional; i < tokens.size(); i++) {
       if (tokens.get(i).getType().equals(KeyWord.ELSE_STATEMENT)) {
-        for (int j = i + 1; j < tokens.size(); j++) {
-          if (tokens.get(j).getType().equals(Operator.R_KEY)) {
-            return j;
-          }
-        }
+        return getEndIndex(tokens, i+1);
       }
     }
     for (int i = indexOfConditional; i < tokens.size(); i++) {
       if (tokens.get(i).getType().equals(Operator.L_KEY)) {
-        for (int j = i + 1; j < tokens.size(); j++) {
-          if (tokens.get(j).getType().equals(Operator.R_KEY)) {
-            return j;
-          }
-        }
+        return getEndIndex(tokens, i+1);
       }
     }
     return -1;
   }
 
+  private static int getEndIndex(List<Token> tokens, int initialIndex) {
+    int leftKeyCounter = 0;
+    for (int j = initialIndex; j < tokens.size(); j++) {
+      if (tokens.get(j).getType().equals(Operator.L_KEY)) leftKeyCounter++;
+      if (tokens.get(j).getType().equals(Operator.R_KEY)) {
+        if (leftKeyCounter > 0) leftKeyCounter--;
+        else return j;
+      }
+    }
+    return 0;
+  }
+
   @Override
   public void interpret(String line) {
+    setTokenTypes();
     context.setContexts();
     List<Token> tokens = lexer.scan(line);
     tokens = TokenCleanUp.checkLastTokenAndRemove(tokens);

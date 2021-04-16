@@ -122,18 +122,19 @@ public class Context {
     Variable find = getVariable(name);
     if (find.getName().equals(name)) {
       return find.getValue();
-    }
-    throw new InvalidCodeException("Variable out of Contaxt: " + name, new Position(0, 0));
-    //    } else if (subContextIf.getVariable(name).getName().equals(name))
-    //      return subContextIf.getVariableValue(name);
-    //    return subContextElse.getVariableValue(name);
+    } else if (subContextIf.getVariable(name).getName().equals(name))
+      return subContextIf.getVariableValue(name);
+    return subContextElse.getVariableValue(name);
   }
 
   public Variable getVariable(String name) {
+    if (variables.isEmpty()) return new ConcreteVariable();
     for (Variable v : variables) {
       if (v.getName().equals(name)) return v;
     }
-    return new ConcreteVariable();
+    Variable ifVar = subContextIf.getVariable(name);
+    if (ifVar.getName().equals(name)) return ifVar;
+    return subContextElse.getVariable(name);
   }
 
   public Context getSubContextIf() {

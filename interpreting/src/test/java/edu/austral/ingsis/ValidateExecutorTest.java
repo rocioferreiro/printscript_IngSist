@@ -13,7 +13,7 @@ public class ValidateExecutorTest {
   private static final PrintStream originalOut = System.out;
   private static final PrintStream originalErr = System.err;
   private static final Interpreter interpreter =
-      new ConcreteInterpreter(getPath("rules.txt"), new ValidationExecutionStrategy());;
+      new ConcreteInterpreter(getPath("rules.txt"), new ValidationExecutionStrategy(), new Version());;
 
   @BeforeEach
   public void setUpStreams() {

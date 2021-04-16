@@ -3,27 +3,27 @@ package edu.austral.ingsis;
 import java.util.Locale;
 
 public enum KeyWord implements TokenType {
-  DECLARATION("let", "DECLARATION"),
-  C_DECLARATION("const", "C_DECLARATION"),
-  N_ASSIGNATION("number", "TYPE"),
-  NUMBER("\\d+(\\.\\d+)?", "VALUE"),
-  S_ASSIGNATION("string", "TYPE"),
-  STRING("[\"'].*[\"']", "VALUE"),
-  B_ASSIGNATION("boolean", "TYPE"),
-  BOOLEAN("true|false", "VALUE"),
-  PRINTLN("println", "PRINTLN"),
-  IF_STATEMENT("if", "IF"),
-  ELSE_STATEMENT("else", "ELSE"),
-  VARIABLE_REF("[a-zA-Z0-9]+([_a-zA-Z0-9]*)", "VARIABLE");
+  DECLARATION("let", "DECLARATION", true),
+  C_DECLARATION("const", "C_DECLARATION", false),
+  N_ASSIGNATION("number", "TYPE", true),
+  NUMBER("\\d+(\\.\\d+)?", "VALUE", true),
+  S_ASSIGNATION("string", "TYPE", true),
+  STRING("[\"'].*[\"']", "VALUE", true),
+  B_ASSIGNATION("boolean", "TYPE", false),
+  BOOLEAN("true|false", "VALUE", false),
+  PRINTLN("println", "PRINTLN", true),
+  IF_STATEMENT("if", "IF", false),
+  ELSE_STATEMENT("else", "ELSE", false),
+  VARIABLE_REF("[a-zA-Z0-9]+([_a-zA-Z0-9]*)", "VARIABLE", true);
 
   private final String regex;
   private final String category;
   private boolean isAble;
 
-  KeyWord(String regex, String category) {
+  KeyWord(String regex, String category, boolean isAble) {
     this.regex = regex;
     this.category = category;
-    this.isAble = true;
+    this.isAble = isAble;
   }
 
   public String getRegex() {
@@ -57,7 +57,7 @@ public enum KeyWord implements TokenType {
 
   public static Token findToken(Token token) {
     for (KeyWord key : values()) {
-      if (token.getValue().matches(key.getRegex())) {
+      if (token.getValue().matches(key.getRegex()) && token.getType().isAble()) {
         String value = token.getValue();
         if (value.contains("'") || value.contains("\""))
           value = value.substring(1, value.length() - 1);

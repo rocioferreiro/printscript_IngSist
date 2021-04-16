@@ -24,14 +24,17 @@ public class ConcreteSemanticAnalyzer implements SemanticAnalyzer {
   private void updateIfContext(ASTWrapper wrapper) {
     Context actual = new Context(context);
     for (ASTWrapper ast : wrapper.getLeft()) {
-      updateContext(ast);
+      if(ast.getType().equals(RuleType.IF)) updateIfContext(ast);
+      else updateContext(ast);
     }
     Context ifContext = getContext();
-    context = actual; // TODO puede causar problemas
+    context = new Context(actual);
     for (ASTWrapper ast : wrapper.getRight()) {
-      updateContext(ast);
+      if(ast.getType().equals(RuleType.IF)) updateIfContext(ast);
+      else updateContext(ast);
     }
     Context elseContext = getContext();
+    context = new Context(actual);
     context = new Context(context.getVariables(), ifContext, elseContext);
   }
 

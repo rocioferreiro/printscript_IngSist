@@ -45,8 +45,9 @@ public class ConditionalRule implements Rule {
       int nextIndex = getIndexOfNextSeparator(sublist);
       final Position pos = sublist.get(0).getPosition();
       for (Rule rule : contextApprovedRules) {
-        Optional<ASTWrapper> result =
-            rule.validateTokens(new ArrayList<>(sublist.subList(0, nextIndex)));
+        Optional<ASTWrapper> result;
+        if (rule.getRuleType().equals(RuleType.IF)) result = rule.validateTokens(new ArrayList<>(sublist.subList(0, nextIndex+1)));
+        else result = rule.validateTokens(new ArrayList<>(sublist.subList(0, nextIndex)));
         result.ifPresent(resultList::add);
       }
       if (resultList.isEmpty()) throw new InvalidCodeException("Invalid syntax", pos);
@@ -104,20 +105,20 @@ public class ConditionalRule implements Rule {
   }
 
   private List<Token> getBetweenKeysOfElse(List<Token> tokens) {
-    int inicialIndex = 0, endIndex = 0;
+    int initialIndex = 0, endIndex = 0;
     for (int i = 0; i < tokens.size(); i++) {
       if (tokens.get(i).getType().equals(KeyWord.ELSE_STATEMENT)) {
-        inicialIndex = i + 2;
-        endIndex = getEndIndex(tokens, inicialIndex);
+        initialIndex = i + 2;
+        endIndex = getEndIndex(tokens, initialIndex);
         break;
       }
     }
-    return tokens.subList(inicialIndex, endIndex);
+    return tokens.subList(initialIndex, endIndex);
   }
 
-  private int getEndIndex(List<Token> tokens, int inicialIndex) {
+  private int getEndIndex(List<Token> tokens, int initialIndex) {
     int leftKeyCounter = 0;
-    for (int j = inicialIndex; j < tokens.size(); j++) {
+    for (int j = initialIndex; j < tokens.size(); j++) {
       if (tokens.get(j).getType().equals(Operator.L_KEY)) leftKeyCounter++;
       if (tokens.get(j).getType().equals(Operator.R_KEY)) {
         if (leftKeyCounter > 0) leftKeyCounter--;

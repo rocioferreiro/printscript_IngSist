@@ -1,28 +1,6 @@
-let n:number = 16;
-
-
 let b:boolean = true;
-if(b) {
- n = 1000;
- let die: number = 1;
- println(die);
-}
-println(die);
-println(n);
-
-let s:string = 'hola';
-println(s);
-s = s + ' como';
-println(s);
-s = s - 'o';
-println(s);
-s = s * 'ooo oo';
-println(s);
-s = s / 'loa';
-println(s);
-
-let sn: string = 'hola';
-println(sn);
-sn = sn + 12;
-println(sn);
-
+let cero:number = 0;
+let uno :number = 1;
+if(b){cero=1;if(b){uno=2;}}
+println(cero);
+println(uno);

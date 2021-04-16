@@ -5,29 +5,31 @@ import java.util.List;
 import java.util.Locale;
 
 public enum Operator implements TokenType {
-  T_ASSIGNATION(":", "DECLARE_TYPE"),
-  EQUAL_EQUAL("==", "COMPARATOR"),
-  GREATER_EQUAL(">=", "COMPARATOR"),
-  MINOR_EQUAL("<=", "COMPARATOR"),
-  EQUAL("=", "EQUAL"),
-  GREATER(">", "COMPARATOR"),
-  MINOR("<", "COMPARATOR"),
-  PLUS("\\+", "OPERATOR"),
-  HYPHEN("-", "OPERATOR"),
-  DASH("\\/", "OPERATOR"),
-  ASTERISK("\\*", "OPERATOR"),
-  L_PARENTHESIS("\\(", "L_PARENTHESIS"),
-  R_PARENTHESIS("\\)", "R_PARENTHESIS"),
-  L_KEY("\\{", "L_KEY"),
-  R_KEY("\\}", "R_KEY"),
-  SEMICOLONS(";", "SEPARATOR");
+  T_ASSIGNATION(":", "DECLARE_TYPE", true),
+  EQUAL_EQUAL("==", "COMPARATOR", false),
+  GREATER_EQUAL(">=", "COMPARATOR", false),
+  MINOR_EQUAL("<=", "COMPARATOR", false),
+  EQUAL("=", "EQUAL", true),
+  GREATER(">", "COMPARATOR", false),
+  MINOR("<", "COMPARATOR", false),
+  PLUS("\\+", "OPERATOR", true),
+  HYPHEN("-", "OPERATOR", true),
+  DASH("\\/", "OPERATOR", true),
+  ASTERISK("\\*", "OPERATOR", true),
+  L_PARENTHESIS("\\(", "L_PARENTHESIS", true),
+  R_PARENTHESIS("\\)", "R_PARENTHESIS", true),
+  L_KEY("\\{", "L_KEY", false),
+  R_KEY("\\}", "R_KEY", false),
+  SEMICOLONS(";", "SEPARATOR", true);
 
   private final String regex;
   private final String category;
+  private boolean isAble;
 
-  Operator(String regex, String category) {
+  Operator(String regex, String category, boolean isAble) {
     this.regex = regex;
     this.category = category;
+    this.isAble = isAble;
   }
 
   @Override
@@ -52,11 +54,13 @@ public enum Operator implements TokenType {
 
   @Override
   public boolean isAble() {
-    return false;
+    return isAble;
   }
 
   @Override
-  public void setAble(boolean isAble) {}
+  public void setAble(boolean isAble) {
+    this.isAble = isAble;
+  }
 
   public static List<Token> findTokens(String string, Position initialPosition) {
     List<Token> finalList = new ArrayList<>();
@@ -64,7 +68,7 @@ public enum Operator implements TokenType {
     int i = 0;
     boolean match = false;
     for (Operator key : values()) {
-      if (string.matches(".*" + key.getRegex() + ".*")) {
+      if (string.matches(".*" + key.getRegex() + ".*") && key.isAble()) {
         match = true;
         String[] split = split(string, key.getRegex());
         finalList.addAll(findTokens(split[0], initialPosition.incrementColumn(i)));
