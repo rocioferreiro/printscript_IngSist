@@ -1,11 +1,16 @@
 plugins {
     id 'jacoco'
     id 'java'
+    id 'maven-publish'
 }
 
 dependencies {
     implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.4'
     implementation 'org.junit.jupiter:junit-jupiter:5.4.2'
+}
+
+repositories {
+    mavenCentral()
 }
 
 test {
@@ -23,3 +28,4 @@ jacocoTestReport {
 jacoco {
     toolVersion = "0.8.6"
 }
+
