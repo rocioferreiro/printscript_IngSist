@@ -16,6 +16,7 @@ public class TokenTest {
     Assertions.assertEquals(expected.getValue(), actual.getValue());
     Assertions.assertEquals(expected.getType(), actual.getType());
     Assertions.assertEquals(expected.getPosition().getRow(), actual.getPosition().getRow());
+
     Assertions.assertEquals(expected.getPosition().getColumn(), actual.getPosition().getColumn());
   }
 
