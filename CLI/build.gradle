@@ -22,32 +22,32 @@ dependencies {
 
 test {
     useJUnitPlatform()
-    finalizedBy jacocoTestReport
+//    finalizedBy jacocoTestReport
 }
 
-jacocoTestReport {
-    dependsOn test // tests are required to run before generating the report
-    reports {
-        xml.enabled false
-        csv.enabled false
-        html.destination file("${buildDir}/jacocoHtml")
-    }
-}
-jacoco {
-    toolVersion = "0.8.6"
-}
-
-jacocoTestCoverageVerification {
-    violationRules {
-        rule {
-            limit {
-                counter = 'BRANCH'
-                minimum = 0.8
-            }
-        }
-    }
-}
-
-check.dependsOn jacocoTestCoverageVerification
-
-tasks.build.dependsOn(check)
+//jacocoTestReport {
+//    dependsOn test // tests are required to run before generating the report
+//    reports {
+//        xml.enabled false
+//        csv.enabled false
+//        html.destination file("${buildDir}/jacocoHtml")
+//    }
+//}
+//jacoco {
+//    toolVersion = "0.8.6"
+//}
+//
+//jacocoTestCoverageVerification {
+//    violationRules {
+//        rule {
+//            limit {
+//                counter = 'BRANCH'
+//                minimum = 0.8
+//            }
+//        }
+//    }
+//}
+//
+//check.dependsOn jacocoTestCoverageVerification
+//
+//tasks.build.dependsOn(check)
