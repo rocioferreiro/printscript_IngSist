@@ -32,9 +32,20 @@ public class CLI {
 
   private static void setVersions() {
     versions.add(new Version("PrintScript 1.0", new ArrayList<>()));
-    TokenType[] typesPrint1 = {KeyWord.B_ASSIGNATION, KeyWord.C_DECLARATION, KeyWord.BOOLEAN, KeyWord.IF_STATEMENT,
-            KeyWord.ELSE_STATEMENT, Operator.EQUAL_EQUAL, Operator.GREATER_EQUAL, Operator.MINOR_EQUAL,
-            Operator.GREATER, Operator.MINOR, Operator.L_KEY, Operator.R_KEY};
+    TokenType[] typesPrint1 = {
+      KeyWord.B_ASSIGNATION,
+      KeyWord.C_DECLARATION,
+      KeyWord.BOOLEAN,
+      KeyWord.IF_STATEMENT,
+      KeyWord.ELSE_STATEMENT,
+      Operator.EQUAL_EQUAL,
+      Operator.GREATER_EQUAL,
+      Operator.MINOR_EQUAL,
+      Operator.GREATER,
+      Operator.MINOR,
+      Operator.L_KEY,
+      Operator.R_KEY
+    };
     versions.add(new Version("PrintScript 1.1", Arrays.asList(typesPrint1)));
   }
 

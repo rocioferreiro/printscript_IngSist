@@ -72,12 +72,12 @@ public class ConcreteInterpreter implements Interpreter {
       List<Token> tokens, int indexOfConditional) {
     for (int i = indexOfConditional; i < tokens.size(); i++) {
       if (tokens.get(i).getType().equals(KeyWord.ELSE_STATEMENT)) {
-        return getEndIndex(tokens, i+1);
+        return getEndIndex(tokens, i + 1);
       }
     }
     for (int i = indexOfConditional; i < tokens.size(); i++) {
       if (tokens.get(i).getType().equals(Operator.L_KEY)) {
-        return getEndIndex(tokens, i+1);
+        return getEndIndex(tokens, i + 1);
       }
     }
     return -1;

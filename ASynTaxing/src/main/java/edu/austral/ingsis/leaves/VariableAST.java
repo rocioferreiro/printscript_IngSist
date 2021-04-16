@@ -31,7 +31,11 @@ public class VariableAST implements ASTLeaf {
     if (context.toAddExists())
       return context.setToAddValue(var.getValue()).setToAddIsConst(var.isConst());
     return context
-        .addVariable(new VariableBuilder().withName(token.getValue()).withValue(var.getValue()).withType(var.getType()))
+        .addVariable(
+            new VariableBuilder()
+                .withName(token.getValue())
+                .withValue(var.getValue())
+                .withType(var.getType()))
         .setToAddIsConst(var.isConst());
   }
 }

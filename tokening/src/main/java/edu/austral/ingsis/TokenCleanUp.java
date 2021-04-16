@@ -31,15 +31,15 @@ public class TokenCleanUp {
   }
 
   private static int getIndexOfNextSeparatorConditional(
-          List<Token> tokens, int indexOfConditional) {
+      List<Token> tokens, int indexOfConditional) {
     for (int i = indexOfConditional; i < tokens.size(); i++) {
       if (tokens.get(i).getType().equals(KeyWord.ELSE_STATEMENT)) {
-        return getEndIndex(tokens, i+1);
+        return getEndIndex(tokens, i + 1);
       }
     }
     for (int i = indexOfConditional; i < tokens.size(); i++) {
       if (tokens.get(i).getType().equals(Operator.L_KEY)) {
-        return getEndIndex(tokens, i+1);
+        return getEndIndex(tokens, i + 1);
       }
     }
     return -1;
@@ -50,7 +50,7 @@ public class TokenCleanUp {
 
     for (int i = 0; i < tokens.size(); i++) {
       if (tokens.get(i).getType().equals(KeyWord.IF_STATEMENT)) {
-        i = getIndexOfNextSeparatorConditional(tokens, i+2);
+        i = getIndexOfNextSeparatorConditional(tokens, i + 2);
         counter++;
       }
       if (tokens.get(i).getType().equals(Operator.SEMICOLONS)) counter++;

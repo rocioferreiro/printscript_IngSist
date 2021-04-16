@@ -46,7 +46,8 @@ public class ConditionalRule implements Rule {
       final Position pos = sublist.get(0).getPosition();
       for (Rule rule : contextApprovedRules) {
         Optional<ASTWrapper> result;
-        if (rule.getRuleType().equals(RuleType.IF)) result = rule.validateTokens(new ArrayList<>(sublist.subList(0, nextIndex+1)));
+        if (rule.getRuleType().equals(RuleType.IF))
+          result = rule.validateTokens(new ArrayList<>(sublist.subList(0, nextIndex + 1)));
         else result = rule.validateTokens(new ArrayList<>(sublist.subList(0, nextIndex)));
         result.ifPresent(resultList::add);
       }

@@ -13,7 +13,8 @@ public class InterpreterExecutorTest {
   private static final PrintStream originalOut = System.out;
   private static final PrintStream originalErr = System.err;
   private static final Interpreter interpreter =
-      new ConcreteInterpreter(getPath("rules.txt"), new InterpretationExecutionStrategy(), new Version());
+      new ConcreteInterpreter(
+          getPath("rules.txt"), new InterpretationExecutionStrategy(), new Version());
 
   @BeforeEach
   public void setUpStreams() {
