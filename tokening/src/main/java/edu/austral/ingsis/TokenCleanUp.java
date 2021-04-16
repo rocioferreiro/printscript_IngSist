@@ -38,7 +38,6 @@ public class TokenCleanUp {
   private static int getIndexOfNextSeparatorConditional(
       List<Token> tokens, int indexOfConditional) {
     int provisionalEndIndex = -1;
-    //if(contains(tokens, KeyWord.ELSE_STATEMENT)) return getIndexOfNextSeparatorConditionalElse(tokens, indexOfConditional);
     for (int i = indexOfConditional; i < tokens.size(); i++) {
       if (tokens.get(i).getType().equals(Operator.L_KEY)) {
         provisionalEndIndex = getEndIndex(tokens, i + 1);
@@ -49,18 +48,6 @@ public class TokenCleanUp {
       return getIndexOfNextSeparatorConditional(tokens, provisionalEndIndex);
     return provisionalEndIndex;
   }
-
-//  private static int getIndexOfNextSeparatorConditionalElse(List<Token> tokens, int initialIndex){
-//    for (int i = initialIndex; i < tokens.size(); i++) {
-//      if(tokens.get(i).getType().equals(KeyWord.IF_STATEMENT)){
-//        return getIndexOfNextSeparatorConditionalElse(tokens, i+1);
-//      }
-//      if (tokens.get(i).getType().equals(KeyWord.ELSE_STATEMENT)) {
-//        return getEndIndex(tokens, i + 2);
-//      }
-//    }
-//    return -1;
-//  }
 
   public static int getAmountOfSentences(List<Token> tokens) {
     int counter = 0;
