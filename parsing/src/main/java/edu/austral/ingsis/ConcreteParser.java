@@ -2,7 +2,6 @@ package edu.austral.ingsis;
 
 import edu.austral.ingsis.rules.RuleType;
 import java.nio.file.Path;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,12 +25,16 @@ public class ConcreteParser implements Parser {
     return new ASTInContext(tree, semanticAnalyzer.getContext());
   }
 
-  private AST convertWrapper(ASTWrapper wrapper){
-    if(wrapper.getLeft() == null && wrapper.getRight()==null) return wrapper.getTree();
+  private AST convertWrapper(ASTWrapper wrapper) {
+    if (wrapper.getLeft() == null && wrapper.getRight() == null) return wrapper.getTree();
     List<ASTWrapper> left = wrapper.getLeft();
     List<ASTWrapper> right = wrapper.getRight();
-    wrapper.getTree().setLeftIf(left.stream().map(this::convertWrapper).collect(Collectors.toList()));
-    wrapper.getTree().setRightIf(right.stream().map(this::convertWrapper).collect(Collectors.toList()));
+    wrapper
+        .getTree()
+        .setLeftIf(left.stream().map(this::convertWrapper).collect(Collectors.toList()));
+    wrapper
+        .getTree()
+        .setRightIf(right.stream().map(this::convertWrapper).collect(Collectors.toList()));
     return wrapper.getTree();
   }
 }

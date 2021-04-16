@@ -44,7 +44,8 @@ public class TokenCleanUp {
         break;
       }
     }
-    if(provisionalEndIndex < tokens.size()-1 && tokens.get(provisionalEndIndex+1).getType().equals(KeyWord.ELSE_STATEMENT))
+    if (provisionalEndIndex < tokens.size() - 1
+        && tokens.get(provisionalEndIndex + 1).getType().equals(KeyWord.ELSE_STATEMENT))
       return getIndexOfNextSeparatorConditional(tokens, provisionalEndIndex);
     return provisionalEndIndex;
   }
