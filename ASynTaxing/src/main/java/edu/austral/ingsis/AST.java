@@ -23,6 +23,7 @@ public interface AST {
     return new ArrayList<>();
   }
 
+
   boolean isLeaf();
 
   default AST addAST(AST ast) {
