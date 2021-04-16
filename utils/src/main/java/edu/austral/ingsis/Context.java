@@ -43,24 +43,8 @@ public class Context {
     return variables;
   }
 
-  public List<Variable> getSubVariablesIf() {
-    return subContextIf.getVariables();
-  }
-
-  public List<Variable> getSubVariablesElse() {
-    return subContextElse.getVariables();
-  }
-
   public void addVariable(Variable variable) {
     variables.add(variable);
-  }
-
-  public void addVariableToSubContextIf(Variable variable) {
-    getSubVariablesIf().add(variable);
-  }
-
-  public void addVariableToSubContextElse(Variable variable) {
-    getSubVariablesElse().add(variable);
   }
 
   public void updateVariable(Variable variable) {
