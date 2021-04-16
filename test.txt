@@ -5,8 +5,9 @@ let b:boolean = true;
 if(b) {
  n = 1000;
  let die: number = 1;
+ println(die);
 }
-
+println(die);
 println(n);
 
 let s:string = 'hola';

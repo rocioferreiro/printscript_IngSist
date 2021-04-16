@@ -6,9 +6,8 @@ public class TokenCleanUp {
 
   public static void checkLastToken(List<Token> tokens) {
     Token lastToken = tokens.get(tokens.size() - 1);
-    if (!lastToken.getType().equals(Operator.SEMICOLONS)
-        && !lastToken.getType().equals(Operator.R_KEY)) {
-      throw new InvalidCodeException("Missing last semicolon.", lastToken.getPosition());
+    if (!lastToken.getType().equals(Operator.SEMICOLONS) && !lastToken.getType().equals(Operator.R_KEY)) {
+      throw new InvalidCodeException("Missing separator.", lastToken.getPosition());
     }
   }
 

@@ -14,6 +14,13 @@ public class Context {
     this.variables = new ArrayList<>();
   }
 
+  public Context(Context context) {
+    this.variables = new ArrayList<>(context.variables);
+    this.subContextIf = context.subContextIf;
+    this.subContextElse = context.subContextElse;
+    this.nextExecute = context.nextExecute;
+  }
+
   public Context(List<Variable> variables, Context subContextIf, Context subContextElse) {
     this.variables = variables;
     this.subContextIf = subContextIf;

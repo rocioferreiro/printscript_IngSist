@@ -68,11 +68,12 @@ public class CLI {
       System.out.print("~ ");
       line = scanner.nextLine();
       if (!line.isEmpty() && !line.equals("exit")) {
-        try {
-          interpreter.interpret(line);
-        } catch (InvalidCodeException e) {
-          System.out.println(ANSI_RED_BOLD + e.getMessage() + ANSI_RESET);
-        }
+        interpreter.interpret(line);
+//        try {
+//
+//        } catch (InvalidCodeException e) {
+//          System.out.println(ANSI_RED_BOLD + e.getMessage() + ANSI_RESET);
+//        }
       }
     }
   }

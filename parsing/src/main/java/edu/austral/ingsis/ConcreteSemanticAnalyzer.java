@@ -14,7 +14,7 @@ public class ConcreteSemanticAnalyzer implements SemanticAnalyzer {
   @Override
   public void analyze(ASTWrapper ast) {
     if (ast.getType().equals(RuleType.IF)) updateIfContext(ast);
-    else updateContext(ast, false);
+    else updateContext(ast);
   }
 
   public Context getContext() {
@@ -22,21 +22,20 @@ public class ConcreteSemanticAnalyzer implements SemanticAnalyzer {
   }
 
   private void updateIfContext(ASTWrapper wrapper) {
-    Context actual =
-        getContext(); // TODO por alguna razón se updatea cuando updateo el context (fucking java)
+    Context actual = new Context(context);
     for (ASTWrapper ast : wrapper.getLeft()) {
-      updateContext(ast, true);
+      updateContext(ast);
     }
     Context ifContext = getContext();
     context = actual; // TODO puede causar problemas
     for (ASTWrapper ast : wrapper.getRight()) {
-      updateContext(ast, true);
+      updateContext(ast);
     }
     Context elseContext = getContext();
     context = new Context(context.getVariables(), ifContext, elseContext);
   }
 
-  private void updateContext(ASTWrapper sentence, boolean embedded) {
+  private void updateContext(ASTWrapper sentence) {
     Variable variable = sentence.getType().getCommand().execute(sentence.getTree(), context);
     variable.setIsConst(sentence.getType().equals(RuleType.CONST));
     if (!variable.getName().isEmpty()) {
@@ -45,7 +44,7 @@ public class ConcreteSemanticAnalyzer implements SemanticAnalyzer {
           throw new InvalidCodeException(
               "Type mismatch!", sentence.getTree().getToken().getPosition());
       } else {
-        if (embedded) context.addVariable(variable);
+        context.addVariable(variable);
       }
     }
   }
