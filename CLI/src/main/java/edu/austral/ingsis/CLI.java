@@ -69,11 +69,11 @@ public class CLI {
       line = scanner.nextLine();
       if (!line.isEmpty() && !line.equals("exit")) {
         interpreter.interpret(line);
-//        try {
-//
-//        } catch (InvalidCodeException e) {
-//          System.out.println(ANSI_RED_BOLD + e.getMessage() + ANSI_RESET);
-//        }
+        //        try {
+        //
+        //        } catch (InvalidCodeException e) {
+        //          System.out.println(ANSI_RED_BOLD + e.getMessage() + ANSI_RESET);
+        //        }
       }
     }
   }
