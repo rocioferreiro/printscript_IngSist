@@ -1,0 +1,19 @@
+{
+  "name": "@rocioferreiro/printscript_ingsist",
+  "version": "1.0.0",
+  "description": "## Release Branching Strategy",
+  "main": "index.js",
+  "scripts": {
+    "test": "exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rocioferreiro/printscript_IngSist.git"
+  },
+  "author": "Rocio y Katia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rocioferreiro/printscript_IngSist/issues"
+  },
+  "homepage": "https://github.com/rocioferreiro/printscript_IngSist#readme"
+}
