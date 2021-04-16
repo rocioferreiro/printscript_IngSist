@@ -1,0 +1,28 @@
+let b:boolean = true;
+let bool:boolean = false;
+let num:number = 0;
+let str:string = 'hola';
+if(b){
+  num=1;
+  if(b){
+    num=2;
+    str = 'deberia entrar pero despues lo cambio';
+    if(bool){
+      num = 5;
+      str = 'ni deberia entrar';
+    } else {
+      num = 7;
+      str = 'yo me imprimo';
+    }
+  }
+}
+println(num);
+println(str);
+
+const cons: number = 1;
+println(cons);
+
+let trueBool:boolean = 3 <= 4;
+let falseBool:boolean = 1 == 2;
+println(trueBool);
+println(falseBool);
