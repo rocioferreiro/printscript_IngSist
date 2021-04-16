@@ -38,7 +38,7 @@ public class ConcreteInterpreter implements Interpreter {
     while (sublist.size() > 0) {
       int nextIndex = getIndexOfNextSeparator(sublist);
       List<Token> list = new ArrayList<>(sublist.subList(0, nextIndex + 1));
-      if (!contains(list, KeyWord.IF_STATEMENT) && list.size()>0)
+      if (!contains(list, KeyWord.IF_STATEMENT) && list.size() > 0)
         list = new ArrayList<>(list.subList(0, list.size() - 1));
       ASTInContext ast = parser.parse(list);
       context = ast.getContext();
