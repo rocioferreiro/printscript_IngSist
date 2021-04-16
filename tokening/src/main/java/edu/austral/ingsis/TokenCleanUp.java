@@ -49,8 +49,9 @@ public class TokenCleanUp {
     int counter = 0;
 
     for (int i = 0; i < tokens.size(); i++) {
-      if (tokens.get(i).getType().equals(KeyWord.IF_STATEMENT)) {
-        i = getIndexOfNextSeparatorConditional(tokens, i + 2);
+
+      if (tokens.get(i).getType().equals(Operator.L_KEY)) {
+        i = getIndexOfNextSeparatorConditional(tokens, i + 1);
         counter++;
       }
       if (tokens.get(i).getType().equals(Operator.SEMICOLONS)) counter++;

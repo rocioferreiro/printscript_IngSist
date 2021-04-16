@@ -34,15 +34,16 @@ public class ConcreteInterpreter implements Interpreter {
     TokenCleanUp.checkLastToken(tokens);
     parser = new ConcreteParser(rules);
     List<Token> sublist = tokens;
-    for (int i = 1; i < amount + 1; i++) {
+    int index = 0;
+    while (sublist.size() > 0) {
       int nextIndex = getIndexOfNextSeparator(sublist);
       List<Token> list = new ArrayList<>(sublist.subList(0, nextIndex + 1));
-      if (!contains(list, KeyWord.IF_STATEMENT))
+      if (!contains(list, KeyWord.IF_STATEMENT) && list.size()>0)
         list = new ArrayList<>(list.subList(0, list.size() - 1));
       ASTInContext ast = parser.parse(list);
       context = ast.getContext();
       strategy.execute(executor, ast);
-      print(amount, i);
+      print(amount, ++index);
       sublist = new ArrayList<>(sublist.subList(nextIndex + 1, sublist.size()));
     }
   }

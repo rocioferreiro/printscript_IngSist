@@ -90,9 +90,9 @@ public class CLI {
     System.out.println(ANSI_YELLOW + "Enter valid path:" + ANSI_RESET);
     String line = "";
     Scanner scanner = new Scanner(System.in);
-    while (!line.matches(".\\.txt")) {
+    while (!line.matches(".\\.ps")) {
       line = scanner.nextLine();
-      if (!line.matches(".\\.txt")) {
+      if (!line.matches(".\\.ps")) {
         try {
           interpreter.interpret(Paths.get(line));
           break;
