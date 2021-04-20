@@ -26,11 +26,12 @@ public class LexerStatementTest {
   @Parameterized.Parameters(name = "version {0} - {1})")
   public static Collection<Object[]> data() {
     return Arrays.asList(
-        new Object[][] {{"1.0", "happy-path"},
-                        {"1.0", "no-enters"},
-                        {"1.0", "number-case"},
-                        {"1.0", "string-case"},
-                        {"1.1", "boolean-case"}
+        new Object[][] {
+          {"1.0", "happy-path"},
+          {"1.0", "no-enters"},
+          {"1.0", "number-case"},
+          {"1.0", "string-case"},
+          {"1.1", "boolean-case"}
         });
   }
 
