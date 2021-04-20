@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'edu.austral.ingsis'
-version = '1.0.3'
+version '1.0'
 
 dependencies {
     implementation project(':tokening')
@@ -14,6 +14,24 @@ dependencies {
     implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.4'
     implementation 'org.junit.jupiter:junit-jupiter:5.4.2'
 }
+
+//publishing {
+//    repositories {
+//        maven {
+//            name = "GitHubPackages"
+//            url = uri("https://maven.pkg.github.com/rocioferreiro/printscript_IngSist")
+//            credentials {
+//                username = project.findProperty("gpr.user") ?: "rocioferreiro"
+//                password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
+//            }
+//        }
+//    }
+//    publications {
+//        libraryJar(MavenPublication) {
+//            from(components.java)
+//        }
+//    }
+//}
 
 test {
     useJUnitPlatform()

@@ -95,7 +95,7 @@ publishing {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/rocioferreiro/printscript_IngSist")
             credentials {
-                username = project.findProperty("gpr.user") ?: System.getenv("rocioferreiro")
+                username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
                 password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
             }
         }

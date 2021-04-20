@@ -1,0 +1,91 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "edu.austral.ingsis",
+    "module": "lexing",
+    "version": "1.0.5",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "6.7.1",
+      "buildId": "whahpfosxrbhpi7m6wuhkf46fq"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 15,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "lexing-1.0.5.jar",
+          "url": "lexing-1.0.5.jar",
+          "size": 8218,
+          "sha512": "a868b2418e720ccad6748c5b1207728334e9dce18638d01853f9b5249060dba7dad3bb3e6c40d52d15176cf19e6c797932adcc8307f6a9f3b9589138b55348ac",
+          "sha256": "ce5be22593a81b0df2804f6c94ebcf366d01125e38747dd10ce5810e85bda2a8",
+          "sha1": "6f7b5c643318c5fd7ee6f5c96cc074b0b6ab8ad1",
+          "md5": "05d4dd61a8d5963794eddaaaa7414997"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 15,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "edu.austral.ingsis",
+          "module": "tokening",
+          "version": {
+            "requires": "1.0.1"
+          }
+        },
+        {
+          "group": "edu.austral.ingsis",
+          "module": "utils",
+          "version": {
+            "requires": "1.0.1"
+          }
+        },
+        {
+          "group": "org.apache.commons",
+          "module": "commons-lang3",
+          "version": {
+            "requires": "3.4"
+          }
+        },
+        {
+          "group": "org.junit.jupiter",
+          "module": "junit-jupiter",
+          "version": {
+            "requires": "5.4.2"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "lexing-1.0.5.jar",
+          "url": "lexing-1.0.5.jar",
+          "size": 8218,
+          "sha512": "a868b2418e720ccad6748c5b1207728334e9dce18638d01853f9b5249060dba7dad3bb3e6c40d52d15176cf19e6c797932adcc8307f6a9f3b9589138b55348ac",
+          "sha256": "ce5be22593a81b0df2804f6c94ebcf366d01125e38747dd10ce5810e85bda2a8",
+          "sha1": "6f7b5c643318c5fd7ee6f5c96cc074b0b6ab8ad1",
+          "md5": "05d4dd61a8d5963794eddaaaa7414997"
+        }
+      ]
+    }
+  ]
+}
