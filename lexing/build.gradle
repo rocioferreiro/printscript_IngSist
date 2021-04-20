@@ -8,6 +8,10 @@ plugins {
 group = 'edu.austral.ingsis'
 version '1.0'
 
+repositories {
+    mavenCentral()
+}
+
 dependencies {
     implementation project(':tokening')
     implementation project(':utils')
@@ -35,6 +39,7 @@ dependencies {
 
 test {
     useJUnitPlatform()
+    useJUnit()
 //    finalizedBy jacocoTestReport
 }
 

@@ -12,7 +12,7 @@
 
 plugins {
     id 'java'
-    id 'jacoco'
+//    id 'jacoco'
 //    id 'checkstyle'
 //    id 'io.freefair.lombok'
 //    id 'com.github.sherter.google-java-format'

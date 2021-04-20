@@ -1,7 +1,6 @@
 plugins {
     id 'java-library'
     id 'my-library.java-common-conventions'
-//    id 'jacoco'
 }
 
 group = 'edu.austral.ingsis'

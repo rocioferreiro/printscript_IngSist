@@ -1,6 +1,5 @@
 package edu.austral.ingsis;
 
-import static org.hamcrest.CoreMatchers.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.File;
@@ -27,26 +26,21 @@ public class LexerStatementTest {
   @Parameterized.Parameters(name = "version {0} - {1})")
   public static Collection<Object[]> data() {
     return Arrays.asList(
-        new Object[][] {{"1.0", "happy-path"}
-          //                {"1.0", "no-enters"},
-          //                {"1.0", "number-case"},
-          //                {"1.0", "string-case"},
-          //                {"1.1", "boolean-case"}
+        new Object[][] {{"1.0", "happy-path"},
+                        {"1.0", "no-enters"},
+                        {"1.0", "number-case"},
+                        {"1.0", "string-case"},
+                        {"1.1", "boolean-case"}
         });
   }
 
   @Test
   public void testPrintStatement() throws FileNotFoundException {
-    String testDirectory = "src/test/java/resources/" + version + "/" + directory + "/";
+    String testDirectory = "src/test/resources/" + version + "/" + directory + "/";
     Path srcPath = Path.of(testDirectory + "main.ps");
     List<String> expectedOutput = readLines(testDirectory + "output.txt");
     List<String> actualOutput = Serializer.serialize(lexer.scan(srcPath));
-    // PrintCollector printCollector = new PrintCollector();
-    // ErrorCollector errorCollector = new ErrorCollector();
-    // interpreter.execute(srcFile, version, printCollector, errorCollector);
     assertEquals(actualOutput, expectedOutput);
-    //        assertThat(errorCollector.getErrors(), is(Collections.emptyList()));
-    //        assertThat(printCollector.getMessages(), is(expectedOutput));
   }
 
   private List<String> readLines(String file) throws FileNotFoundException {
