@@ -13,8 +13,8 @@ public class MyLibraryJavaCommonConventionsPlugin
   public void apply(org.gradle.api.internal.project.ProjectInternal target) {
     assertSupportedByCurrentGradleVersion();
     target.getPluginManager().apply("java");
-        target.getPluginManager().apply("jacoco");
-        target.getPluginManager().apply("maven-publish");
+    target.getPluginManager().apply("jacoco");
+    target.getPluginManager().apply("maven-publish");
 
     try {
       Class<? extends BasicScript> precompiledScriptClass =
