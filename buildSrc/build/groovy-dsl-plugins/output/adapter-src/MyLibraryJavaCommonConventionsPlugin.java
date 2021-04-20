@@ -12,6 +12,8 @@ public class MyLibraryJavaCommonConventionsPlugin implements org.gradle.api.Plug
     public void apply(org.gradle.api.internal.project.ProjectInternal target) {
         assertSupportedByCurrentGradleVersion();
                 target.getPluginManager().apply("java");
+        target.getPluginManager().apply("jacoco");
+        target.getPluginManager().apply("maven-publish");
 
         try {
             Class<? extends BasicScript> precompiledScriptClass = Class.forName("precompiled_MyLibraryJavaCommonConventions").asSubclass(BasicScript.class);

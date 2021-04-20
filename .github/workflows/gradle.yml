@@ -68,6 +68,6 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build
     - name: Publish
-      run: ./gradlew :lexing:publish
+      run: ./gradlew publish
       env:
         TOKEN: ${{ secrets.TOKEN }}
