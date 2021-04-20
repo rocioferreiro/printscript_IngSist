@@ -12,11 +12,13 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.rules.ExpectedException;
 
+
 public class LexerTest {
 
   private final Lexer lexer;
 
-  @Rule public ExpectedException thrown = ExpectedException.none();
+  @Rule
+  public ExpectedException thrown = ExpectedException.none();
 
   public LexerTest() {
     this.lexer = new ConcreteLexer();
