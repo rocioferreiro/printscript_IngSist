@@ -1,7 +1,0 @@
-(DECLARATION, let)
-(VARIABLE_REF, x)
-(T_ASSIGNATION, :)
-(S_ASSIGNATION, string)
-(EQUAL, =)
-(STRING, hola)
-(SEMICOLONS, ;)

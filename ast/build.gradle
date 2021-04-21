@@ -63,4 +63,4 @@ test {
 //
 //check.dependsOn jacocoTestCoverageVerification
 //
-tasks.build.dependsOn(check)
+//tasks.build.dependsOn(check)

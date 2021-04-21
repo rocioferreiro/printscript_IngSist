@@ -6,11 +6,7 @@ plugins {
 }
 
 group = 'edu.austral.ingsis'
-version '1.0'
-
-repositories {
-    mavenCentral()
-}
+version = '1.0.7'
 
 dependencies {
     implementation project(':tokening')
@@ -39,7 +35,6 @@ publishing {
 
 test {
     useJUnitPlatform()
-    useJUnit()
 //    finalizedBy jacocoTestReport
 }
 
@@ -69,3 +64,4 @@ test {
 //check.dependsOn jacocoTestCoverageVerification
 //
 //tasks.build.dependsOn(check)
+
