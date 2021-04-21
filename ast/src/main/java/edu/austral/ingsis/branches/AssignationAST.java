@@ -12,7 +12,8 @@ public class AssignationAST implements ASTBranch {
     this.token = token;
   }
 
-  public AssignationAST() {}
+  public AssignationAST() {
+  }
 
   @Override
   public Token getToken() {
@@ -55,7 +56,7 @@ public class AssignationAST implements ASTBranch {
     context = leftChild.executeTree(context);
     if (leftChild.isLeaf() && context.toAddIsConst()) {
       throw new InvalidCodeException(
-          "You can't re-assign a constant", leftChild.getToken().getPosition());
+              "You can't re-assign a constant", leftChild.getToken().getPosition());
     }
     return rightChild.executeTree(context);
   }

@@ -50,6 +50,6 @@ public class EqualEqualAST implements ASTBranch {
     String left = leftChild.executeTree(context).getToAddValue();
     String right = rightChild.executeTree(context).getToAddValue();
     return context.setToAddValue(
-        String.valueOf(Integer.valueOf(left).compareTo(Integer.valueOf(right)) == 0));
+            String.valueOf(Integer.valueOf(left).compareTo(Integer.valueOf(right)) == 0));
   }
 }

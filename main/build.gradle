@@ -7,7 +7,7 @@ group = 'edu.austral.ingsis'
 version '1.0'
 
 dependencies {
-    implementation project(':CLI')
+    implementation project(':cli')
     implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.4'
 }
 

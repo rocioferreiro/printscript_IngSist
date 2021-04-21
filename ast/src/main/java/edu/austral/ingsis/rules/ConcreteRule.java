@@ -1,6 +1,7 @@
 package edu.austral.ingsis.rules;
 
 import edu.austral.ingsis.*;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -19,7 +20,7 @@ public class ConcreteRule implements Rule {
   @Override
   public Optional<ASTWrapper> validateTokens(List<Token> list) {
     String concat =
-        list.stream().map(t -> t.getType().getCategory()).collect(Collectors.joining(","));
+            list.stream().map(t -> t.getType().getCategory()).collect(Collectors.joining(","));
     if (concat.matches(acceptingRegex)) {
       Collections.reverse(list);
       AST aux = TokenToASTConverter.convert(list.get(0));

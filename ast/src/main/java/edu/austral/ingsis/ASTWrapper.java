@@ -1,6 +1,7 @@
 package edu.austral.ingsis;
 
 import edu.austral.ingsis.rules.RuleType;
+
 import java.util.List;
 
 public interface ASTWrapper {
