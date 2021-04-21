@@ -68,11 +68,11 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build
     - name: Publish AST
-      run: ./gradlew :ASynTaxing:publish
+      run: ./gradlew :ast:publish
       env:
         TOKEN: ${{ secrets.TOKEN }}
     - name: Publish CLI
-      run: ./gradlew :CLI:publish
+      run: ./gradlew :cli:publish
       env:
         TOKEN: ${{ secrets.TOKEN }}
     - name: Publish Executer

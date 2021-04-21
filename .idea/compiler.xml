@@ -6,7 +6,9 @@
       <module name="my-library.ASynTaxing.main" target="11" />
       <module name="my-library.ASynTaxing.test" target="11" />
       <module name="my-library.CLI.main" target="11" />
+      <module name="my-library.CLI.main~1" target="11" />
       <module name="my-library.CLI.test" target="11" />
+      <module name="my-library.CLI.test~1" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>
