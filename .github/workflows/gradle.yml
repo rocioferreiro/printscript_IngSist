@@ -72,7 +72,7 @@ jobs:
       env:
         TOKEN: ${{ secrets.TOKEN }}
     - name: Publish CLI
-      run: ./gradlew :cli:publish
+      run: ./gradlew :command:publish
       env:
         TOKEN: ${{ secrets.TOKEN }}
     - name: Publish Executer
