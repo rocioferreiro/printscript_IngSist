@@ -69,33 +69,33 @@ jobs:
       run: ./gradlew build
     - name: Publish AST
       run: ./gradlew :ASynTaxing:publish
-        env:
-          TOKEN: ${{ secrets.TOKEN }}
+      env:
+        TOKEN: ${{ secrets.TOKEN }}
     - name: Publish CLI
       run: ./gradlew :CLI:publish
-        env:
-          TOKEN: ${{ secrets.TOKEN }}
+      env:
+        TOKEN: ${{ secrets.TOKEN }}
     - name: Publish Executer
       run: ./gradlew :executing:publish
-        env:
-          TOKEN: ${{ secrets.TOKEN }}
+      env:
+        TOKEN: ${{ secrets.TOKEN }}
     - name: Publish Interpreter
       run: ./gradlew :interpreting:publish
-        env:
-          TOKEN: ${{ secrets.TOKEN }}
+      env:
+        TOKEN: ${{ secrets.TOKEN }}
     - name: Publish Lexer
       run: ./gradlew :lexing:publish
-        env:
-          TOKEN: ${{ secrets.TOKEN }}
+      env:
+        TOKEN: ${{ secrets.TOKEN }}
     - name: Publish Parser
       run: ./gradlew :parsing:publish
-        env:
-          TOKEN: ${{ secrets.TOKEN }}
+      env:
+        TOKEN: ${{ secrets.TOKEN }}
     - name: Publish Token
       run: ./gradlew :tokening:publish
-        env:
-          TOKEN: ${{ secrets.TOKEN }}
+      env:
+        TOKEN: ${{ secrets.TOKEN }}
     - name: Publish Utils
       run: ./gradlew :utils:publish
-        env:
-          TOKEN: ${{ secrets.TOKEN }}
+      env:
+        TOKEN: ${{ secrets.TOKEN }}
