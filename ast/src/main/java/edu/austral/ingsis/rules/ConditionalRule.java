@@ -2,7 +2,6 @@ package edu.austral.ingsis.rules;
 
 import edu.austral.ingsis.*;
 import edu.austral.ingsis.branches.IfAST;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -28,7 +27,7 @@ public class ConditionalRule implements Rule {
   @Override
   public Optional<ASTWrapper> validateTokens(List<Token> list) {
     String concat =
-            list.stream().map(t -> t.getType().getCategory()).collect(Collectors.joining(","));
+        list.stream().map(t -> t.getType().getCategory()).collect(Collectors.joining(","));
     if (concat.matches(acceptingRegex)) {
       AST ifAst = new IfAST(list.get(conditionPosition));
       List<ASTWrapper> ifAsts = getAsts(getBetweenKeysOfIf(list));

@@ -27,23 +27,17 @@ public interface AST {
 
   default AST addAST(AST ast) {
     return null;
-  }
-
-  ;
+  };
 
   void setToken(Token token);
 
-  default void setLeftChild(AST ast) {
-  }
+  default void setLeftChild(AST ast) {}
 
-  default void setRightChild(AST ast) {
-  }
+  default void setRightChild(AST ast) {}
 
-  default void setLeftIf(List<AST> list) {
-  }
+  default void setLeftIf(List<AST> list) {}
 
-  default void setRightIf(List<AST> list) {
-  }
+  default void setRightIf(List<AST> list) {}
 
   boolean isEmpty();
 

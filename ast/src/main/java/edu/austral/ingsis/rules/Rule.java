@@ -2,7 +2,6 @@ package edu.austral.ingsis.rules;
 
 import edu.austral.ingsis.ASTWrapper;
 import edu.austral.ingsis.Token;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -13,6 +12,5 @@ public interface Rule {
 
   String getAcceptingRegex();
 
-  default void setContextApprovedRules(List<Rule> contextApprovedRules) {
-  }
+  default void setContextApprovedRules(List<Rule> contextApprovedRules) {}
 }

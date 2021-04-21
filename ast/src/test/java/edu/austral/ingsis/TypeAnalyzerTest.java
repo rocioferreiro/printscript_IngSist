@@ -13,11 +13,11 @@ public class TypeAnalyzerTest {
   public void testASTIsLeaf() {
     Context context = new Context();
     context.addVariable(
-            new ConcreteVariable(
-                    "x", new VariableType(KeyWord.STRING.getName(), KeyWord.STRING.getOrdinal())));
+        new ConcreteVariable(
+            "x", new VariableType(KeyWord.STRING.getName(), KeyWord.STRING.getOrdinal())));
     context.addVariable(
-            new ConcreteVariable(
-                    "y", new VariableType(KeyWord.NUMBER.getName(), KeyWord.NUMBER.getOrdinal())));
+        new ConcreteVariable(
+            "y", new VariableType(KeyWord.NUMBER.getName(), KeyWord.NUMBER.getOrdinal())));
     ContextBuilder builder = new ContextBuilder(context);
     AST ast = new LiteralAST();
     ast.setToken(new ConcreteToken(KeyWord.NUMBER, "12", new Position(1, 2)));
@@ -30,11 +30,11 @@ public class TypeAnalyzerTest {
   public void testASTIsNumberInAssignation() {
     Context context = new Context();
     context.addVariable(
-            new ConcreteVariable(
-                    "x", new VariableType(KeyWord.STRING.getName(), KeyWord.STRING.getOrdinal())));
+        new ConcreteVariable(
+            "x", new VariableType(KeyWord.STRING.getName(), KeyWord.STRING.getOrdinal())));
     context.addVariable(
-            new ConcreteVariable(
-                    "y", new VariableType(KeyWord.NUMBER.getName(), KeyWord.NUMBER.getOrdinal())));
+        new ConcreteVariable(
+            "y", new VariableType(KeyWord.NUMBER.getName(), KeyWord.NUMBER.getOrdinal())));
     ContextBuilder builder = new ContextBuilder(context);
     AST ast = new AssignationAST();
     AST left = new VariableAST();
@@ -53,11 +53,11 @@ public class TypeAnalyzerTest {
   public void testASTIsStringInAssignation() {
     Context context = new Context();
     context.addVariable(
-            new ConcreteVariable(
-                    "x", new VariableType(KeyWord.STRING.getName(), KeyWord.STRING.getOrdinal())));
+        new ConcreteVariable(
+            "x", new VariableType(KeyWord.STRING.getName(), KeyWord.STRING.getOrdinal())));
     context.addVariable(
-            new ConcreteVariable(
-                    "y", new VariableType(KeyWord.NUMBER.getName(), KeyWord.NUMBER.getOrdinal())));
+        new ConcreteVariable(
+            "y", new VariableType(KeyWord.NUMBER.getName(), KeyWord.NUMBER.getOrdinal())));
     ContextBuilder builder = new ContextBuilder(context);
     AST ast = new AssignationAST();
     AST left = new VariableAST();
@@ -76,11 +76,11 @@ public class TypeAnalyzerTest {
   public void testASTIsStringInOperationOfNumberAndString() {
     Context context = new Context();
     context.addVariable(
-            new ConcreteVariable(
-                    "x", new VariableType(KeyWord.STRING.getName(), KeyWord.STRING.getOrdinal())));
+        new ConcreteVariable(
+            "x", new VariableType(KeyWord.STRING.getName(), KeyWord.STRING.getOrdinal())));
     context.addVariable(
-            new ConcreteVariable(
-                    "y", new VariableType(KeyWord.NUMBER.getName(), KeyWord.NUMBER.getOrdinal())));
+        new ConcreteVariable(
+            "y", new VariableType(KeyWord.NUMBER.getName(), KeyWord.NUMBER.getOrdinal())));
     ContextBuilder builder = new ContextBuilder(context);
     AST ast = new AssignationAST();
     AST left = new PlusAST();

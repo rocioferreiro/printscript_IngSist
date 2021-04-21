@@ -1,7 +1,6 @@
 package edu.austral.ingsis;
 
 import edu.austral.ingsis.rules.RuleType;
-
 import java.util.List;
 
 public class ConditionalASTWrapper implements ASTWrapper {
@@ -12,7 +11,7 @@ public class ConditionalASTWrapper implements ASTWrapper {
   private final RuleType type;
 
   public ConditionalASTWrapper(
-          AST ast, List<ASTWrapper> left, List<ASTWrapper> right, RuleType type) {
+      AST ast, List<ASTWrapper> left, List<ASTWrapper> right, RuleType type) {
     this.ast = ast;
     this.left = left;
     this.right = right;

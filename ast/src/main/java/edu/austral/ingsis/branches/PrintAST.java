@@ -47,8 +47,8 @@ public class PrintAST implements ASTBranch {
     context = rightChild.executeTree(context);
     String toPrint = context.getToAddValue();
     return context.setNextExecute(
-            () -> {
-              System.out.println(toPrint);
-            });
+        () -> {
+          System.out.println(toPrint);
+        });
   }
 }

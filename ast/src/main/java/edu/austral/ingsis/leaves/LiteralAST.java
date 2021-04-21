@@ -12,8 +12,7 @@ public class LiteralAST implements ASTLeaf {
     this.token = token;
   }
 
-  public LiteralAST() {
-  }
+  public LiteralAST() {}
 
   @Override
   public Token getToken() {

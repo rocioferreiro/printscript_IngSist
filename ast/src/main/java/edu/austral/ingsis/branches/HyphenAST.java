@@ -50,7 +50,7 @@ public class HyphenAST implements ASTBranch {
     String right = rightChild.executeTree(context).getToAddValue();
     if (leftType <= KeyWord.NUMBER.getOrdinal() && rightType <= KeyWord.NUMBER.getOrdinal())
       return context.setToAddValue(
-              String.valueOf(Double.parseDouble(left) - Double.parseDouble(right)));
+          String.valueOf(Double.parseDouble(left) - Double.parseDouble(right)));
     if (leftType <= KeyWord.NUMBER.getOrdinal()) {
       int leftInt = (int) Double.parseDouble(left);
       if (leftInt > right.length()) return context.setToAddValue("");

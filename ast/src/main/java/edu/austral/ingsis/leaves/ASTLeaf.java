@@ -24,11 +24,9 @@ public interface ASTLeaf extends AST {
     return false;
   }
 
-  default void setLeftChild(AST ast) {
-  }
+  default void setLeftChild(AST ast) {}
 
-  default void setRightChild(AST ast) {
-  }
+  default void setRightChild(AST ast) {}
 
   @Override
   default AST addAST(AST ast) {
