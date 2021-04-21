@@ -3,7 +3,7 @@
   "component": {
     "group": "edu.austral.ingsis",
     "module": "lexing",
-    "version": "1.0.2",
+    "version": "1.0.7",
     "attributes": {
       "org.gradle.status": "release"
     }
@@ -11,7 +11,7 @@
   "createdBy": {
     "gradle": {
       "version": "6.7.1",
-      "buildId": "7nxhmr5dwzd6tn6qczrocopl6m"
+      "buildId": "kbode6i2eza73kmhhsyba2a5jm"
     }
   },
   "variants": [
@@ -20,19 +20,19 @@
       "attributes": {
         "org.gradle.category": "library",
         "org.gradle.dependency.bundling": "external",
-        "org.gradle.jvm.version": 15,
+        "org.gradle.jvm.version": 11,
         "org.gradle.libraryelements": "jar",
         "org.gradle.usage": "java-api"
       },
       "files": [
         {
-          "name": "lexing-1.0.2.jar",
-          "url": "lexing-1.0.2.jar",
-          "size": 8218,
-          "sha512": "ecfcb0e16bc2848a72e8ae9c09e928a1294bc35ec37f792be086267b8275e3e21836c8d38b5b11307e4c50b97d1cb52dcf922d716b6a3f887a99bc1e55894588",
-          "sha256": "38a7d533d382587fc6e5c67d8006bae8e430e5ef08b2e301e532cbdff6c30965",
-          "sha1": "0b5f9cb7b1601fe4e99017071c9d8393958d7673",
-          "md5": "ed24f0e1621a2fa8a61d722907ac8342"
+          "name": "lexing-1.0.7.jar",
+          "url": "lexing-1.0.7.jar",
+          "size": 8199,
+          "sha512": "c8973460ae7ea32b21ae4750d165598e18c7617f01c77c361ca8cff395f7d90d4ded92808a42fd6d40f4aaa83d838d29423b573cb2f9adae286c8ede4fc4aa9c",
+          "sha256": "0197e891a6f1dd5f55ca2da73d5ed32cd82e24ddf5530907f824682975e9e756",
+          "sha1": "34719a2a78007427e409b324c7ea07583eb83445",
+          "md5": "68a1c7581c727791952540b3f0542365"
         }
       ]
     },
@@ -41,7 +41,7 @@
       "attributes": {
         "org.gradle.category": "library",
         "org.gradle.dependency.bundling": "external",
-        "org.gradle.jvm.version": 15,
+        "org.gradle.jvm.version": 11,
         "org.gradle.libraryelements": "jar",
         "org.gradle.usage": "java-runtime"
       },
@@ -50,14 +50,14 @@
           "group": "edu.austral.ingsis",
           "module": "tokening",
           "version": {
-            "requires": "1.0.1"
+            "requires": "1.0"
           }
         },
         {
           "group": "edu.austral.ingsis",
           "module": "utils",
           "version": {
-            "requires": "1.0.1"
+            "requires": "1.0"
           }
         },
         {
@@ -77,13 +77,13 @@
       ],
       "files": [
         {
-          "name": "lexing-1.0.2.jar",
-          "url": "lexing-1.0.2.jar",
-          "size": 8218,
-          "sha512": "ecfcb0e16bc2848a72e8ae9c09e928a1294bc35ec37f792be086267b8275e3e21836c8d38b5b11307e4c50b97d1cb52dcf922d716b6a3f887a99bc1e55894588",
-          "sha256": "38a7d533d382587fc6e5c67d8006bae8e430e5ef08b2e301e532cbdff6c30965",
-          "sha1": "0b5f9cb7b1601fe4e99017071c9d8393958d7673",
-          "md5": "ed24f0e1621a2fa8a61d722907ac8342"
+          "name": "lexing-1.0.7.jar",
+          "url": "lexing-1.0.7.jar",
+          "size": 8199,
+          "sha512": "c8973460ae7ea32b21ae4750d165598e18c7617f01c77c361ca8cff395f7d90d4ded92808a42fd6d40f4aaa83d838d29423b573cb2f9adae286c8ede4fc4aa9c",
+          "sha256": "0197e891a6f1dd5f55ca2da73d5ed32cd82e24ddf5530907f824682975e9e756",
+          "sha1": "34719a2a78007427e409b324c7ea07583eb83445",
+          "md5": "68a1c7581c727791952540b3f0542365"
         }
       ]
     }
