@@ -3,6 +3,7 @@ plugins {
     id 'maven-publish'
 }
 
+group = 'edu.austral.ingsis'
 version '1.0'
 
 dependencies {
