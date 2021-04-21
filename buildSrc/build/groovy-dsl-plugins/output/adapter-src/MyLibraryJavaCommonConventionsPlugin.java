@@ -6,11 +6,13 @@ import org.gradle.internal.resource.StringTextResource;
 import org.gradle.util.GradleVersion;
 
 /** Precompiled my-library.java-common-conventions script plugin. */
-public class MyLibraryJavaCommonConventionsPlugin implements org.gradle.api.Plugin<org.gradle.api.internal.project.ProjectInternal> {
-    private static final String MIN_SUPPORTED_GRADLE_VERSION = "5.0";
-    public void apply(org.gradle.api.internal.project.ProjectInternal target) {
-        assertSupportedByCurrentGradleVersion();
-                target.getPluginManager().apply("java");
+public class MyLibraryJavaCommonConventionsPlugin
+    implements org.gradle.api.Plugin<org.gradle.api.internal.project.ProjectInternal> {
+  private static final String MIN_SUPPORTED_GRADLE_VERSION = "5.0";
+
+  public void apply(org.gradle.api.internal.project.ProjectInternal target) {
+    assertSupportedByCurrentGradleVersion();
+    target.getPluginManager().apply("java");
 
     try {
       Class<? extends BasicScript> precompiledScriptClass =
