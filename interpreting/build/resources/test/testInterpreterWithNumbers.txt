@@ -1,0 +1,10 @@
+let x:number = 12;
+println(x);
+x = x + 15;
+println(x);
+x = x - 12;
+println(x);
+x = x * 2;
+println(x);
+x = x / 10;
+println(x);

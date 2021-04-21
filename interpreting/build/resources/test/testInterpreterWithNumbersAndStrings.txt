@@ -1,0 +1,10 @@
+let sn: string = 'hola';
+println(sn);
+sn = sn + 12;
+println(sn);
+sn = sn - 4;
+println(sn);
+sn = sn * 3;
+println(sn);
+sn = sn / 5;
+println(sn);

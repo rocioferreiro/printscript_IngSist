@@ -1,0 +1,4 @@
+edu/austral/ingsis/TokenToASTConverterTest.java
+ edu.austral.ingsis.TokenToASTConverterTest
+edu/austral/ingsis/TypeAnalyzerTest.java
+ edu.austral.ingsis.TypeAnalyzerTest
