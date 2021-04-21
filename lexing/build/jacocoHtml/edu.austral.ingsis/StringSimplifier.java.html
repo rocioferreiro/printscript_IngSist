@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>StringSimplifier.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">lexing</a> &gt; <a href="index.source.html" class="el_package">edu.austral.ingsis</a> &gt; <span class="el_source">StringSimplifier.java</span></div><h1>StringSimplifier.java</h1><pre class="source lang-java linenums">package edu.austral.ingsis;
+
+import static java.util.stream.Collectors.toList;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
+import org.apache.commons.lang3.StringUtils;
+
+<span class="nc" id="L12">public class StringSimplifier {</span>
+
+  public static List&lt;Line&gt; removeEnters(String s) {
+<span class="fc" id="L15">    List&lt;Line&gt; result = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L16">    List&lt;String&gt; stringDelimiters = getStringDelimiters();</span>
+<span class="fc" id="L17">    AtomicInteger row = new AtomicInteger(1);</span>
+<span class="fc" id="L18">    String nonChecked = s;</span>
+<span class="fc bfc" id="L19" title="All 2 branches covered.">    while (stringDelimiters.stream().anyMatch(nonChecked::contains)) {</span>
+<span class="fc" id="L20">      String between = getFirstStringInText(nonChecked);</span>
+<span class="fc" id="L21">      String[] aux = split(nonChecked, between).toArray(String[]::new);</span>
+<span class="pc bpc" id="L22" title="1 of 2 branches missed.">      nonChecked = aux.length &gt; 1 ? aux[1] : &quot;&quot;;</span>
+
+<span class="fc bfc" id="L24" title="All 2 branches covered.">      if (!result.isEmpty()) addNewAndMerge(result, aux[0], row);</span>
+      else
+<span class="fc" id="L26">        result =</span>
+<span class="fc" id="L27">            Arrays.stream(aux[0].split(&quot;\n&quot;))</span>
+<span class="fc" id="L28">                .map(text -&gt; new Line(text, row.getAndIncrement()))</span>
+<span class="fc" id="L29">                .collect(toList());</span>
+
+<span class="pc bpc" id="L31" title="2 of 4 branches missed.">      if (aux[0].length() &gt; 0 &amp;&amp; aux[0].charAt(aux[0].length() - 1) == '\n')</span>
+<span class="nc" id="L32">        result.add(new Line(between, row.getAndIncrement()));</span>
+<span class="fc" id="L33">      else result.set(result.size() - 1, result.get(result.size() - 1).concatText(between));</span>
+<span class="fc" id="L34">    }</span>
+<span class="fc bfc" id="L35" title="All 2 branches covered.">    if (nonChecked.equals(s))</span>
+<span class="fc" id="L36">      result.addAll(</span>
+<span class="fc" id="L37">          Arrays.stream(s.split(&quot;\n&quot;))</span>
+<span class="fc" id="L38">              .map(text -&gt; new Line(text, row.getAndIncrement()))</span>
+<span class="fc" id="L39">              .collect(toList()));</span>
+<span class="fc" id="L40">    else addNewAndMerge(result, nonChecked, row);</span>
+<span class="fc" id="L41">    return result;</span>
+  }
+
+  public static List&lt;String&gt; removeSpaces(String s) {
+<span class="fc" id="L45">    List&lt;String&gt; split = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L46">    List&lt;String&gt; stringDelimiters = getStringDelimiters();</span>
+<span class="fc" id="L47">    String nonChecked = s;</span>
+<span class="fc bfc" id="L48" title="All 2 branches covered.">    while (stringDelimiters.stream().anyMatch(nonChecked::contains)) {</span>
+<span class="fc" id="L49">      String between = getFirstStringInText(nonChecked);</span>
+<span class="fc" id="L50">      String[] aux = split(nonChecked, between).toArray(String[]::new);</span>
+<span class="pc bpc" id="L51" title="1 of 2 branches missed.">      nonChecked = aux.length &gt; 1 ? aux[1] : &quot;&quot;;</span>
+<span class="fc" id="L52">      split.addAll(Arrays.asList(aux[0].strip().split(&quot; &quot;)));</span>
+<span class="fc" id="L53">      split.add(between);</span>
+<span class="fc" id="L54">    }</span>
+<span class="fc bfc" id="L55" title="All 2 branches covered.">    if (nonChecked.equals(s)) split.addAll(Arrays.asList(s.split(&quot; &quot;)));</span>
+<span class="fc" id="L56">    else split.addAll(Arrays.asList(nonChecked.strip().split(&quot; &quot;)));</span>
+<span class="fc bfc" id="L57" title="All 2 branches covered.">    return split.stream().filter(text -&gt; !text.isEmpty()).collect(toList());</span>
+  }
+
+  public static List&lt;String&gt; getStringDelimiters() {
+<span class="fc" id="L61">    return StringUtils.substringBetween(KeyWord.STRING.getRegex(), &quot;[&quot;, &quot;]&quot;)</span>
+<span class="fc" id="L62">        .chars()</span>
+<span class="fc" id="L63">        .boxed()</span>
+<span class="fc" id="L64">        .map(Character::toString)</span>
+<span class="fc" id="L65">        .collect(toList());</span>
+  }
+
+  private static void addNewAndMerge(List&lt;Line&gt; linesSoFar, String toAdd, AtomicInteger row) {
+<span class="fc" id="L69">    row.decrementAndGet();</span>
+<span class="fc" id="L70">    List&lt;Line&gt; newLines =</span>
+<span class="fc" id="L71">        Arrays.stream(toAdd.split(&quot;\n&quot;))</span>
+<span class="fc" id="L72">            .map(text -&gt; new Line(text, row.getAndIncrement()))</span>
+<span class="fc" id="L73">            .collect(toList());</span>
+<span class="fc" id="L74">    mergeLists(linesSoFar, newLines);</span>
+<span class="fc" id="L75">  }</span>
+
+  private static void mergeLists(List&lt;Line&gt; oldLines, List&lt;Line&gt; newLines) {
+<span class="fc bfc" id="L78" title="All 2 branches covered.">    if (newLines.size() &gt; 0) {</span>
+<span class="fc" id="L79">      oldLines.set(</span>
+<span class="fc" id="L80">          oldLines.size() - 1,</span>
+<span class="fc" id="L81">          oldLines.get(oldLines.size() - 1).concatText(newLines.get(0).getText()));</span>
+<span class="fc" id="L82">      oldLines.addAll(newLines.subList(1, newLines.size()));</span>
+    }
+<span class="fc" id="L84">  }</span>
+
+  private static List&lt;String&gt; split(String txt, String value) {
+<span class="fc" id="L87">    char reference = value.charAt(0);</span>
+<span class="fc" id="L88">    List&lt;String&gt; array = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L89">    array.add(txt.substring(0, txt.indexOf(reference)));</span>
+<span class="fc" id="L90">    String s = txt.substring(txt.indexOf(reference) + 1);</span>
+<span class="fc" id="L91">    String next = s.substring(s.indexOf(reference) + 1);</span>
+<span class="pc bpc" id="L92" title="1 of 2 branches missed.">    if (!next.isEmpty()) array.add(next);</span>
+<span class="fc" id="L93">    return array;</span>
+  }
+
+  private static String getFirstStringInText(String text) {
+<span class="fc" id="L97">    String colons = whichCharacterAppearsFirst(text);</span>
+<span class="fc" id="L98">    String subBetween = StringUtils.substringBetween(text, colons);</span>
+<span class="fc bfc" id="L99" title="All 2 branches covered.">    if (subBetween == null) throw new InvalidCodeException(&quot;Missing one &quot; + colons + &quot; in &quot; + text, new Position(0, 0));</span>
+<span class="fc" id="L100">    return colons + subBetween + colons;</span>
+  }
+
+  private static String whichCharacterAppearsFirst(String text) {
+<span class="fc" id="L104">    char[] chars = StringUtils.substringBetween(KeyWord.STRING.getRegex(), &quot;[&quot;, &quot;]&quot;).toCharArray();</span>
+<span class="fc" id="L105">    List&lt;Integer&gt; indexes =</span>
+<span class="fc" id="L106">        String.copyValueOf(chars)</span>
+<span class="fc" id="L107">            .chars()</span>
+<span class="fc" id="L108">            .map(text::indexOf)</span>
+<span class="fc bfc" id="L109" title="All 2 branches covered.">            .map(i -&gt; i == -1 ? Integer.MAX_VALUE : i)</span>
+<span class="fc" id="L110">            .boxed()</span>
+<span class="fc" id="L111">            .collect(toList());</span>
+<span class="fc" id="L112">    int indexOfNearest = indexes.indexOf(Collections.min(indexes));</span>
+<span class="fc" id="L113">    return String.valueOf(chars[indexOfNearest]);</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
