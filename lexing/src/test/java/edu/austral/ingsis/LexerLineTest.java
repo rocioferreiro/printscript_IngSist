@@ -1,17 +1,17 @@
 package edu.austral.ingsis;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.nio.file.Path;
-import java.util.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 @RunWith(Parameterized.class)
-public class LexerStatementTest {
+public class LexerLineTest {
 
   private final Lexer lexer = new ConcreteLexer();
 
@@ -25,22 +25,15 @@ public class LexerStatementTest {
 
   @Parameterized.Parameters(name = "version {0} - {1})")
   public static Collection<Object[]> data() {
-    return Arrays.asList(
-        new Object[][] {
-          {"1.0", "happy-path"},
-          {"1.0", "no-enters"},
-          {"1.0", "number-case"},
-          {"1.0", "string-case"},
-          {"1.1", "boolean-case"}
-        });
+    return Arrays.asList(new Object[][] {{"1.0", "happy-line"}});
   }
 
   @Test
   public void testPrintStatement() throws FileNotFoundException {
     String testDirectory = "src/test/resources/" + version + "/" + directory + "/";
-    Path srcPath = Path.of(testDirectory + "main.ps");
     List<String> expectedOutput = readLines(testDirectory + "output.txt");
-    List<String> actualOutput = Serializer.serialize(lexer.scan(srcPath));
+    String line = "let x: string = \"hola\";";
+    List<String> actualOutput = Serializer.serializeTokens(lexer.scan(line));
     assertEquals(actualOutput, expectedOutput);
   }
 
