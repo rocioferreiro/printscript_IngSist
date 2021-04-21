@@ -2,6 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/CLI/my-library.CLI.main~1.iml" filepath="$PROJECT_DIR$/.idea/modules/CLI/my-library.CLI.main~1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/CLI/my-library.CLI.test~1.iml" filepath="$PROJECT_DIR$/.idea/modules/CLI/my-library.CLI.test~1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ast/my-library.ast.iml" filepath="$PROJECT_DIR$/.idea/modules/ast/my-library.ast.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ast/my-library.ast.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ast/my-library.ast.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ast/my-library.ast.test.iml" filepath="$PROJECT_DIR$/.idea/modules/ast/my-library.ast.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/utils.iml" filepath="$PROJECT_DIR$/utils.iml" />
     </modules>
   </component>

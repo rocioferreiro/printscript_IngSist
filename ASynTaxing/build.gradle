@@ -27,6 +27,7 @@ publishing {
     }
     publications {
         libraryJar(MavenPublication) {
+            artifactId = 'ast'
             from(components.java)
         }
     }
