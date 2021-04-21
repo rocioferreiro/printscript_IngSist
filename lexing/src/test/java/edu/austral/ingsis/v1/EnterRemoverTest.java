@@ -22,11 +22,7 @@ public class EnterRemoverTest {
   @Parameterized.Parameters()
   public static Collection<Object> data() {
     return Arrays.asList(
-        new Object[] {
-          "remove-enters",
-          "remove-enters-in-end-of-line",
-          "remove-many-enters"
-        });
+        new Object[] {"remove-enters", "remove-enters-in-end-of-line", "remove-many-enters"});
   }
 
   @Test
