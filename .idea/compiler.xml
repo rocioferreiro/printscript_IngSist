@@ -2,6 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="15">
+      <module name="cli.my-library.cli.main" target="11" />
       <module name="my-library.asting" target="11" />
       <module name="my-library.ASynTaxing.main" target="11" />
       <module name="my-library.ASynTaxing.test" target="11" />
