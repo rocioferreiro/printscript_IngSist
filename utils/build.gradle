@@ -2,6 +2,7 @@ plugins {
     id 'java-library'
     id 'my-library.java-common-conventions'
 //    id 'jacoco'
+    id 'maven-publish'
 }
 
 group = 'edu.austral.ingsis'
