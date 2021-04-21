@@ -58,7 +58,9 @@ public enum KeyWord implements TokenType {
   public static Token findToken(Token token) {
     for (KeyWord key : values()) {
       if (token.getValue().matches(key.getRegex())) {
-        if (!key.isAble()) throw new InvalidCodeException("Invalid Expresion: " + token.getValue(), token.getPosition());
+        if (!key.isAble())
+          throw new InvalidCodeException(
+              "Invalid Expresion: " + token.getValue(), token.getPosition());
         String value = token.getValue();
         if (value.contains("'") || value.contains("\""))
           value = value.substring(1, value.length() - 1);

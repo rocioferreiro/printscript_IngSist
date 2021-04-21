@@ -2,12 +2,11 @@ package edu.austral.ingsis.v1;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import java.nio.file.Path;
-import java.util.*;
-
 import edu.austral.ingsis.ConcreteLexer;
 import edu.austral.ingsis.InvalidCodeException;
 import edu.austral.ingsis.Lexer;
+import java.nio.file.Path;
+import java.util.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -23,8 +22,7 @@ public class LexerFailTest {
 
   @Parameterized.Parameters()
   public static List<Object> data() {
-    return Arrays.asList(
-        new Object[] {"unhappy-path", "unhappy-path-colons"});
+    return Arrays.asList(new Object[] {"unhappy-path", "unhappy-path-colons"});
   }
 
   @Test

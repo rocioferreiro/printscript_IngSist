@@ -1,13 +1,12 @@
 package edu.austral.ingsis.v1;
 
+import edu.austral.ingsis.PathReader;
+import edu.austral.ingsis.Serializer;
+import edu.austral.ingsis.StringSimplifier;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.nio.file.Path;
 import java.util.*;
-
-import edu.austral.ingsis.PathReader;
-import edu.austral.ingsis.Serializer;
-import edu.austral.ingsis.StringSimplifier;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
@@ -25,7 +24,7 @@ public class EnterRemoverTest {
     return Arrays.asList(
         new Object[] {
           "remove-enters",
-//          "remove-enters-in-strings", // -> por alguna razon no anda :)
+          //          "remove-enters-in-strings", // -> por alguna razon no anda :)
           "remove-enters-in-end-of-line",
           "remove-many-enters"
         });

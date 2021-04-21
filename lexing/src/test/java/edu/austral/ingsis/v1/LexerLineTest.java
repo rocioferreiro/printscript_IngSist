@@ -2,13 +2,12 @@ package edu.austral.ingsis.v1;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.*;
-
 import edu.austral.ingsis.ConcreteLexer;
 import edu.austral.ingsis.Lexer;
 import edu.austral.ingsis.Serializer;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;

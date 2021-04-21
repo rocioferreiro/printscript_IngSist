@@ -2,15 +2,14 @@ package edu.austral.ingsis.v1;
 
 import edu.austral.ingsis.PathReader;
 import edu.austral.ingsis.StringSimplifier;
-import org.junit.Test;
-import org.junit.jupiter.api.Assertions;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.nio.file.Path;
 import java.util.*;
+import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
 @RunWith(Parameterized.class)
 public class SpaceRemoverTest {
@@ -22,11 +21,9 @@ public class SpaceRemoverTest {
   @Parameterized.Parameters()
   public static Collection<Object> data() {
     return Arrays.asList(
-            new Object[] {
-                    "remove-spaces",
-                    "remove-spaces-in-spaces",
-                    "remove-spaces-with-final-string"
-            });
+        new Object[] {
+          "remove-spaces", "remove-spaces-in-spaces", "remove-spaces-with-final-string"
+        });
   }
 
   @Test

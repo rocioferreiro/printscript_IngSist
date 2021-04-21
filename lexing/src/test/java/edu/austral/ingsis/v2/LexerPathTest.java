@@ -1,16 +1,15 @@
 package edu.austral.ingsis.v2;
 
-import edu.austral.ingsis.*;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import edu.austral.ingsis.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.nio.file.Path;
 import java.util.*;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
 @RunWith(Parameterized.class)
 public class LexerPathTest {
@@ -23,11 +22,7 @@ public class LexerPathTest {
 
   @Parameterized.Parameters()
   public static Collection<Object> data() {
-    return Arrays.asList(
-        new Object[] {
-          "boolean-case",
-          "if-case"
-        });
+    return Arrays.asList(new Object[] {"boolean-case", "if-case"});
   }
 
   @Test
@@ -42,18 +37,18 @@ public class LexerPathTest {
 
   private void activateTokens() {
     TokenType[] types = {
-            KeyWord.B_ASSIGNATION,
-            KeyWord.C_DECLARATION,
-            KeyWord.BOOLEAN,
-            KeyWord.IF_STATEMENT,
-            KeyWord.ELSE_STATEMENT,
-            Operator.EQUAL_EQUAL,
-            Operator.GREATER_EQUAL,
-            Operator.MINOR_EQUAL,
-            Operator.GREATER,
-            Operator.MINOR,
-            Operator.L_KEY,
-            Operator.R_KEY
+      KeyWord.B_ASSIGNATION,
+      KeyWord.C_DECLARATION,
+      KeyWord.BOOLEAN,
+      KeyWord.IF_STATEMENT,
+      KeyWord.ELSE_STATEMENT,
+      Operator.EQUAL_EQUAL,
+      Operator.GREATER_EQUAL,
+      Operator.MINOR_EQUAL,
+      Operator.GREATER,
+      Operator.MINOR,
+      Operator.L_KEY,
+      Operator.R_KEY
     };
     for (TokenType t : types) t.setAble(true);
   }
