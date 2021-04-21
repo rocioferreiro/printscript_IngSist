@@ -24,7 +24,6 @@ public class EnterRemoverTest {
     return Arrays.asList(
         new Object[] {
           "remove-enters",
-          //          "remove-enters-in-strings", // -> por alguna razon no anda :)
           "remove-enters-in-end-of-line",
           "remove-many-enters"
         });
