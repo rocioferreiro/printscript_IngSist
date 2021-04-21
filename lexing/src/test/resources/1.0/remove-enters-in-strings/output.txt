@@ -1,2 +1,2 @@
-(Fue asi: 'Hola,\n como estas?' le pregunte yo,, 1)
+(Fue asi: "Hola,\n como estas?" le pregunte yo,, 1)
 ( el reacciono como si hubiese dicho "Decime como\n estas o te mato.", 2)

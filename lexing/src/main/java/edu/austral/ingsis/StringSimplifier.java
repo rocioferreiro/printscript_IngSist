@@ -96,7 +96,7 @@ public class StringSimplifier {
   private static String getFirstStringInText(String text) {
     String colons = whichCharacterAppearsFirst(text);
     String subBetween = StringUtils.substringBetween(text, colons);
-    if (subBetween == null) throw new RuntimeException("Missing one " + colons + " in " + text);
+    if (subBetween == null) throw new InvalidCodeException("Missing one " + colons + " in " + text, new Position(0, 0));
     return colons + subBetween + colons;
   }
 
