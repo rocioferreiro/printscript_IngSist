@@ -76,7 +76,8 @@ public class InterpreterExecutorTest {
 
   @Test
   public void testInterpreterInPathWithNumbersAndStrings() {
-    interpreter.interpret(new File("testInterpreterWithNumbersAndStrings.txt"), System.out::println);
+    interpreter.interpret(
+        new File("testInterpreterWithNumbersAndStrings.txt"), System.out::println);
     String s =
         print(10, 1)
             + "hola\n"
@@ -98,7 +99,8 @@ public class InterpreterExecutorTest {
 
   @Test
   public void testInterpreterInPathWithNumbersAndStrings2() {
-    interpreter.interpret(new File("testInterpreterWithNumbersAndStrings2.txt"), System.out::println);
+    interpreter.interpret(
+        new File("testInterpreterWithNumbersAndStrings2.txt"), System.out::println);
     String s =
         print(10, 1)
             + "hola\n"
