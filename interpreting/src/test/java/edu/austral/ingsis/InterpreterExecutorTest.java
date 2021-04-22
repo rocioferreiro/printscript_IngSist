@@ -98,7 +98,8 @@ public class InterpreterExecutorTest {
 
   @Test
   public void testInterpreterInPathWithNumbersAndStrings2() {
-    interpreter.interpret(getPath("testInterpreterWithNumbersAndStrings2.txt"), System.out::println);
+    interpreter.interpret(
+        getPath("testInterpreterWithNumbersAndStrings2.txt"), System.out::println);
     String s =
         print(10, 1)
             + "hola\n"
