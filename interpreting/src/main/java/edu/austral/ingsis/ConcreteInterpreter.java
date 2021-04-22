@@ -5,7 +5,6 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.Consumer;
 
 public class ConcreteInterpreter implements Interpreter {
 
@@ -83,18 +82,18 @@ public class ConcreteInterpreter implements Interpreter {
     List<Version> versions = new ArrayList<>();
     versions.add(new Version("PrintScript 1.0", new ArrayList<>()));
     TokenType[] typesPrint1 = {
-            KeyWord.B_ASSIGNATION,
-            KeyWord.C_DECLARATION,
-            KeyWord.BOOLEAN,
-            KeyWord.IF_STATEMENT,
-            KeyWord.ELSE_STATEMENT,
-            Operator.EQUAL_EQUAL,
-            Operator.GREATER_EQUAL,
-            Operator.MINOR_EQUAL,
-            Operator.GREATER,
-            Operator.MINOR,
-            Operator.L_KEY,
-            Operator.R_KEY
+      KeyWord.B_ASSIGNATION,
+      KeyWord.C_DECLARATION,
+      KeyWord.BOOLEAN,
+      KeyWord.IF_STATEMENT,
+      KeyWord.ELSE_STATEMENT,
+      Operator.EQUAL_EQUAL,
+      Operator.GREATER_EQUAL,
+      Operator.MINOR_EQUAL,
+      Operator.GREATER,
+      Operator.MINOR,
+      Operator.L_KEY,
+      Operator.R_KEY
     };
     versions.add(new Version("PrintScript 1.1", Arrays.asList(typesPrint1)));
     return versions;
