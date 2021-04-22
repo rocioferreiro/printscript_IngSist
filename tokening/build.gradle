@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'edu.austral.ingsis'
-version '1.2.3'
+version '1.2.4'
 
 dependencies {
     implementation project(':utils')

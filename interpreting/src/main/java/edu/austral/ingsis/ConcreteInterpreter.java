@@ -1,5 +1,6 @@
 package edu.austral.ingsis;
 
+import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -34,11 +35,11 @@ public class ConcreteInterpreter implements Interpreter {
   }
 
   @Override
-  public void interpret(Path path, Consumer<String> out) {
+  public void interpret(File file, Consumer<String> out) {
     setTokenTypes();
     context = context.setContexts();
     lexer = new ConcreteLexer();
-    List<Token> tokens = lexer.scan(path);
+    List<Token> tokens = lexer.scan(Path.of(file.getPath()));
     int amount = TokenCleanUp.getAmountOfSentences(tokens);
     TokenCleanUp.checkLastToken(tokens);
     parser = new ConcreteParser(rules);

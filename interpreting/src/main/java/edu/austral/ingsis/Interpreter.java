@@ -1,10 +1,10 @@
 package edu.austral.ingsis;
 
-import java.nio.file.Path;
+import java.io.File;
 import java.util.function.Consumer;
 
 public interface Interpreter {
-  void interpret(Path code, Consumer<String> out);
+  void interpret(File file, Consumer<String> out);
 
   void interpret(String line, Consumer<String> out);
 

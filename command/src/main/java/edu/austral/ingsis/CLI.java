@@ -1,5 +1,6 @@
 package edu.austral.ingsis;
 
+import java.io.File;
 import java.nio.file.Paths;
 import java.util.Scanner;
 
@@ -69,7 +70,7 @@ public class CLI {
       line = scanner.nextLine();
       if (!line.matches(".\\.ps")) {
         try {
-          interpreter.interpret(Paths.get(line), System.out::println);
+          interpreter.interpret(new File(line), System.out::println);
           break;
         } catch (InvalidCodeException e) {
           System.out.println(ANSI_RED_BOLD + e.getMessage() + ANSI_RESET);

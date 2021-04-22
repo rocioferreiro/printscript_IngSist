@@ -32,7 +32,7 @@ public class InterpreterExecutorTest {
 
   @Test
   public void testInterpreterInPathWithNumbers() {
-    interpreter.interpret(getPath("testInterpreterWithNumbers.txt"), System.out::println);
+    interpreter.interpret(new File("testInterpreterWithNumbers.txt"), System.out::println);
     String s =
         print(10, 1)
             + "12\n"
@@ -54,7 +54,7 @@ public class InterpreterExecutorTest {
 
   @Test
   public void testInterpreterInPathWithStrings() {
-    interpreter.interpret(getPath("testInterpreterWithStrings.txt"), System.out::println);
+    interpreter.interpret(new File("testInterpreterWithStrings.txt"), System.out::println);
     String s =
         print(10, 1)
             + "hola\n"
@@ -76,7 +76,7 @@ public class InterpreterExecutorTest {
 
   @Test
   public void testInterpreterInPathWithNumbersAndStrings() {
-    interpreter.interpret(getPath("testInterpreterWithNumbersAndStrings.txt"), System.out::println);
+    interpreter.interpret(new File("testInterpreterWithNumbersAndStrings.txt"), System.out::println);
     String s =
         print(10, 1)
             + "hola\n"
@@ -98,8 +98,7 @@ public class InterpreterExecutorTest {
 
   @Test
   public void testInterpreterInPathWithNumbersAndStrings2() {
-    interpreter.interpret(
-        getPath("testInterpreterWithNumbersAndStrings2.txt"), System.out::println);
+    interpreter.interpret(new File("testInterpreterWithNumbersAndStrings2.txt"), System.out::println);
     String s =
         print(10, 1)
             + "hola\n"

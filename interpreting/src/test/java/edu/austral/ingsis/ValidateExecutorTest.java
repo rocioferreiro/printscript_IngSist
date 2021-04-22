@@ -57,7 +57,7 @@ public class ValidateExecutorTest {
 
   @Test
   public void testShowContextForPath() {
-    interpreter.interpret(getPath("testValidation.txt"), System.out::println);
+    interpreter.interpret(new File("testValidation.txt"), System.out::println);
     String s =
         "(x, string)\n"
             + print(3, 1)
