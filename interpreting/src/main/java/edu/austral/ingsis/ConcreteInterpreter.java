@@ -34,7 +34,7 @@ public class ConcreteInterpreter implements Interpreter {
   }
 
   @Override
-  public void interpret(Path path) {
+  public void interpret(Path path, Consumer<String> out) {
     setTokenTypes();
     context = context.setContexts();
     lexer = new ConcreteLexer();
@@ -51,6 +51,7 @@ public class ConcreteInterpreter implements Interpreter {
         list = new ArrayList<>(list.subList(0, list.size() - 1));
       ASTInContext ast = parser.parse(list);
       context = ast.getContext();
+      context.setOut(out);
       strategy.execute(executor, ast);
       print(amount, ++index);
       sublist = new ArrayList<>(sublist.subList(nextIndex + 1, sublist.size()));
@@ -58,7 +59,7 @@ public class ConcreteInterpreter implements Interpreter {
   }
 
   @Override
-  public void interpret(String line) {
+  public void interpret(String line, Consumer<String> out) {
     setTokenTypes();
     context.setContexts();
     List<Token> tokens = lexer.scan(line);

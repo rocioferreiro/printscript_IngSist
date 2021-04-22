@@ -2,6 +2,7 @@ package edu.austral.ingsis;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class Context {
 
@@ -9,6 +10,7 @@ public class Context {
   private Context subContextIf;
   private Context subContextElse;
   private ExecutingCommand nextExecute = ExecutingCommand.EMPTY;
+  private Consumer<String> out;
 
   public Context() {
     this.variables = new ArrayList<>();
@@ -127,5 +129,13 @@ public class Context {
 
   public Context getSubContextElse() {
     return subContextElse;
+  }
+
+  public void setOut(Consumer<String> out) {
+    this.out = out;
+  }
+
+  public Consumer<String> getOut() {
+    return out;
   }
 }

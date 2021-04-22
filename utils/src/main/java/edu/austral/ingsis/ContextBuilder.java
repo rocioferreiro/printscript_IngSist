@@ -1,5 +1,7 @@
 package edu.austral.ingsis;
 
+import java.util.function.Consumer;
+
 public class ContextBuilder {
 
   private Context context;
@@ -83,5 +85,9 @@ public class ContextBuilder {
 
   public void emptySubContextElse() {
     context.getSubContextElse().empty();
+  }
+
+  public Consumer<String> getOut() {
+    return context.getOut();
   }
 }

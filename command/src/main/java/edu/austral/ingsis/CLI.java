@@ -72,7 +72,7 @@ public class CLI {
       line = scanner.nextLine();
       if (!line.matches(".\\.ps")) {
         try {
-          interpreter.interpret(Paths.get(line));
+          interpreter.interpret(Paths.get(line), System.out::println);
           break;
         } catch (InvalidCodeException e) {
           System.out.println(ANSI_RED_BOLD + e.getMessage() + ANSI_RESET);
@@ -92,7 +92,7 @@ public class CLI {
       line = scanner.nextLine();
       if (!line.isEmpty() && !line.equals("exit")) {
         try {
-          interpreter.interpret(line);
+          interpreter.interpret(line, System.out::println);
         } catch (InvalidCodeException e) {
           System.out.println(ANSI_RED_BOLD + e.getMessage() + ANSI_RESET);
         }
