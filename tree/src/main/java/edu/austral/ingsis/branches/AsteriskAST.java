@@ -50,9 +50,11 @@ public class AsteriskAST implements ASTBranch {
     String right = rightChild.executeTree(context).getToAddValue();
     if (leftType <= KeyWord.NUMBER.getOrdinal() && rightType <= KeyWord.NUMBER.getOrdinal()) {
       if (left.contains(".") || right.contains("."))
-        return context.setToAddValue(String.valueOf(Double.parseDouble(left) * Double.parseDouble(right)));
+        return context.setToAddValue(
+            String.valueOf(Double.parseDouble(left) * Double.parseDouble(right)));
       else
-        return context.setToAddValue(String.valueOf(Integer.parseInt(left) * Integer.parseInt(right)));
+        return context.setToAddValue(
+            String.valueOf(Integer.parseInt(left) * Integer.parseInt(right)));
     }
     throw new InvalidCodeException("Can't operate with string", token.getPosition());
   }
