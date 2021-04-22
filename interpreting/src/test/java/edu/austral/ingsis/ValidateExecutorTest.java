@@ -32,31 +32,31 @@ public class ValidateExecutorTest {
 
   @Test
   public void testShowContextHappyPath() {
-    interpreter.interpret("let z: string;");
+    interpreter.interpret("let z: string;", System.out::println);
     Assertions.assertEquals("(z, string)\n", outContent.toString());
   }
 
   @Test
   public void testShowContextChangingType() {
-    interpreter.interpret("let x: number;");
+    interpreter.interpret("let x: number;", System.out::println);
     Assertions.assertEquals("(x, number)\n", outContent.toString());
     outContent.reset();
-    interpreter.interpret("x = 1;");
+    interpreter.interpret("x = 1;", System.out::println);
     Assertions.assertEquals("(x, number)\n", outContent.toString());
     outContent.reset();
-    interpreter.interpret("let y:string = x+\"hola\";");
+    interpreter.interpret("let y:string = x+\"hola\";", System.out::println);
     Assertions.assertEquals("(x, number)\n(y, string)\n", outContent.toString());
   }
 
   @Test
   public void testShowContextErrorPrint() {
     Assertions.assertThrows(
-        InvalidCodeException.class, () -> interpreter.interpret("let x: number"));
+        InvalidCodeException.class, () -> interpreter.interpret("let x: number", System.out::println));
   }
 
   @Test
   public void testShowContextForPath() {
-    interpreter.interpret(getPath("testValidation.txt"));
+    interpreter.interpret(getPath("testValidation.txt"), System.out::println);
     String s =
         "(x, string)\n"
             + print(3, 1)

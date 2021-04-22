@@ -32,7 +32,7 @@ public class InterpreterExecutorTest {
 
   @Test
   public void testInterpreterInPathWithNumbers() {
-    interpreter.interpret(getPath("testInterpreterWithNumbers.txt"));
+    interpreter.interpret(getPath("testInterpreterWithNumbers.txt"), System.out::println);
     String s =
         print(10, 1)
             + "12\n"
@@ -54,7 +54,7 @@ public class InterpreterExecutorTest {
 
   @Test
   public void testInterpreterInPathWithStrings() {
-    interpreter.interpret(getPath("testInterpreterWithStrings.txt"));
+    interpreter.interpret(getPath("testInterpreterWithStrings.txt"), System.out::println);
     String s =
         print(10, 1)
             + "hola\n"
@@ -76,7 +76,7 @@ public class InterpreterExecutorTest {
 
   @Test
   public void testInterpreterInPathWithNumbersAndStrings() {
-    interpreter.interpret(getPath("testInterpreterWithNumbersAndStrings.txt"));
+    interpreter.interpret(getPath("testInterpreterWithNumbersAndStrings.txt"), System.out::println);
     String s =
         print(10, 1)
             + "hola\n"
@@ -98,7 +98,7 @@ public class InterpreterExecutorTest {
 
   @Test
   public void testInterpreterInPathWithNumbersAndStrings2() {
-    interpreter.interpret(getPath("testInterpreterWithNumbersAndStrings2.txt"));
+    interpreter.interpret(getPath("testInterpreterWithNumbersAndStrings2.txt"), System.out::println);
     String s =
         print(10, 1)
             + "hola\n"
@@ -120,7 +120,7 @@ public class InterpreterExecutorTest {
 
   @Test
   public void testInterpreterInLine() {
-    interpreter.interpret("let x:string = 'hola';");
+    interpreter.interpret("let x:string = 'hola';", System.out::println);
     Assertions.assertEquals("", outContent.toString());
   }
 
