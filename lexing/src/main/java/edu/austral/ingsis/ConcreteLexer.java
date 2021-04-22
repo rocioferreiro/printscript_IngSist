@@ -3,7 +3,6 @@ package edu.austral.ingsis;
 import static java.util.stream.Collectors.toList;
 
 import java.io.File;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;

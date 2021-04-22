@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import edu.austral.ingsis.*;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.nio.file.Path;
 import java.util.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;

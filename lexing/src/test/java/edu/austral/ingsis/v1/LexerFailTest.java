@@ -5,9 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import edu.austral.ingsis.ConcreteLexer;
 import edu.austral.ingsis.InvalidCodeException;
 import edu.austral.ingsis.Lexer;
-
 import java.io.File;
-import java.nio.file.Path;
 import java.util.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
