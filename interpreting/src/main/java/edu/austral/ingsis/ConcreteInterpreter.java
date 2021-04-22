@@ -20,14 +20,14 @@ public class ConcreteInterpreter implements Interpreter {
   private final List<Version> versions;
 
   public ConcreteInterpreter(String version) {
-    this.rules = Paths.get("rules.txt");
+    this.rules = Paths.get("interpreting/src/rules.txt");
     this.strategy = new InterpretationExecutionStrategy();
     this.versions = setVersions();
     this.version = getVersion(version);
   }
 
-  public ConcreteInterpreter(Path rules, ExecutionStrategy strategy, String version) {
-    this.rules = rules;
+  public ConcreteInterpreter(ExecutionStrategy strategy, String version) {
+    this.rules = Paths.get("interpreting/src/rules.txt");
     this.strategy = strategy;
     this.versions = setVersions();
     this.version = getVersion(version);

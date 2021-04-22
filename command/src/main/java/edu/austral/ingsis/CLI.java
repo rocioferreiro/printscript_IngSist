@@ -16,7 +16,7 @@ public class CLI {
     ExecutionStrategy strategy = getStrategy(scanner);
     printVersionOptions();
     String version = getVersion(scanner);
-    Interpreter interpreter = new ConcreteInterpreter(Paths.get("rules.txt"), strategy, version);
+    Interpreter interpreter = new ConcreteInterpreter(strategy, version);
     int readOption = 0;
     while (readOption != -1) {
       printReadOptions();
