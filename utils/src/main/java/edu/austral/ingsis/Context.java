@@ -131,8 +131,9 @@ public class Context {
     return subContextElse;
   }
 
-  public void setOut(Consumer<String> out) {
+  public Context setOut(Consumer<String> out) {
     this.out = out;
+    return this;
   }
 
   public Consumer<String> getOut() {

@@ -50,8 +50,8 @@ public class ConcreteInterpreter implements Interpreter {
       if (!TokenCleanUp.contains(list, KeyWord.IF_STATEMENT) && list.size() > 0)
         list = new ArrayList<>(list.subList(0, list.size() - 1));
       ASTInContext ast = parser.parse(list);
+      ast.getContext().setOut(out);
       context = ast.getContext();
-      context.setOut(out);
       strategy.execute(executor, ast);
       print(amount, ++index);
       sublist = new ArrayList<>(sublist.subList(nextIndex + 1, sublist.size()));
@@ -65,6 +65,7 @@ public class ConcreteInterpreter implements Interpreter {
     List<Token> tokens = lexer.scan(line);
     tokens = TokenCleanUp.checkLastTokenAndRemove(tokens);
     ASTInContext ast = parser.parse(tokens);
+    ast.getContext().setOut(out);
     context = ast.getContext();
     strategy.execute(executor, ast);
   }
