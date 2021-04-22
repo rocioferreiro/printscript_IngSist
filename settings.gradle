@@ -8,6 +8,6 @@
  */
 
 rootProject.name = 'my-library'
-include 'main', 'executing', 'lexing', 'interpreting', 'parsing', 'tokening', 'utils', 'validation', 'hola', 'command'
+include 'main', 'executing', 'lexing', 'interpreting', 'parsing', 'tokening', 'utils', 'validation', 'tree', 'command'
 include 'resources'
 

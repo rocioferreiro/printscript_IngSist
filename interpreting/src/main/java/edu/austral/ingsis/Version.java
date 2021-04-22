@@ -18,6 +18,10 @@ public class Version {
     this.toAccept = toAccept;
   }
 
+  public String getName() {
+    return name;
+  }
+
   public List<TokenType> getToAccept() {
     return toAccept;
   }

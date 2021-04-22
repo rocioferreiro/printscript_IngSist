@@ -1,27 +1,36 @@
 package edu.austral.ingsis;
 
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class ConcreteInterpreter implements Interpreter {
 
   private final Path rules;
-  private Lexer lexer;
+  private Lexer lexer = new ConcreteLexer();
   private Parser parser;
-  private final Executor executor;
-  private Context context;
+  private final Executor executor = new ConcreteExecutor();
+  private Context context = new Context();
   private final ExecutionStrategy strategy;
   private final Version version;
+  private final List<Version> versions;
 
-  public ConcreteInterpreter(Path rules, ExecutionStrategy strategy, Version version) {
+  public ConcreteInterpreter(String version) {
+    this.rules = Paths.get("rules.txt");
+    this.strategy = new InterpretationExecutionStrategy();
+    this.versions = setVersions();
+    this.version = getVersion(version);
+  }
+
+  public ConcreteInterpreter(Path rules, ExecutionStrategy strategy, String version) {
     this.rules = rules;
     this.strategy = strategy;
-    this.version = version;
-    lexer = new ConcreteLexer();
+    this.versions = setVersions();
+    this.version = getVersion(version);
     parser = new ConcreteParser(rules);
-    executor = new ConcreteExecutor();
-    context = new Context();
   }
 
   @Override
@@ -48,10 +57,6 @@ public class ConcreteInterpreter implements Interpreter {
     }
   }
 
-  private void setTokenTypes() {
-    for (TokenType type : version.getToAccept()) type.setAble(true);
-  }
-
   @Override
   public void interpret(String line) {
     setTokenTypes();
@@ -66,6 +71,36 @@ public class ConcreteInterpreter implements Interpreter {
   @Override
   public void emptyContext() {
     context.empty();
+  }
+
+  private Version getVersion(String version) {
+    for (Version v : versions) if (v.getName().equals(version)) return v;
+    return new Version();
+  }
+
+  private List<Version> setVersions() {
+    List<Version> versions = new ArrayList<>();
+    versions.add(new Version("PrintScript 1.0", new ArrayList<>()));
+    TokenType[] typesPrint1 = {
+            KeyWord.B_ASSIGNATION,
+            KeyWord.C_DECLARATION,
+            KeyWord.BOOLEAN,
+            KeyWord.IF_STATEMENT,
+            KeyWord.ELSE_STATEMENT,
+            Operator.EQUAL_EQUAL,
+            Operator.GREATER_EQUAL,
+            Operator.MINOR_EQUAL,
+            Operator.GREATER,
+            Operator.MINOR,
+            Operator.L_KEY,
+            Operator.R_KEY
+    };
+    versions.add(new Version("PrintScript 1.1", Arrays.asList(typesPrint1)));
+    return versions;
+  }
+
+  private void setTokenTypes() {
+    for (TokenType type : version.getToAccept()) type.setAble(true);
   }
 
   private void print(int amountOfLines, int actualLine) {

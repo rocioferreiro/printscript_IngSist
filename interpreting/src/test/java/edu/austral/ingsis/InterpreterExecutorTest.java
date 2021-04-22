@@ -14,7 +14,7 @@ public class InterpreterExecutorTest {
   private static final PrintStream originalErr = System.err;
   private static final Interpreter interpreter =
       new ConcreteInterpreter(
-          getPath("rules.txt"), new InterpretationExecutionStrategy(), new Version());
+          getPath("rules.txt"), new InterpretationExecutionStrategy(), "PrintScript 1.0");
 
   @BeforeEach
   public void setUpStreams() {

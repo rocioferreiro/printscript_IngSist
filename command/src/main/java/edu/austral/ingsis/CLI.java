@@ -11,15 +11,13 @@ public class CLI {
   private static final String ANSI_RESET = "\u001B[0m";
   private static final String ANSI_YELLOW = "\033[0;33m";
   private static final String ANSI_RED_BOLD = "\033[1;31m";
-  private static final List<Version> versions = new ArrayList<>();
 
   public static void run() {
-    setVersions();
     printExecuteOptions();
     Scanner scanner = new Scanner(System.in);
     ExecutionStrategy strategy = getStrategy(scanner);
     printVersionOptions();
-    Version version = getVersion(scanner);
+    String version = getVersion(scanner);
     Interpreter interpreter = new ConcreteInterpreter(Paths.get("rules.txt"), strategy, version);
     int readOption = 0;
     while (readOption != -1) {
@@ -30,31 +28,11 @@ public class CLI {
     }
   }
 
-  private static void setVersions() {
-    versions.add(new Version("PrintScript 1.0", new ArrayList<>()));
-    TokenType[] typesPrint1 = {
-      KeyWord.B_ASSIGNATION,
-      KeyWord.C_DECLARATION,
-      KeyWord.BOOLEAN,
-      KeyWord.IF_STATEMENT,
-      KeyWord.ELSE_STATEMENT,
-      Operator.EQUAL_EQUAL,
-      Operator.GREATER_EQUAL,
-      Operator.MINOR_EQUAL,
-      Operator.GREATER,
-      Operator.MINOR,
-      Operator.L_KEY,
-      Operator.R_KEY
-    };
-    versions.add(new Version("PrintScript 1.1", Arrays.asList(typesPrint1)));
-  }
-
-  private static Version getVersion(Scanner scanner) {
-    Version version = new Version();
+  private static String getVersion(Scanner scanner) {
     int versionOption = scanner.nextInt();
-    if (versionOption == 1) version = versions.get(0);
-    if (versionOption == 2) version = versions.get(1);
-    return version;
+    if (versionOption == 1) return "PrintScript 1.0";
+    if (versionOption == 2) return "PrintScript 1.1";
+    return "";
   }
 
   private static ExecutionStrategy getStrategy(Scanner scanner) {

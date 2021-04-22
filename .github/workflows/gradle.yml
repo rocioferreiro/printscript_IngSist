@@ -68,7 +68,7 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build
     - name: Publish AST
-      run: ./gradlew :hola:publish
+      run: ./gradlew :tree:publish
       env:
         TOKEN: ${{ secrets.TOKEN }}
     - name: Publish CLI

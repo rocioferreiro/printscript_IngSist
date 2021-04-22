@@ -14,7 +14,7 @@ public class ValidateExecutorTest {
   private static final PrintStream originalErr = System.err;
   private static final Interpreter interpreter =
       new ConcreteInterpreter(
-          getPath("rules.txt"), new ValidationExecutionStrategy(), new Version());;
+          getPath("rules.txt"), new ValidationExecutionStrategy(), "PrintScript 1.0");;
 
   @BeforeEach
   public void setUpStreams() {
