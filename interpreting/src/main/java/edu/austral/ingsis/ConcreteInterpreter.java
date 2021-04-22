@@ -19,8 +19,8 @@ public class ConcreteInterpreter implements Interpreter {
   private final Version version;
   private final List<Version> versions;
 
-  public ConcreteInterpreter(String version) {
-    this.rules = Paths.get("interpreting/src/rules.txt");
+  public ConcreteInterpreter(String version, File rules) {
+    this.rules = Path.of(rules.getPath());
     this.strategy = new InterpretationExecutionStrategy();
     this.versions = setVersions();
     this.version = getVersion(version);
