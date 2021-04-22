@@ -1,12 +1,12 @@
-//package edu.austral.ingsis;
+// package edu.austral.ingsis;
 //
-//import java.io.ByteArrayOutputStream;
-//import java.io.File;
-//import java.io.PrintStream;
-//import java.nio.file.Path;
-//import org.junit.jupiter.api.*;
+// import java.io.ByteArrayOutputStream;
+// import java.io.File;
+// import java.io.PrintStream;
+// import java.nio.file.Path;
+// import org.junit.jupiter.api.*;
 //
-//public class ValidateExecutorTest {
+// public class ValidateExecutorTest {
 //
 //  private static final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 //  private static final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
@@ -89,4 +89,4 @@
 //            + "%";
 //    return ANSI_BLUE + string + ANSI_RESET + "\n";
 //  }
-//}
+// }

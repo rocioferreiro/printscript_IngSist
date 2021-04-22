@@ -1,12 +1,12 @@
 package edu.austral.ingsis;
 
-//import java.io.ByteArrayOutputStream;
-//import java.io.File;
-//import java.io.PrintStream;
-//import java.nio.file.Path;
-//import org.junit.jupiter.api.*;
+// import java.io.ByteArrayOutputStream;
+// import java.io.File;
+// import java.io.PrintStream;
+// import java.nio.file.Path;
+// import org.junit.jupiter.api.*;
 //
-//public class InterpreterExecutorTest {
+// public class InterpreterExecutorTest {
 //
 //  private static final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 //  private static final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
@@ -76,7 +76,8 @@ package edu.austral.ingsis;
 //
 //  @Test
 //  public void testInterpreterInPathWithNumbersAndStrings() {
-//    interpreter.interpret(new File("testInterpreterWithNumbersAndStrings.txt"), System.out::println);
+//    interpreter.interpret(new File("testInterpreterWithNumbersAndStrings.txt"),
+// System.out::println);
 //    String s =
 //        print(10, 1)
 //            + "hola\n"
@@ -98,7 +99,8 @@ package edu.austral.ingsis;
 //
 //  @Test
 //  public void testInterpreterInPathWithNumbersAndStrings2() {
-//    interpreter.interpret(new File("testInterpreterWithNumbersAndStrings2.txt"), System.out::println);
+//    interpreter.interpret(new File("testInterpreterWithNumbersAndStrings2.txt"),
+// System.out::println);
 //    String s =
 //        print(10, 1)
 //            + "hola\n"
@@ -145,4 +147,4 @@ package edu.austral.ingsis;
 //    File file = new File(classLoader.getResource(s).getFile());
 //    return file.toPath();
 //  }
-//}
+// }
