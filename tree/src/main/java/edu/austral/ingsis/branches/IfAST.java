@@ -1,8 +1,7 @@
 package edu.austral.ingsis.branches;
 
-import edu.austral.ingsis.AST;
-import edu.austral.ingsis.ContextBuilder;
-import edu.austral.ingsis.Token;
+import edu.austral.ingsis.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,6 +58,8 @@ public class IfAST implements AST {
   }
 
   public ContextBuilder executeTree(ContextBuilder context) {
+    if (!context.getVariable(token.getValue()).getType().getName().equals("boolean"))
+      throw new InvalidCodeException("Only boolean variables allowed", token.getPosition());
     if (context.getVariableValue(token.getValue()).equals("true")) {
       context.emptySubContextElse();
       context = executeIf(leftChild, context);

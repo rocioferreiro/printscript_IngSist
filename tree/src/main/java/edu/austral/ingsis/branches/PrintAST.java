@@ -28,6 +28,16 @@ public class PrintAST implements ASTBranch {
   }
 
   @Override
+  public AST addAST(AST ast) {
+    if (ast.isLeaf()) {
+      setRightChild(ast);
+      return this;
+    }
+    rightChild = ast;
+    return this;
+  }
+
+  @Override
   public void setToken(Token token) {
     this.token = token;
   }

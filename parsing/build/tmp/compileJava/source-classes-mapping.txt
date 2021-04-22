@@ -1,13 +1,13 @@
+edu/austral/ingsis/Parser.java
+ edu.austral.ingsis.Parser
+edu/austral/ingsis/ASTInContext.java
+ edu.austral.ingsis.ASTInContext
 edu/austral/ingsis/ConcreteParser.java
  edu.austral.ingsis.ConcreteParser
 edu/austral/ingsis/SemanticAnalyzer.java
  edu.austral.ingsis.SemanticAnalyzer
 edu/austral/ingsis/SyntacticAnalyzer.java
  edu.austral.ingsis.SyntacticAnalyzer
-edu/austral/ingsis/ASTInContext.java
- edu.austral.ingsis.ASTInContext
-edu/austral/ingsis/Parser.java
- edu.austral.ingsis.Parser
 edu/austral/ingsis/ConcreteSemanticAnalyzer.java
  edu.austral.ingsis.ConcreteSemanticAnalyzer
 edu/austral/ingsis/ConcreteSyntacticAnalyzer.java

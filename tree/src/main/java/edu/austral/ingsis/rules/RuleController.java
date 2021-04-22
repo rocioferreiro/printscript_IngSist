@@ -14,7 +14,11 @@ public class RuleController {
           .build();
     }
     if (ast.getToken().getType().equals(Operator.EQUAL)) {
-      return declarationCommand(ast.getLeftChild(), context);
+      Variable aux = declarationCommand(ast.getLeftChild(), context);
+      Variable aux2 = operationCommand(ast.getRightChild(), context);
+      if (aux.getType().getName().charAt(0) == aux2.getType().getName().charAt(0)) {
+        return aux;
+      } else throw new InvalidCodeException("Type mismatch!", ast.getToken().getPosition());
     }
     return new VariableBuilder().build();
   }
@@ -82,6 +86,8 @@ public class RuleController {
     Token right = ast.getRightChild().getToken();
     if (right.getType().getCategory().equals(KeyWord.STRING.getCategory())) { // VALUE
       return new VariableBuilder().withType(right.getValue(), right.getType().getOrdinal()).build();
-    } else return containsVariable(context, right);
+    } else if (right.getType().getCategory().equals(Operator.PLUS.getCategory()))
+      return containsOperator(ast.getRightChild(), context);
+    return containsVariable(context, right);
   }
 }

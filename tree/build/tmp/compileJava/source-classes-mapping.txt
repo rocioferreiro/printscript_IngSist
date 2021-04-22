@@ -6,16 +6,17 @@ edu/austral/ingsis/branches/EqualEqualAST.java
  edu.austral.ingsis.branches.EqualEqualAST
 edu/austral/ingsis/leaves/VariableAST.java
  edu.austral.ingsis.leaves.VariableAST
-edu/austral/ingsis/rules/ConditionalRule.java
- edu.austral.ingsis.rules.ConditionalRule
-edu/austral/ingsis/branches/IfAST.java
- edu.austral.ingsis.branches.IfAST
 edu/austral/ingsis/branches/PrintAST.java
  edu.austral.ingsis.branches.PrintAST
+edu/austral/ingsis/branches/AssignationAST.java
+ edu.austral.ingsis.branches.AssignationAST
+edu/austral/ingsis/rules/ConditionalRule.java
+ edu.austral.ingsis.rules.ConditionalRule
 edu/austral/ingsis/ConditionalASTWrapper.java
  edu.austral.ingsis.ConditionalASTWrapper
-edu/austral/ingsis/rules/RuleController.java
- edu.austral.ingsis.rules.RuleController
+edu/austral/ingsis/TokenToASTConverter.java
+ edu.austral.ingsis.TokenToASTConverter
+ edu.austral.ingsis.TokenToASTConverter$1
 edu/austral/ingsis/ASTWrapper.java
  edu.austral.ingsis.ASTWrapper
 edu/austral/ingsis/rules/Rule.java
@@ -36,10 +37,10 @@ edu/austral/ingsis/branches/PlusAST.java
  edu.austral.ingsis.branches.PlusAST
 edu/austral/ingsis/branches/AsteriskAST.java
  edu.austral.ingsis.branches.AsteriskAST
-edu/austral/ingsis/rules/RuleType.java
- edu.austral.ingsis.rules.RuleType
 edu/austral/ingsis/branches/DashAST.java
  edu.austral.ingsis.branches.DashAST
+edu/austral/ingsis/branches/HyphenAST.java
+ edu.austral.ingsis.branches.HyphenAST
 edu/austral/ingsis/branches/GreaterAST.java
  edu.austral.ingsis.branches.GreaterAST
 edu/austral/ingsis/leaves/LiteralAST.java
@@ -52,18 +53,17 @@ edu/austral/ingsis/ASTGeneratorCommand.java
  edu.austral.ingsis.ASTGeneratorCommand
 edu/austral/ingsis/branches/GreaterEqualAST.java
  edu.austral.ingsis.branches.GreaterEqualAST
-edu/austral/ingsis/TokenToASTConverter.java
- edu.austral.ingsis.TokenToASTConverter
- edu.austral.ingsis.TokenToASTConverter$1
+edu/austral/ingsis/branches/DeclarationAST.java
+ edu.austral.ingsis.branches.DeclarationAST
 edu/austral/ingsis/Command.java
  edu.austral.ingsis.Command
 edu/austral/ingsis/branches/MinorEqualAST.java
  edu.austral.ingsis.branches.MinorEqualAST
 edu/austral/ingsis/rules/ConcreteRule.java
  edu.austral.ingsis.rules.ConcreteRule
-edu/austral/ingsis/branches/AssignationAST.java
- edu.austral.ingsis.branches.AssignationAST
-edu/austral/ingsis/branches/HyphenAST.java
- edu.austral.ingsis.branches.HyphenAST
-edu/austral/ingsis/branches/DeclarationAST.java
- edu.austral.ingsis.branches.DeclarationAST
+edu/austral/ingsis/branches/IfAST.java
+ edu.austral.ingsis.branches.IfAST
+edu/austral/ingsis/rules/RuleType.java
+ edu.austral.ingsis.rules.RuleType
+edu/austral/ingsis/rules/RuleController.java
+ edu.austral.ingsis.rules.RuleController

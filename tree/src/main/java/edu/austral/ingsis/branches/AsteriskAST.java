@@ -48,29 +48,12 @@ public class AsteriskAST implements ASTBranch {
     int rightType = TypeAnalyzer.getTreeType(rightChild, context);
     String left = leftChild.executeTree(context).getToAddValue();
     String right = rightChild.executeTree(context).getToAddValue();
-    if (leftType <= KeyWord.NUMBER.getOrdinal() && rightType <= KeyWord.NUMBER.getOrdinal())
-      return context.setToAddValue(
-          String.valueOf(Double.parseDouble(left) * Double.parseDouble(right)));
-    if (leftType <= KeyWord.NUMBER.getOrdinal()) {
-      int leftInt = (int) Double.parseDouble(left);
-      return context.setToAddValue(right.repeat(leftInt));
+    if (leftType <= KeyWord.NUMBER.getOrdinal() && rightType <= KeyWord.NUMBER.getOrdinal()) {
+      if (left.contains(".") || right.contains("."))
+        return context.setToAddValue(String.valueOf(Double.parseDouble(left) * Double.parseDouble(right)));
+      else
+        return context.setToAddValue(String.valueOf(Integer.parseInt(left) * Integer.parseInt(right)));
     }
-    if (rightType <= KeyWord.NUMBER.getOrdinal()) {
-      int rightInt = (int) Double.parseDouble(right);
-      return context.setToAddValue(left.repeat(rightInt));
-    }
-    return context.setToAddValue(mergeStrings(left, right));
-  }
-
-  private String mergeStrings(String s1, String s2) {
-    StringBuilder result = new StringBuilder();
-
-    for (int i = 0; i < s1.length() || i < s2.length(); i++) {
-      if (i < s1.length()) result.append(s1.charAt(i));
-
-      if (i < s2.length()) result.append(s2.charAt(i));
-    }
-
-    return result.toString();
+    throw new InvalidCodeException("Can't operate with string", token.getPosition());
   }
 }

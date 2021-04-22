@@ -49,18 +49,10 @@ public class HyphenAST implements ASTBranch {
     String left = leftChild.executeTree(context).getToAddValue();
     String right = rightChild.executeTree(context).getToAddValue();
     if (leftType <= KeyWord.NUMBER.getOrdinal() && rightType <= KeyWord.NUMBER.getOrdinal())
-      return context.setToAddValue(
-          String.valueOf(Double.parseDouble(left) - Double.parseDouble(right)));
-    if (leftType <= KeyWord.NUMBER.getOrdinal()) {
-      int leftInt = (int) Double.parseDouble(left);
-      if (leftInt > right.length()) return context.setToAddValue("");
-      return context.setToAddValue(right.substring(0, right.length() - leftInt));
-    }
-    if (rightType <= KeyWord.NUMBER.getOrdinal()) {
-      int rightInt = (int) Double.parseDouble(right);
-      if (rightInt > left.length()) return context.setToAddValue("");
-      return context.setToAddValue(left.substring(0, left.length() - rightInt));
-    }
-    return context.setToAddValue(left.replaceAll(right, ""));
+      if (left.contains(".") || right.contains("."))
+        return context.setToAddValue(String.valueOf(Double.parseDouble(left) - Double.parseDouble(right)));
+      else
+        return context.setToAddValue(String.valueOf(Integer.parseInt(left) - Integer.parseInt(right)));
+    throw new InvalidCodeException("Can't operate with string", token.getPosition());
   }
 }

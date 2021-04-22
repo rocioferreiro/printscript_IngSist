@@ -50,8 +50,13 @@ public class PlusAST implements ASTBranch {
     String right = rightChild.executeTree(context).getToAddValue();
     if (TypeAnalyzer.getTreeType(this, context) > KeyWord.NUMBER.getOrdinal())
       return context.setToAddValue(left + right);
-    double leftInt = Double.parseDouble(left);
-    double rightInt = Double.parseDouble(right);
+    if (left.contains(".") || right.contains(".")) {
+      double leftInt = Double.parseDouble(left);
+      double rightInt = Double.parseDouble(right);
+      return context.setToAddValue(String.valueOf(leftInt + rightInt));
+    }
+    int leftInt = Integer.parseInt(left);
+    int rightInt = Integer.parseInt(right);
     return context.setToAddValue(String.valueOf(leftInt + rightInt));
   }
 }
