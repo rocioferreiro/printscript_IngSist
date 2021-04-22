@@ -39,7 +39,7 @@ public class ConcreteInterpreter implements Interpreter {
     setTokenTypes();
     context = context.setContexts();
     lexer = new ConcreteLexer();
-    List<Token> tokens = lexer.scan(Path.of(file.getPath()));
+    List<Token> tokens = lexer.scan(file);
     int amount = TokenCleanUp.getAmountOfSentences(tokens);
     TokenCleanUp.checkLastToken(tokens);
     parser = new ConcreteParser(rules);

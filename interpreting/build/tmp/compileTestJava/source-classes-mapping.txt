@@ -1,6 +1,2 @@
-edu/austral/ingsis/ValidateExecutorTest.java
- edu.austral.ingsis.ValidateExecutorTest
 edu/austral/ingsis/TokenCleanUpTest.java
  edu.austral.ingsis.TokenCleanUpTest
-edu/austral/ingsis/InterpreterExecutorTest.java
- edu.austral.ingsis.InterpreterExecutorTest

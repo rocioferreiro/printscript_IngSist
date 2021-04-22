@@ -2,6 +2,7 @@ package edu.austral.ingsis;
 
 import static java.util.stream.Collectors.toList;
 
+import java.io.File;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -10,8 +11,8 @@ import java.util.List;
 public class ConcreteLexer implements Lexer {
 
   @Override
-  public List<Token> scan(Path path) {
-    String text = PathReader.read(path);
+  public List<Token> scan(File file) {
+    String text = PathReader.read(file);
     List<Line> separatedSentences = StringSimplifier.removeEnters(text);
     separatedSentences =
         separatedSentences.stream().filter(l -> !l.getText().isEmpty()).collect(toList());

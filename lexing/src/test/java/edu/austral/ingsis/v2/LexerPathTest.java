@@ -29,9 +29,9 @@ public class LexerPathTest {
   public void testPrintStatement() throws FileNotFoundException {
     activateTokens();
     String testDirectory = "src/test/resources/1.1/" + directory + "/";
-    Path srcPath = Path.of(testDirectory + "main.ps");
+    File srcFile = new File(testDirectory + "main.ps");
     List<String> expectedOutput = readLines(testDirectory + "output.txt");
-    List<String> actualOutput = Serializer.serializeTokens(lexer.scan(srcPath));
+    List<String> actualOutput = Serializer.serializeTokens(lexer.scan(srcFile));
     assertEquals(actualOutput, expectedOutput);
   }
 

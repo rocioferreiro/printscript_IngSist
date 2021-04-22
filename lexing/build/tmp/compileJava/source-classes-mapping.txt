@@ -1,8 +1,8 @@
-edu/austral/ingsis/Lexer.java
- edu.austral.ingsis.Lexer
-edu/austral/ingsis/Line.java
- edu.austral.ingsis.Line
 edu/austral/ingsis/StringSimplifier.java
  edu.austral.ingsis.StringSimplifier
+edu/austral/ingsis/Line.java
+ edu.austral.ingsis.Line
+edu/austral/ingsis/Lexer.java
+ edu.austral.ingsis.Lexer
 edu/austral/ingsis/ConcreteLexer.java
  edu.austral.ingsis.ConcreteLexer

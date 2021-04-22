@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import edu.austral.ingsis.ConcreteLexer;
 import edu.austral.ingsis.InvalidCodeException;
 import edu.austral.ingsis.Lexer;
+
+import java.io.File;
 import java.nio.file.Path;
 import java.util.*;
 import org.junit.Test;
@@ -28,7 +30,7 @@ public class LexerFailTest {
   @Test
   public void testPrintStatement() {
     String testDirectory = "src/test/resources/1.0/" + directory + "/";
-    Path srcPath = Path.of(testDirectory + "main.ps");
-    assertThrows(InvalidCodeException.class, () -> lexer.scan(srcPath));
+    File srcFile = new File(testDirectory + "main.ps");
+    assertThrows(InvalidCodeException.class, () -> lexer.scan(srcFile));
   }
 }
