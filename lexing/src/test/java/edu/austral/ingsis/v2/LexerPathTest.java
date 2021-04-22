@@ -6,26 +6,16 @@ import edu.austral.ingsis.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
-@RunWith(Parameterized.class)
 public class LexerPathTest {
 
   private final Lexer lexer = new ConcreteLexer();
 
-  @SuppressWarnings("WeakerAccess")
-  @Parameterized.Parameter()
-  public String directory;
-
-  @Parameterized.Parameters()
-  public static Collection<Object> data() {
-    return Arrays.asList(new Object[] {"boolean-case", "if-case"});
-  }
-
-  @Test
-  public void testPrintStatement() throws FileNotFoundException {
+  @ParameterizedTest
+  @ValueSource(strings = {"boolean-case", "if-case"})
+  public void testPrintStatement(String directory) throws FileNotFoundException {
     activateTokens();
     String testDirectory = "src/test/resources/1.1/" + directory + "/";
     File srcFile = new File(testDirectory + "main.ps");

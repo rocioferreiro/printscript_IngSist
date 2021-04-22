@@ -6,27 +6,16 @@ import edu.austral.ingsis.ConcreteLexer;
 import edu.austral.ingsis.InvalidCodeException;
 import edu.austral.ingsis.Lexer;
 import java.io.File;
-import java.util.*;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
-@RunWith(Parameterized.class)
 public class LexerFailTest {
 
   private final Lexer lexer = new ConcreteLexer();
 
-  @SuppressWarnings("WeakerAccess")
-  @Parameterized.Parameter()
-  public String directory;
-
-  @Parameterized.Parameters()
-  public static List<Object> data() {
-    return Arrays.asList(new Object[] {"unhappy-path", "unhappy-path-colons"});
-  }
-
-  @Test
-  public void testPrintStatement() {
+  @ParameterizedTest
+  @ValueSource(strings = {"unhappy-path", "unhappy-path-colons"})
+  public void testPrintStatement(String directory) {
     String testDirectory = "src/test/resources/1.0/" + directory + "/";
     File srcFile = new File(testDirectory + "main.ps");
     assertThrows(InvalidCodeException.class, () -> lexer.scan(srcFile));

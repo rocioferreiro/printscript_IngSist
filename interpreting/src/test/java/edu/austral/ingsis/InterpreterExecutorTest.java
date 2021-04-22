@@ -1,5 +1,5 @@
-package edu.austral.ingsis;
-
+//package edu.austral.ingsis;
+//
 // import java.io.ByteArrayOutputStream;
 // import java.io.File;
 // import java.io.PrintStream;
@@ -13,8 +13,7 @@ package edu.austral.ingsis;
 //  private static final PrintStream originalOut = System.out;
 //  private static final PrintStream originalErr = System.err;
 //  private static final Interpreter interpreter =
-//      new ConcreteInterpreter(
-//          getPath("rules.txt"), new InterpretationExecutionStrategy(), "PrintScript 1.0");
+//      new ConcreteInterpreter(new InterpretationExecutionStrategy(), "PrintScript 1.0");
 //
 //  @BeforeEach
 //  public void setUpStreams() {

@@ -8,26 +8,16 @@ import edu.austral.ingsis.Serializer;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
-@RunWith(Parameterized.class)
 public class LexerLineTest {
 
   private final Lexer lexer = new ConcreteLexer();
 
-  @SuppressWarnings("WeakerAccess")
-  @Parameterized.Parameter()
-  public String directory;
-
-  @Parameterized.Parameters()
-  public static List<Object> data() {
-    return Arrays.asList(new Object[] {"happy-line"});
-  }
-
-  @Test
-  public void testPrintStatement() throws FileNotFoundException {
+  @ParameterizedTest
+  @ValueSource(strings = {"happy-line"})
+  public void testPrintStatement(String directory) throws FileNotFoundException {
     String testDirectory = "src/test/resources/1.0/" + directory + "/";
     List<String> expectedOutput = readLines(testDirectory + "output.txt");
     String line = "let x: string = \"hola\";";
