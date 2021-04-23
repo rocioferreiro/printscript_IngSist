@@ -1,0 +1,3 @@
+(declaration, let)
+(s_assignation, string)
+(n_assignation, number)

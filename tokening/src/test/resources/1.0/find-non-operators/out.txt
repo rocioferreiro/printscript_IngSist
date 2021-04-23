@@ -1,0 +1,3 @@
+(string, esto es un string)
+(number, 123)
+(variable_ref, variable1)

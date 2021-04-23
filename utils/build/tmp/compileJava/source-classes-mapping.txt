@@ -7,6 +7,8 @@ edu/austral/ingsis/Variable.java
  edu.austral.ingsis.Variable$1
 edu/austral/ingsis/ExecutingCommand.java
  edu.austral.ingsis.ExecutingCommand
+edu/austral/ingsis/TestHelper.java
+ edu.austral.ingsis.TestHelper
 edu/austral/ingsis/Position.java
  edu.austral.ingsis.Position
 edu/austral/ingsis/VariableType.java
