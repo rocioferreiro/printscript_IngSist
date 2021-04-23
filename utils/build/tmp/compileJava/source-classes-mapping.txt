@@ -19,3 +19,5 @@ edu/austral/ingsis/InvalidCodeException.java
  edu.austral.ingsis.InvalidCodeException
 edu/austral/ingsis/ConcreteVariable.java
  edu.austral.ingsis.ConcreteVariable
+edu/austral/ingsis/TestHelper.java
+ edu.austral.ingsis.TestHelper

@@ -8,27 +8,6 @@
 //
 // public class InterpreterExecutorTest {
 //
-//  private static final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-//  private static final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
-//  private static final PrintStream originalOut = System.out;
-//  private static final PrintStream originalErr = System.err;
-//  private static final Interpreter interpreter =
-//      new ConcreteInterpreter(new InterpretationExecutionStrategy(), "PrintScript 1.0");
-//
-//  @BeforeEach
-//  public void setUpStreams() {
-//    System.setOut(new PrintStream(outContent));
-//    System.setErr(new PrintStream(errContent));
-//    interpreter.emptyContext();
-//    outContent.reset();
-//  }
-//
-//  @AfterAll
-//  public static void restoreStreams() {
-//    System.setOut(originalOut);
-//    System.setErr(originalErr);
-//  }
-//
 //  @Test
 //  public void testInterpreterInPathWithNumbers() {
 //    interpreter.interpret(new File("testInterpreterWithNumbers.txt"), System.out::println);
@@ -123,27 +102,5 @@
 //  public void testInterpreterInLine() {
 //    interpreter.interpret("let x:string = 'hola';", System.out::println);
 //    Assertions.assertEquals("", outContent.toString());
-//  }
-//
-//  private String print(int amountOfLines, int actualLine) {
-//    String ANSI_RESET = "\u001B[0m";
-//    String ANSI_BLUE = "\033[0;34m";
-//    double percentage = ((double) actualLine) / amountOfLines;
-//
-//    String string =
-//        "\t".repeat(15)
-//            + "Interpreting -> ["
-//            + "#".repeat(actualLine)
-//            + " ".repeat(amountOfLines - actualLine)
-//            + "] "
-//            + (int) (percentage * 100)
-//            + "%";
-//    return ANSI_BLUE + string + ANSI_RESET + "\n";
-//  }
-//
-//  private static Path getPath(String s) {
-//    ClassLoader classLoader = ValidateExecutorTest.class.getClassLoader();
-//    File file = new File(classLoader.getResource(s).getFile());
-//    return file.toPath();
 //  }
 // }

@@ -26,6 +26,14 @@ public class ConcreteInterpreter implements Interpreter {
     this.version = getVersion(version);
   }
 
+  public ConcreteInterpreter(ExecutionStrategy strategy, String version, Path rules) {
+    this.rules = rules;
+    this.strategy = strategy;
+    this.versions = setVersions();
+    this.version = getVersion(version);
+    parser = new ConcreteParser(rules);
+  }
+
   public ConcreteInterpreter(ExecutionStrategy strategy, String version) {
     this.rules = Paths.get("rules.txt");
     this.strategy = strategy;
@@ -35,7 +43,7 @@ public class ConcreteInterpreter implements Interpreter {
   }
 
   @Override
-  public void interpret(File file, Consumer<String> out) {
+  public void interpret(File file, Consumer<String> out, boolean progress) {
     setTokenTypes();
     context = context.setContexts();
     lexer = new ConcreteLexer();
@@ -54,7 +62,7 @@ public class ConcreteInterpreter implements Interpreter {
       ast.getContext().setOut(out);
       context = ast.getContext();
       strategy.execute(executor, ast);
-      print(amount, ++index);
+      if(progress) print(amount, ++index);
       sublist = new ArrayList<>(sublist.subList(nextIndex + 1, sublist.size()));
     }
   }

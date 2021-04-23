@@ -75,4 +75,22 @@ public class TokenCleanUp {
     }
     return 0;
   }
+
+  public static void activateTokens() {
+    TokenType[] types = {
+            KeyWord.B_ASSIGNATION,
+            KeyWord.C_DECLARATION,
+            KeyWord.BOOLEAN,
+            KeyWord.IF_STATEMENT,
+            KeyWord.ELSE_STATEMENT,
+            Operator.EQUAL_EQUAL,
+            Operator.GREATER_EQUAL,
+            Operator.MINOR_EQUAL,
+            Operator.GREATER,
+            Operator.MINOR,
+            Operator.L_KEY,
+            Operator.R_KEY
+    };
+    for (TokenType t : types) t.setAble(true);
+  }
 }

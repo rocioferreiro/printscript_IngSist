@@ -9,7 +9,7 @@ edu/austral/ingsis/TokenType.java
  edu.austral.ingsis.TokenType$1
 edu/austral/ingsis/KeyWord.java
  edu.austral.ingsis.KeyWord
-edu/austral/ingsis/TokenCleanUp.java
- edu.austral.ingsis.TokenCleanUp
 edu/austral/ingsis/Operator.java
  edu.austral.ingsis.Operator
+edu/austral/ingsis/TokenCleanUp.java
+ edu.austral.ingsis.TokenCleanUp

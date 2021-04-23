@@ -1,4 +1,4 @@
-package edu.austral.ingsis.v1;
+package edu.austral.ingsis.v2;
 
 import edu.austral.ingsis.*;
 import org.junit.jupiter.api.AfterAll;
@@ -21,7 +21,7 @@ public class ValidateExecutorTest {
   private static final PrintStream originalOut = System.out;
   private static final PrintStream originalErr = System.err;
   private final Interpreter interpreter =
-          new ConcreteInterpreter(new ValidationExecutionStrategy(), "PrintScript 1.0", Path.of("src/test/resources/rules.txt"));
+          new ConcreteInterpreter(new ValidationExecutionStrategy(), "PrintScript 1.1", Path.of("src/test/resources/rules.txt"));
 
   @BeforeEach
   public void setUpStreams() {
@@ -38,9 +38,9 @@ public class ValidateExecutorTest {
   }
 
   @ParameterizedTest
-  @ValueSource(strings = {"validate-happy-path", "validate-type-change"})
+  @ValueSource(strings = {"validate-const-case", "validate-if-case"})
   public void testPrintStatement(String directory) throws FileNotFoundException {
-    String testDirectory = "src/test/resources/1.0/" + directory + "/";
+    String testDirectory = "src/test/resources/1.1/" + directory + "/";
     File srcFile = new File(testDirectory + "main.ps");
     String expectedOutput = TestHelper.readLines(testDirectory + "output.txt");
     interpreter.interpret(srcFile, System.out::println, false);

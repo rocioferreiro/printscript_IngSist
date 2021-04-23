@@ -69,7 +69,7 @@ public class CLI {
       line = scanner.nextLine();
       if (!line.matches(".\\.ps")) {
         try {
-          interpreter.interpret(new File(line), System.out::println);
+          interpreter.interpret(new File(line), System.out::println, true);
           break;
         } catch (InvalidCodeException e) {
           System.out.println(ANSI_RED_BOLD + e.getMessage() + ANSI_RESET);
