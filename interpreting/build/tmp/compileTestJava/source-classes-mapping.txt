@@ -1,12 +1,18 @@
 edu/austral/ingsis/Serializer.java
  edu.austral.ingsis.Serializer
-edu/austral/ingsis/v1/InterpretExecutorTest.java
- edu.austral.ingsis.v1.InterpretExecutorTest
-edu/austral/ingsis/v1/ValidateFailExecutorTest.java
- edu.austral.ingsis.v1.ValidateFailExecutorTest
-edu/austral/ingsis/v1/ValidateExecutorTest.java
- edu.austral.ingsis.v1.ValidateExecutorTest
 edu/austral/ingsis/v2/ValidateExecutorTest.java
  edu.austral.ingsis.v2.ValidateExecutorTest
-edu/austral/ingsis/v2/ValidateFailExecutorTest.java
- edu.austral.ingsis.v2.ValidateFailExecutorTest
+edu/austral/ingsis/v1/ValidateFailExecutorTest.java
+ edu.austral.ingsis.v1.ValidateFailExecutorTest
+edu/austral/ingsis/v1/InterpretFailExecutorTest.java
+ edu.austral.ingsis.v1.InterpretFailExecutorTest
+edu/austral/ingsis/v1/ValidateExecutorTest.java
+ edu.austral.ingsis.v1.ValidateExecutorTest
+edu/austral/ingsis/v1/InterpretExecutorTest.java
+ edu.austral.ingsis.v1.InterpretExecutorTest
+edu/austral/ingsis/v2/InterpretFailExecutorTest.java
+ edu.austral.ingsis.v2.InterpretFailExecutorTest
+edu/austral/ingsis/v2/InterpretExecutorTest.java
+ edu.austral.ingsis.v2.InterpretExecutorTest
+edu/austral/ingsis/v1/ValidateLineExecutorTest.java
+ edu.austral.ingsis.v1.ValidateLineExecutorTest
