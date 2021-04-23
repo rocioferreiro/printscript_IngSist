@@ -1,4 +1,9 @@
+edu/austral/ingsis/ASTSerializer.java
+ edu.austral.ingsis.ASTSerializer
+ edu.austral.ingsis.ASTSerializer$1
 edu/austral/ingsis/TokenToASTConverterTest.java
  edu.austral.ingsis.TokenToASTConverterTest
 edu/austral/ingsis/TypeAnalyzerTest.java
  edu.austral.ingsis.TypeAnalyzerTest
+edu/austral/ingsis/ValidateTokenTest.java
+ edu.austral.ingsis.ValidateTokenTest
