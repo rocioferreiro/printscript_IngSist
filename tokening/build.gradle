@@ -34,7 +34,6 @@ publishing {
 
 test {
     useJUnitPlatform()
-//    finalizedBy jacocoTestReport
 }
 
 //jacocoTestReport {

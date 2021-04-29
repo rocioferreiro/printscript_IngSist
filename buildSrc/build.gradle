@@ -1,3 +1,13 @@
 plugins {
     id 'groovy-gradle-plugin'
 }
+
+repositories {
+    mavenCentral()
+    gradlePluginPortal()
+}
+
+dependencies {
+    implementation 'io.freefair.gradle:lombok-plugin:5.3.0'
+    implementation 'gradle.plugin.com.github.sherter.google-java-format:google-java-format-gradle-plugin:0.9'
+}

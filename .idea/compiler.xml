@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Gradle Imported" enabled="true">
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.16/6dc192c7f93ec1853f70d59d8a6dcf94eb42866/lombok-1.18.16.jar" />
+        </processorPath>
+        <module name="my-library.lexing.main" />
+        <module name="my-library.utils.main" />
+        <module name="my-library.tree.main" />
+        <module name="my-library.main.test" />
+        <module name="my-library.main.main" />
+        <module name="my-library.executing.main" />
+        <module name="my-library.utils.test" />
+        <module name="my-library.tokening.main" />
+        <module name="my-library.interpreting.main" />
+        <module name="my-library.parsing.test" />
+        <module name="my-library.tree.test" />
+        <module name="my-library.executing.test" />
+        <module name="my-library.interpreting.test" />
+        <module name="my-library.parsing.main" />
+        <module name="my-library.tokening.test" />
+        <module name="my-library.lexing.test" />
+      </profile>
+    </annotationProcessing>
     <bytecodeTargetLevel target="15">
       <module name="my-library.ast" target="11" />
       <module name="my-library.ast.main" target="11" />
