@@ -6,11 +6,11 @@ import edu.austral.ingsis.ConcreteLexer;
 import edu.austral.ingsis.Lexer;
 import edu.austral.ingsis.Serializer;
 import edu.austral.ingsis.TestHelper;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class LexerFileTest {
 
@@ -25,5 +25,4 @@ public class LexerFileTest {
     List<String> actualOutput = Serializer.serializeTokens(lexer.scan(srcFile));
     assertEquals(actualOutput, expectedOutput);
   }
-
 }

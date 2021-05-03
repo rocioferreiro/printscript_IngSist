@@ -31,7 +31,7 @@ public class TestHelper {
   public static String removeLast(String out) {
     String[] split = out.split("\n");
     StringBuilder result = new StringBuilder();
-    for (String s: split) result.append(s);
+    for (String s : split) result.append(s);
     return result.toString();
   }
 }

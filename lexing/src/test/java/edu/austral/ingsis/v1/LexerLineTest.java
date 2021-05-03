@@ -5,13 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import edu.austral.ingsis.ConcreteLexer;
 import edu.austral.ingsis.Lexer;
 import edu.austral.ingsis.Serializer;
-
-import java.awt.event.TextEvent;
-import java.io.File;
+import edu.austral.ingsis.TestHelper;
 import java.io.FileNotFoundException;
 import java.util.*;
-
-import edu.austral.ingsis.TestHelper;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 

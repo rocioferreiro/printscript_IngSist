@@ -1,20 +1,19 @@
 package edu.austral.ingsis.v1;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import edu.austral.ingsis.ConcreteInterpreter;
 import edu.austral.ingsis.Interpreter;
 import edu.austral.ingsis.TestHelper;
 import edu.austral.ingsis.ValidationExecutionStrategy;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
-
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.nio.file.Path;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class ValidateLineExecutorTest {
 
@@ -23,7 +22,10 @@ public class ValidateLineExecutorTest {
   private static final PrintStream originalOut = System.out;
   private static final PrintStream originalErr = System.err;
   private final Interpreter interpreter =
-          new ConcreteInterpreter(new ValidationExecutionStrategy(), "PrintScript 1.0", Path.of("src/test/resources/rules.txt"));
+      new ConcreteInterpreter(
+          new ValidationExecutionStrategy(),
+          "PrintScript 1.0",
+          Path.of("src/test/resources/rules.txt"));
 
   @BeforeEach
   public void setUpStreams() {

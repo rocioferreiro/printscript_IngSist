@@ -62,7 +62,7 @@ public class ConcreteInterpreter implements Interpreter {
       ast.getContext().setOut(out);
       context = ast.getContext();
       strategy.execute(executor, ast);
-      if(progress) print(amount, ++index);
+      if (progress) print(amount, ++index);
       sublist = new ArrayList<>(sublist.subList(nextIndex + 1, sublist.size()));
     }
   }

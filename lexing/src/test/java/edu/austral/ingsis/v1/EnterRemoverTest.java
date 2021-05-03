@@ -3,16 +3,13 @@ package edu.austral.ingsis.v1;
 import edu.austral.ingsis.PathReader;
 import edu.austral.ingsis.Serializer;
 import edu.austral.ingsis.StringSimplifier;
-import java.io.File;
+import edu.austral.ingsis.TestHelper;
 import java.io.FileNotFoundException;
 import java.nio.file.Path;
 import java.util.*;
-
-import edu.austral.ingsis.TestHelper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-
 
 public class EnterRemoverTest {
 
