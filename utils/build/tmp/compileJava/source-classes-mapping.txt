@@ -1,5 +1,5 @@
-edu/austral/ingsis/TestHelper.java
- edu.austral.ingsis.TestHelper
+edu/austral/ingsis/Context.java
+ edu.austral.ingsis.Context
 edu/austral/ingsis/ContextBuilder.java
  edu.austral.ingsis.ContextBuilder
 edu/austral/ingsis/Variable.java
@@ -13,13 +13,11 @@ edu/austral/ingsis/Position.java
  edu.austral.ingsis.Position
 edu/austral/ingsis/VariableType.java
  edu.austral.ingsis.VariableType
-edu/austral/ingsis/InvalidCodeException.java
- edu.austral.ingsis.InvalidCodeException
-edu/austral/ingsis/PathReader.java
- edu.austral.ingsis.PathReader
-edu/austral/ingsis/Context.java
- edu.austral.ingsis.Context
 edu/austral/ingsis/VariableBuilder.java
  edu.austral.ingsis.VariableBuilder
+edu/austral/ingsis/PathReader.java
+ edu.austral.ingsis.PathReader
+edu/austral/ingsis/InvalidCodeException.java
+ edu.austral.ingsis.InvalidCodeException
 edu/austral/ingsis/ConcreteVariable.java
  edu.austral.ingsis.ConcreteVariable
