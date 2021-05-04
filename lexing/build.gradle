@@ -3,6 +3,7 @@ plugins {
     id 'my-library.java-common-conventions'
     id 'jacoco'
     id 'maven-publish'
+    id "com.github.sherter.google-java-format" version "0.9"
 }
 
 group = 'edu.austral.ingsis'
@@ -14,6 +15,10 @@ dependencies {
     implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.4'
     implementation 'org.junit.jupiter:junit-jupiter:5.4.2'
     testImplementation 'org.junit.jupiter:junit-jupiter-params:5.7.0'
+}
+
+repositories {
+    mavenCentral()
 }
 
 publishing {

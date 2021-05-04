@@ -1,0 +1,11 @@
+src/main/java/edu/austral/ingsis/ConcreteLexer.java,1619111251015663912,1927,FORMATTED
+src/main/java/edu/austral/ingsis/StringSimplifier.java,1619031373459548309,4416,FORMATTED
+src/test/java/edu/austral/ingsis/v1/SpaceRemoverTest.java,1620096151139166401,999,FORMATTED
+src/main/java/edu/austral/ingsis/Lexer.java,1620097443830284116,166,FORMATTED
+src/main/java/edu/austral/ingsis/Line.java,1618583982780099115,372,FORMATTED
+src/test/java/edu/austral/ingsis/v2/LexerPathTest.java,1620096151139748807,930,FORMATTED
+src/test/java/edu/austral/ingsis/v1/EnterRemoverTest.java,1620096151132700227,1057,FORMATTED
+src/test/java/edu/austral/ingsis/v1/LexerFailTest.java,1620096151136472797,772,FORMATTED
+src/test/java/edu/austral/ingsis/v1/LexerFileTest.java,1620096151137047266,1046,FORMATTED
+src/test/java/edu/austral/ingsis/v1/LexerLineTest.java,1620096151138131509,970,FORMATTED
+src/test/java/edu/austral/ingsis/Serializer.java,1619031373461229790,673,FORMATTED

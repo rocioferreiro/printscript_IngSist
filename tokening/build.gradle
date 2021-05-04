@@ -3,6 +3,7 @@ plugins {
     id 'my-library.java-common-conventions'
     id 'jacoco'
     id 'maven-publish'
+    id "com.github.sherter.google-java-format" version "0.9"
 }
 
 group = 'edu.austral.ingsis'
@@ -63,3 +64,10 @@ jacocoTestCoverageVerification {
 check.dependsOn jacocoTestCoverageVerification
 
 tasks.build.dependsOn(check)
+
+task ourGoogleJavaFormat {
+    googleJavaFormat
+}
+tasks.build.dependsOn(check)
+
+check.dependsOn ourGoogleJavaFormat
