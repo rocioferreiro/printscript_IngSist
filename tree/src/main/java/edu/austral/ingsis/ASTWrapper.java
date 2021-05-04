@@ -5,7 +5,10 @@ import java.util.List;
 
 public interface ASTWrapper {
 
-  AST getTree();RuleType getType();
+  AST getTree();
+
+  RuleType getType();
+
   default List<ASTWrapper> getLeft() {
     return null;
   }

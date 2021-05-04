@@ -23,7 +23,7 @@ src/main/java/edu/austral/ingsis/branches/HyphenAST.java,1619111251028256391,155
 src/main/java/edu/austral/ingsis/rules/RuleType.java,1619050202108117447,809,FORMATTED
 src/main/java/edu/austral/ingsis/EmptyAST.java,1619050202042126835,797,FORMATTED
 src/main/java/edu/austral/ingsis/branches/PlusAST.java,1619111251029520335,1472,FORMATTED
-src/main/java/edu/austral/ingsis/ASTWrapper.java,1619050202038317513,291,FORMATTED
+src/main/java/edu/austral/ingsis/ASTWrapper.java,1620099692490593465,291,FORMATTED
 src/main/java/edu/austral/ingsis/leaves/LiteralAST.java,1619050202089555493,699,FORMATTED
 src/test/java/edu/austral/ingsis/ValidateTokenTest.java,1620096151177308384,1394,FORMATTED
 src/main/java/edu/austral/ingsis/rules/ConcreteRule.java,1619050202101679876,1124,FORMATTED
