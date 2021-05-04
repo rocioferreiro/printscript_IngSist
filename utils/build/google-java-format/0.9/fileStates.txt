@@ -1,0 +1,13 @@
+src/main/java/edu/austral/ingsis/ConcreteVariable.java,1618583982808055353,1275,FORMATTED
+src/test/java/edu/austral/ingsis/VariableTest.java,1618943909584481246,898,FORMATTED
+src/main/java/edu/austral/ingsis/VariableType.java,1618583982811572777,536,FORMATTED
+src/main/java/edu/austral/ingsis/InvalidCodeException.java,1618583982809628726,244,FORMATTED
+src/main/java/edu/austral/ingsis/Position.java,1618583982810163822,596,FORMATTED
+src/main/java/edu/austral/ingsis/ContextBuilder.java,1619111251036674811,2093,FORMATTED
+src/main/java/edu/austral/ingsis/VariableBuilder.java,1618583982811170277,773,FORMATTED
+src/main/java/edu/austral/ingsis/Variable.java,1618583982810783428,984,FORMATTED
+src/main/java/edu/austral/ingsis/ExecutingCommand.java,1618583982809396446,420,FORMATTED
+src/test/java/edu/austral/ingsis/ContextTest.java,1618583982812688522,937,FORMATTED
+src/main/java/edu/austral/ingsis/TestHelper.java,1620096151183082383,980,FORMATTED
+src/main/java/edu/austral/ingsis/PathReader.java,1619111251037523468,705,FORMATTED
+src/main/java/edu/austral/ingsis/Context.java,1619111251034620357,3987,FORMATTED

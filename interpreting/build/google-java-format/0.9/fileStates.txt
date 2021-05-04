@@ -1,0 +1,15 @@
+src/test/java/edu/austral/ingsis/v2/ValidateExecutorTest.java,1620096151114827552,1848,FORMATTED
+src/test/java/edu/austral/ingsis/v1/InterpretExecutorTest.java,1620096151110417523,1874,FORMATTED
+src/test/java/edu/austral/ingsis/v2/InterpretFailExecutorTest.java,1620096151114229500,1109,FORMATTED
+src/main/java/edu/austral/ingsis/Interpreter.java,1620096151108336068,267,FORMATTED
+src/main/java/edu/austral/ingsis/ExecutionStrategy.java,1618583982767309608,131,FORMATTED
+src/main/java/edu/austral/ingsis/ConcreteInterpreter.java,1620096151107313456,4219,FORMATTED
+src/test/java/edu/austral/ingsis/v1/ValidateFailExecutorTest.java,1620096151112216435,1199,FORMATTED
+src/main/java/edu/austral/ingsis/InterpretationExecutionStrategy.java,1618583982767544746,266,FORMATTED
+src/test/java/edu/austral/ingsis/v2/InterpretExecutorTest.java,1620096151113573863,2013,FORMATTED
+src/test/java/edu/austral/ingsis/v1/InterpretFailExecutorTest.java,1620096151110970579,907,FORMATTED
+src/main/java/edu/austral/ingsis/ValidationExecutionStrategy.java,1618583982767932501,379,FORMATTED
+src/test/java/edu/austral/ingsis/v1/ValidateExecutorTest.java,1620096151111620493,1852,FORMATTED
+src/test/java/edu/austral/ingsis/v1/ValidateLineExecutorTest.java,1620096151112801129,1929,FORMATTED
+src/main/java/edu/austral/ingsis/Version.java,1619050202001651311,485,FORMATTED
+src/test/java/edu/austral/ingsis/Serializer.java,1620096151109519857,673,FORMATTED

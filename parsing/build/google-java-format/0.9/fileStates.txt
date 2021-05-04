@@ -1,0 +1,11 @@
+src/main/java/edu/austral/ingsis/ConcreteParser.java,1619116993404722251,1338,FORMATTED
+src/main/java/edu/austral/ingsis/ASTInContext.java,1618583982790821780,323,FORMATTED
+src/test/java/edu/austral/ingsis/ParserSerializer.java,1620096151144629681,2972,FORMATTED
+src/main/java/edu/austral/ingsis/SemanticAnalyzer.java,1618583982794751317,125,FORMATTED
+src/test/java/edu/austral/ingsis/v1/ParserValidTest.java,1620096151145355515,1160,FORMATTED
+src/test/java/edu/austral/ingsis/v1/ParserInvalidTest.java,1620096151145047033,1039,FORMATTED
+src/test/java/edu/austral/ingsis/v2/Parser11ValidTest.java,1620096151145975006,1050,FORMATTED
+src/main/java/edu/austral/ingsis/Parser.java,1618583982794480257,124,FORMATTED
+src/main/java/edu/austral/ingsis/ConcreteSemanticAnalyzer.java,1618583982793721565,1649,FORMATTED
+src/main/java/edu/austral/ingsis/SyntacticAnalyzer.java,1618583982795022824,134,FORMATTED
+src/main/java/edu/austral/ingsis/ConcreteSyntacticAnalyzer.java,1618583982794262155,1956,FORMATTED

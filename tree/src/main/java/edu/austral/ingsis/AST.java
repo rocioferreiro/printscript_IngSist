@@ -27,7 +27,8 @@ public interface AST {
 
   default AST addAST(AST ast) {
     return null;
-  };
+  }
+  ;
 
   void setToken(Token token);
 

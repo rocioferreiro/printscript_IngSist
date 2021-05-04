@@ -1,0 +1,2 @@
+src/main/java/edu/austral/ingsis/ConcreteExecutor.java,1618583982762985667,273,FORMATTED
+src/main/java/edu/austral/ingsis/Executor.java,1618583982763494673,102,FORMATTED

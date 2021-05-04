@@ -1,0 +1,11 @@
+src/main/java/edu/austral/ingsis/TokenCleanUp.java,1620096151158719036,3022,FORMATTED
+src/main/java/edu/austral/ingsis/KeyWord.java,1619031373515711775,1825,FORMATTED
+src/test/java/edu/austral/ingsis/v2/Find11Tokens.java,1620096151162253486,1065,FORMATTED
+src/main/java/edu/austral/ingsis/Token.java,1618583982802053845,129,FORMATTED
+src/test/java/edu/austral/ingsis/v1/TokenCleanUpTest.java,1620096151161594225,1131,FORMATTED
+src/test/java/edu/austral/ingsis/v1/FindTokensTest.java,1620096151160940039,2198,FORMATTED
+src/main/java/edu/austral/ingsis/TokenType.java,1618583982802731493,765,FORMATTED
+src/main/java/edu/austral/ingsis/ConcreteToken.java,1618583982800910608,779,FORMATTED
+src/test/java/edu/austral/ingsis/TokenSerializer.java,1620096151160273678,1079,FORMATTED
+src/main/java/edu/austral/ingsis/Operator.java,1618583982801519875,2681,FORMATTED
+src/main/java/edu/austral/ingsis/ProvisionalToken.java,1618583982801798269,475,FORMATTED
