@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TokenCleanUp.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">tokening</a> &gt; <a href="index.source.html" class="el_package">edu.austral.ingsis</a> &gt; <span class="el_source">TokenCleanUp.java</span></div><h1>TokenCleanUp.java</h1><pre class="source lang-java linenums">package edu.austral.ingsis;
+
+import java.util.List;
+
+<span class="nc" id="L5">public class TokenCleanUp {</span>
+
+  public static void checkLastToken(List&lt;Token&gt; tokens) {
+<span class="fc" id="L8">    Token lastToken = tokens.get(tokens.size() - 1);</span>
+<span class="fc bfc" id="L9" title="All 2 branches covered.">    if (!lastToken.getType().equals(Operator.SEMICOLONS)</span>
+<span class="pc bpc" id="L10" title="1 of 2 branches missed.">        &amp;&amp; !lastToken.getType().equals(Operator.R_KEY)) {</span>
+<span class="fc" id="L11">      throw new InvalidCodeException(&quot;Missing separator.&quot;, lastToken.getPosition());</span>
+    }
+<span class="fc" id="L13">  }</span>
+
+  public static List&lt;Token&gt; checkLastTokenAndRemove(List&lt;Token&gt; tokens) {
+<span class="fc" id="L16">    checkLastToken(tokens);</span>
+<span class="pc bpc" id="L17" title="1 of 2 branches missed.">    if (tokens.get(tokens.size() - 1).getType().equals(Operator.R_KEY)) return tokens;</span>
+<span class="fc" id="L18">    return tokens.subList(0, tokens.size() - 1);</span>
+  }
+
+  public static int getIndexOfNextSeparator(List&lt;Token&gt; tokens) {
+<span class="pc bpc" id="L22" title="1 of 2 branches missed.">    for (int i = 0; i &lt; tokens.size(); i++) {</span>
+<span class="pc bpc" id="L23" title="1 of 2 branches missed.">      if (tokens.get(i).getType().equals(KeyWord.IF_STATEMENT)) {</span>
+<span class="nc" id="L24">        return getIndexOfNextSeparatorConditional(tokens, i);</span>
+      }
+<span class="fc bfc" id="L26" title="All 2 branches covered.">      if (tokens.get(i).getType().equals(Operator.SEMICOLONS)) {</span>
+<span class="fc" id="L27">        return i;</span>
+      }
+    }
+<span class="nc" id="L30">    return -1;</span>
+  }
+
+  public static boolean contains(List&lt;Token&gt; tokens, TokenType type) {
+<span class="nc bnc" id="L34" title="All 4 branches missed.">    for (Token token : tokens) if (token.getType().equals(type)) return true;</span>
+<span class="nc" id="L35">    return false;</span>
+  }
+
+  private static int getIndexOfNextSeparatorConditional(
+      List&lt;Token&gt; tokens, int indexOfConditional) {
+<span class="nc" id="L40">    int provisionalEndIndex = -1;</span>
+<span class="nc bnc" id="L41" title="All 2 branches missed.">    for (int i = indexOfConditional; i &lt; tokens.size(); i++) {</span>
+<span class="nc bnc" id="L42" title="All 2 branches missed.">      if (tokens.get(i).getType().equals(Operator.L_KEY)) {</span>
+<span class="nc" id="L43">        provisionalEndIndex = getEndIndex(tokens, i + 1);</span>
+<span class="nc" id="L44">        break;</span>
+      }
+    }
+<span class="nc bnc" id="L47" title="All 2 branches missed.">    if (provisionalEndIndex &lt; tokens.size() - 1</span>
+<span class="nc bnc" id="L48" title="All 2 branches missed.">        &amp;&amp; tokens.get(provisionalEndIndex + 1).getType().equals(KeyWord.ELSE_STATEMENT))</span>
+<span class="nc" id="L49">      return getIndexOfNextSeparatorConditional(tokens, provisionalEndIndex);</span>
+<span class="nc" id="L50">    return provisionalEndIndex;</span>
+  }
+
+  public static int getAmountOfSentences(List&lt;Token&gt; tokens) {
+<span class="nc" id="L54">    int counter = 0;</span>
+
+<span class="nc bnc" id="L56" title="All 2 branches missed.">    for (int i = 0; i &lt; tokens.size(); i++) {</span>
+
+<span class="nc bnc" id="L58" title="All 2 branches missed.">      if (tokens.get(i).getType().equals(KeyWord.IF_STATEMENT)) {</span>
+<span class="nc" id="L59">        i = getIndexOfNextSeparatorConditional(tokens, i + 1);</span>
+<span class="nc" id="L60">        counter++;</span>
+      }
+<span class="nc bnc" id="L62" title="All 2 branches missed.">      if (tokens.get(i).getType().equals(Operator.SEMICOLONS)) counter++;</span>
+    }
+<span class="nc" id="L64">    return counter;</span>
+  }
+
+  private static int getEndIndex(List&lt;Token&gt; tokens, int initialIndex) {
+<span class="nc" id="L68">    int leftKeyCounter = 0;</span>
+<span class="nc bnc" id="L69" title="All 2 branches missed.">    for (int j = initialIndex; j &lt; tokens.size(); j++) {</span>
+<span class="nc bnc" id="L70" title="All 2 branches missed.">      if (tokens.get(j).getType().equals(Operator.L_KEY)) leftKeyCounter++;</span>
+<span class="nc bnc" id="L71" title="All 2 branches missed.">      if (tokens.get(j).getType().equals(Operator.R_KEY)) {</span>
+<span class="nc bnc" id="L72" title="All 2 branches missed.">        if (leftKeyCounter &gt; 0) leftKeyCounter--;</span>
+<span class="nc" id="L73">        else return j;</span>
+      }
+    }
+<span class="nc" id="L76">    return 0;</span>
+  }
+
+  public static void activateTokens() {
+<span class="fc" id="L80">    TokenType[] types = {</span>
+            KeyWord.B_ASSIGNATION,
+            KeyWord.C_DECLARATION,
+            KeyWord.BOOLEAN,
+            KeyWord.IF_STATEMENT,
+            KeyWord.ELSE_STATEMENT,
+            Operator.EQUAL_EQUAL,
+            Operator.GREATER_EQUAL,
+            Operator.MINOR_EQUAL,
+            Operator.GREATER,
+            Operator.MINOR,
+            Operator.L_KEY,
+            Operator.R_KEY
+    };
+<span class="fc bfc" id="L94" title="All 2 branches covered.">    for (TokenType t : types) t.setAble(true);</span>
+<span class="fc" id="L95">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

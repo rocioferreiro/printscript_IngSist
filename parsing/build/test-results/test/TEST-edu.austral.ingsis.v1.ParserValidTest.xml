@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="edu.austral.ingsis.v1.ParserValidTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-04-23T02:47:53" hostname="Rocios-Air.lan" time="0.078">
+  <properties/>
+  <testcase name="[1] happy-string" classname="edu.austral.ingsis.v1.ParserValidTest" time="0.045"/>
+  <testcase name="[2] happy-number" classname="edu.austral.ingsis.v1.ParserValidTest" time="0.013"/>
+  <testcase name="[3] empty-named-variable" classname="edu.austral.ingsis.v1.ParserValidTest" time="0.006"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="edu.austral.ingsis.v1.InterpretExecutorTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-05-04T02:44:04" hostname="Rocios-Air.lan" time="0.051">
+  <properties/>
+  <testcase name="[1] interpret-with-numbers" classname="edu.austral.ingsis.v1.InterpretExecutorTest" time="0.042"/>
+  <testcase name="[2] interpret-with-numbers-and-strings" classname="edu.austral.ingsis.v1.InterpretExecutorTest" time="0.006"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

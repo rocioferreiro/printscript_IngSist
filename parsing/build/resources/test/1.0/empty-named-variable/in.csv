@@ -1,0 +1,4 @@
+PRINTLN,println
+L_PARENTHESIS,(
+STRING,"hola"
+R_PARENTHESIS,)

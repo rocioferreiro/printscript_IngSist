@@ -1,0 +1,14 @@
+edu/austral/ingsis/v1/LexerLineTest.java
+ edu.austral.ingsis.v1.LexerLineTest
+edu/austral/ingsis/v1/LexerFileTest.java
+ edu.austral.ingsis.v1.LexerFileTest
+edu/austral/ingsis/Serializer.java
+ edu.austral.ingsis.Serializer
+edu/austral/ingsis/v1/SpaceRemoverTest.java
+ edu.austral.ingsis.v1.SpaceRemoverTest
+edu/austral/ingsis/v2/LexerPathTest.java
+ edu.austral.ingsis.v2.LexerPathTest
+edu/austral/ingsis/v1/LexerFailTest.java
+ edu.austral.ingsis.v1.LexerFailTest
+edu/austral/ingsis/v1/EnterRemoverTest.java
+ edu.austral.ingsis.v1.EnterRemoverTest

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>KeyWord.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">tokening</a> &gt; <a href="index.source.html" class="el_package">edu.austral.ingsis</a> &gt; <span class="el_source">KeyWord.java</span></div><h1>KeyWord.java</h1><pre class="source lang-java linenums">package edu.austral.ingsis;
+
+import java.util.Locale;
+
+<span class="fc" id="L5">public enum KeyWord implements TokenType {</span>
+<span class="fc" id="L6">  DECLARATION(&quot;let&quot;, &quot;DECLARATION&quot;, true),</span>
+<span class="fc" id="L7">  C_DECLARATION(&quot;const&quot;, &quot;C_DECLARATION&quot;, false),</span>
+<span class="fc" id="L8">  N_ASSIGNATION(&quot;number&quot;, &quot;TYPE&quot;, true),</span>
+<span class="fc" id="L9">  NUMBER(&quot;\\d+(\\.\\d+)?&quot;, &quot;VALUE&quot;, true),</span>
+<span class="fc" id="L10">  S_ASSIGNATION(&quot;string&quot;, &quot;TYPE&quot;, true),</span>
+<span class="fc" id="L11">  STRING(&quot;[\&quot;'].*[\&quot;']&quot;, &quot;VALUE&quot;, true),</span>
+<span class="fc" id="L12">  B_ASSIGNATION(&quot;boolean&quot;, &quot;TYPE&quot;, false),</span>
+<span class="fc" id="L13">  BOOLEAN(&quot;true|false&quot;, &quot;VALUE&quot;, false),</span>
+<span class="fc" id="L14">  PRINTLN(&quot;println&quot;, &quot;PRINTLN&quot;, true),</span>
+<span class="fc" id="L15">  IF_STATEMENT(&quot;if&quot;, &quot;IF&quot;, false),</span>
+<span class="fc" id="L16">  ELSE_STATEMENT(&quot;else&quot;, &quot;ELSE&quot;, false),</span>
+<span class="fc" id="L17">  VARIABLE_REF(&quot;[a-zA-Z0-9]+([_a-zA-Z0-9]*)&quot;, &quot;VARIABLE&quot;, true);</span>
+
+  private final String regex;
+  private final String category;
+  private boolean isAble;
+
+<span class="fc" id="L23">  KeyWord(String regex, String category, boolean isAble) {</span>
+<span class="fc" id="L24">    this.regex = regex;</span>
+<span class="fc" id="L25">    this.category = category;</span>
+<span class="fc" id="L26">    this.isAble = isAble;</span>
+<span class="fc" id="L27">  }</span>
+
+  public String getRegex() {
+<span class="fc" id="L30">    return regex;</span>
+  }
+
+  @Override
+  public String getCategory() {
+<span class="nc" id="L35">    return category;</span>
+  }
+
+  @Override
+  public String getName() {
+<span class="fc" id="L40">    return name().toLowerCase(Locale.ROOT);</span>
+  }
+
+  @Override
+  public int getOrdinal() {
+<span class="nc" id="L45">    return ordinal();</span>
+  }
+
+  @Override
+  public boolean isAble() {
+<span class="fc" id="L50">    return isAble;</span>
+  }
+
+  @Override
+  public void setAble(boolean isAble) {
+<span class="fc" id="L55">    this.isAble = isAble;</span>
+<span class="fc" id="L56">  }</span>
+
+  public static Token findToken(Token token) {
+<span class="fc bfc" id="L59" title="All 2 branches covered.">    for (KeyWord key : values()) {</span>
+<span class="fc bfc" id="L60" title="All 2 branches covered.">      if (token.getValue().matches(key.getRegex())) {</span>
+<span class="pc bpc" id="L61" title="1 of 2 branches missed.">        if (!key.isAble())</span>
+<span class="nc" id="L62">          throw new InvalidCodeException(</span>
+<span class="nc" id="L63">              &quot;Invalid Expresion: &quot; + token.getValue(), token.getPosition());</span>
+<span class="fc" id="L64">        String value = token.getValue();</span>
+<span class="pc bpc" id="L65" title="1 of 4 branches missed.">        if (value.contains(&quot;'&quot;) || value.contains(&quot;\&quot;&quot;))</span>
+<span class="fc" id="L66">          value = value.substring(1, value.length() - 1);</span>
+<span class="fc" id="L67">        return new ConcreteToken(key, value, token.getPosition());</span>
+      }
+    }
+<span class="fc" id="L70">    return token;</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

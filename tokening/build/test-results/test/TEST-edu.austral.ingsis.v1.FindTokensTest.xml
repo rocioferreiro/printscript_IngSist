@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="edu.austral.ingsis.v1.FindTokensTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2021-04-23T04:29:14" hostname="Rocios-Air.lan" time="0.08">
+  <properties/>
+  <testcase name="[1] find-operators" classname="edu.austral.ingsis.v1.FindTokensTest" time="0.035"/>
+  <testcase name="[1] find-keyword" classname="edu.austral.ingsis.v1.FindTokensTest" time="0.015"/>
+  <testcase name="[2] find-non-operators" classname="edu.austral.ingsis.v1.FindTokensTest" time="0.003"/>
+  <testcase name="[3] invalid-keyword" classname="edu.austral.ingsis.v1.FindTokensTest" time="0.003"/>
+  <testcase name="[4] invalid-keyword-has-operator" classname="edu.austral.ingsis.v1.FindTokensTest" time="0.004"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

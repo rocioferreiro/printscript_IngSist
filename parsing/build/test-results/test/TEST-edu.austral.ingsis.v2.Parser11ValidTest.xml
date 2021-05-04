@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="edu.austral.ingsis.v2.Parser11ValidTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-04-23T02:47:53" hostname="Rocios-Air.lan" time="0.052">
+  <properties/>
+  <testcase name="[1] happy-if" classname="edu.austral.ingsis.v2.Parser11ValidTest" time="0.018"/>
+  <testcase name="[2] if-else" classname="edu.austral.ingsis.v2.Parser11ValidTest" time="0.014"/>
+  <testcase name="[3] if-inside-f" classname="edu.austral.ingsis.v2.Parser11ValidTest" time="0.01"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

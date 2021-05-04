@@ -1,0 +1,7 @@
+(DECLARATION, let)
+(VARIABLE_REF, x)
+(T_ASSIGNATION, :)
+(B_ASSIGNATION, boolean)
+(EQUAL, =)
+(BOOLEAN, true)
+(SEMICOLONS, ;)
