@@ -6,7 +6,8 @@ import java.util.Scanner;
 public class CLI {
 
 
-  private static final String ANSI_RESET = "\u001B[0m";private static final String ANSI_YELLOW = "\033[0;33m";private static final String ANSI_RED_BOLD = "\033[1;31m";
+  private static final String ANSI_RESET = "\u001B[0m";
+  private static final String ANSI_YELLOW = "\033[0;33m";private static final String ANSI_RED_BOLD = "\033[1;31m";
 
   public static void run() {
     printExecuteOptions();
