@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="edu.austral.ingsis.v1.SpaceRemoverTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-05-04T02:47:11" hostname="Rocios-Air.lan" time="0.143">
+<testsuite name="edu.austral.ingsis.v1.SpaceRemoverTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-05-07T20:07:24" hostname="katias-mbp-2.lan" time="0.129">
   <properties/>
   <testcase name="[1] remove-spaces" classname="edu.austral.ingsis.v1.SpaceRemoverTest" time="0.119"/>
-  <testcase name="[2] remove-spaces-in-spaces" classname="edu.austral.ingsis.v1.SpaceRemoverTest" time="0.006"/>
-  <testcase name="[3] remove-spaces-with-final-string" classname="edu.austral.ingsis.v1.SpaceRemoverTest" time="0.006"/>
+  <testcase name="[2] remove-spaces-in-spaces" classname="edu.austral.ingsis.v1.SpaceRemoverTest" time="0.002"/>
+  <testcase name="[3] remove-spaces-with-final-string" classname="edu.austral.ingsis.v1.SpaceRemoverTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="edu.austral.ingsis.v1.EnterRemoverTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-05-04T02:47:11" hostname="Rocios-Air.lan" time="0.054">
+<testsuite name="edu.austral.ingsis.v1.EnterRemoverTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-05-07T20:07:25" hostname="katias-mbp-2.lan" time="0.02">
   <properties/>
-  <testcase name="[1] remove-enters" classname="edu.austral.ingsis.v1.EnterRemoverTest" time="0.036"/>
-  <testcase name="[2] remove-enters-in-end-of-line" classname="edu.austral.ingsis.v1.EnterRemoverTest" time="0.008"/>
-  <testcase name="[3] remove-many-enters" classname="edu.austral.ingsis.v1.EnterRemoverTest" time="0.004"/>
+  <testcase name="[1] remove-enters" classname="edu.austral.ingsis.v1.EnterRemoverTest" time="0.011"/>
+  <testcase name="[2] remove-enters-in-end-of-line" classname="edu.austral.ingsis.v1.EnterRemoverTest" time="0.002"/>
+  <testcase name="[3] remove-many-enters" classname="edu.austral.ingsis.v1.EnterRemoverTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

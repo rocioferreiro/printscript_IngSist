@@ -26,7 +26,7 @@ public class LexerAdapter {
     put(token.TokenType.FUNCTION_NAME, KeyWord.PRINTLN);
     put(token.TokenType.LEFT_PARENTHESES, Operator.L_PARENTHESIS);
     put(token.TokenType.RIGHT_PARENTHESES, Operator.R_PARENTHESIS);
-    put(token.TokenType.ESC_CHAR, TokenType.invalid);
+    put(token.TokenType.ESC_CHAR, Operator.SEMICOLONS);
     put(token.TokenType.SPACE_CHAR, TokenType.invalid);
     put(token.TokenType.IF_FUNCTION, KeyWord.IF_STATEMENT);
     put(token.TokenType.ELSE_FUNCTION, KeyWord.ELSE_STATEMENT);
@@ -37,7 +37,7 @@ public class LexerAdapter {
     put(token.TokenType.GREATER_COMPARATOR, Operator.GREATER);
     put(token.TokenType.MINOR_OR_EQUALS_COMPARATOR, Operator.MINOR_EQUAL);
     put(token.TokenType.MINOR_COMPARATOR, Operator.MINOR);
-    put(token.TokenType.IF_BODY, TokenType.invalid);
+    put(token.TokenType.IF_BODY, KeyWord.VARIABLE_REF);
     put(token.TokenType.IF_BLOCK, TokenType.invalid);
     }
   };
@@ -45,8 +45,22 @@ public class LexerAdapter {
   public static List<Token> adapt(List<token.Token> lex) {
     List<Token> tokens = new ArrayList<>();
     for (token.Token t : lex) {
-      tokens.add(new ConcreteToken(convert.get(t.getType()), t.getValue(), new Position(0,0)));
+      TokenType converted = convert.get(t.getType());
+      if (!converted.equals(TokenType.invalid))
+        tokens.add(new ConcreteToken(converted, t.getValue(), new Position(0,0)));
     }
     return tokens;
+  }
+
+  public static List<String> splitBySemiColon(String string) {
+    List<String> list = new ArrayList<>();
+    int initial = 0;
+    for (int i = 0; i < string.length(); i++) {
+      if (string.charAt(i) == ';') {
+        list.add(string.substring(initial, i+1));
+        initial = i+1;
+      }
+    }
+    return list;
   }
 }

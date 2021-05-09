@@ -15,7 +15,7 @@ import java.util.function.Consumer;
 public class ConcreteInterpreter implements Interpreter {
 
   private final Path rules;
-  private final Lexer lexer = new PrintScriptLexer2();;
+  private final Lexer lexer = new PrintScriptLexer2();
   private Parser parser;
   private final Executor executor = new ConcreteExecutor();
   private Context context = new Context();
@@ -48,27 +48,35 @@ public class ConcreteInterpreter implements Interpreter {
 
   @Override
   public void interpret(File file, Consumer<String> out, boolean progress) {
-//    setTokenTypes();
-//    context = context.setContexts();
-//    lexer = new PrintScriptLexer2();
-//    List<Token> tokens = lexer.lex(file);
-//    int amount = TokenCleanUp.getAmountOfSentences(tokens);
-//    TokenCleanUp.checkLastToken(tokens);
-//    parser = new ConcreteParser(rules);
-//    List<Token> sublist = tokens;
-//    int index = 0;
-//    while (sublist.size() > 0) {
-//      int nextIndex = TokenCleanUp.getIndexOfNextSeparator(sublist);
-//      List<Token> list = new ArrayList<>(sublist.subList(0, nextIndex + 1));
-//      if (!TokenCleanUp.contains(list, KeyWord.IF_STATEMENT) && list.size() > 0)
-//        list = new ArrayList<>(list.subList(0, list.size() - 1));
-//      ASTInContext ast = parser.parse(list);
-//      ast.getContext().setOut(out);
-//      context = ast.getContext();
-//      strategy.execute(executor, ast);
-//      if (progress) print(amount, ++index);
-//      sublist = new ArrayList<>(sublist.subList(nextIndex + 1, sublist.size()));
-//    }
+    setTokenTypes();
+    context = context.setContexts();
+
+    List<Token> tokens = new ArrayList<>();
+    String string = PathReader.read(file);
+    for (String s : LexerAdapter.splitBySemiColon(string)) {
+      try {
+        tokens.addAll(LexerAdapter.adapt(lexer.lex(s)));
+      } catch (BadTokenException e) {
+        e.printStackTrace();
+      }
+    }
+    int amount = TokenCleanUp.getAmountOfSentences(tokens);
+    TokenCleanUp.checkLastToken(tokens);
+    parser = new ConcreteParser(rules);
+    List<Token> sublist = tokens;
+    int index = 0;
+    while (sublist.size() > 0) {
+      int nextIndex = TokenCleanUp.getIndexOfNextSeparator(sublist);
+      List<Token> list = new ArrayList<>(sublist.subList(0, nextIndex + 1));
+      if (!TokenCleanUp.contains(list, KeyWord.IF_STATEMENT) && list.size() > 0)
+        list = new ArrayList<>(list.subList(0, list.size() - 1));
+      ASTInContext ast = parser.parse(list);
+      ast.getContext().setOut(out);
+      context = ast.getContext();
+      strategy.execute(executor, ast);
+      if (progress) print(amount, ++index);
+      sublist = new ArrayList<>(sublist.subList(nextIndex + 1, sublist.size()));
+    }
   }
 
   @Override

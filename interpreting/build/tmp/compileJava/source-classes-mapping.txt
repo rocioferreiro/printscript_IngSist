@@ -8,8 +8,8 @@ edu/austral/ingsis/ValidationExecutionStrategy.java
  edu.austral.ingsis.ValidationExecutionStrategy
 edu/austral/ingsis/Version.java
  edu.austral.ingsis.Version
+edu/austral/ingsis/ConcreteInterpreter.java
+ edu.austral.ingsis.ConcreteInterpreter
 edu/austral/ingsis/LexerAdapter.java
  edu.austral.ingsis.LexerAdapter
  edu.austral.ingsis.LexerAdapter$1
-edu/austral/ingsis/ConcreteInterpreter.java
- edu.austral.ingsis.ConcreteInterpreter
